@@ -1,66 +1,125 @@
 {
-  "url": "https://clash-meta.github.io/",
-  "siteName": "clash-meta.github.io",
-  "scrapedAt": "2026-07-04T17:34:50.309Z",
+  "url": "https://clash-meta.github.io/free-nodes/",
+  "siteName": "clash-meta_github_io",
+  "scrapedAt": "2026-07-05T13:46:10.059Z",
   "articles": [
     {
-      "url": "https://clash-meta.github.io/newly-discovered-nodes/index.html?date=2026-07-04",
-      "title": "07月04日更新21.5M/S，2026年最新高速Clash/V2ray订阅链接免费节点地址分享",
-      "scrapedAt": "2026-07-04T17:34:50.309Z",
-      "subscriptionCount": 10,
+      "title": "7月1日 | Clash Meta每天更新20.7M/S免费节点订阅链接地址",
+      "url": "https://clash-meta.github.io/free-nodes/2026-7-1-clash-meta-node-share.htm",
+      "publishedAt": "2026-07-05T13:46:07.067Z",
       "subscriptions": [
         {
           "type": "Clash",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/0-20260704.yaml",
-          "description": "Clash订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/0-20260701.yaml"
         },
         {
           "type": "Clash",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/1-20260704.yaml",
-          "description": "Clash订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/1-20260701.yaml"
         },
         {
           "type": "Clash",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/2-20260704.yaml",
-          "description": "Clash订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/3-20260701.yaml"
         },
         {
           "type": "Clash",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/3-20260704.yaml",
-          "description": "Clash订阅链接"
-        },
-        {
-          "type": "Clash",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/4-20260704.yaml",
-          "description": "Clash订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/4-20260701.yaml"
         },
         {
           "type": "V2ray",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/0-20260704.txt",
-          "description": "V2ray订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/1-20260701.txt"
         },
         {
           "type": "V2ray",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/1-20260704.txt",
-          "description": "V2ray订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/2-20260701.txt"
         },
         {
           "type": "V2ray",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/2-20260704.txt",
-          "description": "V2ray订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/3-20260701.txt"
         },
         {
           "type": "V2ray",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/3-20260704.txt",
-          "description": "V2ray订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/4-20260701.txt"
         },
         {
           "type": "Sing-Box",
-          "url": "https://node.freeclashnode.com/uploads/2026/07/20260704.json",
-          "description": "Sing-Box订阅链接"
+          "url": "https://clash-meta.github.io/uploads/2026/07/20260701.json"
+        }
+      ]
+    },
+    {
+      "title": "6月30日 | Clash Meta每天更新23M/S免费节点订阅链接地址",
+      "url": "https://clash-meta.github.io/free-nodes/2026-6-30-today-clash-meta-node.htm",
+      "publishedAt": "2026-07-05T13:46:08.568Z",
+      "subscriptions": [
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/0-20260630.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/1-20260630.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/2-20260630.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/4-20260630.yaml"
+        },
+        {
+          "type": "V2ray",
+          "url": "https://clash-meta.github.io/uploads/2026/06/0-20260630.txt"
+        },
+        {
+          "type": "V2ray",
+          "url": "https://clash-meta.github.io/uploads/2026/06/1-20260630.txt"
+        },
+        {
+          "type": "V2ray",
+          "url": "https://clash-meta.github.io/uploads/2026/06/3-20260630.txt"
+        },
+        {
+          "type": "Sing-Box",
+          "url": "https://clash-meta.github.io/uploads/2026/06/20260630.json"
+        }
+      ]
+    },
+    {
+      "title": "6月29日 | Clash Meta每天更新21.7M/S免费节点订阅链接地址",
+      "url": "https://clash-meta.github.io/free-nodes/2026-6-29-clash-meta-windows.htm",
+      "publishedAt": "2026-07-05T13:46:10.059Z",
+      "subscriptions": [
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/0-20260629.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/1-20260629.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/3-20260629.yaml"
+        },
+        {
+          "type": "Clash",
+          "url": "https://clash-meta.github.io/uploads/2026/06/4-20260629.yaml"
+        },
+        {
+          "type": "V2ray",
+          "url": "https://clash-meta.github.io/uploads/2026/06/0-20260629.txt"
+        },
+        {
+          "type": "V2ray",
+          "url": "https://clash-meta.github.io/uploads/2026/06/1-20260629.txt"
+        },
+        {
+          "type": "Sing-Box",
+          "url": "https://clash-meta.github.io/uploads/2026/06/20260629.json"
         }
       ]
     }
   ],
-  "totalSubscriptions": 10
+  "totalSubscriptions": 24
 }

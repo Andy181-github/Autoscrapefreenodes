@@ -1,0 +1,90 @@
+{
+  "version": "2.0.0",
+  "generatedAt": "2026-07-05T13:46:10.060Z",
+  "summary": {
+    "totalRaw": 49,
+    "unique": 49,
+    "reductionRate": "0.0%"
+  },
+  "sources": [
+    {
+      "name": "clashnode_github_io",
+      "articles": 3,
+      "rawSubscriptions": 25
+    },
+    {
+      "name": "clash-meta_github_io",
+      "articles": 3,
+      "rawSubscriptions": 24
+    }
+  ],
+  "feeds": {
+    "Clash": {
+      "count": 26,
+      "latestDate": "20260701",
+      "urls": [
+        "https://clashnode.github.io/uploads/2026/07/0-20260701.yaml",
+        "https://clashnode.github.io/uploads/2026/07/1-20260701.yaml",
+        "https://clashnode.github.io/uploads/2026/07/2-20260701.yaml",
+        "https://clashnode.github.io/uploads/2026/07/3-20260701.yaml",
+        "https://clashnode.github.io/uploads/2026/07/4-20260701.yaml",
+        "https://clash-meta.github.io/uploads/2026/07/0-20260701.yaml",
+        "https://clash-meta.github.io/uploads/2026/07/1-20260701.yaml",
+        "https://clash-meta.github.io/uploads/2026/07/3-20260701.yaml",
+        "https://clash-meta.github.io/uploads/2026/07/4-20260701.yaml",
+        "https://clashnode.github.io/uploads/2026/06/1-20260630.yaml",
+        "https://clashnode.github.io/uploads/2026/06/2-20260630.yaml",
+        "https://clashnode.github.io/uploads/2026/06/3-20260630.yaml",
+        "https://clashnode.github.io/uploads/2026/06/4-20260630.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/0-20260630.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/1-20260630.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/2-20260630.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/4-20260630.yaml",
+        "https://clashnode.github.io/uploads/2026/06/0-20260629.yaml",
+        "https://clashnode.github.io/uploads/2026/06/1-20260629.yaml",
+        "https://clashnode.github.io/uploads/2026/06/2-20260629.yaml",
+        "https://clashnode.github.io/uploads/2026/06/3-20260629.yaml",
+        "https://clashnode.github.io/uploads/2026/06/4-20260629.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/0-20260629.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/1-20260629.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/3-20260629.yaml",
+        "https://clash-meta.github.io/uploads/2026/06/4-20260629.yaml"
+      ]
+    },
+    "V2ray": {
+      "count": 17,
+      "latestDate": "20260701",
+      "urls": [
+        "https://clashnode.github.io/uploads/2026/07/1-20260701.txt",
+        "https://clashnode.github.io/uploads/2026/07/3-20260701.txt",
+        "https://clashnode.github.io/uploads/2026/07/4-20260701.txt",
+        "https://clash-meta.github.io/uploads/2026/07/1-20260701.txt",
+        "https://clash-meta.github.io/uploads/2026/07/2-20260701.txt",
+        "https://clash-meta.github.io/uploads/2026/07/3-20260701.txt",
+        "https://clash-meta.github.io/uploads/2026/07/4-20260701.txt",
+        "https://clashnode.github.io/uploads/2026/06/1-20260630.txt",
+        "https://clashnode.github.io/uploads/2026/06/2-20260630.txt",
+        "https://clashnode.github.io/uploads/2026/06/4-20260630.txt",
+        "https://clash-meta.github.io/uploads/2026/06/0-20260630.txt",
+        "https://clash-meta.github.io/uploads/2026/06/1-20260630.txt",
+        "https://clash-meta.github.io/uploads/2026/06/3-20260630.txt",
+        "https://clashnode.github.io/uploads/2026/06/2-20260629.txt",
+        "https://clashnode.github.io/uploads/2026/06/3-20260629.txt",
+        "https://clash-meta.github.io/uploads/2026/06/0-20260629.txt",
+        "https://clash-meta.github.io/uploads/2026/06/1-20260629.txt"
+      ]
+    },
+    "Sing-Box": {
+      "count": 6,
+      "latestDate": "20260701",
+      "urls": [
+        "https://clashnode.github.io/uploads/2026/07/20260701.json",
+        "https://clash-meta.github.io/uploads/2026/07/20260701.json",
+        "https://clashnode.github.io/uploads/2026/06/20260630.json",
+        "https://clash-meta.github.io/uploads/2026/06/20260630.json",
+        "https://clashnode.github.io/uploads/2026/06/20260629.json",
+        "https://clash-meta.github.io/uploads/2026/06/20260629.json"
+      ]
+    }
+  }
+}

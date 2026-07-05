@@ -1,60 +1,28 @@
-{
+﻿{
   "sites": [
     {
-      "url": "https://clashnode.github.io/",
+      "url": "https://clashnode.github.io/free-nodes/",
       "enabled": true,
-      "description": "免费节点订阅站点1"
+      "description": "Clash Node 免费节点订阅"
     },
     {
-      "url": "https://clash-meta.github.io/",
+      "url": "https://clash-meta.github.io/free-nodes/",
       "enabled": true,
-      "description": "免费节点订阅站点2"
+      "description": "Clash Meta 免费节点订阅"
     },
     {
-      "url": "https://www.airportnode.com/",
+      "url": "https://airportnode.com/freenode",
       "enabled": true,
-      "description": "免费节点订阅站点3"
+      "description": "AirportNode 免费节点分享"
     }
   ],
   "settings": {
     "updateInterval": 720,
     "maxArticlesPerSite": 10,
     "cleanOldDataOnUpdate": true,
-    "port": 3001,
+    "port": 3000,
     "dataDir": "data",
-    "lastUpdated": "2023-09-15T00:00:00.000Z",
-    "localFreeNodesCount": 5
+    "localFreeNodesCount": 0
   },
-  "subscriptions": [
-    {
-      "type": "Shadowrocket",
-      "name": "Shadowrocket免费节点1",
-      "url": "https://sub.0664.net/ss/sub",
-      "description": "Shadowrocket免费节点订阅1"
-    },
-    {
-      "type": "Shadowrocket",
-      "name": "Shadowrocket免费节点2",
-      "url": "https://sub.0664.net/sip002/sub",
-      "description": "Shadowrocket免费节点订阅2"
-    },
-    {
-      "type": "Shadowrocket",
-      "name": "Shadowrocket免费节点3",
-      "url": "https://sub.0664.net/ssr/sub",
-      "description": "Shadowrocket免费节点订阅3"
-    },
-    {
-      "type": "V2ray",
-      "name": "V2ray免费节点4",
-      "url": "https://sub.0664.net/vmess/sub",
-      "description": "V2ray免费节点订阅1"
-    },
-    {
-      "type": "通用",
-      "name": "通用免费节点5",
-      "url": "https://sub.0664.net/trojan/sub",
-      "description": "通用免费节点订阅1"
-    }
-  ]
-} 
+  "subscriptions": []
+}

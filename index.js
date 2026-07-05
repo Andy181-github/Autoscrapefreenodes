@@ -6,7 +6,7 @@ const scraper = require('./scraper');
 const cors = require('cors');
 
 // 获取配置
-const config = scraper.getConfig();
+const config = scraper.loadConfig();
 const settings = config.settings;
 
 const app = express();
@@ -161,7 +161,7 @@ app.get('/api/sites', (req, res) => {
 app.post('/api/refresh', async (req, res) => {
   try {
     console.log('手动触发抓取...');
-    await scraper.scrapeAllSites();
+    try{await scraper.scrapeAllSites()}catch(e){console.error(e.message)};
     res.json({ success: true, message: '抓取完成' });
   } catch (error) {
     console.error('手动抓取失败:', error);
