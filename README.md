@@ -1,191 +1,230 @@
+﻿# AutoScrapeFreeNodes
+
 <div align="center">
-  <br />
-  <h1 align="center">AutoScrapeFreeNodes</h1>
-  <p align="center">
-    <strong>高效 · 自动化 · 跨协议的免费节点聚合方案</strong>
-  </p>
 
-  <p align="center">
-    <a href="https://github.com/Re0XIAOPA/AutoScrapeFreeNodes">
-      <img src="https://img.shields.io/github/stars/Re0XIAOPA/AutoScrapeFreeNodes?style=flat-square" alt="GitHub stars">
-    </a>
-    <a href="https://github.com/Re0XIAOPA/AutoScrapeFreeNodes/network">
-      <img src="https://img.shields.io/github/forks/Re0XIAOPA/AutoScrapeFreeNodes?style=flat-square" alt="GitHub forks">
-    </a>
-    <a href="https://github.com/Re0XIAOPA/AutoScrapeFreeNodes/issues">
-      <img src="https://img.shields.io/github/issues/Re0XIAOPA/AutoScrapeFreeNodes?style=flat-square" alt="GitHub issues">
-    </a>
-    <a href="https://github.com/Re0XIAOPA/AutoScrapeFreeNodes/blob/master/LICENSE">
-      <img src="https://img.shields.io/github/license/Re0XIAOPA/AutoScrapeFreeNodes?style=flat-square" alt="GitHub license">
-    </a>
-  </p>
+**自动化免费节点订阅聚合系统**
 
-  <p align="center">
-    <a href="https://asfn.awafuns.cn/">在线预览</a> 
-    <span> · </span>
-    <a href="#快速开始">部署指南</a> 
-    <span> · </span>
-    <a href="#配置指南">配置文档</a>
-  </p>
-  <br />
+从多个公开渠道自动抓取、去重、整合 Clash / V2ray / Sing-Box 订阅链接
+
+[![GitHub Stars](https://img.shields.io/github/stars/Andy181-github/Autoscrapefreenodes?style=flat-square)](https://github.com/Andy181-github/Autoscrapefreenodes/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Andy181-github/Autoscrapefreenodes?style=flat-square)](https://github.com/Andy181-github/Autoscrapefreenodes/network/members)
+[![License: MIT](https://img.shields.io/github/license/Andy181-github/Autoscrapefreenodes?style=flat-square)](LICENSE)
+[![Node.js >= 18](https://img.shields.io/badge/Node.js-18%2B-%23339933?style=flat-square)](https://nodejs.org/)
+
+[在线预览](https://andy181-github.github.io/Autoscrapefreenodes/) · [快速开始](#-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B) · [部署指南](#-%E9%83%A8%E7%BD%B2) · [更新日志](#-v200-)
+
 </div>
 
 ---
 
-## 核心特性
+## 📋 项目简介
 
-<table width="100%">
-  <tr>
-    <td width="50%">
-      <strong>多源聚合抓取</strong><br />
-      从多个高质量公共渠道自动提取免费订阅信息。
-    </td>
-    <td width="50%">
-      <strong>自动化运维</strong><br />
-      支持定时更新机制，确保持续维护节点数据的时效性。
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <strong>智能去重过滤</strong><br />
-      内置指纹识别逻辑，自动剔除重复的链接，保持订阅纯净。
-    </td>
-    <td width="50%">
-      <strong>全协议兼容</strong><br />
-      全面支持 Clash, V2ray, SS, SSR, Trojan, Sing-Box 等。
-    </td>
-  </tr>
-</table>
+AutoScrapeFreeNodes 是一个自动化免费节点订阅聚合工具，从多个公开渠道定期抓取、去重、整合订阅链接，最终输出三条标准化订阅：
+
+| 协议 | 说明 | 输出格式 |
+|------|------|----------|
+| **Clash** | 兼容 Clash / Clash Meta / Clash Premium | `.yaml` |
+| **V2ray** | 兼容 V2Ray / Xray / Hysteria 等 | `.txt` (Base64) |
+| **Sing-Box** | 兼容 Sing-Box / Mihomo 新内核 | `.json` |
+
+### 核心特性
+
+- **多源聚合** — 自动抓取 GitHub Pages 站点上的免费节点分享文章
+- **智能去重** — 同一 URL 只保留一份，避免重复订阅
+- **三频道整合** — 按协议类型自动分类为 Clash / V2ray / Sing-Box 三条订阅
+- **定时更新** — GitHub Actions 每日自动运行，数据持续刷新
+- **静态部署** — 支持 GitHub Pages 纯静态托管，零服务器成本
+- **Docker 支持** — 一行 `docker compose up` 即可运行完整服务
+
+### 数据来源
+
+| 站点 | 类型 | 状态 |
+|------|------|------|
+| [clashnode.github.io/free-nodes](https://clashnode.github.io/free-nodes/) | GitHub Pages | ✅ 稳定 |
+| [clash-meta.github.io/free-nodes](https://clash-meta.github.io/free-nodes/) | GitHub Pages | ✅ 稳定 |
+| [airportnode.com](https://www.airportnode.com/category-1.html) | 独立博客 | ⚠️ 偶发 502 |
+
+> ⚠️ 所有数据均来自第三方公开页面，工具本身不存储、不分发任何节点资源。
 
 ---
 
-## 要求
+## 🚀 快速开始
 
-- **Node.js**: 18.0.0 或更高版本
+### 环境要求
 
+- **Node.js** ≥ 18
+- **npm** ≥ 9（或使用 yarn / pnpm）
 
-## 快速开始
+### 本地运行（完整模式）
 
-### 本地部署
-
-**静态模式 (无依赖)**
-直接通过浏览器打开 `public/index.html` 即可查看静态快照数据。
-
-**2完整模式 (支持实时抓取)**
 ```bash
 # 克隆仓库
-git clone [https://github.com/Re0XIAOPA/AutoScrapeFreeNodes.git](https://github.com/Re0XIAOPA/AutoScrapeFreeNodes.git)
+git clone https://github.com/Andy181-github/Autoscrapefreenodes.git
+cd Autoscrapefreenodes
 
-# 安装必要依赖
+# 安装依赖
 npm install
 
-# 启动服务端应用
+# 启动服务（默认端口 3000）
 npm start
+
+# 开发模式（自动重启）
+npm run dev
 ```
 
-## 配置指南
+访问 `http://localhost:3000` 查看控制台。
 
-项目核心配置文件位于根目录 `config.json`。
+### 静态预览（无依赖）
 
-### 抓取站点 (sites)
+直接双击打开 `public/index.html` 即可查看上次抓取的数据快照。
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `url` | String | 需要爬取的网页 URL |
-| `enabled` | Boolean | 是否启用该抓取任务 |
-| `description` | String | 站点用途备注 |
+### 构建静态站点
 
-## 添加自定义订阅
+```bash
+npm run build   # 生成 dist/ 目录，可部署到 GitHub Pages
+```
 
-通过修改根目录的 `config.json` 文件，可以轻松添加需要抓取的网站和您自己的自定义订阅：
+---
 
-抓取的配置格式：
+## 🗂️ 项目结构
+
+```
+Autoscrapefreenodes/
+├── scraper.js              # 核心抓取器：解析文章、提取订阅、去重整合
+├── index.js                # Express 服务器 + 定时任务 + API 端点
+├── generate-static.js      # 静态站点生成器
+├── config.json             # 站点配置 + 抓取参数
+├── package.json            # 项目元信息 + 依赖
+├── data/                   # 抓取数据目录
+│   ├── clashnode_github_io.json    # 来源 1 原始数据
+│   ├── clash_meta_github_io.json   # 来源 2 原始数据
+│   └── consolidated.json           # 去重整合后的最终输出（三条订阅）
+├── public/                 # 前端静态文件
+│   ├── index.html          # 控制台主页
+│   ├── css/                # 样式表
+│   └── js/                 # 前端脚本
+├── .github/workflows/
+│   ├── deploy.yml          # 构建 + 部署到 GitHub Pages
+│   └── update-data.yml     # 仅更新数据（不构建静态站）
+├── Dockerfile
+└── docker-compose.yml
+```
+
+---
+
+## ⚙️ 配置说明
+
+### config.json
+
 ```json
-"sites": [
+{
+  "sites": [
     {
-      "url": "https://example.com/clash",
+      "url": "https://clashnode.github.io/free-nodes/",
       "enabled": true,
-      "description": "免费节点订阅站点1"
-    },
-    {
-      "url": "https://example.com/v2ray",
-      "enabled": true,
-      "description": "免费节点订阅站点2"
+      "description": "Clash Node 免费节点订阅"
     }
-]
-```
-
-自定义配置文件格式：
-```json
-"subscriptions": [
-  {
-    "type": "Clash",
-    "name": "我的Clash订阅",
-    "url": "https://example.com/clash",
-    "description": "自定义Clash订阅"
-  },
-  {
-    "type": "V2ray",
-    "name": "我的V2ray订阅",
-    "url": "https://example.com/v2ray",
-    "description": "自定义V2ray订阅"
+  ],
+  "settings": {
+    "updateInterval": 720,       // 定时抓取间隔（分钟）
+    "maxArticlesPerSite": 10,    // 每个站点最多抓取文章数
+    "port": 3000,                // 服务端口
+    "dataDir": "data"            // 数据目录
   }
-]
+}
 ```
 
-每个订阅项需要包含以下字段：
-- `type`: 订阅类型，可以是以下值之一: `Clash`, `V2ray`, `SS`, `SSR`, `Trojan`, `Sing-Box`, `Shadowrocket`, `Quantumult` 或 `通用`
-- `name`: 订阅名称
-- `url`: 订阅链接
-- `description`: 订阅描述（可选）
+- 修改 `sites` 数组可添加/移除抓取源
+- 设置 `"enabled": false` 可临时禁用某个站点
+- 自定义订阅可通过 `config.json` 中的 `subscriptions` 字段手动添加
 
-## 抓取的网站
+---
 
-本工具会自动抓取以下网站的免费节点：
+## 📡 API 端点
 
-https://clashnode.github.io/free-nodes/  
-https://clash-meta.github.io/free-nodes/  
-https://www.airportnode.com/category-1.html  
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| `GET` | `/api/config` | 获取公开配置信息 |
+| `GET` | `/api/subscriptions` | 获取所有订阅数据 |
+| `GET` | `/api/sites` | 获取各站点详细数据 |
+| `POST` | `/api/refresh` | 手动触发抓取（生产环境建议加鉴权） |
+| `GET` | `/api/consolidated` | 获取去重整合后的三条订阅 |
 
-## Docker 部署
+---
 
-### 使用 Docker Compose (推荐)
+## 🐳 部署
 
-1. 确保已安装 Docker 和 Docker Compose
-2. 在项目根目录下运行：
+### Docker Compose（推荐）
+
 ```bash
 docker compose up -d
-```
-3. 访问 `http://localhost:3000`
-
-### 使用 Docker 构建
-
-1. 构建镜像：
-```bash
-docker build -t autoscrape-free-nodes .
-```
-2. 运行容器：
-```bash
-docker run -d -p 3000:3000 -v $(pwd)/data:/app/data --name autoscrape autoscrape-free-nodes
+# 访问 http://localhost:3000
 ```
 
+### GitHub Actions（自动部署）
 
-<div style="padding: 16px; border: 1px solid #1dff91; margin: 24px 0;">
-  <strong style="display: block; margin-bottom: 10px; color: #1dff91;">## 免责声明</strong>
-  <ul style="margin-bottom: 0; padding-left: 20px; line-height: 1.6;">
-    <li>本项目仅作为技术交流与学术研究使用。</li>
-    <li>所有节点数据均来源于第三方互联网公开页面，工具本身不存储、不分发任何服务器资源。</li>
-    <li>使用者应自行判断节点安全性，并严格遵守当地相关法律法规。</li>
-    <li>作者不对因使用本工具导致的任何形式的损失或法律纠纷负责。</li>
-  </ul>
-</div>
+项目已内置两个工作流：
 
-## Star History
+1. **deploy.yml** — 抓取数据 → 构建静态站 → 部署到 `gh-pages` 分支
+   - 定时：北京时间每日 00:30
+   - 也可手动触发或 push 到 `main` 时自动运行
 
-<a href="https://www.star-history.com/?repos=Re0XIAOPA%2FAutoScrapeFreeNodes&type=date&logscale=&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Re0XIAOPA/AutoScrapeFreeNodes&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Re0XIAOPA/AutoScrapeFreeNodes&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Re0XIAOPA/AutoScrapeFreeNodes&type=date&legend=top-left" />
- </picture>
-</a>
+2. **update-data.yml** — 仅抓取数据并提交到 `main` 分支
+   - 定时：北京时间每日 00:30 和 12:30
+
+---
+
+## 📝 更新日志
+
+### v2.0.0 _(当前版本)_
+
+**重大变更：**
+
+- ✅ **真实抓取** — 废弃 mock 数据，实现基于 `cheerio` 的真实 HTML 解析
+- ✅ **智能去重** — 同一 URL 跨文章、跨站点自动去重
+- ✅ **三频道整合** — 输出 consolidated.json，包含 Clash / V2ray / Sing-Box 三条独立订阅
+- ✅ **版本追踪** — 从 URL 中提取日期戳（如 `20260701`），标注最新版本
+- ✅ **双策略解析** — 适配两种不同的订阅标记格式（分隔符式 + 冒号式）
+- ✅ **数据目录** — 每个来源站点的原始数据保存在 `data/` 下，便于调试
+
+**已知问题：**
+
+- ⚠️ airportnode.com 文章页频繁返回 502（目标服务器问题，非代码缺陷）
+
+### v1.x
+
+- 初始版本，使用模拟数据
+- 基础 Express 服务 + 静态前端
+
+---
+
+## 🔒 安全须知
+
+| 风险项 | 说明 | 缓解措施 |
+|--------|------|----------|
+| 节点安全性 | 抓取来源为第三方公开页面，节点质量无法保证 | 使用者自行判断，不建议用于敏感场景 |
+| 法律合规 | 使用免费节点可能违反当地法律法规 | 使用者需自行遵守所在地区法律 |
+| `/api/refresh` 无鉴权 | 任何人可触发抓取 | 生产环境建议添加 token 认证或反向代理限流 |
+| CORS `*` | 开放所有来源 | 生产环境建议限制为可信域名 |
+
+---
+
+## ⚖️ 免责声明
+
+1. 本项目仅作为技术交流与学术研究使用。
+2. 所有节点数据均来源于第三方互联网公开页面，工具本身不存储、不分发任何服务器资源。
+3. 使用者应自行判断节点安全性，并严格遵守当地相关法律法规。
+4. 作者不对因使用本工具导致的任何形式的损失或法律纠纷负责。
+5. 使用本项目即表示你同意上述条款。
+
+---
+
+## 📄 License
+
+[MIT License](LICENSE)
+
+---
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Andy181-github/Autoscrapefreenodes&type=date)](https://star-history.com/#Andy181-github/Autoscrapefreenodes&Date)
