@@ -43,13 +43,15 @@ const REGION_ALIASES = {
 function detectRegionFromName(nodeName) {
   if (!nodeName) return 'unknown';
   const lower = nodeName.toLowerCase().replace(/[_\-\s]/g, '');
-  for (const [key, region] of Object.entries(IP_REGION_MAP)) {
-    if (lower.includes(key.toLowerCase())) return region;
+  const aa = Object.entries(REGION_ALIASES)
+    .flatMap(([region, als]) => als.map(a => [a.toLowerCase(), region]));
+  aa.sort((a, b) => b[0].length - a[0].length);
+  for (const [alias, region] of aa) {
+    if (lower.includes(alias)) return region;
   }
-  for (const [region, aliases] of Object.entries(REGION_ALIASES)) {
-    for (const alias of aliases) {
-      if (lower.includes(alias.toLowerCase())) return region;
-    }
+  for (const [key, region] of Object.entries(IP_REGION_MAP)) {
+    const regex = new RegExp('\\b' + key.toLowerCase() + '\\b', 'i');
+    if (regex.test(lower)) return region;
   }
   return 'unknown';
 }
