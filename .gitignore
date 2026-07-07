@@ -60,3 +60,5 @@ deploy/
 
 # 测试输出
 .nyc_output 
+# 临时参考仓库目录
+*_temp/

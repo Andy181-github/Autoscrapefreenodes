@@ -71,7 +71,7 @@ app.get('/api/consolidated', (req, res) => {
     const consolidatedPath = path.join(dataDir, 'consolidated.json');
     if (fs.existsSync(consolidatedPath)) {
       const data = fs.readJsonSync(consolidatedPath);
-      const { renamedContent: _, ...safeData } = data;
+      const { renamedContent: _, merged: _merged, ...safeData } = data;
       res.json(safeData);
     } else {
       res.json({ message: '暂无整合数据，请先运行抓取' });

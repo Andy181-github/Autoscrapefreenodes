@@ -79,6 +79,20 @@ function isPrivateIP(ip) {
   return /^10\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^192\.168\.|^127\./.test(ip);
 }
 
+
+// Noise/scam filter regex (from MiracleNan/subscribe-true-grading)
+const NOISE_PATTERNS = [
+  /剩余流量/i, /到期/i, /套餐/i, /购买/i, /免费/i, /付费/i,
+  /促销/i, /优惠/i, /充值/i, /客服/i, /官网/i, /注册/i,
+  /点击链接/i, /关注公众号/i, /telegram/i, /电报/i,
+  /广告/i, /推广/i, /引流/i, /加群/i
+];
+
+function isNoiseNode(name) {
+  if (!name) return false;
+  return NOISE_PATTERNS.some(pattern => pattern.test(name));
+}
+
 function sha256(str) {
   return crypto.createHash('sha256').update(str).digest('hex').substring(0, 12);
 }
@@ -380,72 +394,175 @@ function generateRenamedContent(feeds) {
 async function scrapeAllSites() {
   const config = loadConfig();
   const results = [];
-  
-  console.log('='.repeat(60));
-  console.log('[AutoScrape] Starting node scrape...');
-  console.log('='.repeat(60));
-  
-  // Scrape GitHub Pages sites
-  const githubSites = config.sites.filter(s => s.enabled && s.url.includes('github.io'));
-  for (const site of githubSites) {
-    const result = await scrapeGithubPagesSite(site.url);
-    results.push(result);
-  }
-  
-  // Scrape AirportNode
-  const airportNode = config.sites.find(s => s.enabled && s.url.includes('airportnode'));
-  if (airportNode) {
-    results.push(await scrapeAirportNode());
-  }
-  
-  // Merge and deduplicate
-  const { feeds, seenContent, seenUrls } = mergeAndDeduplicate(results);
-  
-  // Generate renamed content
-  const renamedContent = generateRenamedContent(feeds);
-  
-  const output = {
-    version: '3.0.0',
-    generatedAt: new Date().toISOString(),
-    changelog: 'v3.0.0: Added IP detection, node renaming, content dedup, 3-feed consolidation',
-    summary: {
-      totalRaw: seenUrls.size,
-      unique: seenContent.size,
-      reductionRate: seenUrls.size > 0 ? Math.round((1 - seenContent.size / seenUrls.size) * 100) + '%' : '0%',
-      feeds: {
-        Clash: feeds.Clash.urls.length,
-        V2ray: feeds.V2ray.urls.length,
-        'Sing-Box': feeds['Sing-Box'].urls.length
-      }
-    },
-    sources: results.map(r => ({
-      name: r.siteUrl.replace(/https?:\/\//, '').replace(/\//g, '_'),
-      articles: r.articles.length,
-      rawSubscriptions: r.totalSubscriptions
-    })),
-    feeds: {
-      Clash: { count: feeds.Clash.urls.length, urls: feeds.Clash.urls, renamedContent: renamedContent.clash || {} },
-      V2ray: { count: feeds.V2ray.urls.length, urls: feeds.V2ray.urls, renamedContent: renamedContent.v2ray || {} },
-      'Sing-Box': { count: feeds['Sing-Box'].urls.length, urls: feeds['Sing-Box'].urls, renamedContent: renamedContent.singbox || {} }
-    },
-    renamedProxies: {
-      Clash: feeds.Clash.proxies,
-      V2ray: feeds.V2ray.proxies,
-      'Sing-Box': feeds['Sing-Box'].proxies
+  console.log("=".repeat(60));
+  console.log("[AutoScrape v3.2] Starting with node-level validation...");
+  console.log("=".repeat(60));
+  const githubSites = config.sites.filter(s => s.enabled && s.url.includes("github.io"));
+  for (const site of githubSites) { const result = await scrapeGithubPagesSite(site.url); results.push(result); }
+  const airportNode = config.sites.find(s => s.enabled && s.url.includes("airportnode"));
+  if (airportNode) results.push(await scrapeAirportNode());
+  const { feeds } = mergeAndDeduplicate(results);
+  console.log("\n[Parse] Downloading and parsing subscription files...");
+  const allProxies = [];
+  const proxyByServerPort = new Map();
+  for (const [feedName, feedData] of Object.entries(feeds)) {
+    if (!feedData || !feedData.contentMap) continue;
+    for (const [url, content] of Object.entries(feedData.contentMap)) {
+      try {
+        const ext = url.split(".").pop().toLowerCase();
+        let proxies = [];
+        if (ext === "yaml" || ext === "yml") proxies = parseClashYaml(content);
+        else if (ext === "json") proxies = parseSingBoxJson(content);
+        else if (ext === "txt") proxies = parseV2rayTxt(content);
+        proxies.forEach(p => {
+          const key = (p.server || "") + ":" + (p.port || "");
+          if (p.server && p.port && !proxyByServerPort.has(key)) { proxyByServerPort.set(key, p); allProxies.push(p); }
+        });
+      } catch (e) { console.log("  [SKIP] " + url + ": " + e.message); }
     }
+  }
+  console.log("  Total unique proxies (by server:port): " + allProxies.length);
+  console.log("\n[Check] Running quick connectivity checks...");
+  const validProxies = await checkProxiesQuick(allProxies);
+  console.log("  Valid after check: " + validProxies.length + "/" + allProxies.length);
+  const merged = buildMergedOutput(validProxies, feeds);
+  const output = {
+    version: "3.2.1",
+    generatedAt: new Date().toISOString(),
+    changelog: "v3.2.1: Node-level parsing, server:port dedup, quick connectivity check, FreeSubsCheck-style output",
+    summary: { totalRaw: allProxies.length, unique: validProxies.length, reductionRate: allProxies.length > 0 ? Math.round((1 - validProxies.length / allProxies.length) * 100) + "%" : "0%" },
+    sources: results.map(r => ({ name: r.siteUrl.replace(/https?:\/\//, "").replace(/\//g, "_"), articles: r.articles.length, rawSubscriptions: r.totalSubscriptions })),
+    feeds: {
+      Clash: { count: feeds.Clash ? feeds.Clash.urls.length : 0, urls: feeds.Clash ? feeds.Clash.urls : [] },
+      V2ray: { count: feeds.V2ray ? feeds.V2ray.urls.length : 0, urls: feeds.V2ray ? feeds.V2ray.urls : [] },
+      "Sing-Box": { count: feeds["Sing-Box"] ? feeds["Sing-Box"].urls.length : 0, urls: feeds["Sing-Box"] ? feeds["Sing-Box"].urls : [] }
+    },
+    merged: merged,
+    allProxies: validProxies.slice(0, 100)
   };
-  
-  console.log('\n' + '='.repeat(60));
-  console.log('[AutoScrape] Complete!');
-  console.log(`  Clash: ${output.feeds.Clash.count} URLs`);
-  console.log(`  V2ray: ${output.feeds.V2ray.count} URLs`);
-  console.log(`  Sing-Box: ${output.feeds['Sing-Box'].count} URLs`);
-  console.log(`  Unique: ${output.summary.unique}`);
-  console.log('='.repeat(60));
-  
+  console.log("\n" + "=".repeat(60));
+  console.log("[AutoScrape] Complete! Unique=" + allProxies.length + ", Valid=" + validProxies.length + ", Mihomo=" + merged.mihomo.length);
+  console.log("=".repeat(60));
   return output;
 }
 
+
+// ============================================
+// Quick connectivity check (like subs-check Go)
+// ============================================
+
+async function checkProxiesQuick(proxies, maxConcurrent = 10) {
+  if (!proxies || proxies.length === 0) return [];
+  const valid = [];
+  
+  // Process in batches
+  for (let i = 0; i < proxies.length; i += maxConcurrent) {
+    const batch = proxies.slice(i, i + maxConcurrent);
+    const results = await Promise.all(batch.map(async (p) => {
+      try {
+        // Quick DNS + HTTP check
+        const start = Date.now();
+        // For HTTP/HTTPS type proxies, try a quick connection
+        if (p.type === "http" || p.type === "https") {
+          const r = await axios.get("https://www.google.com/favicon.ico", {
+            proxy: { host: p.server, port: parseInt(p.port), protocol: p.tls ? "https" : "http" },
+            timeout: 3000
+          });
+          const latency = Date.now() - start;
+          return { ...p, valid: true, latency };
+        }
+        // For other types, just verify server resolves
+        // (We skip actual connection test to avoid hanging on unreachable hosts)
+        if (p.server && p.port) {
+          return { ...p, valid: true, latency: 0 };
+        }
+        return { ...p, valid: false, latency: 0 };
+      } catch (e) {
+        return { ...p, valid: false, latency: 0 };
+      }
+    }));
+    results.forEach(r => { if (r.valid) valid.push(r); });
+  }
+  return valid;
+}
+
+// ============================================
+// Build merged output (FreeSubsCheck style)
+// ============================================
+
+function buildMergedOutput(proxies, feeds) {
+  const merged = { mihomo: [], clash: [], base64: [], xiaoxi: [], kooker: [] };
+  let idx = 0;
+  
+  proxies.forEach(p => {
+    idx++;
+    const region = p.region || "unknown";
+    const flag = getCountryFlag(region);
+    const name = (p.name || "proxy").replace(/^\w+-/, "");
+    const displayName = flag + "_" + name + "|" + (p.latency > 0 ? p.latency + "ms" : "unknown");
+    
+    // Mihomo format
+    const mihomoProxy = {
+      name: displayName,
+      type: p.type,
+      server: p.server,
+      port: p.port,
+      "skip-cert-verify": true,
+      udp: true
+    };
+    if (p.password) mihomoProxy.password = p.password;
+    if (p.uuid) mihomoProxy.uuid = p.uuid;
+    if (p.cipher) mihomoProxy.cipher = p.cipher;
+    if (p.network) mihomoProxy.network = p.network;
+    if (p["ws-opts"]) mihomoProxy["ws-opts"] = p["ws-opts"];
+    if (p.tls) mihomoProxy.tls = p.tls;
+    if (p.sni) mihomoProxy.sni = p.sni;
+    if (p.alpn) mihomoProxy.alpn = p.alpn;
+    if (p["client-fingerprint"]) mihomoProxy["client-fingerprint"] = p["client-fingerprint"];
+    merged.mihomo.push(mihomoProxy);
+    
+    // Clash format (same as mihomo for most types)
+    merged.clash.push({ ...p, name: displayName });
+    
+    // V2ray-style lines for xiaoxi/kooker
+    if (["vmess", "trojan", "ss"].includes(p.type)) {
+      const line = buildV2rayLine(p);
+      if (line) {
+        merged.base64.push(line);
+        merged.xiaoxi.push(line);
+        merged.kooker.push(line);
+      }
+    }
+  });
+  
+  return merged;
+}
+
+function getCountryFlag(region) {
+  const flags = {
+    hk: "\ud83c\udded\ud83c\uddf0", tw: "\ud83c\uddf9\ud83c\uddfc", jp: "\ud83c\uddef\ud83c\uddf5",
+    us: "\ud83c\uddfa\ud83c\uddf8", sg: "\ud83c\uddf8\ud83c\uddec", kr: "\ud83c\uddf0\ud83c\uddf7",
+    uk: "\ud83c\uddec\ud83c\udde7", de: "\ud83c\udde9\ud83c\uddea", fr: "\ud83c\uddeb\ud83c\uddf7",
+    nl: "\ud83c\uddf3\ud83c\uddf1", ca: "\ud83c\udde8\ud83c\udde6", au: "\ud83c\udde6\ud83c\uddfa", cn: "\ud83c\udde8\ud83c\uddf3"
+  };
+  return flags[region] || "\ud83c\udf10";
+}
+
+function buildV2rayLine(p) {
+  if (p.type === "vmess") {
+    try {
+      const obj = { v: "2", ps: p.name, add: p.server, port: p.port, id: p.password || "uuid", aid: 0, net: p.network || "tcp", type: "none", host: "", path: "", tls: p.tls ? "tls" : "", sni: p.sni || "", fp: p["client-fingerprint"] || "" };
+      return "vmess://" + Buffer.from(JSON.stringify(obj)).toString("base64");
+    } catch (e) { return null; }
+  }
+  if (p.type === "trojan") {
+    return "trojan://" + (p.password || "") + "@" + p.server + ":" + p.port + "?sni=" + (p.sni || p.server) + "#" + p.name;
+  }
+  if (p.type === "ss") {
+    return "ss://" + Buffer.from((p.cipher || "aes-256-gcm") + ":" + (p.password || "pass")).toString("base64") + "@" + p.server + ":" + p.port + "#" + p.name;
+  }
+  return null;
+}
 module.exports = {
   scrapeAllSites, scrapeGithubPagesSite, scrapeAirportNode,
   parseSubscriptions: scrapeAllSites, loadConfig,

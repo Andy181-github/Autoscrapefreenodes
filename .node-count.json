@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-07-06T14:10:35.516Z",
+  "version": "3.2.0",
+  "totalProxies": 96,
+  "fromScraper": false,
+  "byType": {
+    "http": 68,
+    "trojan": 5,
+    "hysteria2": 9,
+    "vless": 12,
+    "socks5": 1,
+    "hysteria": 1
+  },
+  "byRegion": {
+    "ro": 67,
+    "us": 7,
+    "nl": 5,
+    "fr": 3,
+    "hk": 1,
+    "de": 4,
+    "fi": 1,
+    "unknown": 5,
+    "jp": 1,
+    "br": 1,
+    "th": 1
+  },
+  "subscriptionFiles": [
+    "mihomo.yaml",
+    "all.yaml"
+  ]
+}

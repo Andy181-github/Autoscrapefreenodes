@@ -1,0 +1,190 @@
+:root {
+    --trae-bg: #000000;
+    --trae-green: #1dff91;
+    --trae-border: #262626;
+    --trae-text-main: #ffffff;
+    --trae-text-sub: #b0b0b0;
+}
+
+/* 基础样式重置 */
+* { border-radius: 0 !important; transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+body {
+    background-color: var(--trae-bg);
+    color: var(--trae-text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-image: linear-gradient(var(--trae-border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--trae-border) 1px, transparent 1px);
+    background-size: 45px 45px;
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 20px 0;
+  }
+  
+  .site-card {
+    margin-bottom: 20px;
+  }
+  
+  .subscription-item {
+    padding: 12px;
+  }
+}
+
+/* 通用加载状态 */
+.loading {
+  text-align: center;
+  padding: 50px;
+}
+
+.loading .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: #4c6ef5;
+}
+
+/* 时间戳样式 */
+.timestamp {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* 提高文字可读性 */
+.text-muted { color: var(--trae-text-sub) !important; }
+.text-secondary { color: #aaa !important; }
+
+/* 彩色渐变样式 */
+.border-gradient {
+    border-image: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff) 1;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 页面切换 */
+.page-section { display: none; }
+.page-active { display: block; }
+
+/* 按钮美化 */
+.btn-primary {
+  background-color: #4c6ef5;
+  border: none;
+  box-shadow: 0 2px 5px rgba(76, 110, 245, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3b5bdb;
+  box-shadow: 0 4px 8px rgba(76, 110, 245, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: #4c6ef5;
+  border-color: #4c6ef5;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary.active {
+  background-color: #4c6ef5;
+  border-color: #4c6ef5;
+  transform: translateY(-2px);
+}
+
+.btn-outline-success {
+  color: #40c057;
+  border-color: #40c057;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+  background-color: #40c057;
+  border-color: #40c057;
+  transform: translateY(-2px);
+}
+
+.copy-btn {
+  margin-left: 10px;
+}
+
+.view-toggle-btn {
+  cursor: pointer;
+}
+
+/* 卡片和容器阴影效果 */
+.card, .container-card {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card:hover, .container-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 添加Forced Colors Mode支持 */
+@media (forced-colors: active) {
+  /* 按钮样式修复 */
+  .btn {
+    forced-color-adjust: none;
+    border: 1px solid ButtonText;
+  }
+  
+  .btn-primary, 
+  .btn-secondary,
+  .btn-success,
+  .btn-outline-primary:hover,
+  .btn-outline-success:hover {
+    color: ButtonText;
+    background-color: ButtonFace;
+    border-color: ButtonText;
+  }
+  
+  /* 确保图标在高对比度模式下可见 */
+  .icon-wrapper i,
+  .bi {
+    forced-color-adjust: none;
+    color: ButtonText;
+  }
+  
+  /* 确保卡片和边框在高对比度模式下可见 */
+  .card, .container-card, .modal-content {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
+  
+  /* 确保链接和文本在高对比度模式下可见 */
+  a {
+    color: LinkText;
+    text-decoration: underline;
+  }
+  
+  /* 确保焦点状态在高对比度模式下清晰可见 */
+  *:focus {
+    outline: 2px solid Highlight !important;
+  }
+  
+  /* 模态框背景在高对比度模式下的处理 */
+  .modal-backdrop {
+    background-color: Canvas !important;
+    opacity: 0.8 !important;
+  }
+  
+  /* 确保表单元素在高对比度模式下可见 */
+  input, select, textarea {
+    border: 1px solid ButtonText;
+    background-color: Field;
+    color: FieldText;
+  }
+}

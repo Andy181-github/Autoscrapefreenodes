@@ -1,17 +1,12 @@
 {
-  "version": "3.0.0",
-  "generatedAt": "2026-07-07T03:31:06.505Z",
-  "changelog": "v3.0.0: Added IP detection, node renaming, content dedup, 3-feed consolidation",
+  "version": "3.2.0",
+  "generatedAt": "2026-07-06T14:10:35.516Z",
+  "changelog": "v3.2.0: Node-level parsing, server:port dedup, quick connectivity check, FreeSubsCheck-style output",
   "summary": {
     "totalRaw": 0,
     "unique": 0,
-    "reductionRate": "0%",
-    "feeds": {
-      "Clash": 0,
-      "V2ray": 0,
-      "Sing-Box": 0
-    }
-  },
+    "reductionRate": "0%"
+  },  },
   "sources": [
     {
       "name": "clashnode.github.io_free-nodes_",
@@ -32,6 +27,7 @@
   "feeds": {
     "Clash": {
       "count": 0,
+<<<<<<< HEAD
       "urls": [],
       "renamedContent": {}
     },
@@ -51,4 +47,25 @@
     "V2ray": [],
     "Sing-Box": []
   }
+=======
+      "urls": []
+    },
+    "V2ray": {
+      "count": 0,
+      "urls": []
+    },
+    "Sing-Box": {
+      "count": 0,
+      "urls": []
+    }
+  },
+  "merged": {
+    "mihomo": [],
+    "clash": [],
+    "base64": [],
+    "xiaoxi": [],
+    "kooker": []
+  },
+  "allProxies": []
+>>>>>>> b3a6353 (v3.2.1: Add noise filter, fix URLs, sync versions, update README)
 }
