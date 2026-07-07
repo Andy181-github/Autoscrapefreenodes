@@ -1,6 +1,4 @@
 const { loadHistoricalProxies, saveHistoricalProxies } = require('./lib/history'); // P2-4: Historical proxy fallback
-          const fp = generateProxyFingerprint(p);
-          if (p.server && p.port && !seenFingerprints.has(fp)) { seenFingerprints.add(fp); proxyByServerPort.set(fp, p); allProxies.push(p); }
 const axios = require('axios');
 const cheerio = require('cheerio');
 const crypto = require('crypto');
@@ -518,8 +516,8 @@ async function scrapeAllSites() {
         else if (ext === "json") proxies = parseSingBoxJson(content);
         else if (ext === "txt") proxies = parseV2rayTxt(content);
         proxies.forEach(p => {
-          const key = (p.server || "") + ":" + (p.port || "");
-          if (p.server && p.port && !proxyByServerPort.has(key)) { proxyByServerPort.set(key, p); allProxies.push(p); }
+          const fp = generateProxyFingerprint(p);
+          if (p.server && p.port && !seenFingerprints.has(fp)) { seenFingerprints.add(fp); proxyByServerPort.set(fp, p); allProxies.push(p); }
         });
       } catch (e) { console.log("  [SKIP] " + url + ": " + e.message); }
     }
