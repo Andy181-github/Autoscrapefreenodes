@@ -1,6 +1,6 @@
 {
   "name": "auto-scrape-free-nodes",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "自动抓取、去重、检测、合并免费节点订阅，支持IP检测与节点重命名，FreeSubsCheck风格输出",
   "main": "index.js",
   "scripts": {

@@ -530,7 +530,7 @@ async function scrapeAllSites() {
   console.log("  Valid after check: " + validProxies.length + "/" + allProxies.length);
   const merged = buildMergedOutput(validProxies, feeds);
   const output = {
-    version: "3.3.0",
+    version: "3.3.1",
     generatedAt: new Date().toISOString(),
     changelog: "v3.2.1: Node-level parsing, fingerprint dedup, media unlock detection, quality scoring, shuffled test order",
     summary: { totalRaw: allProxies.length, unique: validProxies.length, reductionRate: allProxies.length > 0 ? Math.round((1 - validProxies.length / allProxies.length) * 100) + "%" : "0%" },
@@ -604,7 +604,15 @@ async function checkProxiesQuick(proxies, maxConcurrent = 10) {
 // ============================================
 
 function buildMergedOutput(proxies, feeds) {
-  const merged = { mihomo: [], clash: [], base64: [], xiaoxi: [], kooker: [] };
+    // Sort proxies by quality score (descending)
+  proxies.sort((a, b) => {
+    const scoreA = calculateQualityScore(a).score;
+    const scoreB = calculateQualityScore(b).score;
+    return scoreB - scoreA; // Descending: highest score first
+  });
+  console.log("  [Sort] Proxies sorted by quality score (highest first)");
+  
+const merged = { mihomo: [], clash: [], base64: [], xiaoxi: [], kooker: [] };
   let idx = 0;
   
   proxies.forEach(p => {
