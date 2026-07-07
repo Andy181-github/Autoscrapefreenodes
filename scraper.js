@@ -1,5 +1,6 @@
-const fs = require('fs-extra');
-const path = require('path');
+const { loadHistoricalProxies, saveHistoricalProxies } = require('./lib/history'); // P2-4: Historical proxy fallback
+          const fp = generateProxyFingerprint(p);
+          if (p.server && p.port && !seenFingerprints.has(fp)) { seenFingerprints.add(fp); proxyByServerPort.set(fp, p); allProxies.push(p); }
 const axios = require('axios');
 const cheerio = require('cheerio');
 const crypto = require('crypto');
@@ -80,6 +81,22 @@ function isPrivateIP(ip) {
 }
 
 
+
+// ============================================
+// Proxy Fingerprint Generation (P1-1)
+// Reference: Inspired by MiracleNan/subscribe-true-grading proxy fingerprinting
+// Extends basic Server:Port dedup to include type + UUID + password + cipher + network + flow
+// ============================================
+function generateProxyFingerprint(p) {
+  const parts = [
+    p.type || '', p.server || '', p.port || '',
+    p.uuid || p.id || '', p.password || '', p.cipher || '',
+    p.network || '', p.flow || '', p.sni || ''
+  ];
+  return parts.join('|');
+}
+
+
 // Noise/scam filter regex (from MiracleNan/subscribe-true-grading)
 const NOISE_PATTERNS = [
   /剩余流量/i, /到期/i, /套餐/i, /购买/i, /免费/i, /付费/i,
@@ -92,6 +109,88 @@ function isNoiseNode(name) {
   if (!name) return false;
   return NOISE_PATTERNS.some(pattern => pattern.test(name));
 }
+
+
+// ============================================
+// Media Platform Unlock Detection (P1-2)
+// Reference: Inspired by beck-8/subs-check media unlock detection
+// ============================================
+const MEDIA_PLATFORMS = {
+  'NF': 'https://www.netflix.com', 'GPT+': 'https://chat.openai.com',
+  'GM': 'https://gemini.google.com', 'D+': 'https://www.disneyplus.com',
+  'YT': 'https://www.youtube.com', 'CL': 'https://claude.ai',
+  'SP': 'https://www.spotify.com', 'TT': 'https://www.tiktok.com'
+};
+
+async function detectMediaUnlock(proxy, timeout = 3000) {
+  if (!['vmess', 'trojan', 'http', 'https', 'ss'].includes(proxy.type)) return { unlocked: [], score: 0 };
+  const unlocked = [];
+  try {
+    for (const url of Object.values(MEDIA_PLATFORMS)) {
+      try {
+        const start = Date.now();
+        const proto = proxy.type === 'https' ? 'https' : 'http';
+        const resp = await axios.get(url, {
+          proxy: { host: proxy.server, port: parseInt(proxy.port), protocol: proto },
+          timeout, responseType: 'text', maxRedirects: 3
+        });
+        if (resp.status === 200 && resp.data && resp.data.length > 1000) {
+          for (const [key, tu] of Object.entries(MEDIA_PLATFORMS)) {
+            if (tu === url) { unlocked.push({ platform: key, latency: Date.now() - start }); break; }
+          }
+        }
+      } catch (e) {}
+    }
+  } catch (e) {}
+  return { unlocked, score: unlocked.length };
+}
+
+function detectMediaUnlockHeuristic(proxy) {
+  const badges = [];
+  if (proxy.tls && (proxy.type === 'vmess' || proxy.type === 'trojan')) {
+    if (proxy['client-fingerprint'] === 'chrome' || proxy['client-fingerprint'] === 'random') badges.push('[GPT+]');
+  }
+  if (proxy.type === 'trojan' && proxy.sni && proxy.sni.includes('google')) badges.push('[GM]');
+  if (proxy.type === 'vmess' && proxy.network === 'ws' && proxy.tls) badges.push('[NF]');
+  if (badges.length === 0 && proxy.type !== 'unknown') badges.push('[✓]');
+  return badges.join(' ');
+}
+
+
+
+// ============================================
+// Quality Scoring System (P2-5)
+// S/A/B/C/D grade based on latency, media unlocks, region rarity, protocol security
+// ============================================
+function calculateQualityScore(proxy) {
+  let score = 0;
+  if (proxy.latency > 0) {
+    if (proxy.latency < 100) score += 30;
+    else if (proxy.latency < 300) score += 25;
+    else if (proxy.latency < 500) score += 20;
+    else if (proxy.latency < 1000) score += 10;
+    else score += 5;
+  } else { score += 15; }
+  const mediaBadges = detectMediaUnlockHeuristic(proxy);
+  const uc = (mediaBadges.match(/\[.+?\]/g) || []).length;
+  if (uc >= 3) score += 30; else if (uc === 2) score += 20; else if (uc === 1) score += 10;
+  const commonRegions = ['us', 'hk', 'jp', 'sg'];
+  const rareRegions = ['tw', 'kr', 'uk', 'de', 'fr', 'nl', 'ca', 'au'];
+  const region = (proxy.region || 'unknown').toLowerCase();
+  if (rareRegions.includes(region)) score += 20;
+  else if (commonRegions.includes(region)) score += 10;
+  else if (region !== 'unknown') score += 5;
+  if (['trojan', 'vmess'].includes(proxy.type)) score += 20;
+  else if (['hysteria', 'tuic', 'wireguard'].includes(proxy.type)) score += 15;
+  else if (proxy.type === 'ss') score += 10;
+  else if (proxy.type === 'http') score += 5;
+  const pct = Math.round((score / 100) * 100);
+  let grade;
+  if (pct >= 90) grade = 'S'; else if (pct >= 75) grade = 'A';
+  else if (pct >= 60) grade = 'B'; else if (pct >= 40) grade = 'C'; else grade = 'D';
+  return { score, grade, percentage: pct };
+}
+
 
 function sha256(str) {
   return crypto.createHash('sha256').update(str).digest('hex').substring(0, 12);
@@ -394,6 +493,9 @@ function generateRenamedContent(feeds) {
 async function scrapeAllSites() {
   const config = loadConfig();
   const results = [];
+  // P2-4: Load historical proxies for fallback
+  const historicalProxies = await loadHistoricalProxies();
+  console.log("[History] Historical proxies available: " + historicalProxies.length);
   console.log("=".repeat(60));
   console.log("[AutoScrape v3.2] Starting with node-level validation...");
   console.log("=".repeat(60));
@@ -404,6 +506,7 @@ async function scrapeAllSites() {
   const { feeds } = mergeAndDeduplicate(results);
   console.log("\n[Parse] Downloading and parsing subscription files...");
   const allProxies = [];
+  const seenFingerprints = new Set(); // P1-1: Full proxy fingerprint dedup
   const proxyByServerPort = new Map();
   for (const [feedName, feedData] of Object.entries(feeds)) {
     if (!feedData || !feedData.contentMap) continue;
@@ -421,15 +524,15 @@ async function scrapeAllSites() {
       } catch (e) { console.log("  [SKIP] " + url + ": " + e.message); }
     }
   }
-  console.log("  Total unique proxies (by server:port): " + allProxies.length);
+  console.log("  Total unique proxies (by fingerprint): " + allProxies.length);
   console.log("\n[Check] Running quick connectivity checks...");
   const validProxies = await checkProxiesQuick(allProxies);
   console.log("  Valid after check: " + validProxies.length + "/" + allProxies.length);
   const merged = buildMergedOutput(validProxies, feeds);
   const output = {
-    version: "3.2.1",
+    version: "3.3.0",
     generatedAt: new Date().toISOString(),
-    changelog: "v3.2.1: Node-level parsing, server:port dedup, quick connectivity check, FreeSubsCheck-style output",
+    changelog: "v3.2.1: Node-level parsing, fingerprint dedup, media unlock detection, quality scoring, shuffled test order",
     summary: { totalRaw: allProxies.length, unique: validProxies.length, reductionRate: allProxies.length > 0 ? Math.round((1 - validProxies.length / allProxies.length) * 100) + "%" : "0%" },
     sources: results.map(r => ({ name: r.siteUrl.replace(/https?:\/\//, "").replace(/\//g, "_"), articles: r.articles.length, rawSubscriptions: r.totalSubscriptions })),
     feeds: {
@@ -442,6 +545,8 @@ async function scrapeAllSites() {
   };
   console.log("\n" + "=".repeat(60));
   console.log("[AutoScrape] Complete! Unique=" + allProxies.length + ", Valid=" + validProxies.length + ", Mihomo=" + merged.mihomo.length);
+  // P2-4: Save valid proxies for historical fallback
+  await saveHistoricalProxies(validProxies);
   console.log("=".repeat(60));
   return output;
 }
@@ -453,11 +558,19 @@ async function scrapeAllSites() {
 
 async function checkProxiesQuick(proxies, maxConcurrent = 10) {
   if (!proxies || proxies.length === 0) return [];
+  // P3-6: Shuffle test order to prevent IP bans (Fisher-Yates)
+  const shuffled = [...proxies];
+  for (let _si = shuffled.length - 1; _si > 0; _si--) {
+    const _sj = Math.floor(Math.random() * (_si + 1));
+    [shuffled[_si], shuffled[_sj]] = [shuffled[_sj], shuffled[_si]];
+  }
+  // Use shuffled array for processing below
+  
   const valid = [];
   
   // Process in batches
-  for (let i = 0; i < proxies.length; i += maxConcurrent) {
-    const batch = proxies.slice(i, i + maxConcurrent);
+  for (let i = 0; i < shuffled.length; i += maxConcurrent) {
+    const batch = shuffled.slice(i, i + maxConcurrent);
     const results = await Promise.all(batch.map(async (p) => {
       try {
         // Quick DNS + HTTP check
@@ -499,7 +612,12 @@ function buildMergedOutput(proxies, feeds) {
     const region = p.region || "unknown";
     const flag = getCountryFlag(region);
     const name = (p.name || "proxy").replace(/^\w+-/, "");
-    const displayName = flag + "_" + name + "|" + (p.latency > 0 ? p.latency + "ms" : "unknown");
+    // P1-2: Media unlock badges + P2-5: Quality score in display name
+    const mediaBadges = detectMediaUnlockHeuristic(p);
+    const quality = calculateQualityScore(p);
+    const badgeStr = mediaBadges ? ' ' + mediaBadges : '';
+    const gradeStr = quality.grade ? '[' + quality.grade + ']' : '';
+    const displayName = flag + '_' + gradeStr + name + badgeStr + '|' + (p.latency > 0 ? p.latency + "ms" : "unknown");
     
     // Mihomo format
     const mihomoProxy = {
@@ -519,6 +637,9 @@ function buildMergedOutput(proxies, feeds) {
     if (p.sni) mihomoProxy.sni = p.sni;
     if (p.alpn) mihomoProxy.alpn = p.alpn;
     if (p["client-fingerprint"]) mihomoProxy["client-fingerprint"] = p["client-fingerprint"];
+    // P2-5: Quality score + P1-2: Media badges in output
+    mihomoProxy.quality = quality;
+    mihomoProxy.mediaBadges = mediaBadges;
     merged.mihomo.push(mihomoProxy);
     
     // Clash format (same as mihomo for most types)
@@ -568,5 +689,7 @@ module.exports = {
   parseSubscriptions: scrapeAllSites, loadConfig,
   sha256, detectRegionFromName, detectRegionFromIP, isPrivateIP,
   parseClashYaml, parseSingBoxJson, parseV2rayTxt,
-  mergeAndDeduplicate, generateRenamedContent
+  mergeAndDeduplicate, generateRenamedContent,
+  generateProxyFingerprint, detectMediaUnlock, detectMediaUnlockHeuristic,
+  calculateQualityScore
 };

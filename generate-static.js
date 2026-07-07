@@ -520,8 +520,58 @@ async function main() {
   console.log("  Files:      " + Object.keys(fileMap).join(", "));
   console.log("=".repeat(60));
 
+  // Generate README subscription links
+  generateReadmeLinks(config);
+  generateReadmeLinks(config);
   return true;
 }
+
+// ============================================
+// Generate README subscription links (Feature 3)
+// Adds subscription links table to README.md after generation
+// ============================================
+function generateReadmeLinks(config) {
+  const port = config.settings.port || 3000;
+  const baseUrl = 'http://localhost:' + port;
+  const links = [
+    '| Clash (Mihomo) | \`' + baseUrl + '/api/consolidated?type=clash\` |',
+    '| V2ray | \`' + baseUrl + '/api/consolidated?type=v2ray\` |',
+    '| Sing-Box | \`' + baseUrl + '/api/consolidated?type=singbox\` |'
+  ];
+  
+  const newSection = [
+    '',
+    '## \ud83d\udce1 可用订阅链接',
+    '',
+    '| \u683c\u5f0f | \u94fe\u63a5 |',
+    '|------|------|',
+    ...links,
+    '',
+    '> \u26a0\ufe0f \u5b9e\u65f6\u66f4\u65b0\uff0c\u6bcf\u6b21\u6267\u884c npm run build \u540e\u81ea\u52a8\u66f4\u65b0\u3002',
+    ''
+  ].join('\n');
+  
+  // Read README
+  const readmePath = path.join(PROJECT_DIR, 'README.md');
+  if (!fs.existsSync(readmePath)) return;
+  
+  let readme = fs.readFileSync(readmePath, 'utf8');
+  
+  // Remove old subscription links section if exists
+  readme = readme.replace(/\n## \ud83d\udce1 \u53ef\u7528\u8ba2\u9605\u94fe\u63a5\n[\s\S]*?(?=\n## |$)/, '');
+  
+  // Insert before License section or at end
+  const licenseIdx = readme.indexOf('## \ud83d\udcdc License');
+  if (licenseIdx > 0) {
+    readme = readme.slice(0, licenseIdx) + newSection + readme.slice(licenseIdx);
+  } else {
+    readme += newSection;
+  }
+  
+  fs.writeFileSync(readmePath, readme);
+  console.log('  OK README subscription links updated');
+}
+
 
 main().then(success => {
   if (success) { console.log("Done."); process.exit(0); }
