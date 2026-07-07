@@ -32,7 +32,7 @@
 |------|-----|------|
 | ClashNode | [clashnode.github.io/free-nodes](https://clashnode.github.io/free-nodes/) | Clash 免费节点分享 |
 | Clash-Meta | [clash-meta.github.io/free-nodes](https://clash-meta.github.io/free-nodes/) | Clash Meta 免费节点分享 |
-| AirportNode | [airportnode.com/freenode](https://airportnode.com/category-1.html) | 机场节点分享 |
+| AirportNode | [airportnode.com/freenode](https://airportnode.com/freenode/) | 机场节点分享 |
 
 > ⚠️ 所有数据源均为公开分享网站，仅供学习研究用途。
 
