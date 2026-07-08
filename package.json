@@ -2,12 +2,11 @@
   "name": "auto-scrape-free-nodes",
   "version": "3.3.1",
   "description": "自动抓取、去重、检测、合并免费节点订阅，支持IP检测与节点重命名，FreeSubsCheck风格输出",
-  "main": "index.js",
+  "main": "scraper.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "node generate-static.js",
-    "test": "node test-static.js",
-    "dev": "nodemon index.js"
+    "start": "node scraper.js",
+    "build": "node generate-readme.js",
+    "test": "echo \"No tests yet\""
   },
   "keywords": [
     "scraper",
@@ -19,13 +18,8 @@
   "dependencies": {
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
-    "cors": "^2.8.5",
-    "cron": "^2.4.0",
-    "express": "^4.18.2",
     "fs-extra": "^11.1.1",
     "js-yaml": "^4.1.0"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "devDependencies": {}
 }

@@ -1,64 +1,54 @@
-# 依赖目录
+# Dependencies
 node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
 
-# 环境配置文件
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# 日志文件
-logs
-*.log
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# 运行时数据
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Runtime
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# 目录
-# 不忽略dist目录，以便GitHub Pages可以使用
-# dist/
-build/
+# Coverage
 coverage/
+.nyc_output/
 
-# 缓存目录
-.npm
-.eslintcache
-.node_repl_history
+# Build artifacts
+dist/
 
-# 系统文件
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# Data (JSON output from scraper - regenerated each run)
+data/
 
-# 编辑器目录和文件
-.idea/
-.vscode/
-*.swp
-*.swo
-.project
-.classpath
-.settings/
-
-# 项目特定文件
-# 不再忽略数据文件，使其能够提交到仓库
-# data/*.json
-# 本地开发环境配置
-public/js/config.dev.js
-# 部署相关
-deploy/
-# 备份文件
+# Backup files
 *.bak
 *-backup.*
 
-# 测试输出
-.nyc_output 
-# 临时参考仓库目录
+# Temp reference directories
 *_temp/
+
+# Cache
+.npm
+.eslintcache

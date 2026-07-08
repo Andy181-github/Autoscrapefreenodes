@@ -1,88 +1,46 @@
-# AutoScrapeFreeNodes
+# 🌐 订阅自动更新
 
-<div align="center">
-**自动化免费节点订阅聚合系统 v3.3**
-从多个公开渠道自动抓取、去重、检测、合并 Clash / V2ray / Sing-Box 订阅链接
-[![GitHub Stars](https://img.shields.io/github/stars/Andy181-github/Autoscrapefreenodes?style=flat-square)](https://github.com/Andy181-github/Autoscrapefreenodes/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
-</div>
+![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-auto-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-auto-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-auto-purple)
+
+> **最后同步时间**：自动生成（GitHub Actions 每2小时更新）
+
+### 📊 节点统计
+每次运行 
+ode scraper.js 后自动生成，包含：
+- **SubsCheck 节点数**：来自 mihomo.yaml 的 proxies 数量
+- **XiaoXi 节点数**：yxiaoxi.txt 的有效行数
+- **kooker.jp 节点数**：kooker.jp.txt 的有效行数
+
+### 🚀 订阅链接
+| 类型 | 订阅地址 |
+| :--- | :--- |
+| **Mihomo / Clash Meta** | \mihomo.yaml\ |
+| **Clash / Standard** | \ll.yaml\ |
+| **Base64 (通用)** | \ase64.txt\ |
+| **通用TXT (XiaoXi)** | \yxiaoxi.txt\ |
+| **通用TXT (kooker.jp)** | \kooker.jp.txt\ |
 
 ---
 
-## ✨ 功能特性
+## ⚖️ 免责声明 (Disclaimer)
 
-- **多源抓取** — 自动从 `clashnode.github.io`、`clash-meta.github.io`、`airportnode.com` 抓取订阅链接
-- **内容去重** — 基于 SHA256 hash 比对订阅文件内容，消除重复链接
-- **节点级解析** — 下载每个订阅文件，解析出独立代理节点（参照 [li5bo5/subs-check](https://github.com/li5bo5/subs-check)）
-- **Fingerprint 全字段去重** — 按服务器IP+端口去重节点，避免同一节点出现在多个订阅中
-- **节点IP检测** — 解析订阅文件中的节点信息，根据 IP 地址和节点名称推断所在地区
-- **智能重命名** — 自动为节点添加国旗 emoji 地区前缀（如 `🇭🇰hk-proxy`、`🇯🇵jp-tokyo`）
-- **连通性检测** — 对每个节点进行快速 DNS + HTTP 连接测试（参照 [beck-8/subs-check](https://github.com/beck-8/subs-check)）
-- **三格式整合** — 输出 Clash (YAML)、V2ray (TXT)、Sing-Box (JSON) 三种格式
-- **FreeSubsCheck 风格输出** — 生成 mihomo.yaml / all.yaml / base64.txt / byxiaoxi.txt / kooker.jp.txt
-- **定时更新** — 支持 cron 定时任务和手动 API 触发
-- **静态部署** — 一键生成静态站点部署到 GitHub Pages
-- **API Token 保护** — 刷新接口支持 token 验证
+### 1. 权利归属及性质
+本仓库（下称"本项目"）仅为个人学习 **GitHub Actions** 自动化流程及 **YAML** 数据处理的技术演示。项目内分享的所有资源（包括但不限于订阅链接、节点数据）均搜集自互联网公开渠道，本项目不存储、不分发、不产生任何实质性的加密通信流量。
 
-## 📋 数据源
+### 2. 法律合规性
+* **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
+* **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
 
-| 来源 | URL | 说明 |
-|------|-----|------|
-| ClashNode | [clashnode.github.io/free-nodes](https://clashnode.github.io/free-nodes/) | Clash 免费节点分享 |
-| Clash-Meta | [clash-meta.github.io/free-nodes](https://clash-meta.github.io/free-nodes/) | Clash Meta 免费节点分享 |
-| AirportNode | [airportnode.com/freenode](https://airportnode.com/freenode) | 机场节点分享 |
+### 3. 风险提示与担保限制
+* **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
+* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据。
 
-> ⚠️ 所有数据源均为公开分享网站，仅供学习研究用途。
+### 4. 责任免除
+本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
 
-## 🚀 快速开始
-
-```bash
-git clone https://github.com/Andy181-github/Autoscrapefreenodes.git
-cd Autoscrapefreenodes
-npm install
-npm start           # 启动服务器
-curl -X POST "http://[your-server-ip]:3000/api/refresh?token=YOUR_TOKEN"  # 触发抓取
-```
-
-## 📡 API 接口
-
-| 方法 | 路径 | 说明 | 认证 |
-|------|------|------|------|
-| GET | `/api/consolidated` | 获取整合数据（含 merged 输出） | ❌ |
-| POST | `/api/refresh` | 触发数据抓取更新 | ✅ Token |
-
-## 🔄 版本号历史
-
-| 版本 | 日期 | 变更说明 |
-|------|------|----------|
-| v3.2.1 | 2026-07-07 | 修复：噪声过滤、URL更新、版本同步
-| v3.3.1 | 2026-07-07 | 新增：按质量评分排序节点、README服务器地址占位符优化 |
-| v3.3.0 | 2026-07-07 | 新增：Fingerprint 去重、媒体平台解锁检测、质量评分(S-A-B-C-D)、Shuffle 测试顺序、README 订阅链接 |
-| v3.2.0 | 2026-07-06 | 节点级解析、Server:Port 去重、连通性检测、FreeSubsCheck 风格输出、国旗 emoji 重命名 |
-| v3.1.0 | 2026-07-06 | 订阅文件有效性过滤、区域检测按别名长度优先匹配 |
-| v3.0.0 | 2026-07-06 | 重写 scraper.js 实现真实抓取；SHA256 内容去重；节点IP检测与地区重命名；三格式订阅整合；API Token 验证 |
-| v2.1.0 | 2026-07-05 | 更新文档、修复链接、清理测试数据 |
-
-## 🏗 架构参考
-
-本项目的节点检测与合并逻辑参考了以下开源项目：
-- **[beck-8/subs-check](https://github.com/beck-8/subs-check)** — 节点连通性检测、速度测试、并发工作池
-- **[li5bo5/subs-check](https://github.com/li5bo5/subs-check)** — YAML/URI 双格式解析、Base64 自动解码、Server:Port 去重
-- **[kooker/FreeSubsCheck](https://github.com/kooker/FreeSubsCheck)** — 订阅文件有效性验证、合并输出格式、README 自动生成
-- **[coldwater-10/V2Hub2](https://github.com/coldwater-10/V2Hub2)** — 协议类型检测、按协议分类输出、Base64 编码
-
-
-## 📡 可用订阅链接
-
-| 格式 | 链接 |
-|------|------|
-| Clash/Mihomo | `http://[your-server-ip]:3000/api/consolidated?type=clash` |
-| V2ray | `http://[your-server-ip]:3000/api/consolidated?type=v2ray` |
-| Sing-Box | `http://[your-server-ip]:3000/api/consolidated?type=singbox` |
-
-> 💡 将 `[your-server-ip]:3000` 替换为你的服务器地址和端口。
-> 首次使用请运行 `npm start` 启动服务。
-
-## 📄 License
-
-[MIT](LICENSE) © Andy181-github
+---
+**数据来源**: 互联网公开频道聚合
+*由 [AutoScrapeFreeNodes](https://github.com/Andy181-github/AutoScrapeFreeNodes) & GitHub Actions 提供自动引擎驱动*

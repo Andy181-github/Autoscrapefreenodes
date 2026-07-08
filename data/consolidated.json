@@ -1,12 +1,12 @@
 {
-  "version": "3.2.0",
-  "generatedAt": "2026-07-06T14:10:35.516Z",
-  "changelog": "v3.2.0: Node-level parsing, server:port dedup, quick connectivity check, FreeSubsCheck-style output",
+  "version": "3.3.1",
+  "generatedAt": "2026-07-08T11:23:28.287Z",
+  "changelog": "v3.3.1: Fingerprint dedup, media unlock detection, quality scoring, shuffled test order, README subscription links",
   "summary": {
     "totalRaw": 0,
     "unique": 0,
     "reductionRate": "0%"
-  },  },
+  },
   "sources": [
     {
       "name": "clashnode.github.io_free-nodes_",
@@ -27,27 +27,6 @@
   "feeds": {
     "Clash": {
       "count": 0,
-<<<<<<< HEAD
-      "urls": [],
-      "renamedContent": {}
-    },
-    "V2ray": {
-      "count": 0,
-      "urls": [],
-      "renamedContent": {}
-    },
-    "Sing-Box": {
-      "count": 0,
-      "urls": [],
-      "renamedContent": {}
-    }
-  },
-  "renamedProxies": {
-    "Clash": [],
-    "V2ray": [],
-    "Sing-Box": []
-  }
-=======
       "urls": []
     },
     "V2ray": {
@@ -67,5 +46,4 @@
     "kooker": []
   },
   "allProxies": []
->>>>>>> b3a6353 (v3.2.1: Add noise filter, fix URLs, sync versions, update README)
 }
