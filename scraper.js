@@ -94,7 +94,13 @@ function loadConfig() {
 }
 
 async function httpGet(url, retries = 2, timeout = 15000) {
-  for (let i = 0; i <= retries; i++) {
+  httpGet._delay = httpGet._delay || 3000;
+  httpGet._last = httpGet._last || 0;
+    const now = Date.now();
+  const wait = httpGet._delay - (now - httpGet._last);
+  if (wait > 0) { await new Promise(r => setTimeout(r, wait)); }
+  httpGet._last = Date.now();
+for (let i = 0; i <= retries; i++) {
     try {
       const r = await axios.get(url, {
         headers: { 'User-Agent': UA, 'Accept': '*/*' },
@@ -551,6 +557,12 @@ async function scrapeAllSites() {
   if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
+    const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12, unknown: 99, cloud: 98 };
+    allProxies.sort((a, b) => {
+      if ((b.qualityScore || 0) !== (a.qualityScore || 0)) return (b.qualityScore || 0) - (a.qualityScore || 0);
+      return (regionPriority[a._region] || 99) - (regionPriority[b._region] || 99);
+    });
+    console.log("  Sorted " + allProxies.length + " proxies by quality score and region");
     // 1. mihomo.yaml
     const mihomoConfig = {
       "mixed-port": 7890, "allow-lan": true, "mode": "rule", "log-level": "info",
@@ -748,6 +760,12 @@ function yamlProxyToEntry(p) {
 }
 
 function convertYamlProxyToEntry(p) {
+  let score = 50;
+  if (region !== "cloud") score += 20;
+  if (region !== "unknown") score += 15;
+  if (p.tls || p.type === "trojan" || p.type === "vless") score += 5;
+  if (p.udp) score += 5;
+  p.qualityScore = Math.min(100, score);
   let region = "unknown";
   const nameLower = (p.name || "").toLowerCase().replace(/[_\-\s]/g, "");
   for (const [key, val] of Object.entries(IP_REGION_MAP)) {

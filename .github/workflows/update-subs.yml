@@ -16,7 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -41,4 +40,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m chore-sync-subscriptions
           fi
-          git diff --quiet && git diff --staged --quiet || (git commit -m chore-sync-skip-ci && git push)
+          git diff --quiet `&`& git diff --staged --quiet `||` (git commit -m chore-sync-skip-ci `&`& git push)

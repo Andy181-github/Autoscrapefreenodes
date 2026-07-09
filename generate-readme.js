@@ -8,7 +8,7 @@ const REPO_OWNER = 'Andy181-github'; // Will be overridden by GH_ACTIONS_REPO_OW
 const REPO_NAME = 'AutoScrapeFreeNodes'; // Will be overridden by GH_ACTIONS_REPO_NAME env var
 
 function getCounts() {
-  const counts = { subscheck: 0, xiaoxi: 0, kooker: 0 };
+  const counts = { subscheck: 0, xiaoxi: 0, kooker: 0, totalQuality: 0, avgQuality: 0 };
 
   // Count mihomo.yaml proxies
   const mihomoPath = path.join(ROOT_DIR, 'mihomo.yaml');
@@ -17,6 +17,10 @@ function getCounts() {
       const doc = yaml.load(fs.readFileSync(mihomoPath, 'utf8'));
       if (doc && doc.proxies && Array.isArray(doc.proxies)) {
         counts.subscheck = doc.proxies.length;
+        let totalQ = 0;
+        for (const p of doc.proxies) { totalQ += (p.qualityScore || 50); }
+        counts.totalQuality = totalQ;
+        counts.avgQuality = doc.proxies.length > 0 ? Math.round(totalQ / doc.proxies.length) : 0;
       }
     } catch (e) { /* ignore */ }
   }
