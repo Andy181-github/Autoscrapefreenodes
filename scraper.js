@@ -220,8 +220,14 @@ async function scrapeGithubPagesSite(siteUrl) {
       try {
         const articleHtml = await httpGet(articleUrl, 1, 10000);
         const $article = cheerio.load(articleHtml);
-        const articleText = $article('body').text();
-        const articleSubUrls = extractUrls(articleText);
+        const articleSubUrls = [];
+         $article('a[href]').each((i, elem) => {
+          const href = $article(elem).attr('href');
+          if (href && /\.(yaml|yml|txt|json)/i.test(href)) {
+            const cleanUrl = href.replace(/[\s<>"']+$/, '');
+            if (cleanUrl.startsWith('http')) articleSubUrls.push(cleanUrl);
+          }
+        });
         if (articleSubUrls.length > 0) {
           console.log(`  Found ${articleSubUrls.length} subscription URLs in article`);
           subscriptionUrls.push(...articleSubUrls);
@@ -612,31 +618,6 @@ async function scrapeAllSites() {
   }
 
 
-  // Write merged output files to root directory (kooker style)
-  const yaml = require('js-yaml');
-  const outDir = __dirname;
-  
-  if (merged.mihomo && merged.mihomo.length > 0) {
-    fs.writeFileSync(path.join(outDir, 'mihomo.yaml'), yaml.dump({ proxies: merged.mihomo }, { lineWidth: -1 }), 'utf8');
-    console.log(`  Written mihomo.yaml (${merged.mihomo.length} proxies)`);
-  }
-  if (merged.clash && merged.clash.length > 0) {
-    fs.writeFileSync(path.join(outDir, 'all.yaml'), yaml.dump({ proxies: merged.clash }, { lineWidth: -1 }), 'utf8');
-    console.log(`  Written all.yaml (${merged.clash.length} proxies)`);
-  }
-  if (merged.base64 && merged.base64.length > 0) {
-    fs.writeFileSync(path.join(outDir, 'base64.txt'), merged.base64.join('\n') + '\n', 'utf8');
-    console.log(`  Written base64.txt (${merged.base64.length} lines)`);
-  }
-  if (merged.xiaoxi && merged.xiaoxi.length > 0) {
-    fs.writeFileSync(path.join(outDir, 'byxiaoxi.txt'), merged.xiaoxi.join('\n') + '\n', 'utf8');
-    console.log(`  Written byxiaoxi.txt (${merged.xiaoxi.length} lines)`);
-  }
-  if (merged.kooker && merged.kooker.length > 0) {
-    fs.writeFileSync(path.join(outDir, 'kooker.jp.txt'), merged.kooker.join('\n') + '\n', 'utf8');
-    console.log(`  Written kooker.jp.txt (${merged.kooker.length} lines)`);
-  }
-  
 return output;
 }
 
@@ -879,3 +860,10 @@ module.exports = {
   parseClashYaml, parseSingBoxJson, parseV2rayTxt,
   mergeAndDeduplicate, generateRenamedContent
 };
+
+if (require.main === module) {
+  scrapeAllSites().catch(function(err) {
+    console.error("[FATAL]", err);
+    process.exit(1);
+  });
+}

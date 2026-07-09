@@ -1,9 +1,9 @@
-name: 更新订阅文件并生成 README
+name: Update Subscription Files
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # 每2小时自动更新
-  workflow_dispatch:       # 支持手动触发
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,34 +13,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 检出代码
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: 设置 Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: 安装依赖
+      - name: Install dependencies
         run: npm install --omit=dev
 
-      - name: 运行 scraper 抓取节点
-        run: node -e "require('./scraper').scrapeAllSites()"
+      - name: Run scraper
+        run: node scraper.js
 
-      - name: 生成 README.md
+      - name: Generate README
         run: node generate-readme.js
 
-      - name: 提交更新的订阅文件
+      - name: Commit and push
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+          git config --local user.name github-actions[bot]
+          git config --local user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add mihomo.yaml all.yaml base64.txt byxiaoxi.txt kooker.jp.txt README.md
           if ! git diff --cached --quiet; then
-            git commit -m "chore: 同步最新节点订阅"
+            git commit -m chore-sync-subscriptions
           fi
-
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: sync subscriptions [skip ci]" && git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m chore-sync-skip-ci && git push)

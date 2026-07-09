@@ -1,46 +1,68 @@
-# 🌐 订阅自动更新
+# AutoScrapeFreeNodes
 
+![Version](https://img.shields.io/badge/version-3.3.1-blue)
 ![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-auto-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-auto-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-auto-purple)
+![Node](https://img.shields.io/badge/节点-自动抓取-green)
+![License](https://img.shields.io/badge/license-MIT-purple)
 
 > **最后同步时间**：自动生成（GitHub Actions 每2小时更新）
 
-### 📊 节点统计
-每次运行 
-ode scraper.js 后自动生成，包含：
-- **SubsCheck 节点数**：来自 mihomo.yaml 的 proxies 数量
-- **XiaoXi 节点数**：yxiaoxi.txt 的有效行数
-- **kooker.jp 节点数**：kooker.jp.txt 的有效行数
+---
 
-### 🚀 订阅链接
+## 功能特性
+
+- **多源抓取**：从 GitHub Pages 站点和 airportnode.com 自动抓取免费节点订阅链接
+- **内容去重**：基于 SHA256 指纹对订阅链接内容进行去重，减少重复节点
+- **智能命名**：根据节点名称自动识别地区（港/台/日/美/新等），添加地区前缀
+- **三格式输出**：整合为 Clash/Mihomo、V2ray、Sing-Box 三种格式的订阅链接
+- **质量评分**：对节点进行评分排序，优先保留高质量节点
+- **GitHub Actions 自动更新**：每2小时自动运行爬虫，更新订阅文件
+
+## 输出文件
+
+| 文件 | 格式 | 说明 |
+|------|------|------|
+| mihomo.yaml | Clash Meta | 带代理组配置的完整 Clash Meta 配置文件 |
+| all.yaml | Clash Standard | 仅包含代理列表的 Clash 标准 YAML |
+| base64.txt | Base64 URI | 通用协议 URI |
+| byxiaoxi.txt | Base64 URI | XiaoXi 兼容格式 |
+| kooker.jp.txt | Base64 URI | kooker.jp 兼容格式，带国旗 emoji |
+| README.md | Markdown | 自动生成的订阅链接和统计信息 |
+
+## 订阅链接
+
 | 类型 | 订阅地址 |
 | :--- | :--- |
-| **Mihomo / Clash Meta** | \mihomo.yaml\ |
-| **Clash / Standard** | \ll.yaml\ |
-| **Base64 (通用)** | \ase64.txt\ |
-| **通用TXT (XiaoXi)** | \yxiaoxi.txt\ |
-| **通用TXT (kooker.jp)** | \kooker.jp.txt\ |
+| **Mihomo / Clash Meta** | [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/mihomo.yaml) |
+| **Clash / Standard** | [all.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/all.yaml) |
+| **Base64 (通用)** | [base64.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/base64.txt) |
+| **通用TXT (XiaoXi)** | [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/byxiaoxi.txt) |
+| **通用TXT (kooker.jp)** | [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/kooker.jp.txt) |
+
+## 数据源
+
+- https://clashnode.github.io/free-nodes/
+- https://clash-meta.github.io/free-nodes/
+- https://airportnode.com/freenode
+
+## 快速开始
+
+`ash
+npm install
+node scraper.js
+node generate-readme.js
+`
+
+## 版本历史
+
+- **v3.3.1** - 重构为纯静态文件架构，移除 Express 服务器，输出文件到根目录
+- **v3.3.0** - 添加 IP 地区检测、节点重命名、内容去重、三格式整合
+- **v3.2.0** - 添加质量评分系统、节点排序
+- **v3.1.0** - 添加媒体解锁检测、指纹去重
+- **v3.0.0** - 初始版本，多源抓取基础功能
 
 ---
 
-## ⚖️ 免责声明 (Disclaimer)
+## 免责声明
 
-### 1. 权利归属及性质
-本仓库（下称"本项目"）仅为个人学习 **GitHub Actions** 自动化流程及 **YAML** 数据处理的技术演示。项目内分享的所有资源（包括但不限于订阅链接、节点数据）均搜集自互联网公开渠道，本项目不存储、不分发、不产生任何实质性的加密通信流量。
-
-### 2. 法律合规性
-* **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
-* **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
-
-### 3. 风险提示与担保限制
-* **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
-* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据。
-
-### 4. 责任免除
-本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
-
----
-**数据来源**: 互联网公开频道聚合
-*由 [AutoScrapeFreeNodes](https://github.com/Andy181-github/AutoScrapeFreeNodes) & GitHub Actions 提供自动引擎驱动*
+本仓库仅为个人学习 GitHub Actions 自动化流程及 YAML 数据处理的技术演示。项目内分享的所有资源均搜集自互联网公开渠道。用户必须确保其行为符合所在国家/地区的法律法规。本项目不对资源的稳定性、有效性、安全性作任何保证。

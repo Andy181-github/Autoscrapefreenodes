@@ -1,7 +1,4 @@
-import os
-
-# ===== Create generate-readme.js =====
-readme_gen = r'''// generate-readme.js — Generate README.md with subscription links and stats
+// generate-readme.js — Generate README.md with subscription links and stats
 const fs = require('fs-extra');
 const path = require('path');
 const yaml = require('js-yaml');
