@@ -541,9 +541,31 @@ async function scrapeAllSites() {
   // === Write output files to root directory ===
   const ROOT_DIR = __dirname;
 
-  // Collect all proxy objects from all feeds
+  // Collect all proxy objects from all feeds WITH PROXY-LEVEL DEDUPLICATION
   const allProxies = [];
   const proxySet = new Set();
+  const proxyByServerPort = new Map(); // Track server:port for dedup
+  
+  // Enhanced dedup: keep the proxy with HIGHEST quality score when server:port matches
+  function addProxyDeduped(p) {
+    const key = p.server + ':' + p.port;
+    if (proxyByServerPort.has(key)) {
+      const existing = proxyByServerPort.get(key);
+      const existingScore = existing.qualityScore || 0;
+      const newScore = p.qualityScore || 0;
+      if (newScore > existingScore) {
+        // Replace with higher-scored proxy
+        proxyByServerPort.set(key, p);
+        // Update allProxies: remove old, add new
+        const idx = allProxies.findIndex(x => x.server === existing.server && x.port === existing.port);
+        if (idx >= 0) allProxies.splice(idx, 1);
+        allProxies.push(p);
+      }
+      return; // Keep existing (higher score)
+    }
+    proxyByServerPort.set(key, p);
+    allProxies.push(p);
+  }
 
   // Extract from Clash renamed content
   if (renamedContent.clash) {
@@ -711,10 +733,10 @@ function cleanProxyName(name) {
 function buildDisplayName(p) {
   const region = (p._region || "unknown").toLowerCase();
   const flag = getFlagEmoji(region);
-  const base = cleanProxyName(p.name);
+  const countryName = getCountryName(region) || region;
   const speed = p.speed || "unknown";
   const score = p.qualityScore || 0;
-  return flag + base + "|" + speed + "|" + score + "分";
+  return flag + countryName + "|" + speed + "|" + score + "分";
 }
 
 function buildUri(p, customName) {
