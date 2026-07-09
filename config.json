@@ -1,19 +1,40 @@
 {
   "sites": [
     {
-      "url": "https://clashnode.github.io/free-nodes/",
+      "url": "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/mihomo.yaml",
       "enabled": true,
-      "description": "Clash Node 免费节点订阅"
+      "description": "kooker FreeSubsCheck - Mihomo/Clash Meta 订阅",
+      "type": "direct"
     },
     {
-      "url": "https://clash-meta.github.io/free-nodes/",
+      "url": "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/all.yaml",
       "enabled": true,
-      "description": "Clash Meta 免费节点订阅"
+      "description": "kooker FreeSubsCheck - Standard Clash 订阅",
+      "type": "direct"
     },
     {
-      "url": "https://airportnode.com/freenode",
+      "url": "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/byxiaoxi.txt",
       "enabled": true,
-      "description": "AirportNode 免费节点分享"
+      "description": "kooker FreeSubsCheck - XiaoXi TXT 订阅",
+      "type": "direct"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/kooker.jp.txt",
+      "enabled": true,
+      "description": "kooker FreeSubsCheck - kooker.jp TXT 订阅",
+      "type": "direct"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
+      "enabled": true,
+      "description": "anaer Sub - 综合 Clash 订阅",
+      "type": "direct"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
+      "enabled": true,
+      "description": "ermaozi get_subscribe - Clash 订阅",
+      "type": "direct"
     }
   ],
   "settings": {
@@ -21,6 +42,6 @@
     "maxArticlesPerSite": 10,
     "cleanOldDataOnUpdate": true,
     "dataDir": "data",
-    "version": "3.3.1"
+    "version": "3.4.0"
   }
 }

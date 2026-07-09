@@ -421,6 +421,49 @@ function generateRenamedContent(feeds) {
   return renamedContent;
 }
 
+
+// Fetch direct subscription content from raw URLs
+async function fetchDirectSubscription(url, description) {
+  console.log(`  Fetching direct subscription: ${description}`);
+  try {
+    const content = await httpGet(url, 1, 10000);
+    if (!content || content.length < 10) {
+      console.log(`    [SKIP] Empty or invalid content from ${url}`);
+      return null;
+    }
+    
+    const result = {
+      siteUrl: url,
+      scrapedAt: new Date().toISOString(),
+      articles: [],
+      totalSubscriptions: 1,
+      rawContent: {}
+    };
+    
+    // Determine type based on URL extension
+    const ext = url.split('.').pop().toLowerCase();
+    if (ext === 'yaml' || ext === 'yml') {
+      result.rawContent[url] = { 
+        type: 'clash', 
+        content, 
+        proxies: parseClashYaml(content) 
+      };
+    } else if (ext === 'txt') {
+      result.rawContent[url] = { 
+        type: 'v2ray', 
+        content, 
+        proxies: parseV2rayTxt(content) 
+      };
+    }
+    
+    console.log(`    Found ${result.rawContent[url]?.proxies?.length || 0} proxies`);
+    return result;
+  } catch (e) {
+    console.log(`    [ERROR] Failed to fetch ${url}: ${e.message}`);
+    return null;
+  }
+}
+
 async function scrapeAllSites() {
   const config = loadConfig();
   const results = [];
@@ -429,19 +472,16 @@ async function scrapeAllSites() {
   console.log('[AutoScrape] Starting node scrape...');
   console.log('='.repeat(60));
   
-  // Scrape GitHub Pages sites
-  const githubSites = config.sites.filter(s => s.enabled && s.url.includes('github.io'));
-  for (const site of githubSites) {
-    const result = await scrapeGithubPagesSite(site.url);
-    results.push(result);
+  // Handle direct subscription URLs
+  const directSites = config.sites.filter(s => s.enabled && s.type === 'direct');
+  for (const site of directSites) {
+    const result = await fetchDirectSubscription(site.url, site.description);
+    if (result) {
+      results.push(result);
+    }
   }
-  
-  // Scrape AirportNode
-  const airportNode = config.sites.find(s => s.enabled && s.url.includes('airportnode'));
-  if (airportNode) {
-    results.push(await scrapeAirportNode());
-  }
-  
+
+  // Scrape GitHub Pages sites (legacy support)
   // Merge and deduplicate
   const { feeds, seenContent, seenUrls } = mergeAndDeduplicate(results);
   
