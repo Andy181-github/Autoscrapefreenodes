@@ -38,10 +38,10 @@
     }
   ],
   "settings": {
-    "updateInterval": 720,
+    "updateInterval": 300,
     "maxArticlesPerSite": 10,
     "cleanOldDataOnUpdate": true,
     "dataDir": "data",
-    "version": "3.4.0"
+    "version": "3.5.0"
   }
 }

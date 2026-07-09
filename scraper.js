@@ -104,7 +104,10 @@ for (let i = 0; i <= retries; i++) {
     try {
       const r = await axios.get(url, {
         headers: { 'User-Agent': UA, 'Accept': '*/*' },
-        timeout, responseType: 'text', maxRedirects: 5
+        timeout, 
+        responseType: 'text', 
+        maxRedirects: 5,
+        proxy: false
       });
       return r.data;
     } catch (e) {
@@ -709,8 +712,9 @@ function buildDisplayName(p) {
   const region = (p._region || "unknown").toLowerCase();
   const flag = getFlagEmoji(region);
   const base = cleanProxyName(p.name);
-  const lat = p.speed && p.speed !== "unknown" ? p.speed : (p.latency > 0 ? p.latency + "ms" : "unknown");
-  return flag + base + "|" + lat;
+  const speed = p.speed || "unknown";
+  const score = p.qualityScore || 0;
+  return flag + base + "|" + speed + "|" + score + "分";
 }
 
 function buildUri(p, customName) {
@@ -800,17 +804,19 @@ function yamlProxyToEntry(p) {
 }
 
 function convertYamlProxyToEntry(p) {
+  let region = "unknown";
+  const nameLower = (p.name || "").toLowerCase().replace(/[_\-\s]/g, "");
+  for (const [key, val] of Object.entries(IP_REGION_MAP)) {
+    if (nameLower.includes(key.toLowerCase())) { region = val; break; }
+  }
+  
   let score = 50;
   if (region !== "cloud") score += 20;
   if (region !== "unknown") score += 15;
   if (p.tls || p.type === "trojan" || p.type === "vless") score += 5;
   if (p.udp) score += 5;
   p.qualityScore = Math.min(100, score);
-  let region = "unknown";
-  const nameLower = (p.name || "").toLowerCase().replace(/[_\-\s]/g, "");
-  for (const [key, val] of Object.entries(IP_REGION_MAP)) {
-    if (nameLower.includes(key.toLowerCase())) { region = val; break; }
-  }
+  
   p._region = region;
   p.speed = p.speed || "unknown";
   p.latency = p.latency || 0;
