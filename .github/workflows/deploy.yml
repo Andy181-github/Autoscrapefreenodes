@@ -1,9 +1,9 @@
-name: 部署免费节点抓取工具到GitHub Pages
+name: 自动更新免费节点订阅
 
 on:
-  # 自动执行的时间，北京时间00:30运行
+  # 自动执行的时间，北京时间每2小时运行
   schedule:
-    - cron: '30 16 * * *'
+    - cron: '0 */2 * * *'
   
   # 当push到main分支时也执行
   push:
@@ -15,10 +15,9 @@ on:
 # 设置权限
 permissions:
   contents: write
-  pages: write
 
 jobs:
-  build-and-deploy:
+  scrape-and-update:
     runs-on: ubuntu-latest
     
     steps:
@@ -41,46 +40,15 @@ jobs:
       - name: 安装依赖
         run: npm install
         
-      # 执行抓取和生成静态网站
-      - name: 生成静态网站
-        run: node generate-static.js
-      
-      # 检查是否有CNAME文件在gh-pages分支
-      - name: 检查gh-pages分支CNAME文件
-        id: check_cname
-        continue-on-error: true
-        run: |
-          if git ls-remote --heads origin gh-pages; then
-            git fetch origin gh-pages
-            if git show origin/gh-pages:CNAME > /dev/null 2>&1; then
-              echo "CNAME文件存在于gh-pages分支"
-              git show origin/gh-pages:CNAME > dist/CNAME
-              echo "has_cname=true" >> $GITHUB_OUTPUT
-            else
-              echo "CNAME文件不存在于gh-pages分支"
-              echo "has_cname=false" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "gh-pages分支不存在"
-            echo "has_cname=false" >> $GITHUB_OUTPUT
-          fi
+      # 执行节点抓取
+      - name: 运行爬虫
+        run: node scraper.js
         
-      # 部署到GitHub Pages
-      - name: 部署到GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist      # 使用dist目录作为源目录
-          branch: gh-pages  # 部署到gh-pages分支
-          clean: true       # 清理旧文件
-          clean-exclude: |  # 排除CNAME文件不被清理
-            CNAME
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      # 提交最新数据到主分支
-      - name: 提交最新数据
+      # 提交更新的文件到主分支
+      - name: 提交更新
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.json
+          git add all.yaml base64.txt byxiaoxi.txt kooker.jp.txt mihomo.yaml README.md config.json
           git diff --quiet && git diff --staged --quiet || git commit -m "自动更新: 更新节点数据 [skip ci]"
-          git push --set-upstream origin main || (git pull --rebase origin main && git push) 
+          git push --set-upstream origin main || (git pull --rebase origin main && git push)
