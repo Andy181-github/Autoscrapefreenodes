@@ -1,6 +1,6 @@
-# AutoScrapeFreeNodes v3.6.0
+# AutoScrapeFreeNodes v3.8.0
 
-![Version](https://img.shields.io/badge/version-3.6.0-blue)
+![Version](https://img.shields.io/badge/version-3.8.0-blue)
 ![Update](https://img.shields.io/badge/更新频率-每5小时-blue)
 ![Protocol](https://img.shields.io/badge/协议-vmess%20%7C%20trojan%20%7C%20vless%20%7C%20ss-blue)
 ![Check](https://img.shields.io/badge/检测-TCP%20Connect-green)
