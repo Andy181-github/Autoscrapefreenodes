@@ -661,13 +661,16 @@ async function scrapeAllSites() {
   allProxies = await runChecks(allProxies);
   const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
   console.log(`  [Check] Done in ${checkTime}s. Valid: ${allProxies.length}`);
+
+  // HTTP latency test + IP geolocation via ipchacha.cn
+  allProxies = await batchGeoCheck(allProxies);
   // ==============================================
 if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
     // Filter out unknown region, cloud IPs, and high-latency nodes
     const MIN_QUALITY = 60;
-    const MAX_LATENCY = 1000;
+    const MAX_LATENCY = 5000;
     const beforeFilter = allProxies.length;
     allProxies = allProxies.filter(p => {
       const region = (p._region || "unknown").toLowerCase();
@@ -1048,7 +1051,7 @@ async function getRegionFromIP(ip) {
   try {
     const http = require("http");
     return new Promise((resolve) => {
-      const req = http.get("http://ip-api.com/json/" + ip + "?fields=countryCode", { timeout: 3000 }, res => {
+      const req = http.get("http://ip-api.com/json/" + ip + "?fields=countryCode", { timeout: 2000 }, res => {
         let data = "";
         res.on("data", chunk => data += chunk);
         res.on("end", () => {
@@ -1065,7 +1068,96 @@ async function getRegionFromIP(ip) {
     });
   } catch(e) { return "unknown"; }
 }
-// ========== QUALITY SCORING ==========
+
+
+
+// ========== IP GEOLOCATION VIA IPCHACHA.CN ==========
+const CC_TO_REGION = {
+  'US': 'us', 'USA': 'us', 'United States': 'us',
+  'HK': 'hk', 'HKG': 'hk', 'Hong Kong': 'hk',
+  'TW': 'tw', 'TWN': 'tw', 'Taiwan': 'tw', 'TAI': 'tw',
+  'JP': 'jp', 'JPN': 'jp', 'Japan': 'jp', 'Tokyo': 'jp', 'OSA': 'jp',
+  'SG': 'sg', 'SGP': 'sg', 'Singapore': 'sg',
+  'KR': 'kr', 'KOR': 'kr', 'Korea': 'kr', 'Seoul': 'kr',
+  'GB': 'uk', 'UK': 'uk', 'Great Britain': 'uk', 'London': 'uk',
+  'DE': 'de', 'GER': 'de', 'Germany': 'de', 'Frankfurt': 'de',
+  'FR': 'fr', 'FRA': 'fr', 'France': 'fr', 'Paris': 'fr',
+  'NL': 'nl', 'NLD': 'nl', 'Netherlands': 'nl', 'AMS': 'nl',
+  'CA': 'ca', 'CAN': 'ca', 'Canada': 'ca', 'Toronto': 'ca',
+  'AU': 'au', 'AUS': 'au', 'Australia': 'au', 'Sydney': 'au',
+  'CN': 'cn', 'CHN': 'cn', 'China': 'cn',
+  'RU': 'ru', 'ROU': 'ro', 'FIN': 'fi', 'IND': 'in',
+  'BR': 'br', 'SE': 'se', 'CH': 'ch', 'IT': 'it',
+  'ES': 'es', 'ID': 'id', 'TH': 'th', 'VN': 'vn',
+};
+
+// Lightweight IP geolocation via ipchacha.cn (no HTTP proxy test, just geo)
+async function batchGeoCheck(proxies) {
+  const https = require("https");
+  
+  // Separate IP-based proxies (can do geo lookup) from domain-based
+  const ipProxies = [];
+  const domainProxies = [];
+  for (const p of proxies) {
+    if (/^[\d.]+$/.test(p.server)) { ipProxies.push(p); }
+    else { domainProxies.push(p); }
+  }
+  
+  console.log("[GeoCheck] IP proxies: " + ipProxies.length + ", Domain proxies: " + domainProxies.length);
+  
+  const GEO_BATCH = 100;
+  const startTime = Date.now();
+  let checked = 0;
+  
+  for (let i = 0; i < ipProxies.length; i += GEO_BATCH) {
+    const batch = ipProxies.slice(i, i + GEO_BATCH);
+    const geoPromises = batch.map(p => new Promise(resolve => {
+      const geoReq = https.get("https://ipchacha.cn/api/ip2location?ip=" + encodeURIComponent(p.server), {
+        timeout: 3000,
+        headers: { "User-Agent": "Mozilla/5.0" }
+      }, geoRes => {
+        let geoData = "";
+        geoRes.on("data", chunk => geoData += chunk);
+        geoRes.on("end", () => {
+          try {
+            const geo = JSON.parse(geoData);
+            const cc = (geo.country_code || "").toUpperCase();
+            const region = CC_TO_REGION[cc] || "unknown";
+            const latency = geoRes.socket ? geoRes.socket.getRoundTripTime() : 0;
+            resolve({ server: p.server, geoRegion: region, countryCode: cc, latency: latency || 0 });
+          } catch(e) {
+            resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 });
+          }
+        });
+      });
+      geoReq.on("error", () => resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }));
+      geoReq.on("timeout", () => { geoReq.destroy(); resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }); });
+    }));
+    
+    const geoResults = await Promise.all(geoPromises);
+    checked += batch.length;
+    if (checked % 500 === 0 || checked === ipProxies.length) {
+      console.log("  [GeoCheck] " + checked + "/" + ipProxies.length + " geo queried (" + Math.round(checked/ipProxies.length*100) + "%)");
+    }
+    
+    // Update proxy regions
+    for (const gr of geoResults) {
+      const idx = ipProxies.findIndex(p => p.server === gr.server);
+      if (idx >= 0) {
+        if (gr.geoRegion && gr.geoRegion !== "unknown") {
+          ipProxies[idx]._region = gr.geoRegion;
+          ipProxies[idx].latency = gr.latency;
+        }
+      }
+    }
+  }
+  
+  const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
+  console.log("  [GeoCheck] Done in " + totalTime + "s. Geo-detected: " + ipProxies.filter(p => p._region && p._region !== "unknown").length + " / " + ipProxies.length);
+  
+  // Return combined: geo-updated IP proxies + domain proxies (unchanged)
+  return [...ipProxies, ...domainProxies];
+}// ========== QUALITY SCORING ==========
 function calculateQualityScore(p) {
   let score = 50;
   if (p.server && detectRegionFromIP(p.server) !== "cloud") score += 20;
