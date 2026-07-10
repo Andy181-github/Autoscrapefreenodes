@@ -1,4 +1,4 @@
-﻿const fs = require('fs-extra');
+const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -83,7 +83,27 @@ function sha256(str) {
   return crypto.createHash('sha256').update(str).digest('hex').substring(0, 12);
 }
 
-function loadConfig() {
+
+// ========== NOISE/SCAM FILTER REGEX ==========\n// Filter promotional/spam node names
+const NOISE_PATTERNS = [
+  /剩余流量/i, /到期/i, /套餐/i, /购买/i, /免费/i, /付费/i,
+  /促销/i, /优惠/i, /限时/i, /充值/i, /客服/i, /联系/i,
+  /telegram/i, /t\.me/i, /折扣/i, /返利/i, /返现/i,
+  /邀请/i, /注册/i, /登录/i, /官网/i, /网站/i,
+  /广告/i, /推广/i, /试用/i, /体验/i, /福利/i,
+  /赠送/i, /共享/i, /拼车/i, /合租/i, /分摊/i,
+  /流量/i, /带宽/i, /加速/i, /提速/i,
+  /shop|store|buy|sell|price|deal/i,
+  /promo|discount|coupon|offer/i
+];
+
+function isNoiseNode(name) {
+  if (!name) return false;
+  for (const pattern of NOISE_PATTERNS) {
+    if (pattern.test(name)) return true;
+  }
+  return false;
+}function loadConfig() {
   try {
     const cp = path.join(__dirname, 'config.json');
     if (!fs.existsSync(cp)) return { sites: [], settings: { port: 3000, dataDir: 'data' } };
@@ -472,6 +492,27 @@ async function scrapeAllSites() {
   const results = [];
   
   console.log('='.repeat(60));
+  // ========== HISTORICAL NODE RETENTION ==========
+  const HISTORICAL_FILE = path.join(__dirname, 'data', 'historical.json');
+  const KEEP_DAYS = 7;
+  let historicalFallback = [];
+  try {
+    if (fs.existsSync(HISTORICAL_FILE)) {
+      const histData = fs.readJsonSync(HISTORICAL_FILE);
+      if (histData && histData.savedAt) {
+        const savedDate = new Date(histData.savedAt);
+        const daysSinceSave = (Date.now() - savedDate.getTime()) / (1000 * 60 * 60 * 24);
+        if (daysSinceSave <= KEEP_DAYS && histData.proxies && histData.proxies.length > 0) {
+          historicalFallback = histData.proxies;
+          console.log(`  [History] Loaded ${historicalFallback.length} historical proxies (saved ${daysSinceSave.toFixed(1)} days ago)`);
+        } else {
+          console.log(`  [History] Historical data too old (${daysSinceSave.toFixed(0)} days), skipping`);
+        }
+      }
+    }
+  } catch (e) {
+    console.log(`  [History] Error loading historical data: ${e.message}`);
+  }
   console.log('[AutoScrape] Starting node scrape...');
   console.log('='.repeat(60));
   
@@ -548,26 +589,53 @@ async function scrapeAllSites() {
   
   // Enhanced dedup: keep the proxy with HIGHEST quality score when server:port matches
   function addProxyDeduped(p) {
-    const key = p.server + ':' + p.port;
-    if (proxyByServerPort.has(key)) {
-      const existing = proxyByServerPort.get(key);
+    // Enhanced fingerprint dedup: combine type + server:port + identifying fields
+    const baseKey = p.server + ':' + p.port;
+    const typeKey = p.type || 'unknown';
+    const uuidOrPass = p.uuid || p.password || p['client-id'] || '';
+    const cipher = p.cipher || '';
+    const network = p.network || p['client-fingerprint'] || '';
+    const flow = p.flow || '';
+    const fpKey = typeKey + '|' + uuidOrPass + '|' + cipher + '|' + network + '|' + flow;
+
+    // Primary: server:port + type
+    const primaryKey = baseKey + '|' + typeKey;
+    if (proxyByServerPort.has(primaryKey)) {
+      const existing = proxyByServerPort.get(primaryKey);
       const existingScore = existing.qualityScore || 0;
       const newScore = p.qualityScore || 0;
       if (newScore > existingScore) {
-        // Replace with higher-scored proxy
-        proxyByServerPort.set(key, p);
-        // Update allProxies: remove old, add new
+        proxyByServerPort.set(primaryKey, p);
+        const idx = allProxies.findIndex(x => x.server === existing.server && x.port === existing.port && x.type === existing.type);
+        if (idx >= 0) allProxies.splice(idx, 1);
+        allProxies.push(p);
+      }
+      return;
+    }
+
+    // Secondary: same server:port but different type — also dedup by fingerprint
+    const secondaryKey = baseKey;
+    if (proxyByServerPort.has(secondaryKey)) {
+      const existing = proxyByServerPort.get(secondaryKey);
+      // Compare fingerprints to avoid duplicates across types
+      if (existing.fpKey === fpKey) return;
+      const existingScore = existing.qualityScore || 0;
+      const newScore = p.qualityScore || 0;
+      if (newScore > existingScore) {
+        proxyByServerPort.set(secondaryKey, p);
         const idx = allProxies.findIndex(x => x.server === existing.server && x.port === existing.port);
         if (idx >= 0) allProxies.splice(idx, 1);
         allProxies.push(p);
       }
-      return; // Keep existing (higher score)
+      return;
     }
-    proxyByServerPort.set(key, p);
+
+    proxyByServerPort.set(primaryKey, p);
+    p.fpKey = fpKey;
     allProxies.push(p);
   }
 
-  // Extract from Clash renamed content
+  // Extract from Clash renamed content with enhanced fingerprint dedup
   if (renamedContent.clash) {
     for (const [url, yamlContent] of Object.entries(renamedContent.clash)) {
       try {
@@ -577,7 +645,8 @@ async function scrapeAllSites() {
             const key = p.name + "|" + (p.server || "") + "|" + (p.port || "");
             if (!proxySet.has(key)) {
               proxySet.add(key);
-              allProxies.push(convertYamlProxyToEntry(p));
+              const entry = convertYamlProxyToEntry(p);
+              addProxyDeduped(entry);
             }
           }
         }
@@ -585,21 +654,21 @@ async function scrapeAllSites() {
     }
   }
 
-  // Extract from V2ray renamed content (TXT lines)
+  // Extract from V2ray renamed content (TXT lines) with enhanced dedup
   if (renamedContent.v2ray) {
     for (const [url, txtContent] of Object.entries(renamedContent.v2ray)) {
-      const lines = txtContent.split("\n").map(l => l.trim()).filter(l => l);
+      const lines = txtContent.split("\\n").map(l => l.trim()).filter(l => l);
       for (const line of lines) {
         if (!proxySet.has(line)) {
           proxySet.add(line);
           const parsed = parseV2rayLineToEntry(line);
-          if (parsed) allProxies.push(parsed);
+          if (parsed) addProxyDeduped(parsed);
         }
       }
     }
   }
 
-  // Extract from Sing-Box renamed content
+  // Extract from Sing-Box renamed content with enhanced dedup
   if (renamedContent.singbox) {
     for (const [url, jsonContent] of Object.entries(renamedContent.singbox)) {
       try {
@@ -610,7 +679,8 @@ async function scrapeAllSites() {
               const key = ob.tag + "|" + (ob.server || "") + "|" + (ob.port || "");
               if (!proxySet.has(key)) {
                 proxySet.add(key);
-                allProxies.push(convertSingBoxToEntry(ob));
+                const entry = convertSingBoxToEntry(ob);
+                addProxyDeduped(entry);
               }
             }
           }
@@ -657,32 +727,62 @@ async function scrapeAllSites() {
     return valid;
   }
 
-  const checkStart = Date.now();
+  
+  // ========== NOISE/SCAM FILTER ==========
+  const beforeNoise = allProxies.length;
+  allProxies = allProxies.filter(p => !isNoiseNode(p.name));
+console.log(`  [Noise] Filtered ${beforeNoise - allProxies.length} noise nodes. Remaining: ${allProxies.length}`);
+const checkStart = Date.now();
   allProxies = await runChecks(allProxies);
   const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
   console.log(`  [Check] Done in ${checkTime}s. Valid: ${allProxies.length}`);
 
   // HTTP latency test + IP geolocation via ipchacha.cn
   allProxies = await batchGeoCheck(allProxies);
-  // ==============================================
+
+  // Recalculate quality scores after fraud scores are known
+  for (let i = 0; i < allProxies.length; i++) {
+    allProxies[i].qualityScore = calculateQualityScore(allProxies[i]);
+  }  // ==============================================
 if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
     // Filter out unknown region, cloud IPs, and high-latency nodes
     const MIN_QUALITY = 60;
-    const MAX_LATENCY = 5000;
+  const MAX_FRAUD_SCORE = 40;
+    const MAX_LATENCY = 2000;
     const beforeFilter = allProxies.length;
-    allProxies = allProxies.filter(p => {
+      const fraudRemoved = allProxies.filter(p => (p.fraudScore || 0) > MAX_FRAUD_SCORE).length;
+  const latencyRemoved = allProxies.filter(p => p.latency > MAX_LATENCY).length;
+  const qualityRemoved = allProxies.filter(p => p.qualityScore < MIN_QUALITY).length;
+allProxies = allProxies.filter(p => {
       const region = (p._region || "unknown").toLowerCase();
       const quality = p.qualityScore || 0;
       const latency = p.latency || 0;
       if (region === "unknown" || region === "cloud") return false;
       if (latency > MAX_LATENCY) return false;
+      if (p.fraudScore > MAX_FRAUD_SCORE) return false;
       if (quality < MIN_QUALITY) return false;
       return true;
     });
-    console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length);
+    console.log(`  [Filter] Removed ${(beforeFilter - allProxies.length)} nodes (fraud:${fraudRemoved} latency:${latencyRemoved} quality:${qualityRemoved}). Remaining: ${allProxies.length}`);
 
+  // ========== HISTORICAL FALLBACK ==========
+  if (historicalFallback.length > 0 && allProxies.length < 100) {
+    console.log(`  [History] Few valid nodes (${allProxies.length}), adding historical fallback...`);
+    const fallbackSet = new Set(allProxies.map(p => p.server + ':' + p.port + '|' + (p.type || 'unknown')));
+    let added = 0;
+    for (const h of historicalFallback) {
+      const hKey = h.server + ':' + h.port + '|' + (h.type || 'unknown');
+      if (!fallbackSet.has(hKey) && h.latency <= 2000 && (h.qualityScore || 0) >= 50) {
+        h.qualityScore = (h.qualityScore || 50);
+        allProxies.push(h);
+        fallbackSet.add(hKey);
+        added++;
+      }
+    }
+    console.log(`  [History] Added ${added} historical fallback nodes`);
+  }
     const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12 };
     allProxies.sort((a, b) => {
       if ((b.qualityScore || 0) !== (a.qualityScore || 0)) return (b.qualityScore || 0) - (a.qualityScore || 0);
@@ -720,6 +820,26 @@ if (allProxies.length > 0) {
     fs.writeFileSync(path.join(ROOT_DIR, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
     console.log("  OK mihomo.yaml");
 
+  // ========== SAVE HISTORICAL NODES ==========
+  try {
+    const histData = {
+      savedAt: new Date().toISOString(),
+      version: '3.8.0',
+      count: allProxies.length,
+      proxies: allProxies.map(p => ({
+        name: p.name, type: p.type, server: p.server, port: p.port,
+        region: p._region, latency: p.latency, qualityScore: p.qualityScore,
+        fraudScore: p.fraudScore, uuid: p.uuid, password: p.password,
+        cipher: p.cipher, network: p.network, tls: p.tls, sni: p.sni
+      }))
+    };
+    const histDir = path.join(__dirname, 'data');
+    if (!fs.existsSync(histDir)) fs.ensureDirSync(histDir);
+    fs.writeJsonSync(path.join(histDir, 'historical.json'), histData, { spaces: 2 });
+    console.log(`  [History] Saved ${allProxies.length} proxies to historical.json`);
+  } catch (e) {
+    console.log(`  [History] Error saving: ${e.message}`);
+  }
     // 2. all.yaml
     fs.writeFileSync(path.join(ROOT_DIR, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
     console.log("  OK all.yaml");
@@ -1124,7 +1244,19 @@ async function batchGeoCheck(proxies) {
             const cc = (geo.country_code || "").toUpperCase();
             const region = CC_TO_REGION[cc] || "unknown";
             const latency = geoRes.socket ? geoRes.socket.getRoundTripTime() : 0;
-            resolve({ server: p.server, geoRegion: region, countryCode: cc, latency: latency || 0 });
+                        // Extract fraud score from ipchacha response
+            const fraudScore = typeof geo.multi_source_fraud_score === 'number' ? geo.multi_source_fraud_score :
+                             typeof geo.fraud_score === 'number' ? geo.fraud_score :
+                             typeof geo.fraud === 'number' ? geo.fraud :
+                             parseFloat(String(geo.fraud_score || geo.fraud || 0));
+            
+            resolve({
+              server: p.server,
+              geoRegion: region,
+              countryCode: cc,
+              latency: latency || 0,
+              fraudScore: isNaN(fraudScore) ? 0 : fraudScore
+            });
           } catch(e) {
             resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 });
           }
@@ -1145,8 +1277,9 @@ async function batchGeoCheck(proxies) {
       const idx = ipProxies.findIndex(p => p.server === gr.server);
       if (idx >= 0) {
         if (gr.geoRegion && gr.geoRegion !== "unknown") {
-          ipProxies[idx]._region = gr.geoRegion;
+                    ipProxies[idx]._region = gr.geoRegion;
           ipProxies[idx].latency = gr.latency;
+          ipProxies[idx].fraudScore = gr.fraudScore || 0;          ipProxies[idx].latency = gr.latency;
         }
       }
     }
@@ -1159,13 +1292,21 @@ async function batchGeoCheck(proxies) {
   return [...ipProxies, ...domainProxies];
 }// ========== QUALITY SCORING ==========
 function calculateQualityScore(p) {
-  let score = 50;
+  // Fraud score reduces quality by up to 10 points (10% weight)
+  let fraudPenalty = 0;
+  const fs = p.fraudScore || 0;
+  if (fs > 40) fraudPenalty = 10;
+  else if (fs > 20) fraudPenalty = 5;
+  else if (fs > 10) fraudPenalty = 2;
+  else if (fs > 5) fraudPenalty = 1;
+
+  let score = 50 - fraudPenalty;
   if (p.server && detectRegionFromIP(p.server) !== "cloud") score += 20;
   if (p._region && p._region !== "unknown") score += 15;
   if (p.type === "vless" || p.type === "trojan") score += 5;
   if (p.tls) score += 5;
   if (p.udp_relay_mode || p["udp-relay-mode"]) score += 5;
-  return Math.min(100, score);
+  return Math.min(100, Math.max(0, score));
 }
 
 // ========== README UPDATE ==========
