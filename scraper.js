@@ -665,7 +665,22 @@ async function scrapeAllSites() {
 if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
-    const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12, unknown: 99, cloud: 98 };
+    // Filter out unknown region, cloud IPs, and high-latency nodes
+    const MIN_QUALITY = 60;
+    const MAX_LATENCY = 1000;
+    const beforeFilter = allProxies.length;
+    allProxies = allProxies.filter(p => {
+      const region = (p._region || "unknown").toLowerCase();
+      const quality = p.qualityScore || 0;
+      const latency = p.latency || 0;
+      if (region === "unknown" || region === "cloud") return false;
+      if (latency > MAX_LATENCY) return false;
+      if (quality < MIN_QUALITY) return false;
+      return true;
+    });
+    console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length);
+
+    const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12 };
     allProxies.sort((a, b) => {
       if ((b.qualityScore || 0) !== (a.qualityScore || 0)) return (b.qualityScore || 0) - (a.qualityScore || 0);
       return (regionPriority[a._region] || 99) - (regionPriority[b._region] || 99);
@@ -882,6 +897,8 @@ function convertYamlProxyToEntry(p) {
   let score = 50;
   const ipClass = detectRegionFromIP(p.server || "");
   if (ipClass !== "cloud") score += 20;
+  const enhancedRegion = detectRegionFromServer(p.server || "", p.name || "");
+  if (enhancedRegion !== "unknown") region = enhancedRegion;
   if (region !== "unknown") score += 15;
   if (p.tls || p.type === "trojan" || p.type === "vless") score += 5;
   if (p.udp) score += 5;
@@ -986,6 +1003,8 @@ function convertSingBoxToEntry(ob) {
   const region = detectRegionFromName(name);
   let score = 50;
   if (detectRegionFromIP(ob.server || "") !== "cloud") score += 20;
+  const enhancedRegion = detectRegionFromServer(ob.server || "", ob.tag || ob.name || "");
+  if (enhancedRegion !== "unknown") region = enhancedRegion;
   if (region !== "unknown") score += 15;
   if (t === "vless" || t === "trojan") score += 5;
   if (ob.tls?.enabled) score += 5;
@@ -993,6 +1012,59 @@ function convertSingBoxToEntry(ob) {
 }
 
 
+
+// ========== ENHANCED REGION DETECTION ==========
+function detectRegionFromServer(server, name) {
+  let region = detectRegionFromName(name || "");
+  if (region !== "unknown") return region;
+  if (!server) return "unknown";
+  const lower = server.toLowerCase();
+  const platformRegions = {
+    "railway.app": "us", "vercel.app": "us", "netlify.app": "us",
+    "herokuapp.com": "us", "glitch.me": "us",
+    "hkg": "hk", "hkt": "hk", "hkc": "hk", "pccw": "hk",
+    "tw": "tw", "taiwan": "tw", "cht": "tw", "hinet": "tw",
+    "japan": "jp", "tokyo": "jp", "osaka": "jp", "softbank": "jp", "ntt": "jp",
+    "singapore": "sg", "sin": "sg", "singtel": "sg",
+    "korea": "kr", "seoul": "kr", "kt": "kr", "skt": "kr",
+    "london": "uk", "gb": "uk", "bt": "uk", "ovh": "fr",
+    "frankfurt": "de", "germany": "de", "de": "de",
+    "paris": "fr", "france": "fr", "fr": "fr",
+    "netherlands": "nl", "ams": "nl", "nl": "nl",
+    "toronto": "ca", "canada": "ca", "ca": "ca",
+    "sydney": "au", "australia": "au", "au": "au",
+    "aliyun": "cn", "tencent": "cn", "baidu": "cn", "ali": "cn",
+  };
+  for (const [keyword, reg] of Object.entries(platformRegions)) {
+    if (lower.includes(keyword)) return reg;
+  }
+  return "unknown";
+}
+
+const ipGeoCache = new Map();
+
+async function getRegionFromIP(ip) {
+  if (!ip || ipGeoCache.has(ip)) return ipGeoCache.get(ip) || "unknown";
+  try {
+    const http = require("http");
+    return new Promise((resolve) => {
+      const req = http.get("http://ip-api.com/json/" + ip + "?fields=countryCode", { timeout: 3000 }, res => {
+        let data = "";
+        res.on("data", chunk => data += chunk);
+        res.on("end", () => {
+          try {
+            const json = JSON.parse(data);
+            const cc = json.countryCode ? json.countryCode.toLowerCase() : "unknown";
+            ipGeoCache.set(ip, cc);
+            resolve(cc);
+          } catch(e) { resolve("unknown"); }
+        });
+      });
+      req.on("error", () => resolve("unknown"));
+      req.on("timeout", () => { req.destroy(); resolve("unknown"); });
+    });
+  } catch(e) { return "unknown"; }
+}
 // ========== QUALITY SCORING ==========
 function calculateQualityScore(p) {
   let score = 50;
