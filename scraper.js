@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+﻿const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -542,7 +542,7 @@ async function scrapeAllSites() {
   const ROOT_DIR = __dirname;
 
   // Collect all proxy objects from all feeds WITH PROXY-LEVEL DEDUPLICATION
-  const allProxies = [];
+  let allProxies = [];
   const proxySet = new Set();
   const proxyByServerPort = new Map(); // Track server:port for dedup
   
@@ -619,7 +619,50 @@ async function scrapeAllSites() {
     }
   }
 
-  if (allProxies.length > 0) {
+  
+  // ========== NODE VALIDITY CHECKING ==========
+  console.log(`[Check] Testing node validity (TCP connect)...`);
+  const TIMEOUT_MS = 6000;
+  const CONCURRENCY = 50;
+
+  function checkTcpNode(p) {
+    return new Promise((resolve) => {
+      const timer = setTimeout(() => { resolve(false); }, TIMEOUT_MS);
+      const net = require(`net`);
+      const client = net.connect(Number(p.port), p.server, () => {
+        clearTimeout(timer);
+        client.destroy();
+        resolve(true);
+      });
+      client.on(`error`, () => { clearTimeout(timer); resolve(false); });
+      client.on(`timeout`, () => { clearTimeout(timer); client.destroy(); resolve(false); });
+    });
+  }
+
+  async function runChecks(proxies) {
+    const valid = [];
+    let checked = 0;
+    const total = proxies.length;
+    for (let i = 0; i < proxies.length; i += CONCURRENCY) {
+      const batch = proxies.slice(i, i + CONCURRENCY);
+      const results = await Promise.all(batch.map(p => checkTcpNode(p)));
+      for (let j = 0; j < batch.length; j++) {
+        checked++;
+        if (results[j]) valid.push(batch[j]);
+        if (checked % 500 === 0 || checked === total) {
+          console.log(`  [Check] ${checked}/${total} checked (${Math.round(checked/total*100)}%)`);
+        }
+      }
+    }
+    return valid;
+  }
+
+  const checkStart = Date.now();
+  allProxies = await runChecks(allProxies);
+  const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
+  console.log(`  [Check] Done in ${checkTime}s. Valid: ${allProxies.length}`);
+  // ==============================================
+if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
     const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12, unknown: 99, cloud: 98 };
@@ -694,6 +737,9 @@ async function scrapeAllSites() {
     console.log("[Output] No proxies to write.");
   }
 
+
+  // Update README with results
+  updateREADME(allProxies, output);
 
 return output;
 }
@@ -822,6 +868,7 @@ function yamlProxyToEntry(p) {
   if (p._region) entry._region = p._region;
   if (p.speed) entry.speed = p.speed;
   if (p.latency) entry.latency = p.latency;
+  if (p.qualityScore !== undefined) entry.qualityScore = p.qualityScore;
   return entry;
 }
 
@@ -833,7 +880,8 @@ function convertYamlProxyToEntry(p) {
   }
   
   let score = 50;
-  if (region !== "cloud") score += 20;
+  const ipClass = detectRegionFromIP(p.server || "");
+  if (ipClass !== "cloud") score += 20;
   if (region !== "unknown") score += 15;
   if (p.tls || p.type === "trojan" || p.type === "vless") score += 5;
   if (p.udp) score += 5;
@@ -861,7 +909,7 @@ function parseV2rayLineToEntry(line) {
     if (proto === "vmess") {
       const decoded = Buffer.from(rest, "base64").toString("utf8");
       const obj = JSON.parse(decoded);
-      return { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port) || 443, uuid: obj.id, password: obj.id, network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0 };
+      return { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port) || 443, uuid: obj.id, password: obj.id, network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65 };
     } else if (proto === "trojan") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -873,7 +921,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvPart.substring(0, lastColon);
       const port = parseInt(srvPart.substring(lastColon + 1)) || 443;
       const qp = colonIdx >= 0 ? new URLSearchParams(srvPort.substring(colonIdx + 1)) : new URLSearchParams();
-      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0 };
+      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 75 };
     } else if (proto === "ss") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -888,7 +936,7 @@ function parseV2rayLineToEntry(line) {
       const colonIdx2 = decoded.indexOf(":");
       const cipher = decoded.substring(0, colonIdx2);
       const password = decoded.substring(colonIdx2 + 1);
-      return { name: name || "ss", type: "ss", server: server || "", port: port, cipher: cipher || "aes-256-gcm", password: password || "pass", _region: region, speed: "unknown", latency: 0 };
+      return { name: name || "ss", type: "ss", server: server || "", port: port, cipher: cipher || "aes-256-gcm", password: password || "pass", _region: region, speed: "unknown", latency: 0, qualityScore: 60 };
     } else if (proto === "vless") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -900,7 +948,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
       const qp = qIdx >= 0 ? new URLSearchParams(srvPort.substring(qIdx + 1)) : new URLSearchParams();
-      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0 };
+      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 80 };
     } else if (proto === "hysteria2" || proto === "hysteria") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -911,7 +959,7 @@ function parseV2rayLineToEntry(line) {
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
-      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0 };
+      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70 };
     } else if (proto === "http" || proto === "https") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -925,7 +973,7 @@ function parseV2rayLineToEntry(line) {
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 80;
-      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0 };
+      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, qualityScore: 55 };
     }
   } catch (e) { return null; }
   return null;
@@ -936,9 +984,67 @@ function convertSingBoxToEntry(ob) {
   const t = typeMap[ob.type] || ob.type;
   const name = ob.tag || ob.name || "proxy";
   const region = detectRegionFromName(name);
-  return { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0 };
+  let score = 50;
+  if (detectRegionFromIP(ob.server || "") !== "cloud") score += 20;
+  if (region !== "unknown") score += 15;
+  if (t === "vless" || t === "trojan") score += 5;
+  if (ob.tls?.enabled) score += 5;
+  return { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score) };
 }
 
+
+// ========== QUALITY SCORING ==========
+function calculateQualityScore(p) {
+  let score = 50;
+  if (p.server && detectRegionFromIP(p.server) !== "cloud") score += 20;
+  if (p._region && p._region !== "unknown") score += 15;
+  if (p.type === "vless" || p.type === "trojan") score += 5;
+  if (p.tls) score += 5;
+  if (p.udp_relay_mode || p["udp-relay-mode"]) score += 5;
+  return Math.min(100, score);
+}
+
+// ========== README UPDATE ==========
+function updateREADME(validProxies, output) {
+  const readmePath = path.join(__dirname, "README.md");
+  let readme = "";
+  try { readme = fs.readFileSync(readmePath, "utf8"); } catch(e) { return; }
+
+  const now = new Date();
+  const cnTime = now.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+  const isoTime = now.toISOString();
+  const validCount = validProxies.length;
+  const avgScore = validCount > 0 ? Math.round(validProxies.reduce((s, p) => s + (p.qualityScore || 0), 0) / validCount) : 0;
+  const byRegion = {};
+  for (const p of validProxies) {
+    const r = (p._region || "unknown").toLowerCase();
+    byRegion[r] = (byRegion[r] || 0) + 1;
+  }
+
+  let regionStats = "";
+  const sortedRegions = Object.entries(byRegion).sort((a, b) => b[1] - a[1]);
+  for (const [region, count] of sortedRegions) {
+    const cname = COUNTRY_NAMES_MAP[region] || region;
+    regionStats += "- **" + cname + "**: " + count + " nodes\n";
+  }
+
+  let feedLinks = "- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)\n";
+  feedLinks += "- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)\n";
+  feedLinks += "- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)\n";
+  feedLinks += "- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)\n";
+  feedLinks += "- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)\n";
+
+  const timeRegex = /\*\*最后同步时间\*\*[^]*?>?\*\*ISO 时间\*\*[^\n]*/;
+  const newTimeSection = "**最后同步时间**：" + cnTime + " (北京时间)\n> **ISO 时间**：" + isoTime;
+  readme = readme.replace(timeRegex, newTimeSection);
+
+  const statsRegex = /### [\u{1F4CA}\s]*节点统计[^]*?(?=---)/su;
+  let newStats = "### 节点统计\n- **\u6709\u6548\u8282\u70b9\u6570**: " + validCount + "\n- **\u5e73\u5747\u8d28\u91cf\u5206**: " + avgScore + "/100\n- **\u603b\u8d28\u91cf\u5206**: " + (validCount * avgScore) + "\n\n### \ud83c\udf0d \u5730\u533a\u5206\u5e03\n" + regionStats + "\n### \ud83d\ude80 \u8ba2\u9605\u94fe\u63a5\n" + feedLinks;
+  readme = readme.replace(statsRegex, newStats);
+
+  fs.writeFileSync(readmePath, readme, "utf8");
+  console.log("  [README] Updated with " + validCount + " valid nodes, avg score " + avgScore);
+}
 module.exports = {
   scrapeAllSites, scrapeGithubPagesSite, scrapeAirportNode,
   parseSubscriptions: scrapeAllSites, loadConfig,

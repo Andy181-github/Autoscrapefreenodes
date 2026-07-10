@@ -1,82 +1,139 @@
-# AutoScrapeFreeNodes v3.5.0
+# AutoScrapeFreeNodes v3.6.0
 
-![Version](https://img.shields.io/badge/version-3.5.0-blue)
+![Version](https://img.shields.io/badge/version-3.6.0-blue)
 ![Update](https://img.shields.io/badge/更新频率-每5小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-78-green)
-![AvgQuality](https://img.shields.io/badge/平均分-85/100-yellow)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-4-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-375-purple)
+![Protocol](https://img.shields.io/badge/协议-vmess%20%7C%20trojan%20%7C%20vless%20%7C%20ss-blue)
+![Check](https://img.shields.io/badge/检测-TCP%20Connect-green)
+![Scoring](https://img.shields.io/badge/评分-质量评分系统-yellow)
 
-> **最后同步时间**：2026-07-09 16:30:00 (北京时间)
-> **ISO 时间**：2026-07-09T08:30:00.000Z
+> **最后同步时间**：2026/07/10 13:38:10 (北京时间)
+> **ISO 时间**：2026-07-10T05:38:10.119Z：待运行 scraper 后自动生成
 
-### 📊 节点统计
-- **SubsCheck 节点数**：78
-- **平均质量分**：85/100
-- **总质量分**：523950
-- **XiaoXi 节点数**：4
-- **kooker.jp 节点数**：375
-- **总节点数**：6165
+### 节点统计
+- **有效节点数**: 6036
+- **平均质量分**: 72/100
+- **总质量分**: 434592
+
+### 🌍 地区分布
+- **unknown**: 5629 nodes
+- **美国**: 139 nodes
+- **荷兰**: 52 nodes
+- **香港**: 48 nodes
+- **德国**: 36 nodes
+- **日本**: 36 nodes
+- **英国**: 29 nodes
+- **新加坡**: 25 nodes
+- **法国**: 19 nodes
+- **韩国**: 10 nodes
+- **台湾**: 5 nodes
+- **澳大利亚**: 5 nodes
+- **加拿大**: 2 nodes
+- **中国**: 1 nodes
 
 ### 🚀 订阅链接
-| 类型 | 订阅地址 |
-| :--- | :--- |
-| **Mihomo / Clash Meta** | [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml) |
-| **Clash / Standard** | [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml) |
-| **Base64 (通用)** | [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt) |
-| **通用TXT (XiaoXi)** | [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt) |
-| **通用TXT (kooker.jp)** | [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt) |
-
+- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)
+- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)
+- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)
+- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)
+- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)
 ---
 
-## ⚡ 功能特性
+## 功能特性
 
-### 🔄 智能数据源管理
-- **直接订阅链接支持**：直接从GitHub Raw获取预处理的订阅数据
-- **多源聚合**：整合kooker、anaer、ermaozi等多个高质量数据源
-- **自动去重**：基于内容哈希的智能去重算法
-- **质量评分**：节点质量评分系统（0-100分）
-- **IP地区识别**：自动识别节点IP所在地区并命名
-- **节点重命名**：包含速度和质量评分的节点名称
+### 数据源管理
+- **直接订阅链接**：从 GitHub Raw 直接获取预处理订阅数据
+- **多源聚合**：整合 kooker/FreeSubsCheck、anaer/Sub、ermaozi/get_subscribe 等高质量数据源
+- **内容去重**：基于 SHA256 哈希的智能去重，消除重复订阅源
+- **代理级去重**：基于 server:port 去重，保留最高质量分节点
 
-### 📈 数据源列表
-- **kooker/FreeSubsCheck**：高质量预处理订阅数据
-- **anaer/Sub**：综合Clash订阅数据
-- **ermaozi/get_subscribe**：社区维护的订阅数据
+### 节点有效性检测
+- **TCP Connect 检测**：6秒超时，50并发检测节点可达性
+- **自动过滤**：移除不可达节点，仅保留有效节点输出
+- **进度显示**：每500个节点显示一次检测进度
 
-### 🔧 技术特性
-- **Node.js**：高性能异步爬虫
-- **Cheerio**：HTML解析
-- **JS-YAML**：YAML格式处理
-- **Axios**：HTTP请求处理（已禁用代理）
-- **fs-extra**：文件系统操作
+### 质量评分系统
+- **基础分 50 分**：所有节点默认基础分
+- **非云IP +20 分**：排除 AWS/GCP/Azure/Cloudflare/阿里云/腾讯云 IP
+- **已知地区 +15 分**：从节点名称识别出具体地区（港/台/日/美/新等）
+- **优质协议 +5 分**：vless/trojan 协议加分
+- **TLS 加密 +5 分**：启用 TLS 的节点加分
+- **UDP 支持 +5 分**：支持 UDP 转发的节点加分
+- **满分 100 分**
 
-### 📝 输出格式
-所有订阅链接中的节点名称格式：`🇺🇸美国 CloudFlare节点|1.2MB/s|90分`
+### 节点命名规范
+- **格式**：地区前缀-原始名称（如 us-proxy-name）
+- **地区前缀**：如 us-, hk-, jp- 等
+- **国旗 Emoji**：输出文件中使用国旗标识地区
+- **排序规则**：按质量分降序，同分按地区优先级排序
+
+### 输出格式
+所有订阅链接中的节点名称包含：
 - 国旗 emoji
-- 地区名称
-- 速度信息
-- 质量评分
+- 地区名称（自动识别）
+- 原始节点名称
+
+### 自动更新
+- **GitHub Actions**：每 5 小时自动运行
+- **README 自动更新**：scraper 运行时自动更新同步时间、节点统计、地区分布
+- **手动触发**：支持 workflow_dispatch 手动运行
 
 ---
 
-## ⚖️ 免责声明
+## 数据源
 
-### 1. 权利归属及性质
-本仓库仅为个人学习GitHub Actions自动化流程及YAML数据处理的技术演示。项目内分享的所有资源均搜集自互联网公开渠道，本项目不存储、不分发、不产生任何实质性的加密通信流量。
-
-### 2. 法律合规性
-* **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
-* **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
-
-### 3. 风险提示与担保限制
-* **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
-* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据。
-
-### 4. 责任免除
-本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
+| 来源 | 描述 | 格式 |
+| :--- | :--- | :--- |
+| **kooker/FreeSubsCheck** | 高质量预处理订阅数据 | YAML/TXT |
+| **anaer/Sub** | 综合 Clash 订阅 | YAML |
+| **ermaozi/get_subscribe** | 社区维护订阅 | YAML |
 
 ---
 
-**数据来源**: [kooker/FreeSubsCheck](https://github.com/kooker/FreeSubsCheck) & [anaer/Sub](https://github.com/anaer/Sub) & [ermaozi/get_subscribe](https://github.com/ermaozi/get_subscribe)
-*由 [beck-8/subs-check](https://github.com/beck-8/subs-check) & GitHub Actions 提供自动引擎强力驱动*
+## 技术栈
+
+- **Node.js 18+**：运行时环境
+- **Axios**：HTTP 请求（禁用代理）
+- **Cheerio**：HTML 解析
+- **JS-YAML**：YAML 格式处理
+- **fs-extra**：文件系统操作
+- **Net (Node.js built-in)**：TCP 连接检测
+
+---
+
+## 配置
+
+编辑 config.json 管理数据源。
+
+---
+
+## 使用方法
+
+\\ash
+npm install
+node scraper.js
+\\\
+
+---
+
+## 免责声明
+
+本仓库仅为个人学习 GitHub Actions 自动化流程及 YAML 数据处理的技术演示。项目内分享的所有资源均搜集自互联网公开渠道，本项目不存储、不分发、不产生任何实质性的加密通信流量。
+
+用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。严禁将本项目提供的技术方案或资源用于任何形式的非法用途。
+
+- 本项目不对资源的稳定性、有效性、安全性作任何形式的保证
+- 节点可能随时失效、被封锁或存在安全隐患
+- 第三方节点可能存在流量审计或日志记录行为
+- 建议避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据
+
+本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害承担法律责任。
+
+---
+
+## 版本历史
+
+- **v3.6.0** (2026-07-10)：添加 TCP 有效性检测、质量评分系统、README 自动更新
+- **v3.5.0**：更新更新频率为5小时，节点名称加入评分
+- **v3.4.0**：修复 GitHub Actions 工作流
+- **v3.3.0**：切换到直接 GitHub Raw URL 数据源
+- **v3.0.0**：三订阅整合、IP地区识别、内容去重
