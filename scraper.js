@@ -747,10 +747,10 @@ const checkStart = Date.now();
 if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
 
-    // Filter out unknown region, cloud IPs, and high-latency nodes
+    // Filter out unknown region, cloud IPs, high latency, and high fraud nodes
     const MIN_QUALITY = 60;
-  const MAX_FRAUD_SCORE = 40;
-    const MAX_LATENCY = 2000;
+    const MAX_FRAUD_SCORE = 30;
+    const MAX_LATENCY = 1500;
     const beforeFilter = allProxies.length;
       const fraudRemoved = allProxies.filter(p => (p.fraudScore || 0) > MAX_FRAUD_SCORE).length;
   const latencyRemoved = allProxies.filter(p => p.latency > MAX_LATENCY).length;
@@ -774,7 +774,7 @@ allProxies = allProxies.filter(p => {
     let added = 0;
     for (const h of historicalFallback) {
       const hKey = h.server + ':' + h.port + '|' + (h.type || 'unknown');
-      if (!fallbackSet.has(hKey) && h.latency <= 2000 && (h.qualityScore || 0) >= 50) {
+      if (!fallbackSet.has(hKey) && h.latency <= 1500 && (h.qualityScore || 0) >= 50) {
         h.qualityScore = (h.qualityScore || 50);
         allProxies.push(h);
         fallbackSet.add(hKey);
@@ -918,9 +918,11 @@ function buildDisplayName(p) {
   const region = (p._region || "unknown").toLowerCase();
   const flag = getFlagEmoji(region);
   const countryName = getCountryName(region) || region;
-  const speed = p.speed || "unknown";
   const score = p.qualityScore || 0;
-  return flag + countryName + "|" + speed + "|" + score + "分";
+  const latency = p.latency || 0;
+  // Format: Flag Country|Score|Latency|OriginalName
+  const origName = cleanProxyName(p.name || "");
+  return flag + countryName + "|" + score + "|" + latency + "|" + origName;
 }
 
 function buildUri(p, customName) {
@@ -1312,7 +1314,8 @@ async function batchGeoCheck(proxies) {
   // Return combined: geo-updated IP proxies + domain proxies (unchanged)
   return [...ipProxies, ...domainProxies];
 }
-}// ========== QUALITY SCORING ==========
+
+// ========== QUALITY SCORING ==========
 function calculateQualityScore(p) {
   // Fraud score reduces quality by up to 10 points (10% weight)
   let fraudPenalty = 0;
