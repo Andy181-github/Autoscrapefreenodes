@@ -50,7 +50,7 @@ function detectRegionFromName(nodeName) {
     if (lower.includes(alias)) return region;
   }
   for (const [key, region] of Object.entries(IP_REGION_MAP)) {
-    const regex = new RegExp('\\b' + key.toLowerCase() + '\\b', 'i');
+    const regex = new RegExp('\.' + key.toLowerCase() + '\.', 'i');
     if (regex.test(lower)) return region;
   }
   return 'unknown';
@@ -657,7 +657,7 @@ async function scrapeAllSites() {
   // Extract from V2ray renamed content (TXT lines) with enhanced dedup
   if (renamedContent.v2ray) {
     for (const [url, txtContent] of Object.entries(renamedContent.v2ray)) {
-      const lines = txtContent.split("\\n").map(l => l.trim()).filter(l => l);
+      const lines = txtContent.split("\.").map(l => l.trim()).filter(l => l);
       for (const line of lines) {
         if (!proxySet.has(line)) {
           proxySet.add(line);
@@ -1244,12 +1244,57 @@ async function batchGeoCheck(proxies) {
             const cc = (geo.country_code || "").toUpperCase();
             const region = CC_TO_REGION[cc] || "unknown";
             const latency = geoRes.socket ? geoRes.socket.getRoundTripTime() : 0;
-                        // Extract fraud score from ipchacha response
-            const fraudScore = typeof geo.multi_source_fraud_score === 'number' ? geo.multi_source_fraud_score :
-                             typeof geo.fraud_score === 'number' ? geo.fraud_score :
-                             typeof geo.fraud === 'number' ? geo.fraud :
-                             parseFloat(String(geo.fraud_score || geo.fraud || 0));
-            
+            // Extract fraud/purity/tag info from ipchacha response
+            // Priority: multi_source_fraud_score > purity > tags analysis
+            const fraudScoreRaw = geo.multi_source_fraud_score ?? geo.fraud_score ?? geo.fraud ?? null;
+            const purityRaw = geo.purity ?? null;
+            const tagsRaw = geo.tags ?? geo.markers ?? null;
+            let fraudScore = 0;
+            let hasRiskTags = false;
+
+            if (fraudScoreRaw !== null) {
+              if (typeof fraudScoreRaw === 'number') {
+                fraudScore = fraudScoreRaw;
+              } else if (typeof fraudScoreRaw === 'string') {
+                const pctMatch = fraudScoreRaw.match(/(\d+(?:\.\d+)?)\s*%/);
+                if (pctMatch) {
+                  fraudScore = parseFloat(pctMatch[1]);
+                } else {
+                  const parsed = parseFloat(String(fraudScoreRaw));
+                  fraudScore = isNaN(parsed) ? 0 : parsed;
+                }
+              }
+            } else if (purityRaw !== null) {
+              if (typeof purityRaw === 'number') {
+                fraudScore = Math.max(0, 100 - purityRaw);
+              } else if (typeof purityRaw === 'string') {
+                const pctMatch = purityRaw.match(/(\d+(?:\.\d+)?)\s*%/);
+                if (pctMatch) {
+                  fraudScore = Math.max(0, 100 - parseFloat(pctMatch[1]));
+                } else {
+                  const lower = purityRaw.toLowerCase();
+                  if (lower.includes('clean') || lower.includes('pure')) fraudScore = 0;
+                  else if (lower.includes('medium')) fraudScore = 15;
+                  else fraudScore = 30;
+                }
+              }
+            }
+
+            if (tagsRaw) {
+              const tagStr = String(tagsRaw).toLowerCase();
+              if (tagStr.includes('risk') || tagStr.includes('fraud') || tagStr.includes('scam') ||
+                  tagStr.includes('spam') || tagStr.includes('malicious') || tagStr.includes('proxy') ||
+                  tagStr.includes('vpn') || tagStr.includes('tor') || tagStr.includes('cloud') || tagStr.includes('hosting')) {
+                hasRiskTags = true;
+                fraudScore = Math.max(fraudScore, 25);
+              }
+              if (tagStr.includes('clean') || tagStr.includes('safe') ||
+                  tagStr.includes('normal') || tagStr.includes('residential') || tagStr.includes('home')) {
+                hasRiskTags = false;
+                fraudScore = Math.min(fraudScore, 5);
+              }
+            }
+
             resolve({
               server: p.server,
               geoRegion: region,
@@ -1339,9 +1384,15 @@ function updateREADME(validProxies, output) {
   feedLinks += "- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)\n";
   feedLinks += "- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)\n";
 
-  const timeRegex = /\*\*最后同步时间\*\*[^]*?>?\*\*ISO 时间\*\*[^\n]*/;
-  const newTimeSection = "**最后同步时间**：" + cnTime + " (北京时间)\n> **ISO 时间**：" + isoTime;
-  readme = readme.replace(timeRegex, newTimeSection);
+  // Replace time section using string operations (more reliable than regex with ANSI codes)
+  const timeStart = readme.indexOf("**\u6700\u540e\u540c\u6b65\u65f6\u95f4**");
+  const isoStart = readme.indexOf("**ISO \u65f6\u95f4**");
+  if (timeStart >= 0 && isoStart >= 0 && isoStart > timeStart) {
+    const newTimeSection = "**\u6700\u540e\u540c\u6b65\u65f6\u95f4**\uff1a" + cnTime + " (\u5317\u4eac\u65f6\u95f4)\n> **ISO \u65f6\u95f4**\uff1a" + isoTime;
+    const isoLineEnd = readme.indexOf("\n", isoStart);
+    readme = readme.substring(0, timeStart) + newTimeSection + readme.substring(isoLineEnd + 1);
+  }
+
 
   const statsRegex = /### [\u{1F4CA}\s]*节点统计[^]*?(?=---)/su;
   let newStats = "### 节点统计\n- **\u6709\u6548\u8282\u70b9\u6570**: " + validCount + "\n- **\u5e73\u5747\u8d28\u91cf\u5206**: " + avgScore + "/100\n- **\u603b\u8d28\u91cf\u5206**: " + (validCount * avgScore) + "\n\n### \ud83c\udf0d \u5730\u533a\u5206\u5e03\n" + regionStats + "\n### \ud83d\ude80 \u8ba2\u9605\u94fe\u63a5\n" + feedLinks;
