@@ -737,7 +737,7 @@ const checkStart = Date.now();
   const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
   console.log(`  [Check] Done in ${checkTime}s. Valid: ${allProxies.length}`);
 
-  // HTTP latency test + IP geolocation via ipchacha.cn
+  // HTTP latency test + IP geolocation via ip-api.com
   allProxies = await batchGeoCheck(allProxies);
 
   // Recalculate quality scores after fraud scores are known
@@ -1191,7 +1191,7 @@ async function getRegionFromIP(ip) {
 
 
 
-// ========== IP GEOLOCATION VIA IPCHACHA.CN ==========
+// ========== IP GEOLOCATION VIA IP-API.COM ==========
 const CC_TO_REGION = {
   'US': 'us', 'USA': 'us', 'United States': 'us',
   'HK': 'hk', 'HKG': 'hk', 'Hong Kong': 'hk',
@@ -1211,7 +1211,8 @@ const CC_TO_REGION = {
   'ES': 'es', 'ID': 'id', 'TH': 'th', 'VN': 'vn',
 };
 
-// Lightweight IP geolocation via ipchacha.cn (no HTTP proxy test, just geo)
+// IP geolocation + proxy/hosting detection via ip-api.com
+// Free tier supports proxy, hosting, mobile fields via ?fields= parameter
 async function batchGeoCheck(proxies) {
   const https = require("https");
   
@@ -1219,7 +1220,7 @@ async function batchGeoCheck(proxies) {
   const ipProxies = [];
   const domainProxies = [];
   for (const p of proxies) {
-    if (/^[\d.]+$/.test(p.server)) { ipProxies.push(p); }
+    if (/^[\\d.]+$/.test(p.server)) { ipProxies.push(p); }
     else { domainProxies.push(p); }
   }
   
@@ -1232,8 +1233,10 @@ async function batchGeoCheck(proxies) {
   for (let i = 0; i < ipProxies.length; i += GEO_BATCH) {
     const batch = ipProxies.slice(i, i + GEO_BATCH);
     const geoPromises = batch.map(p => new Promise(resolve => {
-      const geoReq = https.get("https://ipchacha.cn/api/ip2location?ip=" + encodeURIComponent(p.server), {
-        timeout: 3000,
+      // ip-api.com free API: http://ip-api.com/json/{ip}?fields=status,countryCode,regionName,city,timezone,isp,org,as,query,proxy,hosting,mobile
+      const url = "http://ip-api.com/json/" + encodeURIComponent(p.server) + "?fields=status,countryCode,regionName,city,timezone,isp,org,as,query,proxy,hosting,mobile";
+      const geoReq = https.get(url, {
+        timeout: 5000,
         headers: { "User-Agent": "Mozilla/5.0" }
       }, geoRes => {
         let geoData = "";
@@ -1241,74 +1244,45 @@ async function batchGeoCheck(proxies) {
         geoRes.on("end", () => {
           try {
             const geo = JSON.parse(geoData);
-            const cc = (geo.country_code || "").toUpperCase();
+            
+            // ip-api.com returns status: "success" or "fail"
+            if (geo.status !== "success") {
+              resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0, fraudScore: 0, isProxy: false, isHosting: false });
+              return;
+            }
+            
+            const cc = (geo.countryCode || "").toUpperCase();
             const region = CC_TO_REGION[cc] || "unknown";
-            const latency = geoRes.socket ? geoRes.socket.getRoundTripTime() : 0;
-            // Extract fraud/purity/tag info from ipchacha response
-            // Priority: multi_source_fraud_score > purity > tags analysis
-            const fraudScoreRaw = geo.multi_source_fraud_score ?? geo.fraud_score ?? geo.fraud ?? null;
-            const purityRaw = geo.purity ?? null;
-            const tagsRaw = geo.tags ?? geo.markers ?? null;
+            
+            // Proxy/hosting detection from ip-api.com
+            const isProxy = geo.proxy === true;
+            const isHosting = geo.hosting === true;
+            const isMobile = geo.mobile === true;
+            
+            // Calculate fraud score based on proxy/hosting/mobile indicators
+            // Lower score = cleaner IP, Higher score = riskier
             let fraudScore = 0;
-            let hasRiskTags = false;
-
-            if (fraudScoreRaw !== null) {
-              if (typeof fraudScoreRaw === 'number') {
-                fraudScore = fraudScoreRaw;
-              } else if (typeof fraudScoreRaw === 'string') {
-                const pctMatch = fraudScoreRaw.match(/(\d+(?:\.\d+)?)\s*%/);
-                if (pctMatch) {
-                  fraudScore = parseFloat(pctMatch[1]);
-                } else {
-                  const parsed = parseFloat(String(fraudScoreRaw));
-                  fraudScore = isNaN(parsed) ? 0 : parsed;
-                }
-              }
-            } else if (purityRaw !== null) {
-              if (typeof purityRaw === 'number') {
-                fraudScore = Math.max(0, 100 - purityRaw);
-              } else if (typeof purityRaw === 'string') {
-                const pctMatch = purityRaw.match(/(\d+(?:\.\d+)?)\s*%/);
-                if (pctMatch) {
-                  fraudScore = Math.max(0, 100 - parseFloat(pctMatch[1]));
-                } else {
-                  const lower = purityRaw.toLowerCase();
-                  if (lower.includes('clean') || lower.includes('pure')) fraudScore = 0;
-                  else if (lower.includes('medium')) fraudScore = 15;
-                  else fraudScore = 30;
-                }
-              }
-            }
-
-            if (tagsRaw) {
-              const tagStr = String(tagsRaw).toLowerCase();
-              if (tagStr.includes('risk') || tagStr.includes('fraud') || tagStr.includes('scam') ||
-                  tagStr.includes('spam') || tagStr.includes('malicious') || tagStr.includes('proxy') ||
-                  tagStr.includes('vpn') || tagStr.includes('tor') || tagStr.includes('cloud') || tagStr.includes('hosting')) {
-                hasRiskTags = true;
-                fraudScore = Math.max(fraudScore, 25);
-              }
-              if (tagStr.includes('clean') || tagStr.includes('safe') ||
-                  tagStr.includes('normal') || tagStr.includes('residential') || tagStr.includes('home')) {
-                hasRiskTags = false;
-                fraudScore = Math.min(fraudScore, 5);
-              }
-            }
-
+            if (isProxy) fraudScore += 50;       // Proxy = high risk
+            if (isHosting) fraudScore += 35;      // Data center = medium risk
+            if (isMobile) fraudScore += 15;       // Mobile = slight risk
+            
             resolve({
               server: p.server,
               geoRegion: region,
               countryCode: cc,
-              latency: latency || 0,
-              fraudScore: isNaN(fraudScore) ? 0 : fraudScore
+              latency: 0,
+              fraudScore: fraudScore,
+              isProxy: isProxy,
+              isHosting: isHosting,
+              isMobile: isMobile
             });
           } catch(e) {
-            resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 });
+            resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0, fraudScore: 0, isProxy: false, isHosting: false });
           }
         });
       });
-      geoReq.on("error", () => resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }));
-      geoReq.on("timeout", () => { geoReq.destroy(); resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }); });
+      geoReq.on("error", () => resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0, fraudScore: 0, isProxy: false, isHosting: false }));
+      geoReq.on("timeout", () => { geoReq.destroy(); resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0, fraudScore: 0, isProxy: false, isHosting: false }); });
     }));
     
     const geoResults = await Promise.all(geoPromises);
@@ -1317,14 +1291,16 @@ async function batchGeoCheck(proxies) {
       console.log("  [GeoCheck] " + checked + "/" + ipProxies.length + " geo queried (" + Math.round(checked/ipProxies.length*100) + "%)");
     }
     
-    // Update proxy regions
+    // Update proxy regions and fraud scores
     for (const gr of geoResults) {
       const idx = ipProxies.findIndex(p => p.server === gr.server);
       if (idx >= 0) {
         if (gr.geoRegion && gr.geoRegion !== "unknown") {
-                    ipProxies[idx]._region = gr.geoRegion;
+          ipProxies[idx]._region = gr.geoRegion;
           ipProxies[idx].latency = gr.latency;
-          ipProxies[idx].fraudScore = gr.fraudScore || 0;          ipProxies[idx].latency = gr.latency;
+          ipProxies[idx].fraudScore = gr.fraudScore || 0;
+          ipProxies[idx].isProxy = gr.isProxy;
+          ipProxies[idx].isHosting = gr.isHosting;
         }
       }
     }
@@ -1335,6 +1311,7 @@ async function batchGeoCheck(proxies) {
   
   // Return combined: geo-updated IP proxies + domain proxies (unchanged)
   return [...ipProxies, ...domainProxies];
+}
 }// ========== QUALITY SCORING ==========
 function calculateQualityScore(p) {
   // Fraud score reduces quality by up to 10 points (10% weight)
