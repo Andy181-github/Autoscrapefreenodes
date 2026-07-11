@@ -1222,7 +1222,7 @@ async function batchGeoCheck(proxies) {
   const ipProxies = [];
   const domainProxies = [];
   for (const p of proxies) {
-    if (/^[\\d.]+$/.test(p.server)) { ipProxies.push(p); }
+    if (/^[0-9.]+$/.test(p.server)) { ipProxies.push(p); }
     else { domainProxies.push(p); }
   }
   
