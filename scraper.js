@@ -1216,7 +1216,7 @@ const CC_TO_REGION = {
 // IP geolocation + proxy/hosting detection via ip-api.com
 // Free tier supports proxy, hosting, mobile fields via ?fields= parameter
 async function batchGeoCheck(proxies) {
-  const https = require("https");
+  const http = require("http");
   
   // Separate IP-based proxies (can do geo lookup) from domain-based
   const ipProxies = [];
@@ -1237,7 +1237,7 @@ async function batchGeoCheck(proxies) {
     const geoPromises = batch.map(p => new Promise(resolve => {
       // ip-api.com free API: http://ip-api.com/json/{ip}?fields=status,countryCode,regionName,city,timezone,isp,org,as,query,proxy,hosting,mobile
       const url = "http://ip-api.com/json/" + encodeURIComponent(p.server) + "?fields=status,countryCode,regionName,city,timezone,isp,org,as,query,proxy,hosting,mobile";
-      const geoReq = https.get(url, {
+      const geoReq = http.get(url, {
         timeout: 5000,
         headers: { "User-Agent": "Mozilla/5.0" }
       }, geoRes => {
