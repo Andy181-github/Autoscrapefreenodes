@@ -6,28 +6,28 @@
 ![Check](https://img.shields.io/badge/检测-TCP%20Connect-green)
 ![Scoring](https://img.shields.io/badge/评分-质量评分系统-yellow)
 
-> **最后同步时间**：2026/09/02 03:20:23 (北京时间)
-> **ISO 时间**：2026-09-01T19:20:23.537Z
+> **最后同步时间**：2026/09/07 02:14:27 (北京时间)
+> **ISO 时间**：2026-09-06T18:14:27.408Z
 
 ### 节点统计
-- **有效节点数**: 214
-- **平均质量分**: 80/100
-- **总质量分**: 17120
+- **有效节点数**: 853
+- **平均质量分**: 82/100
+- **总质量分**: 69946
 
 ### 🌍 地区分布
-- **美国**: 117 nodes
-- **香港**: 25 nodes
-- **荷兰**: 14 nodes
-- **德国**: 12 nodes
-- **日本**: 8 nodes
-- **法国**: 7 nodes
+- **美国**: 673 nodes
+- **德国**: 40 nodes
+- **荷兰**: 36 nodes
+- **英国**: 23 nodes
+- **法国**: 19 nodes
+- **日本**: 16 nodes
+- **中国**: 14 nodes
+- **新加坡**: 8 nodes
+- **澳大利亚**: 8 nodes
 - **韩国**: 7 nodes
-- **加拿大**: 6 nodes
-- **英国**: 6 nodes
-- **新加坡**: 5 nodes
-- **台湾**: 3 nodes
-- **中国**: 3 nodes
-- **澳大利亚**: 1 nodes
+- **加拿大**: 5 nodes
+- **香港**: 3 nodes
+- **台湾**: 1 nodes
 
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)
