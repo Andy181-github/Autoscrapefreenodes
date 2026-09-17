@@ -5,5 +5,12 @@ logs/
 .env.local
 *.tmp
 *.bak
+
+# 本地 Agent 优化产物，不属于仓库交付物
+.agents/
+agents/reports/
+
+# 本地 L2 磁盘缓存（仅加速本地运行，CI 每次全新生成）
+cache/
 data/*.json
 README.md

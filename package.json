@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node scraper.js",
     "build": "node generate-readme.js",
-    "test": "echo \"No tests yet\""
+    "test": "node test.js",
+    "agents": "node run-agents.js"
   },
   "keywords": [
     "scraper",

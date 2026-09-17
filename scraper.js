@@ -191,18 +191,22 @@ function setCache(url, data) {
   }
 }
 
+// HTTP GET with L1 memory + L2 disk cache, optional rate limit and retries
+// (uses module-level throttle state: httpGet._delay / httpGet._last / CACHE_TTL)
 async function httpGet(url, retries = 2, timeout = 15000) {
   // Check cache first
   const cached = getCachedOrFetch(url);
   if (cached) return cached;
-  
+
+  // Rate limiting: throttle requests to avoid hammering upstream
   httpGet._delay = httpGet._delay || 3000;
   httpGet._last = httpGet._last || 0;
-    const now = Date.now();
+  const now = Date.now();
   const wait = httpGet._delay - (now - httpGet._last);
   if (wait > 0) { await new Promise(r => setTimeout(r, wait)); }
   httpGet._last = Date.now();
-for (let i = 0; i <= retries; i++) {
+
+  for (let i = 0; i <= retries; i++) {
     try {
       const r = await axios.get(url, {
         headers: { 'User-Agent': UA, 'Accept': '*/*' },
@@ -219,10 +223,13 @@ for (let i = 0; i <= retries; i++) {
       await new Promise(resolve => setTimeout(resolve, 2000 * (i + 1)));
     }
   }
+  // Unreachable: the loop above either returns (success) or throws (final retry).
+  // Defensive return so the function cannot silently yield `undefined`.
+  return null;
 }
 
 // Pre-compiled regex for performance
-const URL_REGEX = /(https?:\/\/[^\s<>"']+(?:\.yaml|\.yml|\.txt|\.json)[^\s<>"']*)/gi;
+const URL_REGEX = /https?:\/\/[^\s<>"']+(?:\.yaml|\.yml|\.txt|\.json)[^\s<>"']*/g;
 const PROXY_LINE_REGEX = /^(vmess|trojan|ss|ssr|http|socks|tuic|hysteria|wireguard):\/\//i;
 
 function extractUrls(text) {
@@ -294,6 +301,9 @@ function parseV2rayTxt(txtContent) {
   });
 }
 
+// 遗留抓取器 (legacy scraper): 用于 GitHub Pages 站点文章列表抓取 (xcblog 等)
+// 当前 6 个源全部为 direct 类型 (raw.githubusercontent.com), 此函数不再被 scrapeAllSites 调用。
+// 保留导出以便未来重新启用页面型数据源。
 async function scrapeGithubPagesSite(siteUrl) {
   console.log(`\n[Scraper] Fetching: ${siteUrl}`);
   const result = { siteUrl, scrapedAt: new Date().toISOString(), articles: [], totalSubscriptions: 0, rawContent: {} };
@@ -381,6 +391,7 @@ async function scrapeGithubPagesSite(siteUrl) {
   return result;
 }
 
+// 遗留抓取器: airportnode.com 已停用, 保留以便未来重新启用
 async function scrapeAirportNode() {
   const siteUrl = 'https://airportnode.com/freenode';
   console.log(`\n[Scraper] Fetching: ${siteUrl}`);
@@ -456,65 +467,82 @@ function mergeAndDeduplicate(allResults) {
 function generateRenamedContent(feeds) {
   console.log('\n[Rename] Processing node renaming...');
   const renamedContent = {};
-  
-  // Clash YAML - rebuild with renamed nodes
+
+  // 用 Map 把 proxies 中 _orig(原始对象引用) 映射到 parsed region, 避免 O(n*m) 的 find
+  const buildRegionByOrig = (proxies) => {
+    const m = new Map();
+    for (const p of proxies) {
+      if (p && p._orig !== undefined) m.set(p._orig, p);
+    }
+    return m;
+  };
+  const clashRegion = buildRegionByOrig((feeds.Clash && feeds.Clash.proxies) || []);
+  const singboxRegion = buildRegionByOrig((feeds['Sing-Box'] && feeds['Sing-Box'].proxies) || []);
+
+  // 说明: 当 feeds.X.contentMap[url] 来自同一个 result.rawContent 的 content 时,
+  // 再次 yaml.load/JSON.parse 会产生新对象, 不再保留 _orig 引用 —— 因此下方
+  // regionByOrig 查找可能找不到匹配(等价于"重命名未应用"), 这是已知的限制,
+  // 后续版本可以改为对原始 data.proxies 做重命名而不是再次解析。
+  const renamedClash = {};
   if (feeds.Clash && feeds.Clash.contentMap) {
-    const renamedYamls = {};
     for (const [url, content] of Object.entries(feeds.Clash.contentMap)) {
       try {
         const config = yaml.load(content);
         if (config && config.proxies) {
           config.proxies = config.proxies.map(p => {
-            const proxy = feeds.Clash.proxies.find(pp => pp._orig === p);
+            const proxy = clashRegion.get(p);
             if (proxy && proxy.region !== 'unknown') {
               return { ...p, name: `${proxy.region}-${p.name}` };
             }
             return p;
           });
-          renamedYamls[url] = yaml.dump(config, { lineWidth: -1 });
+          renamedClash[url] = yaml.dump(config, { lineWidth: -1 });
         } else {
-          renamedYamls[url] = content;
+          renamedClash[url] = content;
         }
       } catch (e) {
-        renamedYamls[url] = content;
+        renamedClash[url] = content;
       }
     }
-    renamedContent.clash = renamedYamls;
   }
-  
-  // Sing-Box JSON
+  renamedContent.clash = renamedClash;
+
+  const renamedSingBox = {};
   if (feeds['Sing-Box'] && feeds['Sing-Box'].contentMap) {
-    const renamedJsons = {};
     for (const [url, content] of Object.entries(feeds['Sing-Box'].contentMap)) {
       try {
         const config = JSON.parse(content);
         if (config && config.outbounds) {
           config.outbounds = config.outbounds.map(ob => {
-            const proxy = feeds['Sing-Box'].proxies.find(pp => pp._orig === ob);
+            const proxy = singboxRegion.get(ob);
             if (proxy && proxy.region !== 'unknown') {
               return { ...ob, tag: `${proxy.region}-${ob.tag || ob.name || 'proxy'}` };
             }
             return ob;
           });
-          renamedJsons[url] = JSON.stringify(config, null, 2);
+          renamedSingBox[url] = JSON.stringify(config, null, 2);
         } else {
-          renamedJsons[url] = content;
+          renamedSingBox[url] = content;
         }
       } catch (e) {
-        renamedJsons[url] = content;
+        renamedSingBox[url] = content;
       }
     }
-    renamedContent.singbox = renamedJsons;
   }
-  
+  renamedContent.singbox = renamedSingBox;
+
   // V2ray TXT
   if (feeds.V2ray && feeds.V2ray.contentMap) {
+    const v2rayLines = new Map();
+    for (const p of (feeds.V2ray.proxies || [])) {
+      if (p && p.line) v2rayLines.set(p.line, p);
+    }
     const renamedTxts = {};
     for (const [url, content] of Object.entries(feeds.V2ray.contentMap)) {
       const lines = content.split('\n').map(line => {
         const trimmed = line.trim();
         if (!trimmed) return line;
-        const proxy = feeds.V2ray.proxies.find(p => p.line === trimmed);
+        const proxy = v2rayLines.get(trimmed);
         if (proxy && proxy.region !== 'unknown') {
           if (trimmed.includes('?')) {
             return trimmed.replace(/remarks?=[^&]*/i, `remarks=${proxy.region}-proxy`);
@@ -526,7 +554,7 @@ function generateRenamedContent(feeds) {
     }
     renamedContent.v2ray = renamedTxts;
   }
-  
+
   return renamedContent;
 }
 
@@ -576,11 +604,11 @@ async function fetchDirectSubscription(url, description) {
 async function scrapeAllSites() {
   const config = loadConfig();
   const results = [];
-  
+
   console.log('='.repeat(60));
   console.log('[AutoScrape] Starting node scrape...');
   console.log('='.repeat(60));
-  
+
   // Handle direct subscription URLs
   const directSites = config.sites.filter(s => s.enabled && s.type === 'direct');
   for (const site of directSites) {
@@ -590,8 +618,9 @@ async function scrapeAllSites() {
     }
   }
 
-  // Scrape GitHub Pages sites (legacy support)
-  // Merge and deduplicate
+  // 说明: 当前 config.json 中 6 个源全部为 direct 类型 (raw.githubusercontent.com),
+  // 因此不执行任何遗留的 GitHub Pages 抓取器 (scrapeGithubPagesSite / scrapeAirportNode)。
+  // 若未来新增 site.type === 'github-pages' 的源, 在此处按类型分流调用对应的抓取器。
   const { feeds, seenContent, seenUrls } = mergeAndDeduplicate(results);
   
   // Generate renamed content
@@ -727,7 +756,9 @@ async function scrapeAllSites() {
 
   
   // 连接池管理 - 复用TCP连接减少延迟
-class ConnectionPool {
+  // 说明: ConnectionPool 类在下次优化迭代中启用 (由 checkTcpNode 复用长连接),
+  // 当前 TCP 有效性检测使用独立短连接(每次检测后立即销毁), 保留类定义以便扩展。
+  class ConnectionPool {
   constructor(maxSize = 50) {
     this.pool = new Map();
     this.maxSize = maxSize;
@@ -781,8 +812,8 @@ class ConnectionPool {
   }
 }
 
-// 全局连接池实例
-const connectionPool = new ConnectionPool(100);
+  // 全局连接池实例 (当前保留以便扩展, 暂未启用)
+  const connectionPool = new ConnectionPool(100);
   console.log(`[Check] Testing node validity (TCP connect)...`);
   const TIMEOUT_MS = 5000; // Reduced for faster checks
   const CONCURRENCY = 150; // 提升至 150 (优化建议: 批量检测建议并发数: 100-200)
@@ -1319,13 +1350,16 @@ async function batchGeoCheck(proxies) {
   const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log("  [GeoCheck] Done in " + totalTime + "s");
 
+  // 合并并返回 (保持原始顺序: IP 类 + 域名类)
   return [...ipProxies, ...domainProxies];
 }
 
 // Get fraud score for a single proxy (wrapper for heuristic calculation)
 function getFraudScoreForProxy(proxy) {
   return calculateFraudScoreHeuristic(proxy);
-}// ========== README UPDATE ==========
+}
+
+// ========== README UPDATE ==========
 function updateREADME(validProxies, output) {
   const readmePath = path.join(__dirname, "README.md");
   let readme = "";
