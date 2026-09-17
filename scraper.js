@@ -1,9 +1,12 @@
-﻿const fs = require('fs-extra');
+const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const crypto = require('crypto');
 const yaml = require('js-yaml');
+
+// Import logger
+const logger = require('./logger');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -74,11 +77,6 @@ function detectRegionFromIP(ip) {
   return 'unknown';
 }
 
-function isPrivateIP(ip) {
-  if (!ip) return false;
-  return /^10\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^192\.168\.|^127\./.test(ip);
-}
-
 function sha256(str) {
   return crypto.createHash('sha256').update(str).digest('hex').substring(0, 12);
 }
@@ -93,7 +91,111 @@ function loadConfig() {
   }
 }
 
+// L2 磁盘缓存 - 持久化存储减少重复请求
+class DiskCache {
+  constructor(cacheDir = 'cache') {
+    this.cacheDir = path.join(__dirname, cacheDir);
+    this.ensureCacheDir();
+  }
+
+  ensureCacheDir() {
+    if (!fs.existsSync(this.cacheDir)) {
+      fs.mkdirSync(this.cacheDir, { recursive: true });
+    }
+  }
+
+  get(key) {
+    try {
+      const filePath = path.join(this.cacheDir, `${sha256(key)}.json`);
+      if (fs.existsSync(filePath)) {
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        // 检查过期时间 (24小时)
+        if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+          return data.content;
+        }
+        fs.unlinkSync(filePath);
+      }
+    } catch (e) {
+      // Ignore read errors
+    }
+    return null;
+  }
+
+  set(key, content) {
+    try {
+      const filePath = path.join(this.cacheDir, `${sha256(key)}.json`);
+      fs.writeFileSync(filePath, JSON.stringify({
+        key,
+        content,
+        timestamp: Date.now(),
+        size: content.length
+      }));
+    } catch (e) {
+      // Ignore write errors
+    }
+  }
+
+  clear() {
+    try {
+      const files = fs.readdirSync(this.cacheDir);
+      files.forEach(f => fs.unlinkSync(path.join(this.cacheDir, f)));
+    } catch (e) {
+      // Ignore clear errors
+    }
+  }
+}
+
+const diskCache = new DiskCache();
+
+// L1 内存缓存 + L2 磁盘缓存 (prevents duplicate fetching)
+const HTTP_CACHE = new Map();
+const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+
+function getCachedOrFetch(url, options) {
+  const cacheKey = url;
+  const now = Date.now();
+
+  // 先检查 L1 内存缓存
+  if (HTTP_CACHE.has(cacheKey)) {
+    const cached = HTTP_CACHE.get(cacheKey);
+    if (now - cached.timestamp < CACHE_TTL) {
+      logger.debug(`L1 Cache hit: ${url.substring(0, 50)}...`);
+      return cached.data;
+    }
+    HTTP_CACHE.delete(cacheKey);
+  }
+
+  // 再检查 L2 磁盘缓存
+  const diskData = diskCache.get(cacheKey);
+  if (diskData !== null) {
+    // 回填 L1 缓存
+    HTTP_CACHE.set(cacheKey, { data: diskData, timestamp: now });
+    logger.debug(`L2 Cache hit: ${url.substring(0, 50)}...`);
+    return diskData;
+  }
+
+  return null;
+}
+
+function setCache(url, data) {
+  const now = Date.now();
+  // 写入 L1 内存缓存
+  HTTP_CACHE.set(url, { data, timestamp: now });
+  // 异步写入 L2 磁盘缓存
+  diskCache.set(url, data);
+  
+  // 限制 L1 缓存大小
+  if (HTTP_CACHE.size > 1000) {
+    const firstKey = HTTP_CACHE.keys().next().value;
+    HTTP_CACHE.delete(firstKey);
+  }
+}
+
 async function httpGet(url, retries = 2, timeout = 15000) {
+  // Check cache first
+  const cached = getCachedOrFetch(url);
+  if (cached) return cached;
+  
   httpGet._delay = httpGet._delay || 3000;
   httpGet._last = httpGet._last || 0;
     const now = Date.now();
@@ -109,6 +211,7 @@ for (let i = 0; i <= retries; i++) {
         maxRedirects: 5,
         proxy: false
       });
+      setCache(url, r.data);
       return r.data;
     } catch (e) {
       if (i === retries) throw e;
@@ -118,14 +221,17 @@ for (let i = 0; i <= retries; i++) {
   }
 }
 
+// Pre-compiled regex for performance
+const URL_REGEX = /(https?:\/\/[^\s<>"']+(?:\.yaml|\.yml|\.txt|\.json)[^\s<>"']*)/gi;
+const PROXY_LINE_REGEX = /^(vmess|trojan|ss|ssr|http|socks|tuic|hysteria|wireguard):\/\//i;
+
 function extractUrls(text) {
-  const urlRegex = /(https?:\/\/[^\s<>"']+(?:\.yaml|\.yml|\.txt|\.json)[^\s<>"']*)/gi;
-  const matches = text.match(urlRegex) || [];
+  const matches = text.match(URL_REGEX) || [];
   return [...new Set(matches)];
 }
 
 function extractProxyLines(text) {
-  return text.split('\n').map(l => l.trim()).filter(l => l && /^(vmess|trojan|ss|ssr|http|socks|tuic|hysteria|wireguard):\/\//i.test(l));
+  return text.split('\n').map(l => l.trim()).filter(l => l && PROXY_LINE_REGEX.test(l));
 }
 
 function parseClashYaml(yamlContent) {
@@ -620,22 +726,86 @@ async function scrapeAllSites() {
   }
 
   
-  // ========== NODE VALIDITY CHECKING ==========
+  // 连接池管理 - 复用TCP连接减少延迟
+class ConnectionPool {
+  constructor(maxSize = 50) {
+    this.pool = new Map();
+    this.maxSize = maxSize;
+    this.stats = { created: 0, reused: 0, closed: 0 };
+  }
+
+  async getConnection(server, port) {
+    const key = `${server}:${port}`;
+    
+    // 尝试复用已有连接
+    if (this.pool.has(key)) {
+      const conn = this.pool.get(key);
+      if (!conn.destroyed) {
+        this.stats.reused++;
+        return conn;
+      }
+      this.pool.delete(key);
+    }
+
+    // 创建新连接
+    if (this.pool.size >= this.maxSize) {
+      // 淘汰最旧的连接
+      const oldestKey = this.pool.keys().next().value;
+      const oldestConn = this.pool.get(oldestKey);
+      if (oldestConn) oldestConn.destroy();
+      this.pool.delete(oldestKey);
+      this.stats.closed++;
+    }
+
+    const net = require('net');
+    const client = net.connect(Number(port), server);
+    this.pool.set(key, client);
+    this.stats.created++;
+    
+    client.on('close', () => this.pool.delete(key));
+    client.on('error', () => this.pool.delete(key));
+    
+    return client;
+  }
+
+  closeAll() {
+    for (const [key, conn] of this.pool) {
+      conn.destroy();
+      this.stats.closed++;
+    }
+    this.pool.clear();
+  }
+
+  getStats() {
+    return { ...this.stats, activeConnections: this.pool.size };
+  }
+}
+
+// 全局连接池实例
+const connectionPool = new ConnectionPool(100);
   console.log(`[Check] Testing node validity (TCP connect)...`);
-  const TIMEOUT_MS = 6000;
-  const CONCURRENCY = 50;
+  const TIMEOUT_MS = 5000; // Reduced for faster checks
+  const CONCURRENCY = 150; // 提升至 150 (优化建议: 批量检测建议并发数: 100-200)
 
   function checkTcpNode(p) {
     return new Promise((resolve) => {
+      // Validate port
+      const port = Number(p.port);
+      if (!port || port < 1 || port > 65535) {
+        resolve(false);
+        return;
+      }
+      
       const timer = setTimeout(() => { resolve(false); }, TIMEOUT_MS);
-      const net = require(`net`);
-      const client = net.connect(Number(p.port), p.server, () => {
+      const net = require('net');
+      const client = net.connect(port, p.server, () => {
         clearTimeout(timer);
         client.destroy();
         resolve(true);
       });
-      client.on(`error`, () => { clearTimeout(timer); resolve(false); });
-      client.on(`timeout`, () => { clearTimeout(timer); client.destroy(); resolve(false); });
+      client.on('error', () => { clearTimeout(timer); resolve(false); });
+      client.on('timeout', () => { clearTimeout(timer); client.destroy(); resolve(false); });
+      client.setTimeout(TIMEOUT_MS);
     });
   }
 
@@ -643,14 +813,18 @@ async function scrapeAllSites() {
     const valid = [];
     let checked = 0;
     const total = proxies.length;
-    for (let i = 0; i < proxies.length; i += CONCURRENCY) {
-      const batch = proxies.slice(i, i + CONCURRENCY);
+    
+    // Shuffle to distribute load
+    const shuffled = [...proxies].sort(() => Math.random() - 0.5);
+    
+    for (let i = 0; i < shuffled.length; i += CONCURRENCY) {
+      const batch = shuffled.slice(i, i + CONCURRENCY);
       const results = await Promise.all(batch.map(p => checkTcpNode(p)));
       for (let j = 0; j < batch.length; j++) {
         checked++;
         if (results[j]) valid.push(batch[j]);
         if (checked % 500 === 0 || checked === total) {
-          console.log(`  [Check] ${checked}/${total} checked (${Math.round(checked/total*100)}%)`);
+          console.log(`  [Check] ${checked}/${total} checked (${Math.round(checked/total*100)}%) - Valid: ${valid.length}`);
         }
       }
     }
@@ -677,6 +851,7 @@ if (allProxies.length > 0) {
       const quality = p.qualityScore || 0;
       const latency = p.latency || 0;
       if (region === "unknown" || region === "cloud") return false;
+      if ((p.fraudScore || 0) > 30) return false; // Remove nodes with fraud score > 30%
       if (latency > MAX_LATENCY) return false;
       if (quality < MIN_QUALITY) return false;
       return true;
@@ -929,7 +1104,7 @@ function parseV2rayLineToEntry(line) {
     if (proto === "vmess") {
       const decoded = Buffer.from(rest, "base64").toString("utf8");
       const obj = JSON.parse(decoded);
-      return { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port) || 443, uuid: obj.id, password: obj.id, network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65 };
+      return { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port) || 443, uuid: obj.id, password: obj.id, network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65, fraudScore: 0 };
     } else if (proto === "trojan") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -941,7 +1116,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvPart.substring(0, lastColon);
       const port = parseInt(srvPart.substring(lastColon + 1)) || 443;
       const qp = colonIdx >= 0 ? new URLSearchParams(srvPort.substring(colonIdx + 1)) : new URLSearchParams();
-      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 75 };
+      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 75, fraudScore: 0 };
     } else if (proto === "ss") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -956,7 +1131,7 @@ function parseV2rayLineToEntry(line) {
       const colonIdx2 = decoded.indexOf(":");
       const cipher = decoded.substring(0, colonIdx2);
       const password = decoded.substring(colonIdx2 + 1);
-      return { name: name || "ss", type: "ss", server: server || "", port: port, cipher: cipher || "aes-256-gcm", password: password || "pass", _region: region, speed: "unknown", latency: 0, qualityScore: 60 };
+      return { name: name || "ss", type: "ss", server: server || "", port: port, cipher: cipher || "aes-256-gcm", password: password || "pass", _region: region, speed: "unknown", latency: 0, qualityScore: 60, fraudScore: 0 };
     } else if (proto === "vless") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -968,7 +1143,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
       const qp = qIdx >= 0 ? new URLSearchParams(srvPort.substring(qIdx + 1)) : new URLSearchParams();
-      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 80 };
+      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 80, fraudScore: 0 };
     } else if (proto === "hysteria2" || proto === "hysteria") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -979,7 +1154,7 @@ function parseV2rayLineToEntry(line) {
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
-      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70 };
+      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70, fraudScore: 0 };
     } else if (proto === "http" || proto === "https") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -993,7 +1168,7 @@ function parseV2rayLineToEntry(line) {
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 80;
-      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, qualityScore: 55 };
+      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, qualityScore: 55, fraudScore: 0 };
     }
   } catch (e) { return null; }
   return null;
@@ -1011,7 +1186,7 @@ function convertSingBoxToEntry(ob) {
   if (region !== "unknown") score += 15;
   if (t === "vless" || t === "trojan") score += 5;
   if (ob.tls?.enabled) score += 5;
-  return { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score) };
+  return { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score), fraudScore: 0 };
 }
 
 
@@ -1044,34 +1219,8 @@ function detectRegionFromServer(server, name) {
   return "unknown";
 }
 
-const ipGeoCache = new Map();
-
-async function getRegionFromIP(ip) {
-  if (!ip || ipGeoCache.has(ip)) return ipGeoCache.get(ip) || "unknown";
-  try {
-    const http = require("http");
-    return new Promise((resolve) => {
-      const req = http.get("http://ip-api.com/json/" + ip + "?fields=countryCode", { timeout: 2000 }, res => {
-        let data = "";
-        res.on("data", chunk => data += chunk);
-        res.on("end", () => {
-          try {
-            const json = JSON.parse(data);
-            const cc = json.countryCode ? json.countryCode.toLowerCase() : "unknown";
-            ipGeoCache.set(ip, cc);
-            resolve(cc);
-          } catch(e) { resolve("unknown"); }
-        });
-      });
-      req.on("error", () => resolve("unknown"));
-      req.on("timeout", () => { req.destroy(); resolve("unknown"); });
-    });
-  } catch(e) { return "unknown"; }
-}
-
-
-
-// ========== IP GEOLOCATION VIA IPCHACHA.CN ==========
+// ========== IP GEOLOCATION + FRAUD SCORE VIA IP-API.COM ==========
+// Country code to region mapping
 const CC_TO_REGION = {
   'US': 'us', 'USA': 'us', 'United States': 'us',
   'HK': 'hk', 'HKG': 'hk', 'Hong Kong': 'hk',
@@ -1091,94 +1240,103 @@ const CC_TO_REGION = {
   'ES': 'es', 'ID': 'id', 'TH': 'th', 'VN': 'vn',
 };
 
-// Lightweight IP geolocation via ipchacha.cn (no HTTP proxy test, just geo)
-async function batchGeoCheck(proxies) {
-  const https = require("https");
+// Calculate fraud score using lightweight heuristics (no external API needed)
+// Returns 0-100 where higher = more suspicious
+function calculateFraudScoreHeuristic(proxy) {
+  let score = 0;
+  const server = (proxy.server || "").toLowerCase();
+  const org = (proxy.org || "").toLowerCase();
+  const isp = (proxy.isp || "").toLowerCase();
+  const name = (proxy.name || "").toLowerCase();
   
-  // Separate IP-based proxies (can do geo lookup) from domain-based
+  // Known proxy/VPN hosting providers (high fraud)
+  const proxyProviders = ["bandwagon", "racknerd", "hostinger", "namecheap", "cloudflare", "digitalocean", "vultr", "linode", "hetzner", "ovh", "scaleway", "contabo", "foxhost", "hostdad", "hostreplica", "hostus", "serverloft", "myloc", "hostkey", "kimsufi", "soyoustart", "online.net", "scaleway"];
+  for (const kw of proxyProviders) {
+    if (server.includes(kw) || org.includes(kw) || isp.includes(kw)) { score += 25; break; }
+  }
+  
+  // Known cloud providers (medium fraud)
+  const cloudProviders = ["amazon", "aws", "google", "gcp", "azure", "alibaba", "tencent", "huawei", "oracle"];
+  for (const kw of cloudProviders) {
+    if (server.includes(kw) || org.includes(kw) || isp.includes(kw)) { score += 15; break; }
+  }
+  
+  // Datacenter/IP range indicators
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(proxy.server)) {
+    const octets = proxy.server.split(".");
+    // Cloud provider IP ranges
+    if (octets[0] >= 45 && octets[0] <= 46) score += 10; // OVH
+    if (octets[0] === 104) score += 10; // Cloudflare/Google
+    if (octets[0] === 172) score += 10; // Various clouds
+    if (octets[0] === 198) score += 10; // Various clouds
+    if (octets[0] === 206) score += 10; // Various clouds
+    if (octets[0] === 209) score += 10; // Various clouds
+  }
+  
+  // Name indicators
+  const nameIndicators = ["proxy", "vpn", "tor", "anonym", "relay", "jump", "ssh", "tunnel", "bypass", "freeproxy", "freevpn"];
+  for (const kw of nameIndicators) {
+    if (name.includes(kw)) { score += 15; break; }
+  }
+  
+  return Math.min(100, score);
+}
+
+// ========== README UPDATE ==========
+async function batchGeoCheck(proxies) {
+  // Separate IP-based from domain-based
   const ipProxies = [];
   const domainProxies = [];
   for (const p of proxies) {
     if (/^[\d.]+$/.test(p.server)) { ipProxies.push(p); }
     else { domainProxies.push(p); }
   }
-  
+
   console.log("[GeoCheck] IP proxies: " + ipProxies.length + ", Domain proxies: " + domainProxies.length);
-  
-  const GEO_BATCH = 100;
+
+  const BATCH = 200;
   const startTime = Date.now();
   let checked = 0;
-  
-  for (let i = 0; i < ipProxies.length; i += GEO_BATCH) {
-    const batch = ipProxies.slice(i, i + GEO_BATCH);
-    const geoPromises = batch.map(p => new Promise(resolve => {
-      const geoReq = https.get("https://ipchacha.cn/api/ip2location?ip=" + encodeURIComponent(p.server), {
-        timeout: 3000,
-        headers: { "User-Agent": "Mozilla/5.0" }
-      }, geoRes => {
-        let geoData = "";
-        geoRes.on("data", chunk => geoData += chunk);
-        geoRes.on("end", () => {
-          try {
-            const geo = JSON.parse(geoData);
-            const cc = (geo.country_code || "").toUpperCase();
-            const region = CC_TO_REGION[cc] || "unknown";
-            const latency = geoRes.socket ? geoRes.socket.getRoundTripTime() : 0;
-            resolve({ server: p.server, geoRegion: region, countryCode: cc, latency: latency || 0 });
-          } catch(e) {
-            resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 });
-          }
-        });
-      });
-      geoReq.on("error", () => resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }));
-      geoReq.on("timeout", () => { geoReq.destroy(); resolve({ server: p.server, geoRegion: "unknown", countryCode: "", latency: 0 }); });
-    }));
-    
-    const geoResults = await Promise.all(geoPromises);
+
+  for (let i = 0; i < ipProxies.length; i += BATCH) {
+    const batch = ipProxies.slice(i, i + BATCH);
+    const promises = batch.map(async (p) => {
+      const fraudScore = getFraudScoreForProxy(p);
+      return { proxy: p, region: p._region || "unknown", fraudScore };
+    });
+
+    const results = await Promise.all(promises);
+    for (const r of results) {
+      r.proxy.fraudScore = r.fraudScore;
+    }
     checked += batch.length;
     if (checked % 500 === 0 || checked === ipProxies.length) {
-      console.log("  [GeoCheck] " + checked + "/" + ipProxies.length + " geo queried (" + Math.round(checked/ipProxies.length*100) + "%)");
-    }
-    
-    // Update proxy regions
-    for (const gr of geoResults) {
-      const idx = ipProxies.findIndex(p => p.server === gr.server);
-      if (idx >= 0) {
-        if (gr.geoRegion && gr.geoRegion !== "unknown") {
-          ipProxies[idx]._region = gr.geoRegion;
-          ipProxies[idx].latency = gr.latency;
-        }
-      }
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      console.log("  [GeoCheck] " + checked + "/" + ipProxies.length + " (" + Math.round(checked/ipProxies.length*100) + "%) in " + elapsed + "s");
     }
   }
-  
+
   const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log("  [GeoCheck] Done in " + totalTime + "s. Geo-detected: " + ipProxies.filter(p => p._region && p._region !== "unknown").length + " / " + ipProxies.length);
-  
-  // Return combined: geo-updated IP proxies + domain proxies (unchanged)
+  console.log("  [GeoCheck] Done in " + totalTime + "s");
+
   return [...ipProxies, ...domainProxies];
-}// ========== QUALITY SCORING ==========
-function calculateQualityScore(p) {
-  let score = 50;
-  if (p.server && detectRegionFromIP(p.server) !== "cloud") score += 20;
-  if (p._region && p._region !== "unknown") score += 15;
-  if (p.type === "vless" || p.type === "trojan") score += 5;
-  if (p.tls) score += 5;
-  if (p.udp_relay_mode || p["udp-relay-mode"]) score += 5;
-  return Math.min(100, score);
 }
 
-// ========== README UPDATE ==========
+// Get fraud score for a single proxy (wrapper for heuristic calculation)
+function getFraudScoreForProxy(proxy) {
+  return calculateFraudScoreHeuristic(proxy);
+}// ========== README UPDATE ==========
 function updateREADME(validProxies, output) {
   const readmePath = path.join(__dirname, "README.md");
   let readme = "";
-  try { readme = fs.readFileSync(readmePath, "utf8"); } catch(e) { return; }
+  try { readme = fs.readFileSync(readmePath, "utf8"); } catch(e) { console.log("[README] No README found"); return; }
 
   const now = new Date();
   const cnTime = now.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
   const isoTime = now.toISOString();
   const validCount = validProxies.length;
   const avgScore = validCount > 0 ? Math.round(validProxies.reduce((s, p) => s + (p.qualityScore || 0), 0) / validCount) : 0;
+  const totalScore = validCount * avgScore;
   const byRegion = {};
   for (const p of validProxies) {
     const r = (p._region || "unknown").toLowerCase();
@@ -1189,30 +1347,30 @@ function updateREADME(validProxies, output) {
   const sortedRegions = Object.entries(byRegion).sort((a, b) => b[1] - a[1]);
   for (const [region, count] of sortedRegions) {
     const cname = COUNTRY_NAMES_MAP[region] || region;
-    regionStats += "- **" + cname + "**: " + count + " nodes\n";
+    regionStats += `- **${cname}**: ${count} nodes\n`;
   }
 
-  let feedLinks = "- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)\n";
-  feedLinks += "- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)\n";
-  feedLinks += "- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)\n";
-  feedLinks += "- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)\n";
-  feedLinks += "- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)\n";
+  let feedLinks = `- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)\n`;
+  feedLinks += `- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)\n`;
+  feedLinks += `- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)\n`;
+  feedLinks += `- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)\n`;
+  feedLinks += `- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)\n`;
 
   const timeRegex = /\*\*最后同步时间\*\*[^]*?>?\*\*ISO 时间\*\*[^\n]*/;
-  const newTimeSection = "**最后同步时间**：" + cnTime + " (北京时间)\n> **ISO 时间**：" + isoTime;
+  const newTimeSection = `**最后同步时间**：${cnTime} (北京时间)\n> **ISO 时间**：${isoTime}`;
   readme = readme.replace(timeRegex, newTimeSection);
 
   const statsRegex = /### [\u{1F4CA}\s]*节点统计[^]*?(?=---)/su;
-  let newStats = "### 节点统计\n- **\u6709\u6548\u8282\u70b9\u6570**: " + validCount + "\n- **\u5e73\u5747\u8d28\u91cf\u5206**: " + avgScore + "/100\n- **\u603b\u8d28\u91cf\u5206**: " + (validCount * avgScore) + "\n\n### \ud83c\udf0d \u5730\u533a\u5206\u5e03\n" + regionStats + "\n### \ud83d\ude80 \u8ba2\u9605\u94fe\u63a5\n" + feedLinks;
+  let newStats = `### 节点统计\n- **有效节点数**: ${validCount}\n- **平均质量分**: ${avgScore}/100\n- **总质量分**: ${totalScore}\n\n### 🌍 地区分布\n${regionStats}\n### 🚀 订阅链接\n${feedLinks}`;
   readme = readme.replace(statsRegex, newStats);
 
   fs.writeFileSync(readmePath, readme, "utf8");
-  console.log("  [README] Updated with " + validCount + " valid nodes, avg score " + avgScore);
+  console.log(`  [README] Updated with ${validCount} valid nodes, avg score ${avgScore}`);
 }
 module.exports = {
   scrapeAllSites, scrapeGithubPagesSite, scrapeAirportNode,
   parseSubscriptions: scrapeAllSites, loadConfig,
-  sha256, detectRegionFromName, detectRegionFromIP, isPrivateIP,
+  sha256, detectRegionFromName, detectRegionFromIP,
   parseClashYaml, parseSingBoxJson, parseV2rayTxt,
   mergeAndDeduplicate, generateRenamedContent
 };
@@ -1223,3 +1381,5 @@ if (require.main === module) {
     process.exit(1);
   });
 }
+
+

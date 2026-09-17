@@ -1,158 +1,296 @@
-# GitHub Research Report: Free Node Scraping & Subscription Aggregation
+# AutoScrapeFreeNodes 项目功能报告
 
-## Research Date: 2026-07-06
-## Target Project: D:\Codex skill\AutoScrapeFreeNodes (v3.2.0)
+## 项目概述
 
----
-
-## 1. Promising Repos Found
-
-### A. beck-8/subs-check (5,051 stars, Go) — THE authoritative reference
-- Most popular node check tool; almost all others build on it
-- Full config: 60+ options including media unlock, IP risk scoring, historical retention
-- Key features we did NOT study deeply: media platform detection, webhook notifications
-
-### B. MiracleNan/subscribe-true-grading (4 stars, Python) — Novel quality grading
-- Multi-stage pipeline: quick probe + AI reachability + long-connection + IP reputation
-- 6-dimension scoring (S/A/B/C/D tiers)
-- Noise filter regex to exclude scam/promotional node names
-- Proxy fingerprinting across 12 fields for better dedup
-- Uses mihomo binary for REAL proxy probing (not static field filtering)
-
-### C. LordVibeCoding/clash-sub-aggregator (TypeScript/Go) — Full-stack aggregator
-- Region-based filtering (HK/SG/TW/JP hardcoded)
-- Base64 auto-decode + SQLite persistence
-- Health check via mihomo API with semaphore-based concurrency (5 parallel)
-- Blacklist mechanism with auto-restart mihomo on changes
-- UUID-based subscription management
-- Built-in React web UI (Vite + shadcn)
-
-### D. tankeito/clash-verge-auto-switch (4 stars, Python) — macOS auto-switching
-- Launchd-based scheduled speed testing
-- Auto-switches to lowest-latency healthy node
-
-### E. kooker/FreeSubsCheck (63 stars) — Already studied
+**项目名称**: AutoScrapeFreeNodes  
+**版本**: 3.9.0  
+**主要功能**: 自动抓取、去重、检测、合并免费代理节点，生成多种格式的订阅文件
 
 ---
 
-## 2. Optimization Ideas (NOT in current project)
+## 核心功能模块
 
-### PRIORITY 1 — High Impact, Low Effort
+### 1. 数据源管理
 
-#### 2.1 Media Platform Unlock Detection
-- Source: beck-8/subs-check, MiracleNan
-- Current: NO media unlock detection
-- Idea: Probe Netflix/OpenAI/Gemini/Disney+/YouTube/Claude/Spotify/TikTok
-- Tag nodes with platform badges
-- Impact: Huge user value for node selection
+#### 支持的数据源类型
+- **GitHub Pages 站点**：爬取博客文章中的订阅链接
+- **机场节点网站**：如 airportnode.com/freenode
+- **直接订阅URL**：通过 config.json 配置的直接订阅地址
 
-#### 2.2 Noise/Scam Filter Regex
-- Source: MiracleNan
-- Current: No filtering of promotional node names
-- Idea: Filter names containing 剩余流量/到期/套餐/购买/免费/付费 etc.
-- Impact: Clean up output significantly
+#### 爬虫流程
+```
+获取HTML → 提取订阅URL → 获取订阅内容 → 解析节点
+```
 
-#### 2.3 Enhanced Node Naming with Platform Badges
-- Source: beck-8/subs-check, MiracleNan
-- Current: Only country flag prefix
-- Idea: Add [NF][GPT+][GM][D+] badges to node names
-- Format: ���🇭🇰[NF][GPT+]hk-proxy
-- Impact: Makes node selection much easier
+### 2. 协议解析器
 
-#### 2.4 Proxy Fingerprint Deduplication
-- Source: MiracleNan
-- Current: Only Server:Port dedup
-- Idea: Extend to type+UUID+password+cipher+network+flow
-- Impact: Better dedup for VMess/VLESS
+支持解析以下协议格式：
 
-### PRIORITY 2 — Medium Impact, Medium Effort
+| 格式 | 解析函数 | 说明 |
+|------|----------|------|
+| Clash YAML | parseClashYaml() | .yaml/.yml 文件 |
+| Sing-Box JSON | parseSingBoxJson() | .json 文件 |
+| V2ray 纯文本 | parseV2rayTxt() | .txt 文件，包含 vmess/trojan/ss/vless/hysteria 等 |
 
-#### 2.5 Historical Node Retention (Keep-Old-Nodes)
-- Source: beck-8/subs-check
-- Current: No memory of previously working nodes
-- Idea: Save snapshots, carry forward nodes from last N days
-- Auto-clean history older than keep-days
-- Impact: Reduces churn, keeps reliable nodes alive
+### 3. 地区检测系统
 
-#### 2.6 Shuffle Test Order
-- Source: beck-8/subs-check
-- Current: Sequential testing
-- Idea: Randomize test order to prevent IP clustering
-- Impact: Reduces false negatives from burst traffic
+**三层检测策略**：
+1. **名称检测**：从节点名称识别地区（hk, tw, jp, us, sg, kr, uk, de 等）
+2. **IP段检测**：识别云服务提供商IP段（AWS/GCP/Azure/Cloudflare/阿里云/腾讯云）
+3. **服务器主机名检测**：通过域名关键词推断地区（railway.app→us, hkg→hk, tokyo→jp 等）
 
-#### 2.7 AI Reachability Scoring
-- Source: MiracleNan
-- Current: Simple latency only
-- Idea: Multi-target weighted scoring (GPT:25, Daily:20, GitHub:12, YouTube:8)
-- Impact: Better node quality assessment
+**地区优先级排序**：US(1) > HK(2) > TW(3) > JP(4) > SG(5) > KR(6) > UK(7) > DE(8) > CA(9) > AU(10) > NL(11) > FR(12)
 
-#### 2.8 Configurable Speed Test URL
-- Source: beck-8/subs-check
-- Current: No speed testing
-- Idea: Warn against Speedtest/Cloudflare (nodes block these)
-- Recommend: GitHub release files or custom CF Worker
+### 4. 去重机制
 
-### PRIORITY 3 — Lower Impact or Higher Effort
+三级去重策略：
 
-#### 2.9 WebDAV/S3/Gist Auto-Upload
-- Source: beck-8/subs-check
-- Auto-upload results to cloud storage
+```javascript
+// 第一级：URL去重
+seenUrls.add(url)
 
-#### 2.10 Sub-Store Integration
-- Source: beck-8/subs-check
-- Embedded Sub-Store for advanced transformation
+// 第二级：内容去重（SHA256哈希）
+contentHash = sha256(content)
+seenContent.set(contentHash, ...)
 
-#### 2.11 Mihomo API Integration
-- Source: LordVibeCoding
-- Direct mihomo API for real proxy testing
+// 第三级：节点级去重（server:port键）
+proxyKey = server + ':' + port
+if (新分数 > 旧分数) 替换
+```
 
-#### 2.12 Callback Scripts + Notifications
-- Source: beck-8/subs-check (100+ via Apprise)
-- Post-check hooks for Telegram/DingTalk/etc.
+### 5. 连通性检测
+
+**TCP连接测试**：
+- 超时时间：6秒
+- 并发数：50个同时检测
+- 批量处理：每批50个节点
+- 统计进度：每500个节点输出一次
+
+### 6. IP地理定位与欺诈评分
+
+**IP地理定位**：
+- 使用 ip-api.com 获取国家代码
+- 国家代码映射到地区（US→us, HK→hk, TW→tw 等）
+- 结果缓存避免重复请求
+
+**欺诈评分算法**（0-100分，越高越可疑）：
+- 已知代理/VPN服务商：+25分
+  - Bandwagon, RackNerd, Hostinger, Namecheap, DigitalOcean, Vultr, Linode, Hetzner, OVH, Contabo 等
+- 云服务提供商：+15分
+  - Amazon AWS, Google GCP, Azure, 阿里云, 腾讯云, 华为云 等
+- 数据中心IP段：+10分
+  - 45-46段(OVH), 104段(Cloudflare/Google), 172段, 198段, 206段, 209段
+- 名称关键词：+15分
+  - proxy, vpn, tor, anonym, relay, jump, ssh, tunnel, bypass, freeproxy, freevpn
+
+### 7. 质量评分系统
+
+**基础分 + 加成 = 最终分**：
+- 基础分：50分
+- 非云IP：+20分
+- 地区可识别：+15分
+- VLESS/Trojan协议：+5分
+- 启用TLS：+5分
+- UDP转发：+5分
+- **上限**：100分
+
+### 8. 过滤与排序
+
+**过滤条件**：
+- 地区为 unknown 或 cloud → 剔除
+- 欺诈评分 > 30 → 剔除
+- 延迟 > 5000ms → 剔除
+- 质量分 < 60 → 剔除
+
+**排序规则**：
+1. 主排序：质量分降序
+2. 次排序：地区优先级升序（US优先）
+
+### 9. 输出文件生成
+
+#### 输出文件格式
+
+| 文件名 | 格式 | 用途 |
+|--------|------|------|
+| mihomo.yaml | Clash Meta配置 | 完整配置，含代理组规则 |
+| all.yaml | Clash配置 | 仅代理列表 |
+| base64.txt | Base64编码 | 通用订阅格式 |
+| byxiaoxi.txt | 纯文本 | XiaoXi客户端 |
+| kooker.jp.txt | 带国旗前缀 | kooker.jp客户端 |
+
+#### Mihomo 配置结构
+```yaml
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+
+proxies: [所有有效节点]
+
+proxy-groups:
+  - 节点选择 (select)
+    - 自动选择 (url-test)
+    - 手动转换 (fallback)
+  - 全球直连 (select)
+  - 漏网之鱼 (select)
+
+rules:
+  - GEOSITE,category-ads-all,DIRECT
+  - GEOSITE,cn,全球直连
+  - GEOIP,CN,全球直连,no-resolve
+  - GEOIP,LAN,全球直连,no-resolve
+  - MATCH,漏网之鱼
+```
+
+### 10. URI构建器
+
+支持构建以下协议的订阅URI：
+- vmess:// (V2Ray)
+- trojan:// (Trojan)
+- ss:// (Shadowsocks)
+- vless:// (VLESS)
+- hysteria:// (Hysteria)
+- hysteria2:// (Hysteria2)
+- tuic:// (TUIC)
+- http:// (HTTP代理)
+- https:// (HTTPS代理)
+
+### 11. 历史记录管理
+
+**lib/history.js 提供**：
+- `loadHistoricalProxies()`：加载历史节点数据
+- `saveHistoricalProxies()`：保存当前节点到历史
+
+存储路径：`data/historical.json`
+
+### 12. README自动生成
+
+**generate-readme.js 功能**：
+- 读取生成的yaml/txt文件统计节点数量
+- 生成包含统计信息的README.md
+- 智能判断是否重新生成（对比节点数和时间差）
+- 自动生成GitHub Raw链接
+
+### 13. 名称重命名
+
+**renamedContent 生成功能**：
+- Clash YAML：重写 proxy.name，添加地区前缀
+- Sing-Box JSON：重写 outbound.tag，添加地区前缀
+- V2ray TXT：更新 remarks 参数，添加地区前缀
 
 ---
 
-## 3. Comparison Matrix
+## 执行流程
 
-| Feature | Current | beck-8 | MiracleNan | LordVibe |
-|---------|:-:|:-:|:-:|:-:|
-| Multi-source scraping | Yes | No | No | No |
-| YAML/TXT/JSON parsing | Yes | Yes | Yes | Yes |
-| Server:Port dedup | Yes | Yes | No | Name dedup |
-| Region detection | Basic | IP-based | No | Hardcoded |
-| Flag emoji prefix | Yes | Yes | No | No |
-| Connectivity check | Partial (DNS) | mihomo probe | mihomo | mihomo API |
-| Speed testing | No | Yes | Yes | Yes |
-| Media unlock | No | 8 platforms | 4 targets | No |
-| Noise/scam filter | No | No | Yes (regex) | No |
-| Historical retention | No | Yes (keep-days) | No | No |
-| Shuffle test order | No | Yes | No | No |
-| Quality scoring | No | No | S/A/B/C/D | No |
-| Base64 decode | Yes | Yes | Yes | Yes |
-| Auto-upload | No | WebDAV/S3/Gist | No | No |
-| Web UI | No | Built-in | No | React+shadcn |
-| Docker support | Yes | Yes | No | Yes |
-| Cron scheduling | Yes | Yes | No | No |
+```
+1. 加载配置 (config.json)
+       ↓
+2. 爬取所有数据源
+   - scrapeGithubPagesSite()
+   - scrapeAirportNode()
+   - fetchDirectSubscription()
+       ↓
+3. 合并去重 (mergeAndDeduplicate)
+       ↓
+4. 生成重命名内容 (generateRenamedContent)
+       ↓
+5. 提取所有节点对象
+       ↓
+6. TCP连通性检测 (runChecks)
+       ↓
+7. IP地理定位 + 欺诈评分 (batchGeoCheck)
+       ↓
+8. 计算质量评分 (calculateQualityScore)
+       ↓
+9. 过滤低质量节点
+       ↓
+10. 按质量和地区排序
+       ↓
+11. 生成所有输出文件
+    - mihomo.yaml
+    - all.yaml
+    - base64.txt
+    - byxiaoxi.txt
+    - kooker.jp.txt
+       ↓
+12. 更新 README.md
+```
 
 ---
 
-## 4. Recommended Implementation Order
+## 外部依赖
 
-1. Noise filter regex (10 min)
-2. Proxy fingerprint dedup (30 min)
-3. Platform badge tagging (1-2 hours)
-4. Historical node retention (2-3 hours)
-5. Shuffle test order (15 min)
-6. Quality scoring system (3-4 hours)
-7. Configurable speed test URL (30 min)
-8. WebDAV/S3 upload (2 hours)
+```json
+{
+  "axios": "^1.4.0",        // HTTP请求
+  "cheerio": "^1.0.0-rc.12", // HTML解析
+  "fs-extra": "^11.1.1",     // 文件系统操作
+  "js-yaml": "^4.0.0"       // YAML解析
+}
+```
 
 ---
 
-## 5. Additional Repos Worth Exploring
+## 关键设计特点
 
-- ProxyList/free-proxy — Popular free proxy list (check scraping patterns)
-- free-proxy-ml/free-proxy-ml — ML-based proxy detection (novel approach)
-- Hamed-Gharghi/V2Ray-Checker — GUI+CLI checker with Windows exe
-- RichTiTAN/V2rayTested — Small app for subscription checking
-- missuo/SubsNetflixCheck — Netflix unlock check tool (5 stars)
+1. **多格式支持**：兼容 Clash/Sing-Box/V2ray 三大主流协议
+2. **智能去重**：三层去重确保数据质量
+3. **质量评估**：多维度评分系统筛选优质节点
+4. **自动化程度高**：从爬取到输出全流程自动化
+5. **多客户端适配**：输出多种格式满足不同客户端需求
+6. **可扩展架构**：通过 config.json 轻松添加新数据源
+
+---
+
+## 技术亮点
+
+- **并发优化**：TCP检测和地理定位均使用Promise.all批量处理
+- **内存优化**：使用Map/Set进行高效去重
+- **容错处理**：每个环节都有try-catch和日志记录
+- **性能监控**：实时打印处理进度和统计信息
+
+---
+
+## 评分标准总结
+
+```
+基础分50
++ 非云IP (+20)
++ 地区识别 (+15)
++ VLESS/Trojan协议 (+5)
++ TLS加密 (+5)
++ UDP转发 (+5)
+= 最高100分
+
+过滤条件:
+- 地区为 unknown 或 cloud → 剔除
+- 欺诈评分 > 30 → 剔除
+- 延迟 > 5000ms → 剔除
+- 质量分 < 60 → 剔除
+```
+
+---
+
+## 支持的地区代码
+
+| 代码 | 地区 |
+|------|------|
+| us | 美国 |
+| hk | 香港 |
+| tw | 台湾 |
+| jp | 日本 |
+| sg | 新加坡 |
+| kr | 韩国 |
+| uk | 英国 |
+| de | 德国 |
+| fr | 法国 |
+| nl | 荷兰 |
+| ca | 加拿大 |
+| au | 澳大利亚 |
+| cn | 中国 |
+
+---
+
+*报告生成时间: 2026*

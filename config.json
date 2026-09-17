@@ -38,10 +38,19 @@
     }
   ],
   "settings": {
-    "updateInterval": 300,
-    "maxArticlesPerSite": 10,
-    "cleanOldDataOnUpdate": true,
+    "port": 3000,
     "dataDir": "data",
-    "version": "3.5.0"
+    "version": "3.9.0",
+    "httpCache": true,
+    "cacheTTL": 1800000,
+    "tcpTimeout": 5000,
+    "tcpConcurrency": 100,
+    "batchGeoSize": 200,
+    "minQualityScore": 60,
+    "maxLatency": 5000,
+    "maxFraudScore": 30,
+    "updateInterval": 43200000,
+    "enabledRegions": ["us", "hk", "tw", "jp", "sg", "kr", "uk", "de", "ca", "au", "nl", "fr"],
+    "logLevel": "info"
   }
 }
