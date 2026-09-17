@@ -40,11 +40,11 @@
   "settings": {
     "port": 3000,
     "dataDir": "data",
-    "version": "3.9.0",
+    "version": "3.9.1",
     "httpCache": true,
     "cacheTTL": 1800000,
     "tcpTimeout": 5000,
-    "tcpConcurrency": 100,
+    "tcpConcurrency": 150,
     "batchGeoSize": 200,
     "minQualityScore": 60,
     "maxLatency": 5000,
