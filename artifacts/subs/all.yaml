@@ -1,32 +1,17 @@
 proxies:
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: 155.117.199.13
-    port: 39211
-    skip-cert-verify: true
-    udp: true
-    uuid: f06c6039-a489-3d78-a676-ed43be6deca3
-    network: tcp
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: 151.101.64.155
+    server: 151.101.194.228
     port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 7b7b82a5-d3ac-4631-9899-c958747e5c4d
+    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: www.speedtest.net.22.isvpython.online.
-      path: /telegram-
+        Host: joinxvproxybedee.ir
+      path: /
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -52,18 +37,30 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: 151.101.2.219
+    server: 151.101.66.228
     port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
+    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: foffmelo.com
-      path: /olem/ws?ed=1024
+        Host: joinxvproxybedee.ir
+      path: /
     client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|95分
+    type: http
+    server: 138.199.35.216
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
     _region: us
     speed: unknown
     qualityScore: 95
@@ -71,7 +68,7 @@ proxies:
   - name: 🇺🇸美国|unknown|95分
     type: vless
     server: 155.117.199.13
-    port: 39399
+    port: 39211
     skip-cert-verify: true
     udp: true
     uuid: f06c6039-a489-3d78-a676-ed43be6deca3
@@ -103,54 +100,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: 151.101.66.228
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: joinxvproxybedee.ir
-      path: /
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: 151.101.194.228
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: joinxvproxybedee.ir
-      path: /
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分
-    type: http
-    server: 138.199.35.216
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: 'null'
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
     server: 151.101.3.8
     port: 80
     skip-cert-verify: true
@@ -169,30 +118,29 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: 195.211.98.43
-    port: 443
+    server: 151.101.64.155
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 1b4b11d5-4c2d-4533-9a55-636757cdee94
-    network: tcp
+    uuid: 7b7b82a5-d3ac-4631-9899-c958747e5c4d
+    network: ws
     tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: firefox
+    ws-opts:
+      headers:
+        Host: www.speedtest.net.22.isvpython.online.
+      path: /telegram-
+    client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 95
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: 155.117.199.13
-    port: 29893
+    type: http
+    server: 138.199.35.198
+    port: 9002
     skip-cert-verify: true
     udp: true
-    uuid: f06c6039-a489-3d78-a676-ed43be6deca3
-    network: tcp
     tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 95
@@ -209,12 +157,34 @@ proxies:
     qualityScore: 95
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
-    type: http
-    server: 138.199.35.198
-    port: 9002
+    type: vless
+    server: 151.101.2.219
+    port: 80
     skip-cert-verify: true
     udp: true
+    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
+    network: ws
     tls: true
+    ws-opts:
+      headers:
+        Host: foffmelo.com
+      path: /olem/ws?ed=1024
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|95分
+    type: vless
+    server: 155.117.199.13
+    port: 29893
+    skip-cert-verify: true
+    udp: true
+    uuid: f06c6039-a489-3d78-a676-ed43be6deca3
+    network: tcp
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 95
@@ -236,102 +206,33 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: speed.cloudflare.com
-    port: 2053
+    server: 155.117.199.13
+    port: 39399
     skip-cert-verify: true
     udp: true
-    uuid: ca426e95-9d37-4cca-9521-e61dc50186c2
-    network: ws
+    uuid: f06c6039-a489-3d78-a676-ed43be6deca3
+    network: tcp
     tls: true
-    ws-opts:
-      headers:
-        Host: de.gt-ov.com
-      path: /
+    flow: xtls-rprx-vision
     client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 95
+    fraudScore: 0
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: speed.cloudflare.com
-    port: 8880
+    server: speedtest.net
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: TELEGRAM-NUFiLTER-4ba1cbd17180
+    uuid: bc13c046-5de5-4480-9e61-fd1e08ac9e80
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: banagh.vipnufilter.online
-      path: /telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER?ed=8880
+        Host: 6bizaram.azzndagi.net
+      path: /telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420?ed=8080
     client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speed.cloudflare.com
-    port: 2087
-    skip-cert-verify: true
-    udp: true
-    uuid: bb29c155-d55e-4c07-8403-0581e384f7a2
-    network: grpc
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: http
-    server: fan.365747.xyz
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: http
-    server: purposebydesig.club
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: www.epicgames.com
-    port: 2095
-    skip-cert-verify: true
-    udp: true
-    uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-      headers:
-        Host: free-claude-api.asshole.us.ci
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vmess
-    server: www.shopify.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      path: /hls/cctv5phd.m3u8
-      headers:
-        Host: guanwang.awsno.com
     _region: us
     speed: unknown
     qualityScore: 95
@@ -354,128 +255,28 @@ proxies:
     qualityScore: 95
   - name: 🇺🇸美国|unknown|95分
     type: vless
-    server: hajlab.ucdavis.edu
-    port: 80
+    server: speed.cloudflare.com
+    port: 2053
     skip-cert-verify: true
     udp: true
-    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
+    uuid: ca426e95-9d37-4cca-9521-e61dc50186c2
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: joinxvproxybedee.ir
+        Host: de.gt-ov.com
       path: /
     client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 95
   - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: lyra.yokkastars.com
-    port: 40443
-    skip-cert-verify: true
-    udp: true
-    uuid: 5be7fb02-b6a5-450f-b041-3243b98e8420
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: edge
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speedtest.net
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: bc13c046-5de5-4480-9e61-fd1e08ac9e80
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: 6bizaram.azzndagi.net
-      path: /telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420,telegram-EXPRESSVPN_420?ed=8080
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: www.whatismyip.net
-    port: 2095
-    skip-cert-verify: true
-    udp: true
-    uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-      headers:
-        Host: free-claude-api.asshole.us.ci
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speed.cloudflare.com
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 7996d412-0b2a-4533-bba1-f7531861f1ec
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ul-uae2.09vpn.com
-      path: /vless/
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speed.cloudflare.com
-    port: 2082
-    skip-cert-verify: true
-    udp: true
-    uuid: 6bdb153d-c2b6-4552-ada4-164ed36b9acf
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: novinsoft.ir.oradoshop.com.persiangsm.ir.digikala.com.abadis.ir.shad.ir.divar.ir.downloadly.com.aparat.com.cafebazar.ir.varzesh3.com.ninisite.com.abadis.ir.bama.ir.p30download.ir.telewebion.bmi.ir.shad.ir.mayket.com.ninisite.top.
-      path: /
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speed.cloudflare.com
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 96a1b724-68d2-4f4d-ab25-38ecd83577bc
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vpkplldw6.athlenic.info
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: api.videolenta.cc
+    type: http
+    server: voteshirleysew.club
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: d097ade5-225a-4a50-9f0e-fae258aa4d0c
-    network: tcp
     tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: qq
     _region: us
     speed: unknown
     qualityScore: 95
@@ -508,53 +309,45 @@ proxies:
     qualityScore: 95
   - name: 🇺🇸美国|unknown|95分
     type: http
-    server: voteshirleysew.club
+    server: purposebydesig.club
     port: 443
     skip-cert-verify: true
     udp: true
+    password: None
     tls: true
     _region: us
     speed: unknown
     qualityScore: 95
   - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: speed.cloudflare.com
+    type: vmess
+    server: www.shopify.com
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 7996d412-0b2a-4533-bba1-f7531861f1ec
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      path: /hls/cctv5phd.m3u8
+      headers:
+        Host: guanwang.awsno.com
+    _region: us
+    speed: unknown
+    qualityScore: 95
+  - name: 🇺🇸美国|unknown|95分
+    type: vless
+    server: hajlab.ucdavis.edu
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: b4b4a987-1cbb-490c-a060-8309cabc93b5
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: ul-uae2.09vpn.com
-      path: /vless/
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: 147135010072.sec21org.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 95
-  - name: 🇺🇸美国|unknown|95分
-    type: vless
-    server: 147135001178.sec22org.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e20ebe01-1815-4c09-8e77-fb2f168263ce
-    network: tcp
-    tls: true
+        Host: joinxvproxybedee.ir
+      path: /
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -577,23 +370,6 @@ proxies:
     speed: unknown
     qualityScore: 95
     fraudScore: 0
-  - name: 🇰🇵日本|unknown|95分
-    type: vless
-    server: ul-japan1.09vpn.com
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 8b54a6c7-2544-4a07-9520-b4e5252ba2b7
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: 89.187.28.126
-      path: /vless/
-    client-fingerprint: chrome
-    _region: jp
-    speed: unknown
-    qualityScore: 95
   - name: 🇰🇵日本|unknown|95分
     type: vless
     server: 1-jp.ap.ku-ke.cc
@@ -641,10 +417,40 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|95分
     type: http
-    server: 193.176.84.35
+    server: 193.176.84.20
     port: 9002
     skip-cert-verify: true
     udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: vless
+    server: 88.99.84.173
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: cd2e9541-3fce-4d95-9bec-919d884f911e
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: yhrug.samuel-ghametnabashe.info
+      path: /tiger
+    client-fingerprint: chrome
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 84.17.47.148
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: None
     tls: true
     _region: de
     speed: unknown
@@ -656,6 +462,7 @@ proxies:
     port: 9002
     skip-cert-verify: true
     udp: true
+    password: None
     tls: true
     _region: de
     speed: unknown
@@ -673,14 +480,102 @@ proxies:
     qualityScore: 95
     fraudScore: 0
   - name: 🇩🇪德国|unknown|95分
-    type: vless
-    server: 164.92.180.221
-    port: 440
+    type: http
+    server: 84.17.47.150
+    port: 9002
     skip-cert-verify: true
     udp: true
-    uuid: 59906cb2-a61b-4cf3-b77b-5762ef61d2b0
-    network: http
-    tls: false
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.39
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 84.17.47.146
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.31
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.24
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.32
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.25
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.17
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.23
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
     _region: de
     speed: unknown
     qualityScore: 95
@@ -691,7 +586,6 @@ proxies:
     port: 9002
     skip-cert-verify: true
     udp: true
-    password: None
     tls: true
     _region: de
     speed: unknown
@@ -713,7 +607,51 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|95分
     type: http
-    server: 193.176.84.20
+    server: 193.176.84.35
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 84.17.47.149
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.27
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.30
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分
+    type: http
+    server: 193.176.84.33
     port: 9002
     skip-cert-verify: true
     udp: true
@@ -741,158 +679,6 @@ proxies:
     qualityScore: 95
     fraudScore: 0
   - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.32
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.17
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.33
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.27
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.39
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.25
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 84.17.47.146
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.24
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.23
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: vless
-    server: 88.99.84.173
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: cd2e9541-3fce-4d95-9bec-919d884f911e
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: yhrug.samuel-ghametnabashe.info
-      path: /tiger
-    client-fingerprint: chrome
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.31
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 84.17.47.149
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 193.176.84.30
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
     type: vless
     server: 2.59.134.226
     port: 443
@@ -907,49 +693,12 @@ proxies:
     qualityScore: 95
     fraudScore: 0
   - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 84.17.47.150
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
-    type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分
     type: vless
     server: tic-6.serbia-maki.stream
     port: 443
     skip-cert-verify: true
     udp: true
     uuid: e78c9b0e-2e52-3ca8-bae2-ed04d8894f61
-    network: tcp
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
-    _region: de
-    speed: unknown
-    qualityScore: 95
-  - name: 🇩🇪德国|unknown|95分
-    type: vless
-    server: sto5.vpntype.dev
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 601ad357-c8cf-491f-98e6-62175e130658
     network: tcp
     tls: true
     flow: xtls-rprx-vision
@@ -975,16 +724,54 @@ proxies:
     speed: unknown
     qualityScore: 95
     fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分
+  - name: 🇫🇷法国|unknown|95分
     type: vless
-    server: 158.101.211.111
-    port: 62145
+    server: 151.101.123.4
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: foffmelo.com
+      path: /olem/ws?ed=2560
+    client-fingerprint: chrome
+    _region: fr
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|95分
+    type: vless
+    server: 151.101.123.1
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: foffmelo.com
+      path: /olem/ws?ed=2560
+    client-fingerprint: chrome
+    _region: fr
+    speed: unknown
+    qualityScore: 95
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|95分
+    type: vless
+    server: 189.74.117.5
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: d097ade5-225a-4a50-9f0e-fae258aa4d0c
     network: tcp
-    tls: false
-    _region: nl
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: edge
+    _region: fr
     speed: unknown
     qualityScore: 95
     fraudScore: 0
@@ -1008,7 +795,7 @@ proxies:
     fraudScore: 0
   - name: 🇫🇷法国|unknown|95分
     type: vless
-    server: 151.101.123.4
+    server: 151.101.123.5
     port: 80
     skip-cert-verify: true
     udp: true
@@ -1062,24 +849,6 @@ proxies:
     fraudScore: 0
   - name: 🇫🇷法国|unknown|95分
     type: vless
-    server: 151.101.123.1
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: foffmelo.com
-      path: /olem/ws?ed=2560
-    client-fingerprint: chrome
-    _region: fr
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇫🇷法国|unknown|95分
-    type: vless
     server: 151.101.123.6
     port: 80
     skip-cert-verify: true
@@ -1096,65 +865,14 @@ proxies:
     speed: unknown
     qualityScore: 95
     fraudScore: 0
-  - name: 🇫🇷法国|unknown|95分
-    type: vless
-    server: 151.101.123.5
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 568279ce-dd78-4f33-9e5c-64b18c5505db
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: foffmelo.com
-      path: /olem/ws?ed=2560
-    client-fingerprint: chrome
-    _region: fr
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
-  - name: 🇫🇷法国|unknown|95分
-    type: vless
-    server: 189.74.117.5
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: d097ade5-225a-4a50-9f0e-fae258aa4d0c
-    network: tcp
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: edge
-    _region: fr
-    speed: unknown
-    qualityScore: 95
-    fraudScore: 0
   - name: 🇺🇸美国|unknown|90分
     type: ss
-    server: 129.146.78.85
+    server: 129.146.75.221
     port: 50356
     skip-cert-verify: true
     udp: true
-    password: sbJ5llt+YoGtqLI7RpEhaXIgLTN+tnwzrB3vSOAvs04=
+    password: ko88AO1Lj50PH3xGQ/SzJChWovcD99np3GwLcJwj/Eo=
     cipher: 2022-blake3-chacha20-poly1305
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: 134.195.198.147
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vk.com
-      path: /linkvws
     _region: us
     speed: unknown
     qualityScore: 90
@@ -1167,6 +885,18 @@ proxies:
     udp: true
     password: sg-trojan-2026
     sni: sg-proxy.local
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分
+    type: http
+    server: 149.88.21.129
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
     _region: us
     speed: unknown
     qualityScore: 90
@@ -1190,51 +920,17 @@ proxies:
     qualityScore: 90
     fraudScore: 0
   - name: 🇺🇸美国|unknown|90分
-    type: http
-    server: 149.88.21.129
-    port: 443
+    type: ss
+    server: 129.146.78.85
+    port: 50356
     skip-cert-verify: true
     udp: true
-    password: None
-    tls: true
+    password: sbJ5llt+YoGtqLI7RpEhaXIgLTN+tnwzrB3vSOAvs04=
+    cipher: 2022-blake3-chacha20-poly1305
     _region: us
     speed: unknown
     qualityScore: 90
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: afrhms16v.bestxray.buzz
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f584de15-2034-4170-a723-f48c2bae5e0f
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: afrhms16v.bestxray.buzz
-      path: /linkws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: 30.vmessprotocol.telegram-vmessprotocol-channel.space
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 90
   - name: 🇺🇸美国|unknown|90分
     type: vmess
     server: rlhrwtqusd.site
@@ -1254,18 +950,69 @@ proxies:
     qualityScore: 90
   - name: 🇺🇸美国|unknown|90分
     type: vmess
-    server: hgtrojan.zabc.net
-    port: 2083
+    server: octavi.cfd
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: e6395c20-4571-4b34-d6b1-55a5d36e49ea
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: hgtrojan.zabc.net
-      path: /e6395c20
+        Host: octavi.cfd
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 90
+  - name: 🇺🇸美国|unknown|90分
+    type: vmess
+    server: 7.vmessprotocol.join.telegram-vmessprotocol-channel.space
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ophelia.mom
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 90
+  - name: 🇺🇸美国|unknown|90分
+    type: vmess
+    server: cold-dawn-9246.fly.dev
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: ea4909ef-7ca6-4b46-bf2e-6c07896ef338
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: cold-dawn-9246.fly.dev
+      path: /ea4909ef-7ca6-4b46-bf2e-6c07896ef338-vm
+    _region: us
+    speed: unknown
+    qualityScore: 90
+  - name: 🇺🇸美国|unknown|90分
+    type: vmess
+    server: speed.cloudflare.com
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: c313606f-98c2-4d7b-ba74-48b94f61b11d
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: uswuxian.pai50288.uk
+      path: /
     _region: us
     speed: unknown
     qualityScore: 90
@@ -1305,68 +1052,6 @@ proxies:
     qualityScore: 90
   - name: 🇺🇸美国|unknown|90分
     type: vmess
-    server: speed.cloudflare.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ul-uae2.09vpn.com
-      path: /vmess/
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: gov.uk
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: zheshiscp.com
-      path: /77848824
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: 7.vmessprotocol.join.telegram-vmessprotocol-channel.space
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: http
-    server: crosscards.site
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    sni: crosscards.site
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
     server: t1.620720.xyz
     port: 8443
     skip-cert-verify: true
@@ -1383,60 +1068,13 @@ proxies:
     speed: unknown
     qualityScore: 90
   - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: hms04.xmivideo.cfd
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 93ea486a-bada-42a4-ac38-d088b320fa1e
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: xmivideo.cfd
-      path: /linkws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
     type: http
-    server: mmgr.club
+    server: crosscards.site
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 'null'
     tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: cg1c01.waimaojd.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: be8e3136-b874-4085-bd23-ec3699300490
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: cg1c01.waimaojd.com
-      path: /api/v1/graphql
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: speed.cloudflare.com
-    port: 2087
-    skip-cert-verify: true
-    udp: true
-    uuid: 2a3263e2-891c-4446-b474-a8c63acb6e25
-    cipher: auto
-    network: grpc
-    tls: true
+    sni: crosscards.site
     _region: us
     speed: unknown
     qualityScore: 90
@@ -1457,160 +1095,6 @@ proxies:
     _region: us
     speed: unknown
     qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: vmessprotocol.telegram-vmessprotocol-channel.space
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: http
-    server: crosscards.site
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 'null'
-    tls: true
-    sni: crosscards.site
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: octavi.cfd
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: octavi.cfd
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: ophelia.mom
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: cold-dawn-9246.fly.dev
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: ea4909ef-7ca6-4b46-bf2e-6c07896ef338
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: cold-dawn-9246.fly.dev
-      path: /ea4909ef-7ca6-4b46-bf2e-6c07896ef338-vm
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: http
-    server: mmgr.club
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: vmess
-    server: speed.cloudflare.com
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: c313606f-98c2-4d7b-ba74-48b94f61b11d
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: uswuxian.pai50288.uk
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇸美国|unknown|90分
-    type: http
-    server: jgwynphotoarts.pro
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-  - name: 🇭🇰香港|unknown|90分
-    type: vmess
-    server: v33.hdacd.com
-    port: 30833
-    skip-cert-verify: true
-    udp: true
-    uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-    cipher: auto
-    tls: false
-    _region: hk
-    speed: unknown
-    qualityScore: 90
-  - name: 🇭🇰香港|unknown|90分
-    type: anytls
-    server: ac7548f3ebe045b39a90288ff1e97528.pnuqcnp.cn
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 9sK2mP8xQ7vL3nZ6
-    sni: ac7548f3ebe045b39a90288ff1e97528.lwdnxf.cn
-    _region: hk
-    speed: unknown
-    qualityScore: 90
-  - name: 🇭🇰香港|unknown|90分
-    type: vmess
-    server: v4.hdacd.com
-    port: 30804
-    skip-cert-verify: true
-    udp: true
-    uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-    cipher: auto
-    tls: false
-    _region: hk
-    speed: unknown
-    qualityScore: 90
   - name: 🇹🇼台湾|unknown|90分
     type: anytls
     server: wsfpymp8ab2-tw2.luoyun2.com
@@ -1619,39 +1103,6 @@ proxies:
     udp: true
     password: ac956a1d-3892-4a46-a2ef-45005d3c8e60
     sni: ajldb0907.luoyun2.com
-    _region: tw
-    speed: unknown
-    qualityScore: 90
-  - name: 🇹🇼台湾|unknown|90分
-    type: anytls
-    server: ucj87nbxk0-tw2.luoyun2.com
-    port: 14999
-    skip-cert-verify: true
-    udp: true
-    password: ac956a1d-3892-4a46-a2ef-45005d3c8e60
-    sni: yd5156.luoyun2.com
-    _region: tw
-    speed: unknown
-    qualityScore: 90
-  - name: 🇹🇼台湾|unknown|90分
-    type: anytls
-    server: wsfpymp8ab2-tw2.luoyun2.com
-    port: 27625
-    skip-cert-verify: true
-    udp: true
-    password: ac956a1d-3892-4a46-a2ef-45005d3c8e60
-    sni: xjp06201.tizi001.com
-    _region: tw
-    speed: unknown
-    qualityScore: 90
-  - name: 🇹🇼台湾|unknown|90分
-    type: anytls
-    server: 6ivh.pnuqcnp.cn
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 9sK2mP8xQ7vL3nZ6
-    sni: images.ctfassets.net
     _region: tw
     speed: unknown
     qualityScore: 90
@@ -1666,44 +1117,6 @@ proxies:
     _region: tw
     speed: unknown
     qualityScore: 90
-  - name: 🇸🋀新加坡|unknown|90分
-    type: vless
-    server: sg-reality.dogeggx.cc.cd
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: c91765d8-9ba9-49c5-9ae0-c7bc4edd3377
-    network: tcp
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-  - name: 🇺🇷英国|unknown|90分
-    type: http
-    server: 185.235.0.2
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: ''
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    fraudScore: 0
-  - name: 🇺🇷英国|unknown|90分
-    type: http
-    server: 212.102.63.31
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    fraudScore: 0
   - name: 🇺🇷英国|unknown|90分
     type: http
     server: 212.102.63.1
@@ -1718,7 +1131,31 @@ proxies:
     fraudScore: 0
   - name: 🇺🇷英国|unknown|90分
     type: http
+    server: 185.235.0.2
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: ''
+    tls: true
+    _region: uk
+    speed: unknown
+    qualityScore: 90
+    fraudScore: 0
+  - name: 🇺🇷英国|unknown|90分
+    type: http
     server: 185.235.0.66
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
+    _region: uk
+    speed: unknown
+    qualityScore: 90
+    fraudScore: 0
+  - name: 🇺🇷英国|unknown|90分
+    type: http
+    server: 212.102.63.31
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1742,7 +1179,7 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|90分
     type: http
-    server: 149.36.50.157
+    server: 149.36.50.1
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1754,7 +1191,7 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|90分
     type: http
-    server: 149.36.50.1
+    server: 149.36.50.157
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1794,6 +1231,18 @@ proxies:
     speed: unknown
     qualityScore: 90
   - name: 🇳🇱荷兰|unknown|90分
+    type: http
+    server: 5.255.118.82
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分
     type: hysteria2
     server: 178.18.147.66
     port: 29900
@@ -1806,13 +1255,13 @@ proxies:
     qualityScore: 90
     fraudScore: 0
   - name: 🇳🇱荷兰|unknown|90分
-    type: http
-    server: 5.255.118.82
-    port: 443
+    type: hysteria2
+    server: 178.18.147.66
+    port: 29900
     skip-cert-verify: true
     udp: true
-    password: None
-    tls: true
+    password: github.com/Alvin9999-newpac/fanqiang
+    sni: www.microsoft.com
     _region: nl
     speed: unknown
     qualityScore: 90
@@ -1849,23 +1298,8 @@ proxies:
     qualityScore: 85
     fraudScore: 0
   - name: 🇺🇸美国|unknown|85分
-    type: hysteria2
-    server: 2.27.249.79
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: cd74c0a406664a5bc0bac098220a2468
-    tls: false
-    sni: nl1.sferavpn.pro
-    obfs: salamander
-    obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: 162.159.1.33
+    server: 162.159.5.6
     port: 8080
     skip-cert-verify: true
     udp: true
@@ -1883,7 +1317,24 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: 162.159.5.6
+    server: 209.126.84.189
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 2c981164-9b93-4bca-94ff-b78d3f8498d7
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: 209.126.84.189
+      path: /vmessws
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分
+    type: vmess
+    server: 162.159.1.33
     port: 8080
     skip-cert-verify: true
     udp: true
@@ -1919,35 +1370,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: 209.126.84.189
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 2c981164-9b93-4bca-94ff-b78d3f8498d7
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: 209.126.84.189
-      path: /vmessws
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分
-    type: ss
-    server: 3.141.200.225
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: amazonskr05
-    cipher: aes-256-cfb
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分
-    type: vmess
     server: 162.159.130.208
     port: 8080
     skip-cert-verify: true
@@ -1965,54 +1387,32 @@ proxies:
     qualityScore: 85
     fraudScore: 0
   - name: 🇺🇸美国|unknown|85分
-    type: vmess
-    server: fbi.gov
-    port: 8080
+    type: ss
+    server: 3.141.200.225
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: ef8c954e-014f-4b36-8273-9b5086afab34
-    cipher: auto
-    network: ws
+    password: amazonskr05
+    cipher: aes-256-cfb
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分
+    type: hysteria2
+    server: 2.27.249.79
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: cd74c0a406664a5bc0bac098220a2468
     tls: false
-    ws-opts:
-      headers:
-        Host: bibliographic-sword-sequence-advertisers.trycloudflare.com
-      path: ef8c954e-014f-4b36-8273-9b5086afab34-vm
+    sni: nl1.sferavpn.pro
+    obfs: salamander
+    obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
     _region: us
     speed: unknown
     qualityScore: 85
-  - name: 🇺🇸美国|unknown|85分
-    type: vmess
-    server: speed.cloudflare.com
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: ul-uae2.09vpn.com
-      path: /vmess/
-    _region: us
-    speed: unknown
-    qualityScore: 85
-  - name: 🇺🇸美国|unknown|85分
-    type: vmess
-    server: skk.moe
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 54d4d640-731c-4572-d0d4-e8a617816470
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: icu4.mac2win.top
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 85
+    fraudScore: 0
   - name: 🇺🇸美国|unknown|85分
     type: vmess
     server: speed.cloudflare.com
@@ -2031,17 +1431,18 @@ proxies:
     qualityScore: 85
   - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: 3h-kazakhstan1.09vpn.com
-    port: 80
+    server: fbi.gov
+    port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    uuid: ef8c954e-014f-4b36-8273-9b5086afab34
     cipher: auto
     network: ws
+    tls: false
     ws-opts:
       headers:
-        Host: wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc
-      path: /vmess/
+        Host: bibliographic-sword-sequence-advertisers.trycloudflare.com
+      path: ef8c954e-014f-4b36-8273-9b5086afab34-vm
     _region: us
     speed: unknown
     qualityScore: 85
@@ -2064,34 +1465,33 @@ proxies:
     qualityScore: 85
   - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: russia.com
-    port: 2095
+    server: skk.moe
+    port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    uuid: 54d4d640-731c-4572-d0d4-e8a617816470
     cipher: auto
     network: ws
-    tls: false
     ws-opts:
       headers:
-        Host: ssrsub.v03.ssrsub.com
-      path: /api/v3/download.getFile
+        Host: icu4.mac2win.top
+      path: /
     _region: us
     speed: unknown
     qualityScore: 85
   - name: 🇺🇸美国|unknown|85分
     type: vmess
-    server: support.zoom.us
-    port: 8080
+    server: 118ejob.ir
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 44e57485-eccc-46ef-808f-cd17ac810018
+    uuid: 47d0805b-6b81-49f1-9813-776032d2c076
     cipher: auto
     network: ws
     ws-opts:
       headers:
-        Host: node4.rtxconfigz.com
-      path: /
+        Host: at1-vmess.sshmax.xyz
+      path: /vmess
     _region: us
     speed: unknown
     qualityScore: 85
@@ -2104,18 +1504,6 @@ proxies:
     uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
     cipher: auto
     network: tcp
-    tls: false
-    _region: hk
-    speed: unknown
-    qualityScore: 85
-  - name: 🇭🇰香港|unknown|85分
-    type: vmess
-    server: v10.hdacd.com
-    port: 30807
-    skip-cert-verify: true
-    udp: true
-    uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-    cipher: auto
     tls: false
     _region: hk
     speed: unknown
@@ -2149,18 +1537,6 @@ proxies:
     _region: uk
     speed: unknown
     qualityScore: 85
-  - name: 🇨🇦加拿大|unknown|85分
-    type: hysteria2
-    server: gta.internet-card.sbs
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-    tls: false
-    sni: gta.internet-card.sbs
-    _region: ca
-    speed: unknown
-    qualityScore: 85
   - name: 🇫🇷法国|unknown|85分
     type: vmess
     server: 94.140.0.110
@@ -2192,104 +1568,35 @@ proxies:
     speed: unknown
     qualityScore: 85
     fraudScore: 0
-  - name: 🇨🇳中国|unknown|85分
-    type: vmess
-    server: yh1.dtku41.xyz
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: uh-lawyers-instruments-kernel.trycloudflare.com
-      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
-    _region: cn
-    speed: unknown
-    qualityScore: 85
-  - name: 🇺🇸 美国 123.7MB/s
+  - name: 🇺🇸US_3|2.1MB/s
     type: vless
-    server: 172.64.79.241
+    server: 172.67.212.195
     port: 443
-    uuid: d11e-d424-4583-b36e-524ab1f0afa4
+    uuid: a3be-2bf9-46a2-bc24-328306e49ab7
     security: tls
-    sni: cdn8848.776676.xyz
+    sni: 2-m17.KuwAIT-aiRliNE.KDns.Fr
     flow: ''
     _region: us
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇺🇸US_1|516KB/s
+  - name: 🇺🇸US_6|2.0MB/s
     type: vless
-    server: 172.67.206.64
+    server: 172.67.136.68
     port: 443
     uuid: 5d5c-08c6-4549-b05e-d1ff29ecc8ba
     security: tls
-    sni: 3-M16.ayUTthAYa2032.kdNs.FR
+    sni: EDgE-RouTINg-m16-1.KazAN.KDNs.fr
     flow: ''
     _region: us
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇺🇸 美国 92.7MB/s
+  - name: 🇺🇸 美国 CloudFlare节点
     type: vless
-    server: 172.64.79.241
-    port: 2053
-    uuid: d11e-d424-4583-b36e-524ab1f0afa4
-    security: tls
-    sni: cdn8848.776676.xyz
-    flow: ''
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 80
-    fraudScore: 0
-  - name: 🇺🇸 美国 0142
-    type: vless
-    server: 155.117.199.13
-    port: 39211
-    uuid: 6039-a489-3d78-a676-ed43be6deca3
-    security: tls
-    sni: cdnjs.cloudflare.com
-    flow: xtls-rprx-vision-udp443
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 80
-    fraudScore: 0
-  - name: 🇺🇸 美国 274.2MB/s
-    type: vless
-    server: 152.232.55.106
-    port: 443
-    uuid: ade5-225a-4a50-9f0e-fae258aa4d0c
-    security: tls
-    sni: api.videolenta.cc
-    flow: xtls-rprx-vision-udp443
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 80
-    fraudScore: 0
-  - name: 🇺🇸 美国 05
-    type: vless
-    server: 172.67.169.35
-    port: 443
-    uuid: 5d5c-08c6-4549-b05e-d1ff29ecc8ba
-    security: tls
-    sni: 7-M16.pAttAYa-8.kdnS.fR
-    flow: ''
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 80
-    fraudScore: 0
-  - name: 🇺🇸 美国 103.0MB/s
-    type: vless
-    server: 104.16.255.51
+    server: 104.18.106.225
     port: 443
     uuid: d11e-d424-4583-b36e-524ab1f0afa4
     security: tls
@@ -2313,6 +1620,32 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 15 TG: @nodpai'
+    type: vless
+    server: 173.245.49.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 31
+    type: vless
+    server: 139.64.235.115
+    port: 443
+    uuid: fed1-90fa-4353-8bdf-de1edb2e2d79
+    security: tls
+    sni: nb.lovecf.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
   - name: 🇺🇸 美国 0137
     type: vless
     server: 155.117.199.13
@@ -2326,37 +1659,37 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇺🇸 美国 112.8MB/s
+  - name: '🇺🇸 美国 B 🇺🇸 26 TG: @nodpai'
     type: vless
-    server: 104.21.228.25
-    port: 2096
+    server: 172.66.47.45
+    port: 2083
     uuid: d11e-d424-4583-b36e-524ab1f0afa4
     security: tls
-    sni: cdn8848.776676.xyz
+    sni: wk1.f1w.de5.net
     flow: ''
     _region: us
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇺🇸 美国 284.8MB/s
+  - name: 🇺🇸US_4|587KB/s
     type: vless
-    server: ct.877774.xyz
+    server: 172.67.223.26
     port: 443
-    uuid: d3f3-a7f4-4a31-ba9a-ac2793fa0b9b
+    uuid: a3be-2bf9-46a2-bc24-328306e49ab7
     security: tls
-    sni: us-lax.xhs152.shop
+    sni: 5-m17.KuWaIT-LIne.Kdns.FR
     flow: ''
     _region: us
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇺🇸 美国 261.4MB/s
+  - name: '🇺🇸 美国 A 🇸🇨 SC 01 TG: @nodpai'
     type: vless
-    server: www.whatismyip.net
-    port: 2095
-    uuid: 0e3a-5b87-49dd-bd20-03c7f2735e40
+    server: 154.197.64.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
     security: ''
     sni: ''
     flow: ''
@@ -2365,13 +1698,403 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇭🇰 香港 04
+  - name: '🇺🇸 美国 A 🇺🇸 11 TG: @nodpai'
     type: vless
-    server: 109.66.88.158
+    server: 198.41.208.203
+    port: 80
+    uuid: ff60-a40a-4250-bde2-4c660e363b47
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 01 TG: @nodpai'
+    type: vless
+    server: 50.62.198.50
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸US_7|1.4MB/s
+    type: vless
+    server: 172.67.133.188
+    port: 443
+    uuid: e83c-0327-4703-a847-535a972bc636
+    security: tls
+    sni: 5-M23.e9BC44F2-Fe6D-4B28-b604-2C29B8be1c3e.Kdns.Fr
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: vless
+    server: 104.21.5.156
+    port: 443
+    uuid: 6574-c28b-4ee9-855d-ebdbbf1f7e90
+    security: tls
+    sni: 2-m13.1332afdc-0737-4bb1-8ca8-EE4f0Cd20BC6.kdNs.FR
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: vless
+    server: 172.67.217.240
+    port: 443
+    uuid: 7777-8a3e-6666-b6d1-a9c5f0e8b3a2
+    security: tls
+    sni: fx3h2kf8xn.fx6hsv0.ccwu.cc
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸US_2|899KB/s
+    type: vless
+    server: 64.83.39.176
     port: 443
     uuid: d11e-d424-4583-b36e-524ab1f0afa4
     security: tls
     sni: cdn8848.776676.xyz
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 13 TG: @nodpai'
+    type: vless
+    server: 45.40.153.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇺🇸 美国 A 🇺🇸 04 TG: @nodpai'
+    type: vless
+    server: 8.34.70.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇧🇬 BG 01 TG: @nodpai'
+    type: vless
+    server: 63.141.128.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: vless
+    server: 172.64.52.175
+    port: 2087
+    uuid: 7777-8a3e-6666-b6d1-a9c5f0e8b3a2
+    security: tls
+    sni: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇧🇷 BR 01 TG: @nodpai'
+    type: vless
+    server: 198.71.189.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 05
+    type: vless
+    server: 172.67.169.35
+    port: 443
+    uuid: 5d5c-08c6-4549-b05e-d1ff29ecc8ba
+    security: tls
+    sni: 7-M16.pAttAYa-8.kdnS.fR
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 B 🇺🇸 20 TG: @nodpai'
+    type: vless
+    server: 172.66.44.211
+    port: 2083
+    uuid: d11e-d424-4583-b36e-524ab1f0afa4
+    security: tls
+    sni: wk1.f1w.de5.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 0142
+    type: vless
+    server: 155.117.199.13
+    port: 39211
+    uuid: 6039-a489-3d78-a676-ed43be6deca3
+    security: tls
+    sni: cdnjs.cloudflare.com
+    flow: xtls-rprx-vision-udp443
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸US_5|1.5MB/s
+    type: vless
+    server: 172.67.220.58
+    port: 443
+    uuid: a3be-2bf9-46a2-bc24-328306e49ab7
+    security: tls
+    sni: 3-M17.Kuwait.kdns.fR
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 03 TG: @nodpai'
+    type: vless
+    server: 104.129.167.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 05 TG: @nodpai'
+    type: vless
+    server: 45.40.151.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇺🇸 美国 A 🇺🇸 02 TG: @nodpai'
+    type: vless
+    server: 108.162.193.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 06 TG: @nodpai'
+    type: vless
+    server: 160.153.138.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 B 🇷🇸 RS 01 TG: @nodpai'
+    type: vless
+    server: 45.40.146.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇺🇸 美国 A 🇪🇸 ES 01 TG: @nodpai'
+    type: vless
+    server: 192.169.223.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸US_1|696KB/s
+    type: vless
+    server: 195.123.240.65
+    port: 443
+    uuid: d0eb-5c71-41f9-96e5-1632e22456e4
+    security: reality
+    sni: www.cloudflare.com
+    flow: xtls-rprx-vision
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇺🇸 美国 11.0MB/s
+    type: vless
+    server: 104.19.47.206
+    port: 2087
+    uuid: d11e-d424-4583-b36e-524ab1f0afa4
+    security: tls
+    sni: cdn8848.776676.xyz
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 B 🇺🇸 29 TG: @nodpai'
+    type: vless
+    server: singapore.com
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 10 TG: @nodpai'
+    type: vless
+    server: www.gov.se
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 14 TG: @nodpai'
+    type: vless
+    server: www.baipiao.eu.org
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 12 TG: @nodpai'
+    type: vless
+    server: www.zsu.gov.ua
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇺🇸 08 TG: @nodpai'
+    type: vless
+    server: icook.hk
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 B 🇺🇸 39 TG: @nodpai'
+    type: vless
+    server: www.visa.com.sg
+    port: 2052
+    uuid: 6072-05d7-48d5-8f19-312b05fdd9cd
+    security: ''
+    sni: ''
+    flow: ''
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇭🇰 香港 A 🇸🇨 SC 03 TG: @nodpai'
+    type: vless
+    server: 45.192.224.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: hk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇭🇰 香港 A 🇭🇰 02 TG: @nodpai'
+    type: vless
+    server: 198.41.219.218
+    port: 443
+    uuid: 3991-0514-4a16-8ec4-b15ae861c000
+    security: tls
+    sni: zyzzzoao.xn--fiqv8j.eu.org
     flow: ''
     _region: hk
     speed: unknown
@@ -2391,45 +2114,253 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 10
-  - name: 🇯🇵 日本 11.2MB/s
+  - name: 🇭🇰 香港 04
     type: vless
-    server: 45.142.127.22
+    server: 109.66.88.158
     port: 443
-    uuid: ef29-ab4e-4aa6-932b-d95a18f28a4e
+    uuid: d11e-d424-4583-b36e-524ab1f0afa4
     security: tls
-    sni: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
+    sni: cdn8848.776676.xyz
+    flow: ''
+    _region: hk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇯🇵 日本 A 🇯🇵 05 TG: @nodpai'
+    type: vless
+    server: 176.124.223.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
     flow: ''
     _region: jp
     speed: unknown
     latency: 0
     qualityScore: 80
-    fraudScore: 10
-  - name: 🇰🇷 韩国 11.2MB/s
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 A 🇸🇬 11 TG: @nodpai'
     type: vless
-    server: 43.164.134.99
+    server: 104.17.25.132
+    port: 80
+    uuid: 7f62-d0c0-4c90-903c-a2b3f3806cca
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 A 🇸🇬 09 TG: @nodpai'
+    type: vless
+    server: 114.129.43.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 B 🇸🇬 15 TG: @nodpai'
+    type: vless
+    server: 104.19.151.106
+    port: 80
+    uuid: 7f62-d0c0-4c90-903c-a2b3f3806cca
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 A 🇸🇬 08 TG: @nodpai'
+    type: vless
+    server: 45.131.4.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇸🇬 新加坡 A 🇸🇬 13 TG: @nodpai'
+    type: vless
+    server: 104.21.1.5
+    port: 80
+    uuid: 5cd7-a389-4cde-9598-ce126b0910bc
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 A 🇸🇬 10 TG: @nodpai'
+    type: vless
+    server: 46.149.71.46
     port: 443
-    uuid: ef29-ab4e-4aa6-932b-d95a18f28a4e
+    uuid: fe97-73e3-4cc2-89a7-331e66540365
     security: tls
-    sni: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
+    sni: www.avito.ru
+    flow: xtls-rprx-vision-udp443
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇸🇬 新加坡 A 🇸🇬 07 TG: @nodpai'
+    type: vless
+    server: 104.26.5.134
+    port: 2096
+    uuid: ec42-4673-41e2-94be-ae6253909def
+    security: ''
+    sni: joey.freen1.de5.net
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇸🇬 新加坡 A 🇸🇬 14 TG: @nodpai'
+    type: vless
+    server: 172.67.186.114
+    port: 80
+    uuid: 5cd7-a389-4cde-9598-ce126b0910bc
+    security: ''
+    sni: ''
+    flow: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇰🇷 韩国 A 🇰🇷 01 TG: @nodpai'
+    type: vless
+    server: 108.162.196.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
     flow: ''
     _region: kr
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇩🇪 德国 08
+  - name: '🇰🇷 韩国 A 🇰🇷 02 TG: @nodpai'
     type: vless
-    server: 212.16.92.121
+    server: 72.167.230.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: kr
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇬🇧 英国 A 🇬🇧 01 TG: @nodpai'
+    type: vless
+    server: 185.193.30.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇬🇧 英国 B 🇬🇧 04 TG: @nodpai'
+    type: vless
+    server: 185.159.247.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇬🇧 英国 A 🇬🇧 02 TG: @nodpai'
+    type: vless
+    server: 45.40.146.50
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇬🇧 英国 B 🇬🇧 05 TG: @nodpai'
+    type: vless
+    server: 77.75.199.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇬🇧 英国 A 🇬🇧 03 TG: @nodpai'
+    type: vless
+    server: 45.80.110.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇩🇪 德国 A 🇩🇪 02 TG: @nodpai'
+    type: vless
+    server: 136.244.94.171
     port: 443
-    uuid: 1515-985b-4773-9e70-5d2e1b88a060
-    security: reality
-    sni: jobinvest.ru
-    flow: xtls-rprx-vision
+    uuid: 6534-4986-4959-b30b-a89463eed9af
+    security: ''
+    sni: ''
+    flow: ''
     _region: de
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
+  - name: '🇩🇪 德国 A 🇩🇪 06 TG: @nodpai'
+    type: vless
+    server: 45.80.111.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: de
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
   - name: 🇩🇪 德国 06
     type: vless
     server: 188.114.98.0
@@ -2452,6 +2383,123 @@ proxies:
     sni: cdn8848.776676.xyz
     flow: ''
     _region: de
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇩🇪 德国 B 🇩🇪 07 TG: @nodpai'
+    type: vless
+    server: 84.21.189.197
+    port: 443
+    uuid: d8f2-12c1-4189-8cc5-91d0ee9f5ca0
+    security: tls
+    sni: queuev4.vk.com
+    flow: xtls-rprx-vision-udp443
+    _region: de
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇩🇪 德国 08
+    type: vless
+    server: 212.16.92.121
+    port: 443
+    uuid: 1515-985b-4773-9e70-5d2e1b88a060
+    security: reality
+    sni: jobinvest.ru
+    flow: xtls-rprx-vision
+    _region: de
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇺🇸 美国 A 🇨🇦 CA 01 TG: @nodpai'
+    type: vless
+    server: 50.62.195.50
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 'B 🇨🇦 CA 02 TG: @nodpai'
+    type: vless
+    server: shopify.com
+    port: 443
+    uuid: 08e2-0b59-47b0-a54b-32fc7ef1c902
+    security: tls
+    sni: misaka.cndyw.ggff.net
+    flow: ''
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇦🇺 澳洲 A 🇦🇺 01 TG: @nodpai'
+    type: vless
+    server: 193.9.49.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: au
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇳🇱 荷兰 A 🇳🇱 05 TG: @nodpai'
+    type: vless
+    server: 46.182.24.123
+    port: 443
+    uuid: af2f-4066-4fa9-ae41-3103a1250591
+    security: tls
+    sni: ads.x5.ru
+    flow: ''
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 10
+  - name: '🇳🇱 荷兰 A 🇳🇱 02 TG: @nodpai'
+    type: vless
+    server: 88.216.66.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: '🇳🇱 荷兰 A 🇮🇪 IE 01 TG: @nodpai'
+    type: vless
+    server: 185.170.166.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
+    flow: ''
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 80
+    fraudScore: 0
+  - name: 🇳🇱 荷兰 11
+    type: vless
+    server: 64.227.67.161
+    port: 2083
+    uuid: d11e-d424-4583-b36e-524ab1f0afa4
+    security: tls
+    sni: cdn8848.776676.xyz
+    flow: ''
+    _region: nl
     speed: unknown
     latency: 0
     qualityScore: 80
@@ -2482,28 +2530,28 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇳🇱 荷兰 11
+  - name: 🇫🇷 法国 13
     type: vless
-    server: 64.227.67.161
-    port: 2083
+    server: 147.90.26.37
+    port: 443
     uuid: d11e-d424-4583-b36e-524ab1f0afa4
     security: tls
     sni: cdn8848.776676.xyz
     flow: ''
-    _region: nl
+    _region: fr
     speed: unknown
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇳🇱 荷兰 11.5MB/s
+  - name: 🇫🇷 法国 11.2MB/s
     type: vless
-    server: gvuis865-production.up.railway.app
+    server: 31.185.108.48
     port: 443
-    uuid: 5598-729e-6e6b-6ee4-9b77dee29878
+    uuid: ADaredevil_404
     security: tls
-    sni: gvuis865-production.up.railway.app
+    sni: daredevil2.manufacturingcity.ir
     flow: ''
-    _region: nl
+    _region: fr
     speed: unknown
     latency: 0
     qualityScore: 80
@@ -2521,19 +2569,19 @@ proxies:
     latency: 0
     qualityScore: 80
     fraudScore: 0
-  - name: 🇫🇷 法国 13
+  - name: '🇫🇷 法国 A 🇫🇷 01 TG: @nodpai'
     type: vless
-    server: 147.90.26.37
-    port: 443
-    uuid: d11e-d424-4583-b36e-524ab1f0afa4
-    security: tls
-    sni: cdn8848.776676.xyz
+    server: 45.85.119.30
+    port: 8880
+    uuid: b230-417c-4d8e-b624-0f71afa9c75d
+    security: ''
+    sni: ''
     flow: ''
     _region: fr
     speed: unknown
     latency: 0
     qualityScore: 80
-    fraudScore: 0
+    fraudScore: 10
   - name: 🇫🇷 法国 14
     type: vless
     server: 31.59.121.156
@@ -2546,78 +2594,6 @@ proxies:
     speed: unknown
     latency: 0
     qualityScore: 80
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 172.67.188.109
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 3
-    type: trojan
-    server: 100.42.228.109
-    port: 443
-    password: QaOe
-    sni: t.me/ripaojiedian
-    network: ''
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.16.174.72
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.16.174.143
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 72
-    type: trojan
-    server: 104.18.152.175
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 4
-    type: trojan
-    server: 104.18.152.187
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
@@ -2634,6 +2610,24 @@ proxies:
       path: /bxlbR8OSatc0IBpW1S65K
       headers:
         Host: 3.Cs2-2-1.KDNs.FR
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.16.250.178
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    network: ws
+    tls: true
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -2659,6 +2653,210 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
+    server: 172.64.146.228
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 91d28760-ecf1-450b-9170-d310111a0e6d
+    network: ws
+    tls: true
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: /api/v2/63e9687fa53e441c/stream
+      headers:
+        Host: edfc774f.69lover.site
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 5
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.16.174.36
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.18.152.179
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.16.7.70
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.188.104
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 72
+    type: trojan
+    server: 104.18.152.175
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 51.81.37.5
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: ea286109-d20f-415e-849e-4af20ab04b65
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.151.4
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 4
+    type: trojan
+    server: 104.18.152.187
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.184.92
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.18.152.113
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.151.74
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.16.3.214
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 44eae030-290b-4083-8102-6f8bab05701b
+    network: ws
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: cfvvv-ev1.pages.dev
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.18.152.207
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
     server: 104.17.48.216
     port: 443
     skip-cert-verify: true
@@ -2676,27 +2874,26 @@ proxies:
     qualityScore: 75
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 104.16.10.233
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 44eae030-290b-4083-8102-6f8bab05701b
-    network: ws
-    tls: true
-    ws-opts:
-      path: /
-      headers:
-        Host: cfvvv-ev1.pages.dev
-    client-fingerprint: unsafe
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
     type: trojan
     server: 172.67.221.242
     port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.ignitelimit.com
+    ws-opts:
+      path: /assignment
+      headers:
+        Host: www.ignitelimit.com
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 3
+    type: trojan
+    server: 104.16.174.143
+    port: 443
     password: nity
     sni: www.ignitelimit.com
     network: ws
@@ -2707,20 +2904,17 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 104.21.62.195
+    server: 66.235.200.207
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: cb53f904-c979-454f-bf43-621990008148
+    uuid: b2593749-691c-428c-9481-14979cba3446
     network: ws
     tls: true
-    alpn:
-      - http/1.1
     ws-opts:
+      path: /proxyip=us.xiabibi.cf
       headers:
-        Host: 7.qq1-0.kdns.fr
-        User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
-      path: /LNbYtR09FXg1AmmjhdiHvR8v
+        Host: xi.tbv.ccwu.cc
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -2728,72 +2922,45 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 172.67.136.68
+    server: 15.204.145.84
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: ef5c5d5c-08c6-4549-b05e-d1ff29ecc8ba
-    network: ws
+    uuid: ea286109-d20f-415e-849e-4af20ab04b65
+    network: tcp
     tls: true
-    ws-opts:
-      headers:
-        Host: EDgE-RouTINg-m16-1.KazAN.KDNs.fr
-        User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36
-      path: /JRr6VGcSLFc034DC6sDbwyWJLbB
     client-fingerprint: chrome
     _region: us
     speed: unknown
     qualityScore: 75
     fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.18.22.63
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 65.109.165.12
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 10525b84-7f6e-43ef-912b-87434df813f4
     network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: news5.testsnew.com
+      path: /wss
+    client-fingerprint: chrome
     _region: us
     speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.16.174.6
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.16.174.117
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
     qualityScore: 75
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 104.21.16.74
+    server: 15.204.166.17
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 7700ff6d-cefb-4768-a806-ec4f63fe3b38
-    network: ws
+    uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
+    network: tcp
     tls: true
-    ws-opts:
-      path: /ED3ZQPu7lqyeDGD58KabZ
-      headers:
-        Host: 0-m13.378Bb7ff-11CF-4dAD-B89E-72538AC75e29.KDNS.Fr
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -2818,17 +2985,199 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 65.109.165.12
-    port: 80
+    server: 72.56.41.33
+    port: 40443
     skip-cert-verify: true
     udp: true
-    uuid: 10525b84-7f6e-43ef-912b-87434df813f4
+    uuid: 5be7fb02-b6a5-450f-b041-3243b98e8420
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 47.251.95.178
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: ea286109-d20f-415e-849e-4af20ab04b65
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.16.174.46
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.21.62.195
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: cb53f904-c979-454f-bf43-621990008148
+    network: ws
+    tls: true
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: /LNbYtR09FXg1AmmjhdiHvR8v
+      headers:
+        Host: 7.qq1-0.kdns.fr
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.16.10.233
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 44eae030-290b-4083-8102-6f8bab05701b
     network: ws
     tls: true
     ws-opts:
+      path: /
       headers:
-        Host: news5.testsnew.com
-      path: /wss
+        Host: cfvvv-ev1.pages.dev
+    client-fingerprint: unsafe
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.153.78
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: 104.18.152.208
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.165.202
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.184.159
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.21.16.74
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 7700ff6d-cefb-4768-a806-ec4f63fe3b38
+    network: ws
+    tls: true
+    ws-opts:
+      path: /ED3ZQPu7lqyeDGD58KabZ
+      headers:
+        Host: 0-m13.378Bb7ff-11CF-4dAD-B89E-72538AC75e29.KDNS.Fr
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 15.204.191.46
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: e20ebe01-1815-4c09-8e77-fb2f168263ce
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 172.64.147.104
+    port: 2053
+    skip-cert-verify: true
+    udp: true
+    uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+    network: ws
+    tls: true
+    ws-opts:
+      path: /
+      headers:
+        Host: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+    client-fingerprint: chrome
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分
+    type: vless
+    server: 104.17.69.244
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    network: ws
+    tls: true
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
     client-fingerprint: chrome
     _region: us
     speed: unknown
@@ -2854,169 +3203,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 51.81.37.5
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: ea286109-d20f-415e-849e-4af20ab04b65
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 104.17.69.244
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-    network: ws
-    tls: true
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.26.14.137
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 加州
-    type: trojan
-    server: 216.24.57.7
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 22
-    type: trojan
-    server: 165.215.250.14
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.18.152.229
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 5
-    type: trojan
-    server: 104.19.229.21
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 51.81.124.80
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: trojan
-    server: 172.67.221.242
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.ignitelimit.com
-    ws-opts:
-      path: /assignment
-      headers:
-        Host: www.ignitelimit.com
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.153.78
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.151.4
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 172.67.74.2
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
     server: 139.64.235.174
     port: 443
     skip-cert-verify: true
@@ -3035,173 +3221,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸 美国 CloudFlare节点
     type: trojan
-    server: 104.18.152.207
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 104.21.62.195
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: cb53f904-c979-454f-bf43-621990008148
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /LNbYtR09FXg1AmmjhdiHvR8v
-      headers:
-        Host: 7.qq1-0.kdns.fr
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.151.74
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.145.84
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: ea286109-d20f-415e-849e-4af20ab04b65
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.188.104
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.18.152.73
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 172.64.146.228
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 91d28760-ecf1-450b-9170-d310111a0e6d
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /api/v2/63e9687fa53e441c/stream
-      headers:
-        Host: edfc774f.69lover.site
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.191.46
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e20ebe01-1815-4c09-8e77-fb2f168263ce
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.166.17
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: c4fa89d4-fcb9-48ba-adbc-665181cc817f
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 66.235.200.207
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: b2593749-691c-428c-9481-14979cba3446
-    network: ws
-    tls: true
-    ws-opts:
-      path: /proxyip=us.xiabibi.cf
-      headers:
-        Host: xi.tbv.ccwu.cc
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.184.159
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 0a44145f-59dc-4e5b-a233-677b97f5114c
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸 美国 CloudFlare节点
-    type: trojan
-    server: 104.17.111.8
+    server: 104.18.152.50
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3231,21 +3251,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|75分
     type: vless
-    server: 47.251.95.178
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: ea286109-d20f-415e-849e-4af20ab04b65
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.165.202
+    server: 51.81.124.80
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3257,91 +3263,45 @@ proxies:
     speed: unknown
     qualityScore: 75
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 172.64.147.104
-    port: 2053
-    skip-cert-verify: true
-    udp: true
-    uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
-    network: ws
-    tls: true
-    ws-opts:
-      path: /
-      headers:
-        Host: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 15.204.184.92
+  - name: 🇺🇸 美国 3
+    type: trojan
+    server: 100.42.228.109
     port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 3b9bc773-05eb-4d5f-8c1f-57342c0c4f40
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
+    password: QaOe
+    sni: t.me/ripaojiedian
+    network: ''
     _region: us
     speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 104.16.250.178
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-    network: ws
-    tls: true
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: gl3sr.q4ds.ksm.hh.vavava.kdns.fr
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 72.56.41.33
-    port: 40443
-    skip-cert-verify: true
-    udp: true
-    uuid: 5be7fb02-b6a5-450f-b041-3243b98e8420
-    tls: true
-    flow: xtls-rprx-vision
-    client-fingerprint: firefox
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分
-    type: vless
-    server: 104.16.3.214
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 44eae030-290b-4083-8102-6f8bab05701b
-    network: ws
-    tls: true
-    ws-opts:
-      path: /
-      headers:
-        Host: cfvvv-ev1.pages.dev
-    client-fingerprint: chrome
-    _region: us
-    speed: unknown
+    latency: 0
     qualityScore: 75
     fraudScore: 0
   - name: 🇺🇸 美国 CloudFlare节点
     type: trojan
-    server: 104.16.174.71
+    server: 104.16.174.121
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 2
+    type: trojan
+    server: 104.18.22.63
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点
+    type: trojan
+    server: join-telegram-channel.tirexnet.kdns.fr
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3404,18 +3364,6 @@ proxies:
     speed: unknown
     qualityScore: 75
     fraudScore: 0
-  - name: 🇩🇪 德国 乌克兰
-    type: trojan
-    server: 82.117.245.125
-    port: 2053
-    password: nity
-    sni: www.calmlunch.com
-    network: ws
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
   - name: 🇳🇱荷兰|unknown|75分
     type: vless
     server: 150.251.141.28
@@ -3431,21 +3379,9 @@ proxies:
     speed: unknown
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷 法国 28
+  - name: 🇫🇷 法国 19
     type: trojan
-    server: 130.250.137.171
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 27
-    type: trojan
-    server: 86.38.214.205
+    server: 104.20.6.134
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3467,6 +3403,42 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
+  - name: 🇫🇷 法国 25
+    type: trojan
+    server: 104.18.152.73
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 28
+    type: trojan
+    server: 130.250.137.171
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 31
+    type: trojan
+    server: 104.18.152.230
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
   - name: 🇫🇷 法国 24
     type: trojan
     server: 104.18.152.155
@@ -3479,9 +3451,9 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷 法国 26
+  - name: 🇫🇷 法国 27
     type: trojan
-    server: 104.16.73.213
+    server: 86.38.214.205
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3491,9 +3463,9 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷 法国 08
+  - name: 🇫🇷 法国 20
     type: trojan
-    server: 172.67.149.60
+    server: 104.16.174.148
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3503,9 +3475,9 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷FR_1|526KB/s
+  - name: 🇫🇷 法国 02
     type: trojan
-    server: 162.159.136.234
+    server: 172.67.221.242
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3527,9 +3499,57 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷 法国 33
+  - name: 🇫🇷 法国 01
     type: trojan
-    server: 104.18.152.204
+    server: 172.67.74.2
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 26
+    type: trojan
+    server: 104.16.73.213
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 23
+    type: trojan
+    server: 104.18.152.225
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 08
+    type: trojan
+    server: 172.67.149.60
+    port: 443
+    password: nity
+    sni: www.ignitelimit.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+  - name: 🇫🇷 法国 22
+    type: trojan
+    server: 162.159.136.234
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3563,57 +3583,9 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 0
-  - name: 🇫🇷 法国 22
+  - name: 🇫🇷 法国 33
     type: trojan
-    server: 162.159.136.234
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 23
-    type: trojan
-    server: 104.18.152.225
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 31
-    type: trojan
-    server: 104.18.152.230
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 19
-    type: trojan
-    server: 104.20.6.134
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 20
-    type: trojan
-    server: 104.16.174.148
+    server: 104.18.152.204
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3626,18 +3598,6 @@ proxies:
   - name: 🇫🇷 法国 06
     type: trojan
     server: 104.21.46.3
-    port: 443
-    password: nity
-    sni: www.ignitelimit.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-  - name: 🇫🇷 法国 09
-    type: trojan
-    server: www.speedtest.net
     port: 443
     password: nity
     sni: www.ignitelimit.com
@@ -3661,7 +3621,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 172.67.207.114
+    server: 172.67.183.110
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3671,54 +3631,8 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: ophelia.mom
+        Host: waynn.makeup
       path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.131.150
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: oliv.beauty
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: '🇳🇱 荷兰 Join>🆔️@ATLASV2VPN🆓️📶‎🛰️55... #1'
-    type: hysteria2
-    server: 2.27.249.79
-    port: 443
-    password: c0a406664a5bc0bac098220a2468
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 70
-    fraudScore: 15
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 104.21.91.73
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 45f63e92-f782-4cac-84b8-e61cb5a5bfd0
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: adenc35.fixedlfoat.top
-      path: /linkws
     _region: us
     speed: unknown
     qualityScore: 70
@@ -3743,109 +3657,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.91.254
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: waynn.makeup
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.183.110
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: waynn.makeup
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.215.202
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: octavi.cfd
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.206.124
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4fa35ea4-668e-4d7b-9bbc-b83681060617
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: rlhrwtqusd.site
-      path: /kwhmvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: trojan
-    server: 100.42.228.109
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: BxceQaOe
-    network: tcp
-    sni: t.me%2Fripaojiedian
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.142.191
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: edeen.makeup
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
     server: 104.21.4.29
     port: 443
     skip-cert-verify: true
@@ -3863,8 +3674,31 @@ proxies:
     qualityScore: 70
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
+    type: trojan
+    server: 100.42.228.109
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: BxceQaOe
+    network: tcp
+    sni: t.me%2Fripaojiedian
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸 美国 VPNine1
+    type: hysteria2
+    server: 45.149.172.80
+    port: 443
+    password: 05d40356ef719212045528e04594
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 70
+    fraudScore: 25
+  - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.21.88
+    server: 104.21.53.12
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3874,7 +3708,7 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: odelia.autos
+        Host: ophelia.mom
       path: linkvws
     _region: us
     speed: unknown
@@ -3882,7 +3716,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.31.183
+    server: 104.21.50.177
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3892,25 +3726,7 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: octavi.cfd
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.197.82
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: odelia.autos
+        Host: alvvin.click
       path: linkvws
     _region: us
     speed: unknown
@@ -3936,7 +3752,43 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.50.177
+    server: 104.21.91.73
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 45f63e92-f782-4cac-84b8-e61cb5a5bfd0
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: adenc35.fixedlfoat.top
+      path: /linkws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 172.67.206.124
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 4fa35ea4-668e-4d7b-9bbc-b83681060617
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: rlhrwtqusd.site
+      path: /kwhmvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 104.21.21.88
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3946,15 +3798,32 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: alvvin.click
+        Host: odelia.autos
       path: linkvws
     _region: us
     speed: unknown
     qualityScore: 70
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
+    type: trojan
+    server: 23.227.38.11
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: b17fa17d-13a0-4e8a-a398-8e549ea8b208
+    network: ws
+    sni: syndication-statutes-wanted-logo.trycloudflare.com
+    ws-opts:
+      headers:
+        Host: syndication-statutes-wanted-logo.trycloudflare.com
+      path: /argox-tr
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.27.139
+    server: 172.67.142.191
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3972,7 +3841,71 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 104.21.53.12
+    server: 172.67.131.150
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: oliv.beauty
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 104.21.91.254
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: waynn.makeup
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 172.67.194.2
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: alvvin.click
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: '🇳🇱 荷兰 Join>🆔️@ATLASV2VPN🆓️📶‎🛰️55... #1'
+    type: hysteria2
+    server: 2.27.249.79
+    port: 443
+    password: c0a406664a5bc0bac098220a2468
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 70
+    fraudScore: 15
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 172.67.207.114
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3983,6 +3916,42 @@ proxies:
     ws-opts:
       headers:
         Host: ophelia.mom
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 172.67.215.202
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: octavi.cfd
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
+    server: 104.21.31.183
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: octavi.cfd
       path: linkvws
     _region: us
     speed: unknown
@@ -4008,6 +3977,24 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
+    server: 104.21.27.139
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: edeen.makeup
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分
+    type: vmess
     server: 104.21.75.246
     port: 443
     skip-cert-verify: true
@@ -4026,7 +4013,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分
     type: vmess
-    server: 172.67.194.2
+    server: 172.67.197.82
     port: 443
     skip-cert-verify: true
     udp: true
@@ -4036,37 +4023,10 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: alvvin.click
+        Host: odelia.autos
       path: linkvws
     _region: us
     speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分
-    type: trojan
-    server: 23.227.38.11
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: b17fa17d-13a0-4e8a-a398-8e549ea8b208
-    network: ws
-    sni: syndication-statutes-wanted-logo.trycloudflare.com
-    ws-opts:
-      headers:
-        Host: syndication-statutes-wanted-logo.trycloudflare.com
-      path: /argox-tr
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇺🇸 美国 31
-    type: hysteria2
-    server: starlink-ft.251313.xyz
-    port: 443
-    password: s%3A%2F%2Fxship.top
-    _region: us
-    speed: unknown
-    latency: 0
     qualityScore: 70
     fraudScore: 0
   - name: 🇭🇰香港|unknown|70分
@@ -4087,16 +4047,6 @@ proxies:
     speed: unknown
     qualityScore: 70
     fraudScore: 0
-  - name: 🇩🇪 德国 286
-    type: hysteria2
-    server: 2.27.59.206
-    port: 443
-    password: c0a406664a5bc0bac098220a2468
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 70
-    fraudScore: 0
   - name: 🇩🇪德国|unknown|70分
     type: ss
     server: 130.61.224.188
@@ -4104,30 +4054,6 @@ proxies:
     skip-cert-verify: true
     udp: true
     password: WnsuVoEN56+jytOhEHYViA3xB4OMZ0kcBDudgqMeeHE=
-    cipher: 2022-blake3-chacha20-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分
-    type: ss
-    server: 130.61.46.224
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: QzoZDLFsugBaayOFoit59+peLgfv3Vk+5MGnHhdhPAo=
-    cipher: 2022-blake3-chacha20-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分
-    type: ss
-    server: 130.61.224.122
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: uo6MuSvMSNqb2E8KPtH3uTEn4ob1K5VLgJ7dfpmGvCw=
     cipher: 2022-blake3-chacha20-poly1305
     _region: de
     speed: unknown
@@ -4145,18 +4071,6 @@ proxies:
     speed: unknown
     qualityScore: 70
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分
-    type: ss
-    server: 130.61.80.134
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: Yz7wERCXItjxg58QkWoUaXdAFoiDFoytVsSeRO0RojA=
-    cipher: 2022-blake3-chacha20-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 70
-    fraudScore: 0
   - name: 🇩🇪 德国 AZARBAYJAB1
     type: hysteria2
     server: 162.249.125.133
@@ -4169,34 +4083,44 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|70分
     type: ss
-    server: 130.61.45.208
+    server: 130.61.80.134
     port: 59924
     skip-cert-verify: true
     udp: true
-    password: 5rGNq8QrmZV0BGch+Rxs68Jr0LuVGuDhkVhLj4zEhR0=
+    password: Yz7wERCXItjxg58QkWoUaXdAFoiDFoytVsSeRO0RojA=
     cipher: 2022-blake3-chacha20-poly1305
     _region: de
     speed: unknown
+    qualityScore: 70
+    fraudScore: 0
+  - name: 🇩🇪 德国 406
+    type: hysteria2
+    server: 2.27.59.206
+    port: 443
+    password: c0a406664a5bc0bac098220a2468
+    _region: de
+    speed: unknown
+    latency: 0
     qualityScore: 70
     fraudScore: 0
   - name: 🇩🇪德国|unknown|70分
     type: ss
-    server: 130.61.232.82
+    server: 130.61.119.122
     port: 59924
     skip-cert-verify: true
     udp: true
-    password: qcbhYjOYL+wy0N69cPyPDZMaCLix6L/5XD1HrCZlZiA=
+    password: uuMbME5levfAj7yT6O3+6D+ufAlCTzK4KcgVq6AZAv8=
     cipher: 2022-blake3-chacha20-poly1305
     _region: de
     speed: unknown
     qualityScore: 70
     fraudScore: 0
-  - name: 🇩🇪 德国 53.9MB/s
+  - name: 🇳🇱NL_1|2.6MB/s
     type: hysteria2
-    server: status.fastline-labs.com
-    port: 443
-    password: 89df-905c-4df3-ab07-4f1a37a81005
-    _region: de
+    server: 178.18.147.66
+    port: 29900
+    password: ub.com%2FAlvin9999-newpac%2Ffanqiang
+    _region: nl
     speed: unknown
     latency: 0
     qualityScore: 70
@@ -4246,24 +4170,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|65分
     type: vmess
-    server: 172.67.116.48
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 22a13aa2-4854-44cb-e090-ec71ab84b1ff
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: wap.hostmjj.com
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
     server: 104.21.8.157
     port: 2082
     skip-cert-verify: true
@@ -4282,53 +4188,18 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|65分
     type: vmess
-    server: 172.67.130.140
-    port: 2082
-    skip-cert-verify: true
-    udp: true
-    uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: s1c.v2.v001sss.xyz
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
-    server: 104.17.171.34
+    server: 172.67.116.48
     port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: ccs.hostmjj.com
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
-    server: 23.227.38.23
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
+    uuid: 22a13aa2-4854-44cb-e090-ec71ab84b1ff
     cipher: auto
     network: ws
     tls: false
     ws-opts:
       headers:
-        Host: uh-lawyers-instruments-kernel.trycloudflare.com
-      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
+        Host: wap.hostmjj.com
+      path: /
     _region: us
     speed: unknown
     qualityScore: 65
@@ -4353,24 +4224,6 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|65分
     type: vmess
-    server: 23.227.38.22
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: per-essex-patterns-bowling.trycloudflare.com
-      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
     server: 104.21.82.39
     port: 2052
     skip-cert-verify: true
@@ -4382,42 +4235,6 @@ proxies:
     ws-opts:
       headers:
         Host: mahilu.site
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
-    server: 23.227.39.24
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: per-essex-patterns-bowling.trycloudflare.com
-      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分
-    type: vmess
-    server: 104.21.234.52
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: a.prapt1.ir
       path: /
     _region: us
     speed: unknown
@@ -4443,6 +4260,113 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|65分
     type: vmess
+    server: 104.17.171.34
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ccs.hostmjj.com
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
+    server: 172.67.130.140
+    port: 2082
+    skip-cert-verify: true
+    udp: true
+    uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: s1c.v2.v001sss.xyz
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
+    server: 104.21.234.52
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: a.prapt1.ir
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
+    server: 23.227.38.23
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: uh-lawyers-instruments-kernel.trycloudflare.com
+      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
+    server: 23.227.38.22
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: per-essex-patterns-bowling.trycloudflare.com
+      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
+    server: 23.227.39.24
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: per-essex-patterns-bowling.trycloudflare.com
+      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分
+    type: vmess
     server: 104.21.82.183
     port: 8880
     skip-cert-verify: true
@@ -4458,18 +4382,6 @@ proxies:
     speed: unknown
     qualityScore: 65
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分
-    type: ss
-    server: 130.61.34.252
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: QXHfUaFRhH6qiO8T/a5el3MGLLpbe7IQqFNs2RPeQO0=
-    cipher: 2022-blake3-chacha20-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 65
-    fraudScore: 0
   - name: 🇫🇷法国|unknown|65分
     type: ss
     server: 13.37.239.112
@@ -4481,28 +4393,6 @@ proxies:
     _region: fr
     speed: unknown
     qualityScore: 65
-    fraudScore: 0
-  - name: 🇺🇸 美国 12.8MB/s
-    type: ss
-    server: 3.141.200.225
-    port: 443
-    cipher: '-256-cfb'
-    password: amazonskr05
-    _region: us
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇭🇰 香港 04
-    type: ss
-    server: 212.192.15.231
-    port: 8388
-    cipher: '-256-gcm'
-    password: Z9TvqsEkWr7P7GXe
-    _region: hk
-    speed: unknown
-    latency: 0
-    qualityScore: 60
     fraudScore: 0
   - name: 🇸🇬 新加坡 02
     type: ss
@@ -4533,72 +4423,6 @@ proxies:
     cipher: '-256-cfb'
     password: amazonskr05
     _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇩🇪 德国 23.5MB/s
-    type: ss
-    server: 130.61.232.82
-    port: 59924
-    cipher: 2-blake3-chacha20-poly1305
-    password: qcbhYjOYL+wy0N69cPyPDZMaCLix6L/5XD1HrCZlZiA=
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇩🇪 德国 92.2MB/s
-    type: ss
-    server: 130.61.82.183
-    port: 59924
-    cipher: 2-blake3-chacha20-poly1305
-    password: rsZGSjFXUyi6kX8P6glg15+TdK0zdtKVBjkHYeZdJ58=
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇩🇪 德国 32.1MB/s
-    type: ss
-    server: 130.61.235.30
-    port: 59924
-    cipher: 2-blake3-chacha20-poly1305
-    password: m/CrE+EuNElAAVP1IrhSyQYq0EUT+XiDckrdlPOdMFA=
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇩🇪 德国 74.4MB/s
-    type: ss
-    server: 130.61.34.252
-    port: 59924
-    cipher: 2-blake3-chacha20-poly1305
-    password: QXHfUaFRhH6qiO8T/a5el3MGLLpbe7IQqFNs2RPeQO0=
-    _region: de
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇦🇺 澳洲 07
-    type: ss
-    server: 194.87.196.13
-    port: 10900
-    cipher: '-256-gcm'
-    password: 4938e975724d0ed1
-    _region: au
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-  - name: 🇳🇱 荷兰 51.6MB/s
-    type: ss
-    server: 141.144.200.105
-    port: 45819
-    cipher: 2-blake3-chacha20-poly1305
-    password: Dx4uWbltHEUh+pri0TH9ioGP9B2/vE9G2G8rlTQtEfg=
-    _region: nl
     speed: unknown
     latency: 0
     qualityScore: 60
