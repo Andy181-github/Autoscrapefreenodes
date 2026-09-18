@@ -49,6 +49,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add all.yaml base64.txt byxiaoxi.txt kooker.jp.txt mihomo.yaml README.md config.json
+          # 订阅产物位于 artifacts/subs/ 且被 .gitignore, 需 -f 强制暂存
+          git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
+          git add README.md config.json
           git diff --quiet && git diff --staged --quiet || git commit -m "自动更新: 更新节点数据 [skip ci]"
           git push --set-upstream origin main || (git pull --rebase origin main && git push)

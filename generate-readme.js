@@ -11,7 +11,7 @@ function getCounts() {
   const counts = { subscheck: 0, xiaoxi: 0, kooker: 0, totalQuality: 0, avgQuality: 0 };
 
   // Count mihomo.yaml proxies
-  const mihomoPath = path.join(ROOT_DIR, 'mihomo.yaml');
+  const mihomoPath = path.join(ROOT_DIR, 'artifacts', 'subs', 'mihomo.yaml');
   if (fs.existsSync(mihomoPath)) {
     try {
       const doc = yaml.load(fs.readFileSync(mihomoPath, 'utf8'));
@@ -26,14 +26,14 @@ function getCounts() {
   }
 
   // Count byxiaoxi.txt non-empty lines
-  const xiaoxiPath = path.join(ROOT_DIR, 'byxiaoxi.txt');
+  const xiaoxiPath = path.join(ROOT_DIR, 'artifacts', 'subs', 'byxiaoxi.txt');
   if (fs.existsSync(xiaoxiPath)) {
     const lines = fs.readFileSync(xiaoxiPath, 'utf8').split('\n').filter(l => l.trim());
     counts.xiaoxi = lines.length;
   }
 
   // Count kooker.jp.txt non-empty lines
-  const kookerPath = path.join(ROOT_DIR, 'kooker.jp.txt');
+  const kookerPath = path.join(ROOT_DIR, 'artifacts', 'subs', 'kooker.jp.txt');
   if (fs.existsSync(kookerPath)) {
     const lines = fs.readFileSync(kookerPath, 'utf8').split('\n').filter(l => l.trim());
     counts.kooker = lines.length;
@@ -83,7 +83,7 @@ function generateREADME() {
 
   if (!hadChanges) return false;
 
-  const rawBaseUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branch}`;
+  const rawBaseUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branch}/artifacts/subs`;
 
   const readme = `# 🌐 订阅自动更新
 

@@ -12,8 +12,11 @@ logs/
 # 本地 L2 磁盘缓存（仅加速本地运行，CI 每次全新生成）
 .cache/
 
-# 生成产物与本地运行垃圾（CI 交付物 5 个订阅文件仍在根目录被跟踪）
-artifacts/
+# 生成产物与本地运行垃圾; 例外: artifacts/subs/ 下 5 个订阅文件为 CI 交付物 (需 git add -f)
+artifacts/legacy/
+artifacts/agent-reports/
+artifacts/node-count.json
+!artifacts/subs/
 
 # Agent Teams 协作产出（本地工作记录，不属于仓库交付物）
 data/team-artifacts/

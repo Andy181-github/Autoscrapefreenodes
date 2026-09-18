@@ -29,17 +29,13 @@
 - **新加坡**: 2 nodes
 
 ### 🚀 订阅链接
-- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)
-- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)
-- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)
-- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)
-- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)
---- | :--- |
-| **Mihomo / Clash Meta** | [`mihomo.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/mihomo.yaml) |
-| **Clash / Standard** | [`all.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/all.yaml) |
-| **Base64 (通用)** | [`base64.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/base64.txt) |
-| **通用TXT (XiaoXi)** | [`byxiaoxi.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/byxiaoxi.txt) |
-| **通用TXT (kooker.jp)** | [`kooker.jp.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/kooker.jp.txt) |
+| 类型 | 订阅地址 |
+| :--- | :--- |
+| **Mihomo / Clash Meta** | [`mihomo.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml) |
+| **Clash / Standard** | [`all.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml) |
+| **Base64 (通用)** | [`base64.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt) |
+| **通用TXT (XiaoXi)** | [`byxiaoxi.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt) |
+| **通用TXT (kooker.jp)** | [`kooker.jp.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt) |
 
 ---
 
@@ -52,12 +48,12 @@
 * **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
 * **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
 
-### 3. 风险提示与担保限制
+### 3. 风险提示及担保限制
 * **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
-* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据。
+* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感数据的数据。
 
 ### 4. 责任免除
-本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
+本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或替代性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
 
 ---
 **数据来源**: 互联网公开频道聚合

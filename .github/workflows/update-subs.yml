@@ -36,7 +36,9 @@ jobs:
         run: |
           git config --local user.name github-actions[bot]
           git config --local user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add mihomo.yaml all.yaml base64.txt byxiaoxi.txt kooker.jp.txt README.md
+          # 订阅产物已被 .gitignore (artifacts/), 需 -f 强制暂存; 5 个订阅文件现在位于 artifacts/subs/
+          git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
+          git add README.md
           # 仅在暂存区有变更时提交并推送; 提交信息带 [skip ci] 避免推送触发循环
           if ! git diff --cached --quiet; then
             git commit -m "chore: sync subscriptions [skip ci]"

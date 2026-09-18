@@ -189,10 +189,16 @@ AutoScrapeFreeNodes/
 ├── data/
 │   ├── historical.json           # 运行时数据（git 跟踪，CI 依赖）
 │   └── team-artifacts/           # Agent Teams 产出（gitignore）
-├── artifacts/                    # 本地生成产物（gitignore）
-│   ├── node-count.json
-│   ├── legacy/                   # v3.3.x 遗留快照
-│   └── agent-reports/            # 原 agents/reports/
+├── artifacts/                    # 生成产物
+│   ├── subs/                     # 5 个订阅文件 (git 跟踪, CI 交付物, git add -f)
+│   │   ├── mihomo.yaml
+│   │   ├── all.yaml
+│   │   ├── base64.txt
+│   │   ├── byxiaoxi.txt
+│   │   └── kooker.jp.txt
+│   ├── node-count.json           # (gitignore)
+│   ├── legacy/                   # v3.3.x 遗留快照 (gitignore)
+│   └── agent-reports/            # 原 agents/reports/ (gitignore)
 ├── .cache/                       # L2 磁盘缓存（gitignore）
 ├── logs/                         # 运行日志（gitignore）
 ├── .github/workflows/            # deploy / update-subs / update-data

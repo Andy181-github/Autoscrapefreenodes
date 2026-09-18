@@ -871,7 +871,9 @@ async function scrapeAllSites() {
   allProxies = await batchGeoCheck(allProxies);
   // ==============================================
 if (allProxies.length > 0) {
-    console.log("\n[Output] Writing " + allProxies.length + " proxies to root directory...");
+    const SUBS_DIR = path.join(__dirname, 'artifacts', 'subs');
+    fs.ensureDirSync(SUBS_DIR);
+    console.log("\n[Output] Writing " + allProxies.length + " proxies to " + SUBS_DIR + "...");
 
     // Filter out unknown region, cloud IPs, and high-latency nodes
     const MIN_QUALITY = 60;
@@ -923,11 +925,11 @@ if (allProxies.length > 0) {
         "MATCH,\uD83D\uDC1F 漏网之鱼",
       ],
     };
-    fs.writeFileSync(path.join(ROOT_DIR, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
+    fs.writeFileSync(path.join(SUBS_DIR, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
     console.log("  OK mihomo.yaml");
 
     // 2. all.yaml
-    fs.writeFileSync(path.join(ROOT_DIR, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
+    fs.writeFileSync(path.join(SUBS_DIR, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
     console.log("  OK all.yaml");
 
     // 3. base64.txt
@@ -936,11 +938,11 @@ if (allProxies.length > 0) {
       const uri = buildUri(p);
       if (uri) base64Lines.push(uri);
     }
-    fs.writeFileSync(path.join(ROOT_DIR, "base64.txt"), base64Lines.join("\n") + "\n", "utf8");
+    fs.writeFileSync(path.join(SUBS_DIR, "base64.txt"), base64Lines.join("\n") + "\n", "utf8");
     console.log("  OK base64.txt (" + base64Lines.length + " entries)");
 
     // 4. byxiaoxi.txt
-    fs.writeFileSync(path.join(ROOT_DIR, "byxiaoxi.txt"), base64Lines.join("\n") + "\n", "utf8");
+    fs.writeFileSync(path.join(SUBS_DIR, "byxiaoxi.txt"), base64Lines.join("\n") + "\n", "utf8");
     console.log("  OK byxiaoxi.txt");
 
     // 5. kooker.jp.txt
@@ -953,10 +955,10 @@ if (allProxies.length > 0) {
       const uri = buildUri(p, displayName);
       if (uri) kookerLines.push(uri);
     }
-    fs.writeFileSync(path.join(ROOT_DIR, "kooker.jp.txt"), kookerLines.join("\n") + "\n", "utf8");
+    fs.writeFileSync(path.join(SUBS_DIR, "kooker.jp.txt"), kookerLines.join("\n") + "\n", "utf8");
     console.log("  OK kooker.jp.txt (" + kookerLines.length + " entries)");
 
-    console.log("[Output] All files written to root directory.");
+    console.log("[Output] All files written to artifacts/subs/ directory.");
   } else {
     console.log("[Output] No proxies to write.");
   }
@@ -1384,11 +1386,12 @@ function updateREADME(validProxies, output) {
     regionStats += `- **${cname}**: ${count} nodes\n`;
   }
 
-  let feedLinks = `- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/mihomo.yaml)\n`;
-  feedLinks += `- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/all.yaml)\n`;
-  feedLinks += `- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/base64.txt)\n`;
-  feedLinks += `- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/byxiaoxi.txt)\n`;
-  feedLinks += `- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/kooker.jp.txt)\n`;
+  const SUBS_RAW_BASE = "https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs";
+  let feedLinks = `- **Mihomo / Clash Meta**: [mihomo.yaml](${SUBS_RAW_BASE}/mihomo.yaml)\n`;
+  feedLinks += `- **Clash / Standard**: [all.yaml](${SUBS_RAW_BASE}/all.yaml)\n`;
+  feedLinks += `- **Base64 (通用)**: [base64.txt](${SUBS_RAW_BASE}/base64.txt)\n`;
+  feedLinks += `- **通用TXT (XiaoXi)**: [byxiaoxi.txt](${SUBS_RAW_BASE}/byxiaoxi.txt)\n`;
+  feedLinks += `- **通用TXT (kooker.jp)**: [kooker.jp.txt](${SUBS_RAW_BASE}/kooker.jp.txt)\n`;
 
   const timeRegex = /\*\*最后同步时间\*\*[^]*?>?\*\*ISO 时间\*\*[^\n]*/;
   const newTimeSection = `**最后同步时间**：${cnTime} (北京时间)\n> **ISO 时间**：${isoTime}`;
