@@ -185,7 +185,8 @@ AutoScrapeFreeNodes/
 │   ├── RESEARCH_REPORT.md
 │   ├── OPTIMIZATION.md
 │   ├── CLEANUP_REPORT.md
-│   └── walkthrough.md
+│   ├── walkthrough.md
+│   └── MIGRATION.md              # 订阅链接迁移说明（Phase 2 破坏性变更）
 ├── data/
 │   ├── historical.json           # 运行时数据（git 跟踪，CI 依赖）
 │   └── team-artifacts/           # Agent Teams 产出（gitignore）
