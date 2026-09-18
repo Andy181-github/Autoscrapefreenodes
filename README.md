@@ -5,29 +5,29 @@
 ![XiaoXi](https://img.shields.io/badge/XiaoXi-998-orange)
 ![kooker.jp](https://img.shields.io/badge/kooker.jp-998-purple)
 
-> **最后同步时间**：2026/09/18 19:19:44 (北京时间)
-> **ISO 时间**：2026-09-18T11:19:44.632Z
+> **最后同步时间**：2026/09/18 19:55:34 (北京时间)
+> **ISO 时间**：2026-09-18T11:55:34.639Z
 
 > ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
 > 旧的根目录 raw URL 现已 404，请按下方「订阅链接」表格中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
 > 迁移对照表与迁移步骤详见 [docs/MIGRATION.md](docs/MIGRATION.md)。
 
 ### 节点统计
-- **有效节点数**: 1004
+- **有效节点数**: 1000
 - **平均质量分**: 83/100
-- **总质量分**: 83332
+- **总质量分**: 83000
 
 ### 🌍 地区分布
-- **美国**: 756 nodes
-- **德国**: 63 nodes
+- **美国**: 755 nodes
+- **德国**: 62 nodes
 - **法国**: 52 nodes
 - **荷兰**: 42 nodes
-- **英国**: 29 nodes
+- **英国**: 27 nodes
 - **澳大利亚**: 14 nodes
-- **日本**: 12 nodes
+- **日本**: 13 nodes
 - **中国**: 10 nodes
-- **加拿大**: 9 nodes
 - **香港**: 9 nodes
+- **加拿大**: 8 nodes
 - **新加坡**: 4 nodes
 - **韩国**: 2 nodes
 - **台湾**: 2 nodes
