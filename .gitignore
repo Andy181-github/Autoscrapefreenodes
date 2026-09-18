@@ -8,7 +8,12 @@ logs/
 
 # 本地 Agent 优化产物，不属于仓库交付物
 .agents/
-agents/reports/
 
 # 本地 L2 磁盘缓存（仅加速本地运行，CI 每次全新生成）
-cache/
+.cache/
+
+# 生成产物与本地运行垃圾（CI 交付物 5 个订阅文件仍在根目录被跟踪）
+artifacts/
+
+# Agent Teams 协作产出（本地工作记录，不属于仓库交付物）
+data/team-artifacts/

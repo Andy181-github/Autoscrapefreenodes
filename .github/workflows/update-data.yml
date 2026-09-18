@@ -41,13 +41,14 @@ jobs:
         run: node -e "require('./scraper').scrapeAllSites()"
 
       # 提交最新数据到主分支
-      # 说明: data/*.json 已从 .gitignore 移除 (该工作流依赖其被跟踪);
+      # 说明: 仅 data/historical.json 被 git 跟踪 (lib/history.js 运行时读写),
+      # v3.3.x 遗留的 3 个抓取快照已迁出至 artifacts/legacy/ (gitignore);
       # 仅在暂存区有变更时提交并推送, 提交信息带 [skip ci] 避免循环触发
       - name: 提交最新数据
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.json
+          git add data/historical.json
           if ! git diff --cached --quiet; then
             git commit -m "自动更新: 定期更新节点数据 [skip ci]"
             git pull --rebase origin main

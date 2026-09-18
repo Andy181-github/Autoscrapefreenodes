@@ -164,15 +164,37 @@ node scraper.js
 
 ```
 AutoScrapeFreeNodes/
-├── agents/
-│   ├── multi-agent-system.js    # 多 Agent 协调系统
-│   ├── optimization-search-agent.js  # 优化搜索 Agent
-│   ├── code-review-agent.js     # 代码审查 Agent
-│   └── test-feedback-agent.js   # 测试反馈 Agent
-├── reports/                      # 优化报告输出目录
-├── scraper.js                    # 主抓取脚本
+├── scraper.js                    # 主抓取脚本（写 5 个订阅文件到根目录）
 ├── test.js                       # 测试套件
 ├── run-agents.js                 # Agent 系统启动器
-├── logger.js                     # 日志模块
-└── config.json                   # 配置文件
+├── generate-readme.js            # README 生成器
+├── logger.js                     # 日志模块（写 logs/scraper-*.log）
+├── config.json                   # 配置文件（6 个 raw 订阅源 + 运行参数）
+├── package.json / package-lock.json
+├── README.md                     # 订阅入口（半生成，必须留根）
+├── LICENSE / .gitignore / .gitattributes
+├── agents/                       # 4 个 Agent 源码
+│   ├── multi-agent-system.js
+│   ├── optimization-search-agent.js
+│   ├── code-review-agent.js
+│   └── test-feedback-agent.js
+├── lib/
+│   └── history.js                # 读写 data/historical.json
+├── docs/                         # 人工文档
+│   ├── AGENTS.md
+│   ├── RESEARCH_REPORT.md
+│   ├── OPTIMIZATION.md
+│   ├── CLEANUP_REPORT.md
+│   └── walkthrough.md
+├── data/
+│   ├── historical.json           # 运行时数据（git 跟踪，CI 依赖）
+│   └── team-artifacts/           # Agent Teams 产出（gitignore）
+├── artifacts/                    # 本地生成产物（gitignore）
+│   ├── node-count.json
+│   ├── legacy/                   # v3.3.x 遗留快照
+│   └── agent-reports/            # 原 agents/reports/
+├── .cache/                       # L2 磁盘缓存（gitignore）
+├── logs/                         # 运行日志（gitignore）
+├── .github/workflows/            # deploy / update-subs / update-data
+└── .agents/                      # 本地 skill（gitignore）
 ```

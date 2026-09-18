@@ -93,7 +93,7 @@ function loadConfig() {
 
 // L2 磁盘缓存 - 持久化存储减少重复请求
 class DiskCache {
-  constructor(cacheDir = 'cache') {
+  constructor(cacheDir = '.cache') {
     this.cacheDir = path.join(__dirname, cacheDir);
     this.ensureCacheDir();
   }

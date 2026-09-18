@@ -232,7 +232,7 @@ class MultiAgentSystem {
    * 保存结果
    */
   _saveResults(results) {
-    const outputDir = path.join(__dirname, 'reports');
+    const outputDir = path.join(__dirname, '..', 'artifacts', 'agent-reports');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }

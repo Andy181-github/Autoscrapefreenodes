@@ -1,5 +1,7 @@
 # AutoScrapeFreeNodes 项目功能报告
 
+> ⚠️ 历史文档：描述 v3.3.x 实现，当前代码已演进（详见 docs/AGENTS.md 与 scraper.js 注释）。
+
 ## 项目概述
 
 **项目名称**: AutoScrapeFreeNodes  
