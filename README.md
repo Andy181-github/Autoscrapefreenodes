@@ -1,44 +1,21 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1003-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-998-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-998-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1004-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-997-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-997-purple)
 
-> **最后同步时间**：2026/09/18 19:55:34 (北京时间)
-> **ISO 时间**：2026-09-18T11:55:34.639Z
+> **最后同步时间**：`2026-09-18 20:52:13` (北京时间)
+> **ISO 时间**：`2026-09-18T12:52:13.349Z`
 
-> ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
-> 旧的根目录 raw URL 现已 404，请按下方「订阅链接」表格中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
-> 迁移对照表与迁移步骤详见 [docs/MIGRATION.md](docs/MIGRATION.md)。
-
-### 节点统计
-- **有效节点数**: 1000
-- **平均质量分**: 83/100
-- **总质量分**: 83000
-
-### 🌍 地区分布
-- **美国**: 755 nodes
-- **德国**: 62 nodes
-- **法国**: 52 nodes
-- **荷兰**: 42 nodes
-- **英国**: 27 nodes
-- **澳大利亚**: 14 nodes
-- **日本**: 13 nodes
-- **中国**: 10 nodes
-- **香港**: 9 nodes
-- **加拿大**: 8 nodes
-- **新加坡**: 4 nodes
-- **韩国**: 2 nodes
-- **台湾**: 2 nodes
+### 📊 节点统计
+- **SubsCheck 节点数**：`1004`
+- **XiaoXi 节点数**：`997`
+- **kooker.jp 节点数**：`997`
 
 ### 🚀 订阅链接
-- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/mihomo.yaml)
-- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/all.yaml)
-- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/base64.txt)
-- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/byxiaoxi.txt)
-- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/kooker.jp.txt)
---- | :--- |
+| 类型 | 订阅地址 |
+| :--- | :--- |
 | **Mihomo / Clash Meta** | [`mihomo.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml) |
 | **Clash / Standard** | [`all.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml) |
 | **Base64 (通用)** | [`base64.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt) |
@@ -56,12 +33,12 @@
 * **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
 * **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
 
-### 3. 风险提示及担保限制
+### 3. 风险提示与担保限制
 * **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
-* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感数据的数据。
+* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感信息的数据。
 
 ### 4. 责任免除
-本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或替代性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
+本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或惩罚性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
 
 ---
 **数据来源**: 互联网公开频道聚合
