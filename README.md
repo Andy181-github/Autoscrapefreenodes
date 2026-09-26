@@ -1,39 +1,21 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-307-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-305-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-305-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-319-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-317-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-317-purple)
 
-> **最后同步时间**：2026/09/27 03:09:16 (北京时间)
-> **ISO 时间**：2026-09-26T19:09:16.822Z
+> **最后同步时间**：`2026-09-27 04:54:41` (北京时间)
+> **ISO 时间**：`2026-09-26T20:54:41.383Z`
 
-### 节点统计
-- **有效节点数**: 317
-- **平均质量分**: 82/100
-- **总质量分**: 25994
-
-### 🌍 地区分布
-- **美国**: 174 nodes
-- **法国**: 50 nodes
-- **德国**: 37 nodes
-- **日本**: 17 nodes
-- **香港**: 12 nodes
-- **新加坡**: 9 nodes
-- **荷兰**: 7 nodes
-- **英国**: 6 nodes
-- **台湾**: 2 nodes
-- **澳大利亚**: 1 nodes
-- **中国**: 1 nodes
-- **加拿大**: 1 nodes
+### 📊 节点统计
+- **SubsCheck 节点数**：`319`
+- **XiaoXi 节点数**：`317`
+- **kooker.jp 节点数**：`317`
 
 ### 🚀 订阅链接
-- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/mihomo.yaml)
-- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/all.yaml)
-- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/base64.txt)
-- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/byxiaoxi.txt)
-- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs/kooker.jp.txt)
---- | :--- |
+| 类型 | 订阅地址 |
+| :--- | :--- |
 | **Mihomo / Clash Meta** | [`mihomo.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml) |
 | **Clash / Standard** | [`all.yaml`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml) |
 | **Base64 (通用)** | [`base64.txt`](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt) |
