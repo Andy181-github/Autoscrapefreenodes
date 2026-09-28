@@ -164,10 +164,10 @@ node scraper.js
 
 ```
 AutoScrapeFreeNodes/
-├── scraper.js                    # 主抓取脚本（写 5 个订阅文件到根目录）
+├── scraper.js                    # 主抓取脚本（写 5 个订阅文件到 artifacts/subs/）
 ├── test.js                       # 测试套件
 ├── run-agents.js                 # Agent 系统启动器
-├── generate-readme.js            # README 生成器
+├── generate-readme.js            # README 徽章更新器（仅 3 个节点数量徽章，正文由 scraper.js 维护）
 ├── logger.js                     # 日志模块（写 logs/scraper-*.log）
 ├── config.json                   # 配置文件（6 个 raw 订阅源 + 运行参数）
 ├── package.json / package-lock.json

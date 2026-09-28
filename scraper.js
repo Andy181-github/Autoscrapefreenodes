@@ -1386,20 +1386,56 @@ function updateREADME(validProxies, output) {
     regionStats += `- **${cname}**: ${count} nodes\n`;
   }
 
-  const SUBS_RAW_BASE = "https://raw.githubusercontent.com/Andy181-github/Autoscrapefreenodes/main/artifacts/subs";
+  const SUBS_RAW_BASE = "https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs";
   let feedLinks = `- **Mihomo / Clash Meta**: [mihomo.yaml](${SUBS_RAW_BASE}/mihomo.yaml)\n`;
   feedLinks += `- **Clash / Standard**: [all.yaml](${SUBS_RAW_BASE}/all.yaml)\n`;
   feedLinks += `- **Base64 (通用)**: [base64.txt](${SUBS_RAW_BASE}/base64.txt)\n`;
   feedLinks += `- **通用TXT (XiaoXi)**: [byxiaoxi.txt](${SUBS_RAW_BASE}/byxiaoxi.txt)\n`;
   feedLinks += `- **通用TXT (kooker.jp)**: [kooker.jp.txt](${SUBS_RAW_BASE}/kooker.jp.txt)\n`;
 
-  const timeRegex = /\*\*最后同步时间\*\*[^]*?>?\*\*ISO 时间\*\*[^\n]*/;
-  const newTimeSection = `**最后同步时间**：${cnTime} (北京时间)\n> **ISO 时间**：${isoTime}`;
-  readme = readme.replace(timeRegex, newTimeSection);
+  // 行尾风格: 本地 Windows checkout 可能是 CRLF, GitHub Actions 是 LF。
+  // 按当前文件的行尾风格构造替换文本, 保证 CRLF/LF 下行为一致。
+  const useCRLF = readme.split("\n").some(l => l.endsWith("\r"));
+  const NL = useCRLF ? "\r\n" : "\n";
 
-  const statsRegex = /### [\u{1F4CA}\s]*节点统计[^]*?(?=---)/su;
-  let newStats = `### 节点统计\n- **有效节点数**: ${validCount}\n- **平均质量分**: ${avgScore}/100\n- **总质量分**: ${totalScore}\n\n### 🌍 地区分布\n${regionStats}\n### 🚀 订阅链接\n${feedLinks}`;
-  readme = readme.replace(statsRegex, newStats);
+  // 1) 时间标记: 整行原地替换 (保留 "> " 引用前缀, 不影响迁移说明等人工内容)
+  //    行内值在 "**最后同步时间**：" 之后, 因此匹配整行并重建
+  readme = readme.replace(
+    new RegExp("^[^\\r\\n]*\\*\\*最后同步时间\\*\\*[^\\r\\n]*", "m"),
+    "> **最后同步时间**：" + cnTime + " (北京时间)"
+  );
+  readme = readme.replace(
+    new RegExp("^[^\\r\\n]*\\*\\*ISO 时间\\*\\*[^\\r\\n]*", "m"),
+    "> **ISO 时间**：" + isoTime
+  );
+
+  // 2) 统计区块: 从 "### 节点统计" (兼容 "### 📊 节点统计") 起, 到免责声明前
+  //    的 "---" 分隔线为止。这一段完全由 scraper 写入, 整段替换可清除任何
+  //    历史遗留/混入内容 (旧版锚点缺失时曾留下重复的订阅链接表格)。
+  const statsRegex = new RegExp("### [\\u{1F4CA}\\s]*节点统计[^]*?(?=\\r?\\n---\\s*\\r?\\n\\s*##)", "su");
+  const newStats = ["### 节点统计",
+    `- **有效节点数**: ${validCount}`,
+    `- **平均质量分**: ${avgScore}/100`,
+    `- **总质量分**: ${totalScore}`,
+    "",
+    "### 🌍 地区分布",
+    regionStats.trimEnd(),
+    "### 🚀 订阅链接",
+    feedLinks.trimEnd(),
+    ""].join(NL);
+  if (statsRegex.test(readme)) {
+    readme = readme.replace(statsRegex, newStats);
+  } else {
+    // 兜底: README 结构被破坏 (统计区块缺失) 时, 在免责声明前整块插入
+    const dmIdx = readme.indexOf("## ⚖️ 免责声明");
+    const block = newStats + NL + "---" + NL + NL;
+    if (dmIdx >= 0) {
+      readme = readme.slice(0, dmIdx) + block + readme.slice(dmIdx);
+    } else {
+      readme += NL + block;
+    }
+    console.log("  [README] Warning: stats section missing, re-inserted before disclaimer");
+  }
 
   fs.writeFileSync(readmePath, readme, "utf8");
   console.log(`  [README] Updated with ${validCount} valid nodes, avg score ${avgScore}`);
