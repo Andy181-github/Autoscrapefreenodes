@@ -897,6 +897,9 @@ if (allProxies.length > 0) {
       return (regionPriority[a._region] || 99) - (regionPriority[b._region] || 99);
     });
     console.log("  Sorted " + allProxies.length + " proxies by quality score and region");
+    // 名称归一化: 清洗 C0/C1 控制字符 + 保证节点名全局唯一 (mihomo 对重名直接拒绝整个配置)
+    const renamedCount = normalizeProxyNames(allProxies);
+    console.log("  [Normalize] Renamed " + renamedCount + " duplicated proxy names");
     // 1. mihomo.yaml
     const mihomoConfig = {
       "mixed-port": 7890, "allow-lan": true, "mode": "rule", "log-level": "info",
@@ -1009,6 +1012,40 @@ function buildDisplayName(p) {
   const speed = p.speed || "unknown";
   const score = p.qualityScore || 0;
   return flag + countryName + "|" + speed + "|" + score + "分";
+}
+
+// 从字符串中移除 YAML/go-yaml 会拒绝的 C0/C1 控制字符 (0x00-0x1F 除 \t\n\r, 0x7F, 0x80-0x9F)。
+// 上游订阅源的节点名里常混入 0xA0 (no-break space) 等字节, 会导致 mihomo/FlClash 报
+// "yaml: control characters are not allowed", 这里统一清洗。
+function stripControlChars(s) {
+  if (typeof s !== "string" || s === "") return s;
+  let out = "";
+  for (const ch of s) {
+    const c = ch.charCodeAt(0);
+    if (c === 9 || c === 10 || c === 13) { out += ch; continue; }
+    if (c < 32 || c === 127 || (c >= 0x80 && c <= 0x9f)) continue;
+    out += ch;
+  }
+  return out.trim() || "proxy";
+}
+
+// 确保所有代理节点名全局唯一 (mihomo/clash.meta 对重名直接拒绝整个配置:
+// "proxy X is the duplicate name")。
+// 策略: 同名节点按首次出现顺序追加序号 (us-美国-unknown-95分-2, -3...), 并顺带清洗控制字符。
+function normalizeProxyNames(proxies) {
+  const seen = new Map(); // name -> count
+  let renamed = 0;
+  for (const p of proxies) {
+    p.name = stripControlChars(p.name || "proxy");
+    if (p.name.length > 64) p.name = p.name.slice(0, 64).trim() || "proxy";
+    const c = (seen.get(p.name) || 0) + 1;
+    seen.set(p.name, c);
+    if (c > 1) {
+      p.name = p.name + "-" + c;
+      renamed++;
+    }
+  }
+  return renamed;
 }
 
 function buildUri(p, customName) {
