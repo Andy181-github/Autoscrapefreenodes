@@ -1,36 +1,36 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1347-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1340-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1340-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1368-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1361-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1361-purple)
 
-> **最后同步时间**：2026/10/05 03:24:19 (北京时间)
-> **ISO 时间**：2026-10-04T19:24:19.943Z
+> **最后同步时间**：2026/10/05 06:57:33 (北京时间)
+> **ISO 时间**：2026-10-04T22:57:33.594Z
 
 > ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
 > 旧的根目录 raw URL 现已 404，请按下方「订阅链接」中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
 > 迁移对照表与迁移步骤详见 [docs/MIGRATION.md](docs/MIGRATION.md)。
 
 ### 节点统计
-- **有效节点数**: 1347
+- **有效节点数**: 1368
 - **平均质量分**: 82/100
-- **总质量分**: 110454
+- **总质量分**: 112176
 
 ### 🌍 地区分布
-- **美国**: 808 nodes
-- **德国**: 197 nodes
+- **美国**: 797 nodes
+- **德国**: 214 nodes
 - **新加坡**: 60 nodes
-- **日本**: 52 nodes
-- **荷兰**: 45 nodes
-- **韩国**: 39 nodes
+- **日本**: 55 nodes
+- **荷兰**: 48 nodes
+- **韩国**: 38 nodes
+- **法国**: 34 nodes
 - **英国**: 30 nodes
-- **法国**: 29 nodes
-- **香港**: 27 nodes
+- **香港**: 29 nodes
 - **加拿大**: 22 nodes
 - **中国**: 22 nodes
-- **台湾**: 9 nodes
-- **澳大利亚**: 7 nodes
+- **台湾**: 11 nodes
+- **澳大利亚**: 8 nodes
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
 - **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
