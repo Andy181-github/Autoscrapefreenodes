@@ -1,13 +1,18 @@
 name: 自动更新免费节点订阅与数据
 
 # Free 计划资源预算:
-# - 关闭 schedule (原 cron 语义为每 5 天 1 次, 但维护者确认关闭定时, 仅靠 push + 手动触发)
+# - 定时 schedule: 每 6 小时 1 次 (UTC), 维护者确认频率
 # - 合并原 update-data.yml (historical.json) 到本 workflow, 省 2 次/天独立运行
 # - 订阅产物、README、config、historical.json 在同一 job 内一次生成一次提交
 #   避免多个 workflow 重复 checkout/install 消耗 Actions 分钟
 #
-# 触发条件: push 到 main 或手动 workflow_dispatch
+# 触发条件: 每 6 小时定时 + push 到 main + 手动 workflow_dispatch
 on:
+  schedule:
+    - cron: '0 */6 * * *'
+      # 每 6 小时 1 次: UTC 00:00/06:00/12:00/18:00
+      # 注意: GitHub Actions 对长时间无活动的仓库可能跳过 schedule 运行;
+      # 仓库保持活跃 (定期 push 或手动触发) 可避免该限制。
   push:
     branches: [ main ]
   workflow_dispatch:

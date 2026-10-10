@@ -1,6 +1,6 @@
 # 🌐 订阅自动更新
 
-![Update](https://img.shields.io/badge/更新方式-push%20触发%20%2B%20手动-blue)
+![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
 ![SubsCheck](https://img.shields.io/badge/SubsCheck-1498-green)
 ![XiaoXi](https://img.shields.io/badge/XiaoXi-1491-orange)
 ![kooker.jp](https://img.shields.io/badge/kooker.jp-1491-purple)
@@ -16,7 +16,7 @@
 
 本仓库使用 GitHub **Free 计划**，Actions 分钟数有限，因此更新策略为：
 
-- **触发方式**：仅在 `push` 到 `main` 分支或手动（`workflow_dispatch`）时运行。已取消所有定时 schedule，**被动 Actions 消耗为 0**。
+- **触发方式**：每 6 小时定时运行一次（UTC `0 */6 * * *`），`push` 到 `main` 分支或手动（`workflow_dispatch`）也会触发。GitHub Free 计划下，长时间无活动的仓库定时任务可能被跳过，保持定期 push 或手动触发可避免此限制。
 - **单一 workflow**：`deploy.yml` 在一次运行中完成全部工作 —— 依赖安装 → 单元测试 + 回归测试 → 节点抓取（5 个订阅文件 + 运行状态）→ README 徽章 → 历史数据 → 一次 git 提交。
 - **发布安全**：
   - 输出采用「临时目录 + 结构校验 + 原子替换」，任一文件失败时**正式订阅文件保持上版字节不变**。
