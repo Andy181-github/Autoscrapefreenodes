@@ -441,6 +441,81 @@ function testMihomoSecurityDefaults() {
   return failed === 0;
 }
 
+// 回归: mihomo 配置中 proxy-groups 与 rules 引用的名称必须全部存在
+// (2026-10 修复: group 名 emoji 歧义导致 "proxy X is not found" 类解析错误)
+function testMihomoReferenceIntegrity() {
+  console.log('\n=== Testing Mihomo Reference Integrity ===');
+
+  let yaml;
+  let scraper;
+  try {
+    yaml = require('js-yaml');
+    scraper = require('./scraper');
+  } catch (e) {
+    console.log('  SKIP: ' + e.message);
+    return true;
+  }
+
+  // 用含重名/带空白/带 # 的上游名验证清洗 + 引用完整性
+  const sampleProxies = [
+    { name: 'us-node-1', type: 'vless', server: 'a.example', port: 443, _region: 'us', speed: 'unknown', qualityScore: 95 },
+    { name: 'us-node-1', type: 'vless', server: 'b.example', port: 443, _region: 'us', speed: 'unknown', qualityScore: 95 }, // 重名
+    { name: 'v2s.com] 1... #5', type: 'trojan', server: 'c.example', port: 443, password: 'pw', _region: 'jp', speed: 'unknown', qualityScore: 75 },
+  ];
+
+  let passed = 0, failed = 0;
+  const check = (label, ok, detail) => {
+    if (ok) passed++;
+    else { failed++; console.log(`  FAIL: ${label}${detail ? ' — ' + detail : ''}`); }
+  };
+
+  // 1) buildMihomoConfig 的名称清洗: # 移除 + 空白折叠 (只读视图)
+  const cfg = scraper.buildMihomoConfig(sampleProxies);
+  const names = cfg.proxies.map(p => p.name);
+  check('names have no # fragment delimiter', names.every(n => !n.includes('#')), JSON.stringify(names));
+  check('names have no multi-space runs', names.every(n => !/\s{2,}/.test(n)), JSON.stringify(names));
+
+  // 1b) normalizeProxyNames: 重名追加序号 (scrapeAllSites 主路径的去重保证)
+  const dup = [
+    { name: 'us-node-1' }, { name: 'us-node-1' }, { name: 'us-node-1' },
+  ];
+  scraper.normalizeProxyNames(dup);
+  check('normalizeProxyNames suffixes duplicates', dup.map(p => p.name).join(',') === 'us-node-1,us-node-1-2,us-node-1-3', JSON.stringify(dup.map(p => p.name)));
+
+  // 2) group 引用完整性: 所有 group 成员名必须能在 proxies ∪ groups ∪ {DIRECT,GLOBAL} 中找到
+  const groupNames = new Set(cfg['proxy-groups'].map(g => g.name));
+  const proxyNames = new Set(cfg.proxies.map(p => p.name));
+  const validRefs = new Set([...groupNames, ...proxyNames, 'DIRECT', 'GLOBAL']);
+  let missing = [];
+  for (const g of cfg['proxy-groups']) {
+    for (const r of (g.proxies || [])) if (!validRefs.has(r)) missing.push(g.name + '->' + r);
+  }
+  check('all proxy-group member refs resolve', missing.length === 0, JSON.stringify(missing.slice(0,5)));
+
+  // 3) rules 中 group 引用完整性 (目标 = 倒数第 1 或 2 段, 若以 no-resolve 结尾)
+  let badRules = [];
+  for (const rule of cfg.rules) {
+    const parts = rule.split(',');
+    const last = parts[parts.length - 1];
+    const target = (last === 'no-resolve') ? parts[parts.length - 2] : last;
+    if (target && !['DIRECT','GLOBAL'].includes(target) && !validRefs.has(target)) badRules.push(rule);
+  }
+  check('all rule targets resolve to existing groups', badRules.length === 0, JSON.stringify(badRules));
+
+  // 4) 用真实生成 YAML 再 round-trip 一次, 保证引用在渲染后仍一致
+  const rendered = yaml.dump(cfg, { lineWidth: -1, noRefs: true });
+  const reparsed = yaml.load(rendered);
+  const gNames2 = new Set(reparsed['proxy-groups'].map(g => g.name));
+  const pNames2 = new Set(reparsed.proxies.map(p => p.name));
+  const valid2 = new Set([...gNames2, ...pNames2, 'DIRECT', 'GLOBAL']);
+  let missing2 = 0;
+  for (const g of reparsed['proxy-groups']) for (const r of (g.proxies||[])) if (!valid2.has(r)) missing2++;
+  check('YAML round-trip preserves reference integrity', missing2 === 0, missing2 + ' missing after reparse');
+
+  console.log(`  Results: ${passed} passed, ${failed} failed`);
+  return failed === 0;
+}
+
 // Main test runner
 async function runTests() {
   console.log('\n' + '='.repeat(60));
@@ -457,6 +532,7 @@ async function runTests() {
   results.push(await testFraudScore());
   results.push(await testQualityScore());
   results.push(await testMihomoSecurityDefaults());
+  results.push(await testMihomoReferenceIntegrity());
 
   const passed = results.filter(r => r).length;
   const total = results.length;

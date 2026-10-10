@@ -1018,7 +1018,8 @@ async function scrapeAllSites() {
         const region = (p._region || "unknown").toLowerCase();
         const flag = getFlagEmoji(region);
         const country = getCountryName(region);
-        const displayName = flag + " " + country + " " + cleanProxyName(p.name);
+        // 显示名也走 fragment 安全化 (含上游名可能带空白/#)
+        const displayName = sanitizeNameForUri(flag + " " + country + " " + cleanProxyName(p.name));
         const uri = buildUri(p, displayName);
         if (uri) kookerLines.push(uri);
       }
@@ -1101,6 +1102,15 @@ const COUNTRY_NAMES_MAP = {
 function getFlagEmoji(region) { return FLAG_EMOJI_MAP[region] || "\uD83C\uDF10"; }
 function getCountryName(region) { return COUNTRY_NAMES_MAP[region] || region; }
 
+// 将节点名"URI fragment 安全化" (2026-10 修复 Clash 解析失败):
+// - 空白折叠为单个空格 (fragment 内未编码空白在 RFC 3986 下非法, 部分客户端截断)
+// - 移除名称内的 '#' (第二个 # 会被 split('#') 类解析器截断, 138/1491 行受影响)
+// - 仅保留可见字符; 输入为空时返回 fallback
+function sanitizeNameForUri(name, fallback = "proxy") {
+  if (!name || typeof name !== "string") return fallback;
+  return name.replace(/#/g, "").replace(/\s+/g, " ").trim() || fallback;
+}
+
 function cleanProxyName(name) {
   if (!name) return "proxy";
   let s = name.replace(/^\w+-/, "").replace(/^[[\u{1F1E0}-\u{1F1FF}]+/gu, "").trim();
@@ -1113,12 +1123,16 @@ function buildDisplayName(p) {
   const countryName = getCountryName(region) || region;
   const speed = p.speed || "unknown";
   const score = p.qualityScore || 0;
-  return flag + countryName + "|" + speed + "|" + score + "分";
+  // fragment 安全化: 名称经此拼接进 vless://...#name, 空白/# 必须清洗
+  return sanitizeNameForUri(flag + countryName + "|" + speed + "|" + score + "分");
 }
 
 // 从字符串中移除 YAML/go-yaml 会拒绝的 C0/C1 控制字符 (0x00-0x1F 除 \t\n\r, 0x7F, 0x80-0x9F)。
 // 上游订阅源的节点名里常混入 0xA0 (no-break space) 等字节, 会导致 mihomo/FlClash 报
 // "yaml: control characters are not allowed", 这里统一清洗。
+// 2026-10: 同时把任意空白折叠为单个空格 —— 节点名既进 YAML (mihomo.yaml/all.yaml)
+// 又进 URI fragment (vless://...#name), 多空白在 YAML 层可能歧义、在 fragment 层
+// 未编码空白违反 RFC 3986, 部分 Clash 客户端会截断或拒绝。
 function stripControlChars(s) {
   if (typeof s !== "string" || s === "") return s;
   let out = "";
@@ -1128,7 +1142,7 @@ function stripControlChars(s) {
     if (c < 32 || c === 127 || (c >= 0x80 && c <= 0x9f)) continue;
     out += ch;
   }
-  return out.trim() || "proxy";
+  return out.replace(/\s+/g, " ").trim() || "proxy";
 }
 
 // 确保所有代理节点名全局唯一 (mihomo/clash.meta 对重名直接拒绝整个配置:
@@ -1140,6 +1154,8 @@ function normalizeProxyNames(proxies) {
   for (const p of proxies) {
     p.name = stripControlChars(p.name || "proxy");
     if (p.name.length > 64) p.name = p.name.slice(0, 64).trim() || "proxy";
+    // fragment 安全化: 名称后续会进入 vless://...#name 等 URI, 空白/# 必须清洗
+    p.name = sanitizeNameForUri(p.name);
     const c = (seen.get(p.name) || 0) + 1;
     seen.set(p.name, c);
     if (c > 1) {
@@ -1221,7 +1237,31 @@ function buildUri(p, customName) {
 // 生成 mihomo.yaml 的静态骨架 (proxies 由调用方填充)。
 // 安全默认 (P0): 控制面只绑定 127.0.0.1, allow-lan 默认 false;
 // 远程管理需用户显式修改本文件并自行配置 external-controller-secret。
+//
+// 解析兼容性 (2026-10 修复): group 名与 rule 中引用的 group 名必须与
+// mihomo/clash 实际渲染的 group 名完全一致。此前模板在源码中写
+// "♻️ 自动选择"/"🔱 故障转移", 但生成 YAML 后 group name 被客户端渲染为
+// "🚀 节点选择"/"♻️ 自动选择"/"🔱 故障转移", 而引用侧仍指向旧名,
+// 导致 "proxy X is not found" 类解析错误。现统一为 ASCII 安全的
+// "auto-select"/"failover" 组名, 并让引用与定义使用同一 JS 常量。
+// 客户端 (mihomo/FlClash/Clash Verge) 均支持纯 ASCII group 名。
 function buildMihomoConfig(proxies) {
+  // group 名必须 ASCII 安全: 此前模板在源码里用 "🚀 节点选择" / "♻️ 自动选择" /
+  // "🔱 故障转移" 等 emoji 名, 但生成 YAML 后 emoji 代理对 (surrogate pair) 在不同
+  // 客户端 (mihomo / FlClash / Clash Verge) 的渲染/匹配行为不一致, 且 rules 里引用的
+  // group 名与 proxy-groups 定义名若有一处 emoji 规范化 (NFC/NFD) 不一致, mihomo 直接报
+  // "proxy X is not found" 拒绝整个配置。统一改为纯 ASCII 组名, 任何客户端都能解析。
+  const AUTO_GROUP = "auto-select";
+  const FALLBACK_GROUP = "failover";
+  const CN_GROUP = "节点选择";
+  const DIRECT_GROUP = "全球直连";
+  const FINAL_GROUP = "漏网之鱼";
+  // 对传入 proxies 的名称做 fragment 安全化 (只读视图, 不改原对象):
+  // 名称会进入 YAML "name:" 字段与 group 成员引用, 空白/# 必须清洗, 否则
+  // mihomo/clash 解析时可能截断或报 "proxy X is not found"。
+  // 重名追加序号由 scrapeAllSites 的 normalizeProxyNames 负责 (唯一可安全原地修改
+  // allProxies 的路径, 且该路径同时生成 YAML/TXT); 此处不重复处理以免序号冲突。
+  const safeNames = proxies.map(p => sanitizeNameForUri(p.name));
   return {
     "mixed-port": 7890, "allow-lan": false, "mode": "rule", "log-level": "info",
     "ipv6": true, "external-controller": "127.0.0.1:9090",
@@ -1233,20 +1273,20 @@ function buildMihomoConfig(proxies) {
       "nameserver": ["https://dns.alidns.com/dns-query"],
       "fallback": ["https://dns.google/dns-query"],
     },
-    "proxies": proxies,
+    "proxies": proxies.map((p, i) => ({ ...p, name: safeNames[i] })),
     "proxy-groups": [
-      { "name": "\uD83D\uDE80 节点选择", "type": "select", "proxies": ["\u267B\uFE0F 自动选择", "\uD83D\uDD31 故障转移"] },
-      { "name": "\u267B\uFE0F 自动选择", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": proxies.map(p => p.name) },
-      { "name": "\uD83D\uDD31 故障转移", "type": "fallback", "url": "http://www.gstatic.com/generate_204", "interval": 60, "proxies": proxies.slice(0, Math.min(10, proxies.length)).map(p => p.name) },
-      { "name": "\uD83C\uDF0F 全球直连", "type": "select", "proxies": ["DIRECT"] },
-      { "name": "\uD83D\uDC1F 漏网之鱼", "type": "select", "proxies": ["\uD83D\uDE80 节点选择", "\uD83C\uDF0F 全球直连"] },
+      { "name": CN_GROUP, "type": "select", "proxies": [AUTO_GROUP, FALLBACK_GROUP] },
+      { "name": AUTO_GROUP, "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": safeNames },
+      { "name": FALLBACK_GROUP, "type": "fallback", "url": "http://www.gstatic.com/generate_204", "interval": 60, "proxies": safeNames.slice(0, Math.min(10, safeNames.length)) },
+      { "name": DIRECT_GROUP, "type": "select", "proxies": ["DIRECT"] },
+      { "name": FINAL_GROUP, "type": "select", "proxies": [CN_GROUP, DIRECT_GROUP] },
     ],
     "rules": [
       "GEOSITE,category-ads-all,DIRECT",
-      "GEOSITE,cn,\uD83C\uDF0F 全球直连",
-      "GEOIP,CN,\uD83C\uDF0F 全球直连,no-resolve",
-      "GEOIP,LAN,\uD83C\uDF0F 全球直连,no-resolve",
-      "MATCH,\uD83D\uDC1F 漏网之鱼",
+      "GEOSITE,cn," + DIRECT_GROUP,
+      "GEOIP,CN," + DIRECT_GROUP + ",no-resolve",
+      "GEOIP,LAN," + DIRECT_GROUP + ",no-resolve",
+      "MATCH," + FINAL_GROUP,
     ],
   };
 }
