@@ -601,9 +601,70 @@ async function fetchDirectSubscription(url, description) {
   }
 }
 
+// P1-1: 输出生成采用"临时目录 + 校验 + 原子替换"策略。
+// - 所有 5 个订阅文件先写入 SUBS_DIR.tmp.<pid>/, 通过非空/结构校验后才替换正式文件。
+// - 任何一步失败: 正式文件保持上版内容不变, 输出机器可读状态 (exitCode!=0)。
+// - 零节点: 视为"抓取失败"而非"成功发布空订阅"。旧文件保留, 但本次运行标记为 failed。
+const SUBS_DIR = path.join(__dirname, 'artifacts', 'subs');
+const STATUS_FILE = path.join(__dirname, 'artifacts', 'run-status.json');
+const SUB_OUTPUT_FILES = ['mihomo.yaml', 'all.yaml', 'base64.txt', 'byxiaoxi.txt', 'kooker.jp.txt'];
+
+function writeRunStatus(status) {
+  try {
+    fs.ensureDirSync(path.dirname(STATUS_FILE));
+    fs.writeFileSync(STATUS_FILE, JSON.stringify(status, null, 2), 'utf8');
+  } catch (e) {
+    console.log('[Status] Failed to write run-status.json: ' + e.message);
+  }
+}
+
+// 结构校验: 每个文件必须存在、非空、且可解析为对应格式
+function validateSubFiles(tmpDir) {
+  const errors = [];
+  for (const f of SUB_OUTPUT_FILES) {
+    const p = path.join(tmpDir, f);
+    if (!fs.existsSync(p)) { errors.push(`${f}: missing`); continue; }
+    const content = fs.readFileSync(p, 'utf8');
+    if (content.trim().length === 0) { errors.push(`${f}: empty`); continue; }
+    if (f === 'mihomo.yaml' || f === 'all.yaml') {
+      try {
+        const doc = yaml.load(content);
+        if (!doc || !Array.isArray(doc.proxies)) errors.push(`${f}: missing proxies list`);
+      } catch (e) { errors.push(`${f}: invalid YAML (${e.message})`); }
+    } else {
+      // txt 文件每行必须是合法 URI 或空行
+      const lines = content.split('\n').filter(l => l.trim());
+      for (const l of lines) {
+        if (!/^[a-z]+:\/\//i.test(l.trim())) {
+          errors.push(`${f}: malformed line "${l.trim().substring(0, 40)}..."`);
+          break;
+        }
+      }
+    }
+  }
+  return errors;
+}
+
+// 原子替换: 校验全部通过后才把临时目录内容覆盖正式目录
+// 可选 targetDir 参数供测试注入临时目标, 默认使用 SUBS_DIR
+function commitSubFiles(tmpDir, targetDir) {
+  const dest = targetDir || SUBS_DIR;
+  fs.ensureDirSync(dest);
+  for (const f of SUB_OUTPUT_FILES) {
+    fs.copyFileSync(path.join(tmpDir, f), path.join(dest, f));
+  }
+}
+
+function cleanupTmpDir(tmpDir) {
+  try { fs.removeSync(tmpDir); } catch (e) { /* best effort */ }
+}
+
 async function scrapeAllSites() {
   const config = loadConfig();
   const results = [];
+  const runId = Date.now().toString(36); // P2: 运行 ID, 用于日志关联
+  const phaseStart = Date.now();
+  logger.info(`[run:${runId}] Scrape started (${config.sites.filter(s => s.enabled).length} enabled sources)`);
 
   console.log('='.repeat(60));
   console.log('[AutoScrape] Starting node scrape...');
@@ -671,7 +732,9 @@ async function scrapeAllSites() {
   console.log(`  Sing-Box: ${output.feeds['Sing-Box'].count} URLs`);
   console.log(`  Unique: ${output.summary.unique}`);
   console.log('='.repeat(60));
-  
+
+  logger.info(`[run:${runId}] Fetch+dedup phase complete in ${((Date.now() - phaseStart) / 1000).toFixed(1)}s, ${results.length}/${directSites.length} sources succeeded, ${output.summary.unique} unique feeds`);
+
   
   // === Write output files to root directory ===
   const ROOT_DIR = __dirname;
@@ -818,24 +881,32 @@ async function scrapeAllSites() {
   const TIMEOUT_MS = 5000; // Reduced for faster checks
   const CONCURRENCY = 150; // 提升至 150 (优化建议: 批量检测建议并发数: 100-200)
 
+  // P1-2: 检测等级说明 — TCP connect 只证明目标端口可达，不代表代理协议
+  // 握手/认证/出网成功。每个节点新增 detectLevel 字段:
+  //   "tcp"       = TCP 可达 (本阶段唯一已验证的等级)
+  //   未来若加入真实协议验证 (vmess/trojan/ss 握手或 HTTP 出网测试),
+  //   将通过独立阶段与状态字段区分, 且可通过 settings.proxyProbe.enabled 关闭。
+  // 筛选条件中不得把 detectLevel="tcp" 当作"代理可用"。
   function checkTcpNode(p) {
     return new Promise((resolve) => {
       // Validate port
       const port = Number(p.port);
       if (!port || port < 1 || port > 65535) {
+        p.detectLevel = "tcp_failed";
         resolve(false);
         return;
       }
-      
-      const timer = setTimeout(() => { resolve(false); }, TIMEOUT_MS);
+
+      const timer = setTimeout(() => { p.detectLevel = "tcp_timeout"; resolve(false); }, TIMEOUT_MS);
       const net = require('net');
       const client = net.connect(port, p.server, () => {
         clearTimeout(timer);
         client.destroy();
+        p.detectLevel = "tcp";
         resolve(true);
       });
-      client.on('error', () => { clearTimeout(timer); resolve(false); });
-      client.on('timeout', () => { clearTimeout(timer); client.destroy(); resolve(false); });
+      client.on('error', () => { clearTimeout(timer); p.detectLevel = "tcp_error"; resolve(false); });
+      client.on('timeout', () => { clearTimeout(timer); client.destroy(); p.detectLevel = "tcp_timeout"; resolve(false); });
       client.setTimeout(TIMEOUT_MS);
     });
   }
@@ -844,10 +915,10 @@ async function scrapeAllSites() {
     const valid = [];
     let checked = 0;
     const total = proxies.length;
-    
+
     // Shuffle to distribute load
     const shuffled = [...proxies].sort(() => Math.random() - 0.5);
-    
+
     for (let i = 0; i < shuffled.length; i += CONCURRENCY) {
       const batch = shuffled.slice(i, i + CONCURRENCY);
       const results = await Promise.all(batch.map(p => checkTcpNode(p)));
@@ -855,7 +926,7 @@ async function scrapeAllSites() {
         checked++;
         if (results[j]) valid.push(batch[j]);
         if (checked % 500 === 0 || checked === total) {
-          console.log(`  [Check] ${checked}/${total} checked (${Math.round(checked/total*100)}%) - Valid: ${valid.length}`);
+          console.log(`  [Check] ${checked}/${total} checked (${Math.round(checked/total*100)}%) - TCP Valid: ${valid.length}`);
         }
       }
     }
@@ -865,14 +936,13 @@ async function scrapeAllSites() {
   const checkStart = Date.now();
   allProxies = await runChecks(allProxies);
   const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
-  console.log(`  [Check] Done in ${checkTime}s. Valid: ${allProxies.length}`);
+  console.log(`  [Check] Done in ${checkTime}s. TCP reachable: ${allProxies.length} (detectLevel="tcp", 未验证协议层)`);
 
   // HTTP latency test + IP geolocation via ipchacha.cn
   allProxies = await batchGeoCheck(allProxies);
   // ==============================================
-if (allProxies.length > 0) {
-    const SUBS_DIR = path.join(__dirname, 'artifacts', 'subs');
-    fs.ensureDirSync(SUBS_DIR);
+
+  if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to " + SUBS_DIR + "...");
 
     // Filter out unknown region, cloud IPs, and high-latency nodes
@@ -891,6 +961,19 @@ if (allProxies.length > 0) {
     });
     console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length);
 
+    if (allProxies.length === 0) {
+      // 过滤后为空: 等价于零节点, 保留上版正式文件, 标记本次运行失败
+      console.log("[Output] All proxies filtered out; keeping previous release.");
+      writeRunStatus({
+        status: "failed",
+        reason: "zero_proxies_after_filter",
+        generatedAt: new Date().toISOString(),
+        filesKept: "previous release unchanged",
+      });
+      process.exitCode = 1;
+      return output;
+    }
+
     const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12 };
     allProxies.sort((a, b) => {
       if ((b.qualityScore || 0) !== (a.qualityScore || 0)) return (b.qualityScore || 0) - (a.qualityScore || 0);
@@ -900,70 +983,89 @@ if (allProxies.length > 0) {
     // 名称归一化: 清洗 C0/C1 控制字符 + 保证节点名全局唯一 (mihomo 对重名直接拒绝整个配置)
     const renamedCount = normalizeProxyNames(allProxies);
     console.log("  [Normalize] Renamed " + renamedCount + " duplicated proxy names");
-    // 1. mihomo.yaml
-    const mihomoConfig = {
-      "mixed-port": 7890, "allow-lan": true, "mode": "rule", "log-level": "info",
-      "ipv6": true, "external-controller": "0.0.0.0:9090",
-      "dns": {
-        "enabled": true, "listen": "0.0.0.0:1053", "ipv6": true,
-        "enhanced-mode": "fake-ip", "fake-ip-range": "198.18.0.1/16",
-        "fake-ip-filter": ["*.lan", "*.local"],
-        "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-        "nameserver": ["https://dns.alidns.com/dns-query"],
-        "fallback": ["https://dns.google/dns-query"],
-      },
-      "proxies": allProxies,
-      "proxy-groups": [
-        { "name": "\uD83D\uDE80 节点选择", "type": "select", "proxies": ["\u267B\uFE0F 自动选择", "\uD83D\uDD31 故障转移"] },
-        { "name": "\u267B\uFE0F 自动选择", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": allProxies.map(p => p.name) },
-        { "name": "\uD83D\uDD31 故障转移", "type": "fallback", "url": "http://www.gstatic.com/generate_204", "interval": 60, "proxies": allProxies.slice(0, Math.min(10, allProxies.length)).map(p => p.name) },
-        { "name": "\uD83C\uDF0F 全球直连", "type": "select", "proxies": ["DIRECT"] },
-        { "name": "\uD83D\uDC1F 漏网之鱼", "type": "select", "proxies": ["\uD83D\uDE80 节点选择", "\uD83C\uDF0F 全球直连"] },
-      ],
-      "rules": [
-        "GEOSITE,category-ads-all,DIRECT",
-        "GEOSITE,cn,\uD83C\uDF0F 全球直连",
-        "GEOIP,CN,\uD83C\uDF0F 全球直连,no-resolve",
-        "GEOIP,LAN,\uD83C\uDF0F 全球直连,no-resolve",
-        "MATCH,\uD83D\uDC1F 漏网之鱼",
-      ],
-    };
-    fs.writeFileSync(path.join(SUBS_DIR, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
-    console.log("  OK mihomo.yaml");
 
-    // 2. all.yaml
-    fs.writeFileSync(path.join(SUBS_DIR, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
-    console.log("  OK all.yaml");
+    // === 临时目录 + 校验 + 原子替换 (P1-1) ===
+    const tmpDir = SUBS_DIR + ".tmp." + process.pid;
+    fs.ensureDirSync(tmpDir);
+    fs.ensureDirSync(SUBS_DIR);
+    let outputErrors = [];
+    try {
+      // 1. mihomo.yaml
+      const mihomoConfig = buildMihomoConfig(allProxies);
+      fs.writeFileSync(path.join(tmpDir, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
+      console.log("  OK mihomo.yaml (tmp)");
 
-    // 3. base64.txt
-    const base64Lines = [];
-    for (const p of allProxies) {
-      const uri = buildUri(p);
-      if (uri) base64Lines.push(uri);
+      // 2. all.yaml
+      fs.writeFileSync(path.join(tmpDir, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
+      console.log("  OK all.yaml (tmp)");
+
+      // 3. base64.txt
+      const base64Lines = [];
+      for (const p of allProxies) {
+        const uri = buildUri(p);
+        if (uri) base64Lines.push(uri);
+      }
+      fs.writeFileSync(path.join(tmpDir, "base64.txt"), base64Lines.join("\n") + "\n", "utf8");
+      console.log("  OK base64.txt (" + base64Lines.length + " entries, tmp)");
+
+      // 4. byxiaoxi.txt
+      fs.writeFileSync(path.join(tmpDir, "byxiaoxi.txt"), base64Lines.join("\n") + "\n", "utf8");
+      console.log("  OK byxiaoxi.txt (tmp)");
+
+      // 5. kooker.jp.txt
+      const kookerLines = [];
+      for (const p of allProxies) {
+        const region = (p._region || "unknown").toLowerCase();
+        const flag = getFlagEmoji(region);
+        const country = getCountryName(region);
+        const displayName = flag + " " + country + " " + cleanProxyName(p.name);
+        const uri = buildUri(p, displayName);
+        if (uri) kookerLines.push(uri);
+      }
+      fs.writeFileSync(path.join(tmpDir, "kooker.jp.txt"), kookerLines.join("\n") + "\n", "utf8");
+      console.log("  OK kooker.jp.txt (" + kookerLines.length + " entries, tmp)");
+
+      // 校验: 所有文件非空、结构合法
+      outputErrors = validateSubFiles(tmpDir);
+      if (outputErrors.length > 0) throw new Error("validation failed: " + outputErrors.join("; "));
+
+      // 原子替换正式文件
+      commitSubFiles(tmpDir);
+      console.log("[Output] All files written to artifacts/subs/ directory.");
+      writeRunStatus({
+        status: "ok",
+        proxyCount: allProxies.length,
+        generatedAt: new Date().toISOString(),
+        files: SUB_OUTPUT_FILES,
+      });
+      logger.info(`[run:${runId}] Output phase complete, ${allProxies.length} proxies committed to artifacts/subs/`);
+    } catch (e) {
+      // 失败: 清理临时目录, 正式文件保持上版
+      console.error("[Output] FAILED: " + e.message);
+      writeRunStatus({
+        status: "failed",
+        reason: "output_generation_failed",
+        detail: e.message,
+        generatedAt: new Date().toISOString(),
+        filesKept: "previous release unchanged",
+      });
+      logger.error(`[run:${runId}] Output phase failed: ${e.message}`);
+      process.exitCode = 1;
+    } finally {
+      cleanupTmpDir(tmpDir);
     }
-    fs.writeFileSync(path.join(SUBS_DIR, "base64.txt"), base64Lines.join("\n") + "\n", "utf8");
-    console.log("  OK base64.txt (" + base64Lines.length + " entries)");
-
-    // 4. byxiaoxi.txt
-    fs.writeFileSync(path.join(SUBS_DIR, "byxiaoxi.txt"), base64Lines.join("\n") + "\n", "utf8");
-    console.log("  OK byxiaoxi.txt");
-
-    // 5. kooker.jp.txt
-    const kookerLines = [];
-    for (const p of allProxies) {
-      const region = (p._region || "unknown").toLowerCase();
-      const flag = getFlagEmoji(region);
-      const country = getCountryName(region);
-      const displayName = flag + " " + country + " " + cleanProxyName(p.name);
-      const uri = buildUri(p, displayName);
-      if (uri) kookerLines.push(uri);
-    }
-    fs.writeFileSync(path.join(SUBS_DIR, "kooker.jp.txt"), kookerLines.join("\n") + "\n", "utf8");
-    console.log("  OK kooker.jp.txt (" + kookerLines.length + " entries)");
-
-    console.log("[Output] All files written to artifacts/subs/ directory.");
   } else {
-    console.log("[Output] No proxies to write.");
+    // P1-1: 零节点 ≠ 成功。保留上版订阅避免破坏客户端, 但本次运行必须标记失败,
+    // 且不得把旧文件当作新产物发布。
+    console.log("[Output] No proxies to write; keeping previous release. Marking run as FAILED.");
+    writeRunStatus({
+      status: "failed",
+      reason: "zero_proxies",
+      generatedAt: new Date().toISOString(),
+      filesKept: "previous release unchanged",
+    });
+    logger.error(`[run:${runId}] Zero proxies — run marked FAILED, previous release preserved`);
+    process.exitCode = 1;
   }
 
 
@@ -1114,6 +1216,39 @@ function buildUri(p, customName) {
     uri = t + "://" + (p.username || "") + ":" + (p.password || "") + "@" + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
   }
   return uri;
+}
+
+// 生成 mihomo.yaml 的静态骨架 (proxies 由调用方填充)。
+// 安全默认 (P0): 控制面只绑定 127.0.0.1, allow-lan 默认 false;
+// 远程管理需用户显式修改本文件并自行配置 external-controller-secret。
+function buildMihomoConfig(proxies) {
+  return {
+    "mixed-port": 7890, "allow-lan": false, "mode": "rule", "log-level": "info",
+    "ipv6": true, "external-controller": "127.0.0.1:9090",
+    "dns": {
+      "enabled": true, "listen": "0.0.0.0:1053", "ipv6": true,
+      "enhanced-mode": "fake-ip", "fake-ip-range": "198.18.0.1/16",
+      "fake-ip-filter": ["*.lan", "*.local"],
+      "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+      "nameserver": ["https://dns.alidns.com/dns-query"],
+      "fallback": ["https://dns.google/dns-query"],
+    },
+    "proxies": proxies,
+    "proxy-groups": [
+      { "name": "\uD83D\uDE80 节点选择", "type": "select", "proxies": ["\u267B\uFE0F 自动选择", "\uD83D\uDD31 故障转移"] },
+      { "name": "\u267B\uFE0F 自动选择", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "tolerance": 50, "proxies": proxies.map(p => p.name) },
+      { "name": "\uD83D\uDD31 故障转移", "type": "fallback", "url": "http://www.gstatic.com/generate_204", "interval": 60, "proxies": proxies.slice(0, Math.min(10, proxies.length)).map(p => p.name) },
+      { "name": "\uD83C\uDF0F 全球直连", "type": "select", "proxies": ["DIRECT"] },
+      { "name": "\uD83D\uDC1F 漏网之鱼", "type": "select", "proxies": ["\uD83D\uDE80 节点选择", "\uD83C\uDF0F 全球直连"] },
+    ],
+    "rules": [
+      "GEOSITE,category-ads-all,DIRECT",
+      "GEOSITE,cn,\uD83C\uDF0F 全球直连",
+      "GEOIP,CN,\uD83C\uDF0F 全球直连,no-resolve",
+      "GEOIP,LAN,\uD83C\uDF0F 全球直连,no-resolve",
+      "MATCH,\uD83D\uDC1F 漏网之鱼",
+    ],
+  };
 }
 
 function yamlProxyToEntry(p) {
@@ -1482,7 +1617,12 @@ module.exports = {
   parseSubscriptions: scrapeAllSites, loadConfig,
   sha256, detectRegionFromName, detectRegionFromIP,
   parseClashYaml, parseSingBoxJson, parseV2rayTxt,
-  mergeAndDeduplicate, generateRenamedContent
+  mergeAndDeduplicate, generateRenamedContent,
+  buildMihomoConfig,
+  // P1-4: 导出供离线回归测试 (零节点保护 / 去重 / 输出校验 / URI 构造)
+  validateSubFiles, commitSubFiles, normalizeProxyNames,
+  parseV2rayLineToEntry, buildUri, convertYamlProxyToEntry,
+  SUB_OUTPUT_FILES,
 };
 
 if (require.main === module) {

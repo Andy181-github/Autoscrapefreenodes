@@ -1,49 +1,76 @@
-name: 自动更新免费节点订阅
+name: 自动更新免费节点订阅与数据
 
+# Free 计划资源预算:
+# - 关闭 schedule (原 cron 语义为每 5 天 1 次, 但维护者确认关闭定时, 仅靠 push + 手动触发)
+# - 合并原 update-data.yml (historical.json) 到本 workflow, 省 2 次/天独立运行
+# - 订阅产物、README、config、historical.json 在同一 job 内一次生成一次提交
+#   避免多个 workflow 重复 checkout/install 消耗 Actions 分钟
+#
+# 触发条件: push 到 main 或手动 workflow_dispatch
 on:
-  # 自动执行的时间，北京时间每5小时运行
-  schedule:
-    - cron: '0 16 */5 * *'
-  
-  # 当push到main分支时也执行
   push:
     branches: [ main ]
-  
-  # 允许手动触发工作流
   workflow_dispatch:
 
-# 设置权限
+# 并发控制: 单一 workflow 组, 防止并行 push 竞态
+concurrency:
+  group: autosubscribe-release
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
-    
+
     steps:
-      # 检出仓库代码
+      # 检出仓库代码 (v4: 与 update-subs 对齐, 升级 actions/checkout)
       - name: 检出代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
           fetch-depth: 0
-        
-      # 设置Node.js环境
+
+      # 设置Node.js环境 (v4: 对齐, 保留 npm 缓存)
       - name: 设置Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-          
-      # 安装依赖
+
+      # 安装依赖 (lockfile 已提交, 使用 npm ci 保证可重复构建)
       - name: 安装依赖
-        run: npm install
-        
-      # 执行节点抓取
+        run: npm ci
+
+      # 执行单元测试 + 回归测试 (轻量, 发布前最小安全网)
+      - name: 运行测试
+        run: node test.js && node test-regression.js
+
+      # 执行节点抓取 (生成 5 个订阅文件 + README + config + 运行状态)
       - name: 运行爬虫
         run: node scraper.js
-        
+
+      # 生成 README 徽章 (仅 3 个节点数量徽章, 正文由 scraper.js 维护)
+      - name: 生成 README
+        run: node generate-readme.js
+
+      # 更新历史数据 (lib/history.js: 将本次抓取结果写入 data/historical.json)
+      # 原 update-data.yml 功能并入, 省 2 次/天独立 CI 运行
+      - name: 更新历史数据
+        run: |
+          node -e "
+            const { saveHistoricalProxies } = require('./lib/history');
+            const fs = require('fs');
+            const yaml = require('js-yaml');
+            const cfg = yaml.load(fs.readFileSync('artifacts/subs/all.yaml', 'utf8'));
+            const proxies = (cfg && cfg.proxies) || [];
+            if (proxies.length === 0) {
+              console.log('[History] Zero proxies, skipping historical update');
+              process.exit(0);
+            }
+            saveHistoricalProxies(proxies);
+          "
+
       # 提交更新的文件到主分支
       - name: 提交更新
         run: |
@@ -51,6 +78,12 @@ jobs:
           git config --local user.name "GitHub Action"
           # 订阅产物位于 artifacts/subs/ 且被 .gitignore, 需 -f 强制暂存
           git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
-          git add README.md config.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "自动更新: 更新节点数据 [skip ci]"
-          git push --set-upstream origin main || (git pull --rebase origin main && git push)
+          git add README.md config.json data/historical.json
+          # 仅在暂存区有变更时提交并推送; 提交信息带 [skip ci] 避免循环触发
+          if ! git diff --cached --quiet; then
+            git commit -m "自动更新: 更新节点数据与订阅 [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No changes to commit"
+          fi

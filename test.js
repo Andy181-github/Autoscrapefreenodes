@@ -361,6 +361,86 @@ function testQualityScore() {
   return failed === 0;
 }
 
+// P0 regression: the generated mihomo.yaml must not expose the control
+// surface on all interfaces without authentication. We import the real
+// generator from scraper.js (buildMihomoConfig) so the test asserts the
+// actual shipped template, not a copy. Loading scraper.js creates an empty
+// .cache directory — a documented local side effect.
+function testMihomoSecurityDefaults() {
+  console.log('\n=== Testing Mihomo Security Defaults ===');
+
+  let yaml;
+  try {
+    yaml = require('js-yaml');
+  } catch (e) {
+    console.log('  SKIP: js-yaml not installed; cannot assert YAML structure');
+    return true;
+  }
+  let scraper;
+  try {
+    scraper = require('./scraper');
+  } catch (e) {
+    console.log('  FAIL: cannot load scraper.js for P0 test: ' + e.message);
+    return false;
+  }
+  if (typeof scraper.buildMihomoConfig !== 'function') {
+    console.log('  FAIL: scraper.js does not export buildMihomoConfig');
+    return false;
+  }
+
+  const sampleProxies = [
+    { name: 'us-test-proxy', type: 'vless', server: 'example.com', port: 443 }
+  ];
+  const cfg = scraper.buildMihomoConfig(sampleProxies);
+
+  // Round-trip through a real YAML parser to prove the output is loadable
+  // by a client, not just a string we could pattern-match.
+  const rendered = yaml.dump(cfg, { lineWidth: -1, noRefs: true });
+  const parsed = yaml.load(rendered);
+  if (!parsed || typeof parsed !== 'object') {
+    console.log('  FAIL: generated mihomo YAML did not round-trip through yaml.load');
+    return false;
+  }
+
+  let passed = 0;
+  let failed = 0;
+  const check = (label, ok, detail) => {
+    if (ok) { passed++; }
+    else { failed++; console.log(`  FAIL: ${label}${detail ? ' — ' + detail : ''}`); }
+  };
+
+  check(
+    'external-controller binds loopback only',
+    parsed['external-controller'] === '127.0.0.1:9090',
+    `got ${JSON.stringify(parsed['external-controller'])}`
+  );
+  check(
+    'allow-lan defaults to false',
+    parsed['allow-lan'] === false,
+    `got ${JSON.stringify(parsed['allow-lan'])}`
+  );
+  check(
+    'no unauthenticated control surface: secret or loopback-only controller required',
+    parsed['external-controller-secret'] !== undefined ||
+      String(parsed['external-controller'] || '').indexOf('127.0.0.1') === 0,
+    'controller reachable on 0.0.0.0 without a secret'
+  );
+  check(
+    'config must not leak credential fields',
+    !/external-controller-secret|auth-profiles?:|secret:/i.test(rendered),
+    'generated template should not embed secret/auth credential values'
+  );
+  check(
+    'proxies list round-trips intact',
+    Array.isArray(parsed.proxies) && parsed.proxies.length === 1 &&
+      parsed.proxies[0].name === 'us-test-proxy',
+    'proxy entries lost in YAML round-trip'
+  );
+
+  console.log(`  Results: ${passed} passed, ${failed} failed`);
+  return failed === 0;
+}
+
 // Main test runner
 async function runTests() {
   console.log('\n' + '='.repeat(60));
@@ -376,6 +456,7 @@ async function runTests() {
   results.push(await testSHA256());
   results.push(await testFraudScore());
   results.push(await testQualityScore());
+  results.push(await testMihomoSecurityDefaults());
 
   const passed = results.filter(r => r).length;
   const total = results.length;

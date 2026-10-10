@@ -51,6 +51,13 @@
     "maxFraudScore": 30,
     "updateInterval": 43200000,
     "enabledRegions": ["us", "hk", "tw", "jp", "sg", "kr", "uk", "de", "ca", "au", "nl", "fr"],
-    "logLevel": "info"
+    "logLevel": "info",
+    "proxyProbe": {
+      "enabled": false,
+      "url": "http://www.gstatic.com/generate_204",
+      "timeoutMs": 8000,
+      "concurrency": 50,
+      "failClasses": ["tcp_unreachable", "protocol_error", "tls_error", "http_error", "timeout"]
+    }
   }
 }

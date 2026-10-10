@@ -20,5 +20,8 @@ artifacts/agent-reports/
 # 本地统计杂项（非交付物, 历史遗留 3.2.x 时代的生成器输出）
 artifacts/node-count.json
 
+# P1-1 运行状态文件（零节点/失败发布标记, 本地/CI 产物, 不入库）
+artifacts/run-status.json
+
 # Agent Teams 协作产出（本地工作记录，不属于仓库交付物）
 data/team-artifacts/

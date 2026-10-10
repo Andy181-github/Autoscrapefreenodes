@@ -1,6 +1,6 @@
 # 🌐 订阅自动更新
 
-![Update](https://img.shields.io/badge/更新频率-每2小时-blue)
+![Update](https://img.shields.io/badge/更新方式-push%20触发%20%2B%20手动-blue)
 ![SubsCheck](https://img.shields.io/badge/SubsCheck-1498-green)
 ![XiaoXi](https://img.shields.io/badge/XiaoXi-1491-orange)
 ![kooker.jp](https://img.shields.io/badge/kooker.jp-1491-purple)
@@ -11,6 +11,23 @@
 > ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
 > 旧的根目录 raw URL 现已 404，请按下方「订阅链接」中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
 > 迁移对照表与迁移步骤详见 [docs/MIGRATION.md](docs/MIGRATION.md)。
+
+## ⚙️ 更新机制（GitHub Free 计划资源预算）
+
+本仓库使用 GitHub **Free 计划**，Actions 分钟数有限，因此更新策略为：
+
+- **触发方式**：仅在 `push` 到 `main` 分支或手动（`workflow_dispatch`）时运行。已取消所有定时 schedule，**被动 Actions 消耗为 0**。
+- **单一 workflow**：`deploy.yml` 在一次运行中完成全部工作 —— 依赖安装 → 单元测试 + 回归测试 → 节点抓取（5 个订阅文件 + 运行状态）→ README 徽章 → 历史数据 → 一次 git 提交。
+- **发布安全**：
+  - 输出采用「临时目录 + 结构校验 + 原子替换」，任一文件失败时**正式订阅文件保持上版字节不变**。
+  - 零节点或过滤后为空时，CI 以非零退出码失败并写 `artifacts/run-status.json` 标记 `failed`；**旧订阅保留但不被冒充为新产物**。
+  - mihomo 生成配置的控制面默认绑定 `127.0.0.1:9090`、`allow-lan: false`；如需远程管理请显式修改并自行配置 `external-controller-secret` 认证。
+- **检测等级说明**：节点当前仅经过 **TCP 可达性预筛**（`detectLevel: "tcp"`），未做代理协议握手/出网验证。质量分为静态特征分（地区、类型、TLS、UDP），**不代表实测速度**。
+
+### 手动触发
+
+在 [Actions 页面](https://github.com/Andy181-github/Autoscrapefreenodes/actions) 选择「自动更新免费节点订阅与数据」→ `Run workflow`，或直接向 `main` push 任意提交即可触发。
+
 
 ### 节点统计
 - **有效节点数**: 1498
