@@ -641,10 +641,12 @@ function validateSubFiles(tmpDir) {
         }
       } catch (e) { errors.push(`${f}: invalid YAML (${e.message})`); }
     } else {
-      // txt 文件每行必须是合法 URI 或空行
+      // txt 文件每行必须是合法 URI 或空行。
+      // 协议头允许字母+数字 (hysteria2/vless/tuic/hysteria2://...), 2026-10 修复:
+      // 旧正则 ^[a-z]+:// 不含数字, 会把 hysteria2:// 误判为 malformed 行导致发布失败。
       const lines = content.split('\n').filter(l => l.trim());
       for (const l of lines) {
-        if (!/^[a-z]+:\/\//i.test(l.trim())) {
+        if (!/^[a-z][a-z0-9+-]*:\/\//i.test(l.trim())) {
           errors.push(`${f}: malformed line "${l.trim().substring(0, 40)}..."`);
           break;
         }

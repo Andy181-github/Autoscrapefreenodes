@@ -292,6 +292,19 @@ check('validateSubFiles: all.yaml with only std types passes', () => {
   assert.deepStrictEqual(errs.filter(e => e.includes('all.yaml')), []);
 });
 
+check('validateSubFiles: hysteria2:// protocol line accepted (digit in scheme)', () => {
+  // 2026-10: 旧正则 ^[a-z]+:// 不含数字, 会把 hysteria2:// 误判 malformed
+  const d = path.join(TMP_BASE, 'h2-ok');
+  fs.mkdirSync(d, { recursive: true });
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'hysteria2' }] }));
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
+  fs.writeFileSync(path.join(d, 'base64.txt'), 'hysteria2://pwd@h:443#n\n');
+  fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'hysteria2://pwd@h:443#n\n');
+  fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'hysteria2://pwd@h:443#n\n');
+  const errs = scraper.validateSubFiles(d);
+  assert.deepStrictEqual(errs, [], JSON.stringify(errs));
+});
+
 // ---------- cleanup ----------
 fs.rmSync(TMP_BASE, { recursive: true, force: true });
 
