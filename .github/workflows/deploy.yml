@@ -1,12 +1,14 @@
 name: 自动更新免费节点订阅与数据
 
 # Free 计划资源预算:
-# - 定时 schedule: 每 6 小时 1 次 (UTC), 维护者确认频率
-# - 合并原 update-data.yml (historical.json) 到本 workflow, 省 2 次/天独立运行
-# - 订阅产物、README、config、historical.json 在同一 job 内一次生成一次提交
-#   避免多个 workflow 重复 checkout/install 消耗 Actions 分钟
+# - 定时 schedule: 每 6 小时 1 次 (UTC) — 主触发源
+# - push 触发: 仅当改动涉及源码 (scraper/test/config/workflows/package) 时运行;
+#   纯订阅产物提交 (artifacts/subs/*, README.md, data/historical.json) 跳过,
+#   避免 CI 自我触发循环消耗分钟 (GitHub 原生不识别 [skip ci])
+# - 合并原 update-data.yml: 订阅产物/README/config/historical.json 同一 job 一次生成一次提交
 #
-# 触发条件: 每 6 小时定时 + push 到 main + 手动 workflow_dispatch
+# 月额度估算 (Free 公开仓库 2000 min): schedule 120 次 × ~5 min = 600 min (30%),
+# push 条件化后额外消耗 ≈ 0 (源码改动频率低)
 on:
   schedule:
     - cron: '0 */6 * * *'
@@ -15,6 +17,19 @@ on:
       # 仓库保持活跃 (定期 push 或手动触发) 可避免该限制。
   push:
     branches: [ main ]
+    # 仅源码/配置类改动触发 push 事件; 产物类提交 (artifacts/subs/*, README,
+    # data/historical.json) 不触发 → CI 自我推送不再消耗分钟。
+    # 完整抓取仍由 6h 定时与 workflow_dispatch 驱动。
+    paths:
+      - 'scraper.js'
+      - 'test.js'
+      - 'test-regression.js'
+      - 'generate-readme.js'
+      - 'lib/**'
+      - 'config.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 # 并发控制: 单一 workflow 组, 防止并行 push 竞态
@@ -26,17 +41,18 @@ permissions:
   contents: write
 
 jobs:
+  # 唯一 job: schedule / 手动触发 / 源码类 push 都跑完整流程。
+  # 产物类提交已被上方 push.paths 过滤, 无需再单独判断。
   scrape-and-update:
     runs-on: ubuntu-latest
-
     steps:
-      # 检出仓库代码 (v4: 与 update-subs 对齐, 升级 actions/checkout)
+      # 检出仓库代码 (v4, 保留 npm 缓存)
       - name: 检出代码
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 设置Node.js环境 (v4: 对齐, 保留 npm 缓存)
+      # 设置Node.js环境 (v4)
       - name: 设置Node.js
         uses: actions/setup-node@v4
         with:
@@ -60,7 +76,6 @@ jobs:
         run: node generate-readme.js
 
       # 更新历史数据 (lib/history.js: 将本次抓取结果写入 data/historical.json)
-      # 原 update-data.yml 功能并入, 省 2 次/天独立 CI 运行
       - name: 更新历史数据
         run: |
           node -e "
@@ -84,7 +99,7 @@ jobs:
           # 订阅产物位于 artifacts/subs/ 且被 .gitignore, 需 -f 强制暂存
           git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
           git add README.md config.json data/historical.json
-          # 仅在暂存区有变更时提交并推送; 提交信息带 [skip ci] 避免循环触发
+          # 仅在暂存区有变更时提交并推送 (产物类提交已被 push.paths 过滤, 不会再次触发本 workflow)
           if ! git diff --cached --quiet; then
             git commit -m "自动更新: 更新节点数据与订阅 [skip ci]"
             git pull --rebase origin main

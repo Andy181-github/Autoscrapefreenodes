@@ -145,10 +145,11 @@ function makeValidTmpDir() {
   const d = path.join(TMP_BASE, 'valid-' + Math.random().toString(36).slice(2));
   fs.mkdirSync(d, { recursive: true });
   fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless' }] }));
-  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless' }] }));
-  fs.writeFileSync(path.join(d, 'base64.txt'), 'vless://uuid@h:443#x\n');
-  fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'vless://uuid@h:443#x\n');
-  fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'vless://uuid@h:443#x\n');
+  // all.yaml 必须全为标准 Clash 能力集 (validateSubFiles 新增断言, 2026-10)
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
+  fs.writeFileSync(path.join(d, 'base64.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
+  fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
+  fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
   return d;
 }
 
@@ -224,6 +225,71 @@ check('run-status contract: failed status is machine-readable', () => {
   const back = JSON.parse(fs.readFileSync(statusFile, 'utf8'));
   assert.strictEqual(back.status, 'failed');
   assert.strictEqual(back.reason, 'zero_proxies');
+});
+
+// ---------- 7. 协议兼容性 (2026-10 修复: anytls 拒载 / 标准 Clash 能力集 / socks 归一化) ----------
+check('filterCoreSupported: anytls removed, socks5 normalized to socks', () => {
+  const input = [
+    { name: 'a', type: 'anytls', server: 's', port: 1 },
+    { name: 'b', type: 'socks5', server: 's', port: 2 },
+    { name: 'c', type: 'vless', server: 's', port: 3, uuid: 'u' },
+  ];
+  const out = scraper.filterCoreSupported(input).map(p => p.type);
+  assert.deepStrictEqual(out, ['socks', 'vless']);
+});
+
+check('filterClashStd: vless/hysteria2 excluded, ss/vmess/trojan/http/https/socks kept', () => {
+  const input = [
+    { name: 'a', type: 'ss', server: 's', port: 1 },
+    { name: 'b', type: 'vless', server: 's', port: 2, uuid: 'u' },
+    { name: 'c', type: 'hysteria2', server: 's', port: 3, password: 'p' },
+    { name: 'd', type: 'trojan', server: 's', port: 4, password: 'p' },
+    { name: 'e', type: 'http', server: 's', port: 5 },
+    { name: 'f', type: 'anytls', server: 's', port: 6 },
+  ];
+  const out = scraper.filterClashStd(input).map(p => p.type);
+  assert.deepStrictEqual(out, ['ss', 'trojan', 'http']);
+});
+
+check('sanitizeVlessEncryption: non-none value removed', () => {
+  const p = { type: 'vless', encryption: 'mlkem768x25519plus' };
+  scraper.sanitizeVlessEncryption(p);
+  assert.strictEqual(p.encryption, undefined);
+});
+
+check('buildUri: socks outputs socks:// with optional auth', () => {
+  const uri = scraper.buildUri({ name: 'n', type: 'socks', server: 'h', port: 1080, username: '', password: '' });
+  assert.ok(uri.startsWith('socks://'), uri);
+  assert.ok(!uri.includes('socks5://'));
+});
+
+check('buildUri: http with empty creds omits user:pass@ segment', () => {
+  const uri = scraper.buildUri({ name: 'n', type: 'http', server: 'h', port: 8080, username: '', password: '' });
+  assert.ok(uri.startsWith('http://h:8080#'), uri);
+});
+
+check('validateSubFiles: all.yaml containing vless is rejected', () => {
+  const d = path.join(TMP_BASE, 'proto-' + Math.random().toString(36).slice(2));
+  fs.mkdirSync(d, { recursive: true });
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless' }] }));
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless' }] }));
+  fs.writeFileSync(path.join(d, 'base64.txt'), 'vless://u@h:443#n\n');
+  fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'vless://u@h:443#n\n');
+  fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'vless://u@h:443#n\n');
+  const errs = scraper.validateSubFiles(d);
+  assert.ok(errs.some(e => e.includes('all.yaml') && e.includes('vless')), JSON.stringify(errs));
+});
+
+check('validateSubFiles: all.yaml with only std types passes', () => {
+  const d = path.join(TMP_BASE, 'proto-ok');
+  fs.mkdirSync(d, { recursive: true });
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }, { name: 'y', type: 'vmess' }] }));
+  fs.writeFileSync(path.join(d, 'base64.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
+  fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
+  fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
+  const errs = scraper.validateSubFiles(d);
+  assert.deepStrictEqual(errs.filter(e => e.includes('all.yaml')), []);
 });
 
 // ---------- cleanup ----------

@@ -619,6 +619,7 @@ function writeRunStatus(status) {
 }
 
 // 结构校验: 每个文件必须存在、非空、且可解析为对应格式
+// 2026-10: all.yaml 额外断言 type 全部在标准 Clash 能力集内 (否则标准内核拒载整个文件)
 function validateSubFiles(tmpDir) {
   const errors = [];
   for (const f of SUB_OUTPUT_FILES) {
@@ -630,6 +631,14 @@ function validateSubFiles(tmpDir) {
       try {
         const doc = yaml.load(content);
         if (!doc || !Array.isArray(doc.proxies)) errors.push(`${f}: missing proxies list`);
+        // all.yaml 走标准 Clash 能力集; 出现 vless/hysteria2/anytls 等 → 校验失败,
+        // 阻止发布 (P1-1 原子替换: 校验失败时正式文件保持上版)
+        if (f === 'all.yaml' && Array.isArray(doc.proxies)) {
+          const badTypes = doc.proxies.filter(p => !CLASH_STD_TYPES.has(p.type));
+          if (badTypes.length > 0) {
+            errors.push(`${f}: ${badTypes.length} proxies with type outside standard Clash set (found: ${[...new Set(badTypes.map(p => p.type))].join('/')})`);
+          }
+        }
       } catch (e) { errors.push(`${f}: invalid YAML (${e.message})`); }
     } else {
       // txt 文件每行必须是合法 URI 或空行
@@ -985,21 +994,31 @@ async function scrapeAllSites() {
     console.log("  [Normalize] Renamed " + renamedCount + " duplicated proxy names");
 
     // === 临时目录 + 校验 + 原子替换 (P1-1) ===
+    // 协议兼容性过滤 (2026-10): anytls 等无内核支持的类型剔除, socks5 归一化,
+    // vless 非标准 encryption 值删除, 标准 Clash 能力集单独生成 all.yaml
+    allProxies = allProxies
+      .map(normalizeProxyType)
+      .filter(p => MIHOMO_TYPES.has(p.type))
+      .map(sanitizeVlessEncryption);
+    const clashStdProxies = allProxies.filter(p => CLASH_STD_TYPES.has(p.type));
+    console.log("  [ProtocolFilter] mihomo.yaml: " + allProxies.length + " | all.yaml (标准Clash): " + clashStdProxies.length);
+
     const tmpDir = SUBS_DIR + ".tmp." + process.pid;
     fs.ensureDirSync(tmpDir);
     fs.ensureDirSync(SUBS_DIR);
     let outputErrors = [];
     try {
-      // 1. mihomo.yaml
+      // 1. mihomo.yaml (Clash Meta 全量: 含 vless/hysteria2/tuic)
       const mihomoConfig = buildMihomoConfig(allProxies);
       fs.writeFileSync(path.join(tmpDir, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
-      console.log("  OK mihomo.yaml (tmp)");
+      console.log("  OK mihomo.yaml (" + allProxies.length + " proxies, tmp)");
 
-      // 2. all.yaml
-      fs.writeFileSync(path.join(tmpDir, "all.yaml"), yaml.dump({ proxies: allProxies }, { lineWidth: -1, noRefs: true }), "utf8");
-      console.log("  OK all.yaml (tmp)");
+      // 2. all.yaml (标准 Clash: 仅 ss/vmess/trojan/http/https/socks, 767 个
+      //    vless/hysteria2/anytls 节点被标准内核拒载, 必须按能力集过滤)
+      fs.writeFileSync(path.join(tmpDir, "all.yaml"), yaml.dump({ proxies: clashStdProxies }, { lineWidth: -1, noRefs: true }), "utf8");
+      console.log("  OK all.yaml (" + clashStdProxies.length + " proxies, tmp)");
 
-      // 3. base64.txt
+      // 3. base64.txt (通用 link: 与 mihomo.yaml 同源, 含全量协议)
       const base64Lines = [];
       for (const p of allProxies) {
         const uri = buildUri(p);
@@ -1167,7 +1186,8 @@ function normalizeProxyNames(proxies) {
 }
 
 function buildUri(p, customName) {
-  const name = customName || buildDisplayName(p);
+  // fragment 安全化: 名称进入 URI 的 # 之后, 空白/# 必须清洗 (2026-10 修复)
+  const name = sanitizeNameForUri(customName || buildDisplayName(p));
   let uri = "";
   const t = p.type;
   if (t === "vmess") {
@@ -1202,7 +1222,9 @@ function buildUri(p, customName) {
     if (p.mode) qp.set("mode", p.mode);
     if (p.serviceName) qp.set("serviceName", p.serviceName);
     if (p.alpn) qp.set("alpn", p.alpn);
-    if (p.encryption) qp.set("encryption", p.encryption);
+    // encryption 仅 "none" 是各内核通用值; 上游偶发 mlkem 等实验值会破坏 vless 链接解析,
+    // 清洗阶段 (sanitizeVlessEncryption) 已删除, 此处双重防御: 非 none 一律输出 none
+    if (p.encryption && p.encryption !== "none") qp.set("encryption", "none");
     const qs = qp.toString();
     uri = "vless://" + (p.uuid || "") + "@" + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
   } else if (t === "hysteria2" || t === "hysteria") {
@@ -1226,10 +1248,19 @@ function buildUri(p, customName) {
     uri = "tuic://" + (p.uuid || "") + ":" + (p.password || "") + "@" + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
   } else if (t === "http" || t === "https") {
     const qp = new URLSearchParams();
-    if (p.tls) qp.set("tls", "true");
+    if (t === "https" && p.tls !== false) qp.set("tls", "true");
     if (p.sni) qp.set("sni", p.sni);
     const qs = qp.toString();
-    uri = t + "://" + (p.username || "") + ":" + (p.password || "") + "@" + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
+    // 空用户名 (上游 "http://:@host") 在严格解析器下报错 → 仅当 user/pass 至少一个非空时输出凭据段
+    const authSeg = (p.username || p.password) ? (p.username || "") + ":" + (p.password || "") + "@" : "";
+    uri = t + "://" + authSeg + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
+  } else if (t === "socks") {
+    const qp = new URLSearchParams();
+    if (p.username || p.password) qp.set("auth", "user:" + (p.username || "") + " pass:" + (p.password || ""));
+    const qs = qp.toString();
+    // 协议头输出 socks:// (Xray 标准写法), Clash Meta 接受 socks 与 socks5 两种协议头
+    const authSeg = (p.username || p.password) ? (p.username || "") + ":" + (p.password || "") + "@" : "";
+    uri = "socks://" + authSeg + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
   }
   return uri;
 }
@@ -1291,6 +1322,46 @@ function buildMihomoConfig(proxies) {
   };
 }
 
+// ====== 2026-10 解析兼容性修复 (Clash 无法解析订阅) ======
+// 1) anytls: 任何主流内核 (mihomo / 标准 clash / clash.meta) 都不支持该协议,
+//    出现在 proxies 中会触发严格校验的客户端拒载整个配置 → 从源头过滤。
+// 2) socks5 → socks: 标准字段名为 "socks", 上游偶发 "socks5" 变体归一化。
+// 3) vless encryption: 仅 "none" 是各内核通用值, mlkem 等实验值会破坏解析 → 删除该字段。
+// 4) http/https 空用户名: "http://:@host" 在严格解析器下报错 → 省略凭据段。
+// 5) all.yaml 分发目标为"标准 Clash", 其内核只认识 ss/vmess/trojan/http/https/socks,
+//    vless/hysteria2/tuic 等节点会被拒载 → all.yaml 单独按标准能力集过滤,
+//    mihomo.yaml (Clash Meta 全量) 保留全部受支持协议。
+// 6) http/https/socks 协议头: 输出层补全 (输入侧缺失时按端口 80/443/1080 推断)。
+const CLASH_STD_TYPES = new Set(["ss", "vmess", "trojan", "http", "https", "socks"]);
+const MIHOMO_TYPES = new Set(["ss", "vmess", "trojan", "vless", "http", "https", "socks", "hysteria", "hysteria2", "tuic", "wireguard"]);
+
+function normalizeProxyType(p) {
+  if (!p || !p.type) return p;
+  if (p.type === "socks5") p.type = "socks";
+  return p;
+}
+
+// 全量协议集过滤: 剔除无内核支持的协议 (anytls 等), 并把 socks5 归一化为 socks
+function filterCoreSupported(proxies) {
+  return proxies
+    .map(normalizeProxyType)
+    .filter(p => MIHOMO_TYPES.has(p.type));
+}
+
+// 标准 Clash 能力集: all.yaml 专用
+function filterClashStd(proxies) {
+  return filterCoreSupported(proxies).filter(p => CLASH_STD_TYPES.has(p.type));
+}
+
+// vless 非标准 encryption 值清理 (mihomo 只认 none, 上游 mlkem 等实验值直接删除)
+function sanitizeVlessEncryption(p) {
+  if (p && p.type === "vless" && p.encryption && p.encryption !== "none") {
+    delete p.encryption;
+  }
+  return p;
+}
+// ====== 协议兼容性修复结束 ======
+
 function yamlProxyToEntry(p) {
   const entry = {
     name: buildDisplayName(p), type: p.type, server: p.server, port: p.port,
@@ -1346,6 +1417,8 @@ function parseV2rayLineToEntry(line) {
       rest = rest.substring(0, hashIdx);
     }
     const region = detectRegionFromName(name);
+    // socks5:// 协议头 → socks (Xray 允许两种写法, 输出层统一 socks)
+    if (proto === "socks5") proto = "socks";
     if (proto === "vmess") {
       const decoded = Buffer.from(rest, "base64").toString("utf8");
       const obj = JSON.parse(decoded);
@@ -1402,17 +1475,20 @@ function parseV2rayLineToEntry(line) {
       return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70, fraudScore: 0 };
     } else if (proto === "http" || proto === "https") {
       const atIdx = rest.lastIndexOf("@");
-      if (atIdx < 0) return null;
-      const creds = rest.substring(0, atIdx);
+      // 无凭据段: "http://host:port" 直接作为 srvPort 解析 (2026-10: 兼容上游不带 user:pass 的 http 节点)
+      const hasCreds = atIdx >= 0;
+      const creds = hasCreds ? rest.substring(0, atIdx) : "";
       const colonIdx = creds.indexOf(":");
-      const username = creds.substring(0, colonIdx);
-      const password = creds.substring(colonIdx + 1);
-      const srvPort = rest.substring(atIdx + 1);
+      const username = hasCreds ? creds.substring(0, colonIdx) : "";
+      const password = hasCreds ? creds.substring(colonIdx + 1) : "";
+      const srvPort = hasCreds ? rest.substring(atIdx + 1) : rest;
       const hashInSrv = srvPort.indexOf("#");
       const srvClean = hashInSrv >= 0 ? srvPort.substring(0, hashInSrv) : srvPort;
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
-      const port = parseInt(srvClean.substring(lastColon + 1)) || 80;
+      const port = parseInt(srvClean.substring(lastColon + 1)) || (proto === "https" ? 443 : 80);
+      // 空用户名 ("http://:@host" 在严格解析器下报错) → 由 buildUri 按
+      // username/password 是否为空决定是否输出 user:pass@ 段。
       return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, qualityScore: 55, fraudScore: 0 };
     }
   } catch (e) { return null; }
@@ -1663,6 +1739,9 @@ module.exports = {
   validateSubFiles, commitSubFiles, normalizeProxyNames,
   parseV2rayLineToEntry, buildUri, convertYamlProxyToEntry,
   SUB_OUTPUT_FILES,
+  // 2026-10 解析兼容性修复: 导出供测试与下游复用
+  filterCoreSupported, filterClashStd, sanitizeVlessEncryption,
+  MIHOMO_TYPES, CLASH_STD_TYPES,
 };
 
 if (require.main === module) {

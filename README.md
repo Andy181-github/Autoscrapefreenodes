@@ -16,7 +16,7 @@
 
 本仓库使用 GitHub **Free 计划**，Actions 分钟数有限，因此更新策略为：
 
-- **触发方式**：每 6 小时定时运行一次（UTC `0 */6 * * *`），`push` 到 `main` 分支或手动（`workflow_dispatch`）也会触发。GitHub Free 计划下，长时间无活动的仓库定时任务可能被跳过，保持定期 push 或手动触发可避免此限制。
+- **触发方式**：每 6 小时定时运行一次（UTC `0 */6 * * *`）为主；`push` 仅在改动涉及源码（`scraper.js`/`test*`/`lib/`/`config.json`/`package*`/`.github/workflows/`）时触发，纯订阅产物提交（`artifacts/subs/*`、`README`、`data/historical.json`）不触发——避免 CI 自我推送循环消耗 Free 额度。手动 `workflow_dispatch` 随时可触发。
 - **单一 workflow**：`deploy.yml` 在一次运行中完成全部工作 —— 依赖安装 → 单元测试 + 回归测试 → 节点抓取（5 个订阅文件 + 运行状态）→ README 徽章 → 历史数据 → 一次 git 提交。
 - **发布安全**：
   - 输出采用「临时目录 + 结构校验 + 原子替换」，任一文件失败时**正式订阅文件保持上版字节不变**。
@@ -26,7 +26,7 @@
 
 ### 手动触发
 
-在 [Actions 页面](https://github.com/Andy181-github/Autoscrapefreenodes/actions) 选择「自动更新免费节点订阅与数据」→ `Run workflow`，或直接向 `main` push 任意提交即可触发。
+在 [Actions 页面](https://github.com/Andy181-github/Autoscrapefreenodes/actions) 选择「自动更新免费节点订阅与数据」→ `Run workflow`。直接 push 源码改动（如 `scraper.js`）也会自动触发；纯产物提交不会触发（由 6 小时定时兜底更新）。
 
 
 ### 节点统计
