@@ -1,17 +1,31 @@
 {
-  "savedAt": "2026-10-13T22:07:29.607Z",
+  "savedAt": "2026-10-14T02:46:56.540Z",
   "version": "3.3.0",
-  "count": 344,
+  "count": 379,
   "proxies": [
     {
-      "name": "🇺🇸美国|unknown|95分-5",
+      "name": "🇺🇸美国|unknown|95分",
       "type": "http",
-      "server": "138.199.35.198",
+      "server": "38.95.111.226",
+      "port": 9443,
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|95分-4",
+      "type": "http",
+      "server": "138.199.35.197",
       "port": 9002,
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-9",
+      "name": "🇺🇸美国|unknown|95分-5",
+      "type": "http",
+      "server": "149.34.248.65",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|95分-7",
       "type": "http",
       "server": "138.199.35.216",
       "port": 9002,
@@ -19,29 +33,28 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-12",
+      "name": "🇺🇸美国|unknown|95分-8",
       "type": "http",
       "server": "38.28.193.188",
       "port": 443,
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-17",
+      "name": "🇺🇸美国|unknown|95分-9",
       "type": "http",
-      "server": "fan.365747.xyz",
-      "port": 443,
+      "server": "138.199.35.218",
+      "port": 9002,
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-27",
+      "name": "🇺🇸美国|unknown|95分-15",
       "type": "http",
-      "server": "purposebydesig.club",
-      "port": 443,
-      "password": "None",
+      "server": "138.199.35.198",
+      "port": 9002,
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-29",
+      "name": "🇺🇸美国|unknown|95分-20",
       "type": "vmess",
       "server": "guanwang.awsno.com",
       "port": 443,
@@ -51,20 +64,92 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|95分-31",
+      "name": "🇺🇸美国|unknown|95分-22",
       "type": "http",
       "server": "voteshirleysew.club",
       "port": 443,
       "tls": true
     },
     {
-      "name": "🇭🇰香港|unknown|95分-2",
+      "name": "🇺🇸美国|unknown|95分-23",
       "type": "vmess",
-      "server": "8.217.13.103",
+      "server": "hadipowerplus.up.railway.app",
+      "port": 443,
+      "uuid": "242dc91e-061b-478d-9911-d81ea8672c10",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|95分-32",
+      "type": "http",
+      "server": "purposebydesig.club",
+      "port": 443,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|95分-39",
+      "type": "http",
+      "server": "fan.365747.xyz",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|95分-45",
+      "type": "vmess",
+      "server": "renderer-stream-2-114.mirra.now",
+      "port": 443,
+      "uuid": "8ffa41d4-e6b5-4af5-a8a9-69e26bec75f5",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇭🇰香港|unknown|95分",
+      "type": "vmess",
+      "server": "8.218.195.61",
       "port": 443,
       "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
       "cipher": "auto",
       "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇭🇰香港|unknown|95分-3",
+      "type": "vmess",
+      "server": "8.217.254.88",
+      "port": 443,
+      "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇭🇰香港|unknown|95分-4",
+      "type": "vmess",
+      "server": "6JDvArazgU3qQR6Q.v.3dns.vip",
+      "port": 443,
+      "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇭🇰香港|unknown|95分-5",
+      "type": "vmess",
+      "server": "ex1ogt73nzpqkac2.v.3dns.vip",
+      "port": 443,
+      "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|95分",
+      "type": "http",
+      "server": "149.88.99.209",
+      "port": 9443,
       "tls": true
     },
     {
@@ -76,30 +161,26 @@
       "sni": "kr.tronsg.com"
     },
     {
-      "name": "🇩🇪德国|unknown|95分",
-      "type": "http",
-      "server": "193.176.84.25",
-      "port": 9002,
+      "name": "🇰🇷韩国|unknown|95分-2",
+      "type": "vmess",
+      "server": "baBfGGlhjs86aTxZ.v.3dns.vip",
+      "port": 443,
+      "uuid": "b89b702b-31ef-4f6a-85df-c264795a987b",
+      "cipher": "auto",
+      "network": "ws",
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-2",
+      "name": "🇩🇪德国|unknown|95分-4",
       "type": "http",
-      "server": "84.17.47.125",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-5",
-      "type": "http",
-      "server": "193.176.84.24",
+      "server": "84.17.47.146",
       "port": 9002,
       "tls": true
     },
     {
       "name": "🇩🇪德国|unknown|95分-6",
       "type": "http",
-      "server": "84.17.47.148",
+      "server": "84.17.47.125",
       "port": 9002,
       "password": "None",
       "tls": true
@@ -107,19 +188,106 @@
     {
       "name": "🇩🇪德国|unknown|95分-7",
       "type": "http",
-      "server": "84.17.47.148",
+      "server": "193.176.84.23",
       "port": 9002,
+      "password": "None",
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-8",
+      "name": "🇩🇪德国|unknown|95分-9",
       "type": "http",
       "server": "193.176.84.30",
       "port": 9002,
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-9",
+      "name": "🇩🇪德国|unknown|95分-10",
+      "type": "http",
+      "server": "84.17.47.125",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-12",
+      "type": "http",
+      "server": "84.17.47.148",
+      "port": 9002,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-14",
+      "type": "http",
+      "server": "193.176.84.32",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-15",
+      "type": "http",
+      "server": "193.176.84.25",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-16",
+      "type": "http",
+      "server": "84.17.47.148",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-17",
+      "type": "http",
+      "server": "193.176.84.20",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-18",
+      "type": "http",
+      "server": "193.176.84.35",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-21",
+      "type": "http",
+      "server": "84.17.47.149",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-22",
+      "type": "http",
+      "server": "193.176.84.39",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-23",
+      "type": "http",
+      "server": "84.17.47.150",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-25",
+      "type": "http",
+      "server": "193.176.84.33",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-28",
+      "type": "http",
+      "server": "193.176.84.24",
+      "port": 9002,
+      "tls": true,
+      "sni": "www.bing.com"
+    },
+    {
+      "name": "🇩🇪德国|unknown|95分-29",
       "type": "http",
       "server": "193.176.84.31",
       "port": 9002,
@@ -127,90 +295,46 @@
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-11",
+      "name": "🇩🇪德国|unknown|95分-30",
       "type": "http",
       "server": "193.176.84.27",
       "port": 9002,
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-13",
-      "type": "http",
-      "server": "84.17.47.146",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-14",
+      "name": "🇩🇪德国|unknown|95分-31",
       "type": "http",
       "server": "193.176.84.17",
       "port": 9002,
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-15",
-      "type": "http",
-      "server": "193.176.84.23",
-      "port": 9002,
-      "password": "None",
+      "name": "🇩🇪德国|unknown|95分-36",
+      "type": "vmess",
+      "server": "kBd17k34BR3HAOJ2.v.3dns.vip",
+      "port": 443,
+      "uuid": "e4cfeb24-c58f-4813-b0c8-d2b6b52cd244",
+      "cipher": "auto",
+      "network": "ws",
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-17",
-      "type": "http",
-      "server": "193.176.84.33",
-      "port": 9002,
+      "name": "🇩🇪德国|unknown|95分-38",
+      "type": "vmess",
+      "server": "4vJWBUhtW5vKHytB.v.3dns.vip",
+      "port": 443,
+      "uuid": "e4cfeb24-c58f-4813-b0c8-d2b6b52cd244",
+      "cipher": "auto",
+      "network": "ws",
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|95分-18",
-      "type": "http",
-      "server": "84.17.47.149",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-19",
-      "type": "http",
-      "server": "84.17.47.150",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-20",
-      "type": "http",
-      "server": "193.176.84.32",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-22",
-      "type": "http",
-      "server": "193.176.84.20",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-23",
-      "type": "http",
-      "server": "193.176.84.39",
-      "port": 9002,
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-24",
-      "type": "http",
-      "server": "84.17.47.125",
-      "port": 9002,
-      "password": "None",
-      "tls": true
-    },
-    {
-      "name": "🇩🇪德国|unknown|95分-25",
-      "type": "http",
-      "server": "193.176.84.35",
-      "port": 9002,
-      "tls": true
+      "name": "🇨🇦加拿大|unknown|95分",
+      "type": "trojan",
+      "server": "ca.tronsg.com",
+      "port": 443,
+      "password": "Trojan@82164024",
+      "sni": "ca.tronsg.com"
     },
     {
       "name": "🅦🇺澳大利亚|unknown|95分",
@@ -223,26 +347,44 @@
       "tls": true
     },
     {
-      "name": "🇫🇷法国|unknown|95分-8",
-      "type": "trojan",
-      "server": "162.159.91.211",
+      "name": "🇳🇱荷兰|unknown|95分",
+      "type": "http",
+      "server": "149.36.51.129",
       "port": 443,
-      "password": "humanity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
+      "tls": true
     },
     {
       "name": "🇺🇸美国|unknown|90分",
-      "type": "vmess",
-      "server": "169.197.143.89",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
+      "type": "http",
+      "server": "138.199.35.213",
+      "port": 9002,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-2",
+      "type": "http",
+      "server": "138.199.35.198",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-3",
+      "type": "http",
+      "server": "138.199.35.195",
+      "port": 9002,
       "tls": true
     },
     {
       "name": "🇺🇸美国|unknown|90分-4",
+      "type": "http",
+      "server": "138.199.35.196",
+      "port": 9002,
+      "password": "null",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-5",
       "type": "vmess",
       "server": "142.0.131.72",
       "port": 443,
@@ -252,43 +394,39 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|90分-5",
-      "type": "http",
-      "server": "138.199.35.198",
-      "port": 9002,
-      "tls": true
-    },
-    {
       "name": "🇺🇸美国|unknown|90分-6",
       "type": "http",
-      "server": "68.235.56.59",
+      "server": "45.63.38.134",
       "port": 443,
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|90分-11",
-      "type": "vmess",
-      "server": "cold-dawn-9246.fly.dev",
+      "name": "🇺🇸美国|unknown|90分-7",
+      "type": "http",
+      "server": "138.199.35.212",
+      "port": 9002,
+      "password": "null",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-8",
+      "type": "http",
+      "server": "167.88.60.242",
       "port": 443,
-      "uuid": "ea4909ef-7ca6-4b46-bf2e-6c07896ef338",
-      "cipher": "auto",
-      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-10",
+      "type": "http",
+      "server": "138.199.35.205",
+      "port": 9002,
+      "password": "null",
       "tls": true
     },
     {
       "name": "🇺🇸美国|unknown|90分-12",
       "type": "vmess",
-      "server": "gov.uk",
-      "port": 443,
-      "uuid": "77848824-93b7-4b89-ffd0-e91afff406ce",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-13",
-      "type": "vmess",
-      "server": "ophelia.mom",
+      "server": "169.197.143.89",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -296,77 +434,22 @@
       "tls": true
     },
     {
+      "name": "🇺🇸美国|unknown|90分-14",
+      "type": "http",
+      "server": "192.227.176.234",
+      "port": 443,
+      "tls": true
+    },
+    {
       "name": "🇺🇸美国|unknown|90分-15",
-      "type": "vmess",
-      "server": "hgtrojan.zabc.net",
-      "port": 2083,
-      "uuid": "e6395c20-4571-4b34-d6b1-55a5d36e49ea",
-      "cipher": "auto",
-      "network": "ws",
+      "type": "http",
+      "server": "147.182.216.4",
+      "port": 443,
+      "password": "e4b72b531a2d10900519",
       "tls": true
     },
     {
       "name": "🇺🇸美国|unknown|90分-17",
-      "type": "vmess",
-      "server": "speed.cloudflare.com",
-      "port": 443,
-      "uuid": "7f52b81e-bc96-4772-8359-b7dacb216ca3",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-18",
-      "type": "vmess",
-      "server": "sy4.620720.xyz",
-      "port": 443,
-      "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-19",
-      "type": "vmess",
-      "server": "hms04.xmivideo.cfd",
-      "port": 443,
-      "uuid": "93ea486a-bada-42a4-ac38-d088b320fa1e",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-20",
-      "type": "vmess",
-      "server": "speed.cloudflare.com",
-      "port": 2087,
-      "uuid": "2a3263e2-891c-4446-b474-a8c63acb6e25",
-      "cipher": "auto",
-      "network": "grpc",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-21",
-      "type": "vmess",
-      "server": "t1.620720.xyz",
-      "port": 8443,
-      "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-23",
-      "type": "vmess",
-      "server": "cg1c04.waimaojd.com",
-      "port": 443,
-      "uuid": "be8e3136-b874-4085-bd23-ec3699300490",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-24",
       "type": "vmess",
       "server": "53vXOVarmgcreAsv.v.3dns.vip",
       "port": 443,
@@ -376,27 +459,17 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|90分-25",
+      "name": "🇺🇸美国|unknown|90分-18",
       "type": "vmess",
       "server": "speed.cloudflare.com",
-      "port": 8443,
-      "uuid": "c313606f-98c2-4d7b-ba74-48b94f61b11d",
+      "port": 2087,
+      "uuid": "2a3263e2-891c-4446-b474-a8c63acb6e25",
       "cipher": "auto",
-      "network": "ws",
+      "network": "grpc",
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|90分-26",
-      "type": "vmess",
-      "server": "bJ1Aa2ZyJxYamYuK.v.3dns.vip",
-      "port": 443,
-      "uuid": "88888888-8888-8888-8888-888888888888",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|90分-27",
+      "name": "🇺🇸美国|unknown|90分-19",
       "type": "vmess",
       "server": "cg1c01.waimaojd.com",
       "port": 443,
@@ -406,7 +479,17 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|90分-29",
+      "name": "🇺🇸美国|unknown|90分-21",
+      "type": "vmess",
+      "server": "hadipowerplus.up.railway.app",
+      "port": 443,
+      "uuid": "242dc91e-061b-478d-9911-d81ea8672c10",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-22",
       "type": "trojan",
       "server": "us3-2.998998.best",
       "port": 443,
@@ -415,7 +498,137 @@
       "sni": "nat3.xxai.dpdns.org"
     },
     {
+      "name": "🇺🇸美国|unknown|90分-23",
+      "type": "vmess",
+      "server": "ophelia.mom",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-24",
+      "type": "vmess",
+      "server": "hms04.xmivideo.cfd",
+      "port": 443,
+      "uuid": "93ea486a-bada-42a4-ac38-d088b320fa1e",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-25",
+      "type": "vmess",
+      "server": "t1.620720.xyz",
+      "port": 8443,
+      "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-26",
+      "type": "vmess",
+      "server": "hgtrojan.zabc.net",
+      "port": 2083,
+      "uuid": "e6395c20-4571-4b34-d6b1-55a5d36e49ea",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-27",
+      "type": "vmess",
+      "server": "speed.cloudflare.com",
+      "port": 8443,
+      "uuid": "c313606f-98c2-4d7b-ba74-48b94f61b11d",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-29",
+      "type": "vmess",
+      "server": "cf.0sm.com",
+      "port": 80,
+      "uuid": "0cf6d970-3f1d-4aae-a989-92a8f76ae3db",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
       "name": "🇺🇸美国|unknown|90分-30",
+      "type": "vmess",
+      "server": "afrhms16v.bestxray.buzz",
+      "port": 443,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-31",
+      "type": "vmess",
+      "server": "speed.cloudflare.com",
+      "port": 443,
+      "uuid": "7f52b81e-bc96-4772-8359-b7dacb216ca3",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-32",
+      "type": "vmess",
+      "server": "sy4.620720.xyz",
+      "port": 443,
+      "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-33",
+      "type": "vmess",
+      "server": "cold-dawn-9246.fly.dev",
+      "port": 443,
+      "uuid": "ea4909ef-7ca6-4b46-bf2e-6c07896ef338",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-34",
+      "type": "vmess",
+      "server": "cg1c04.waimaojd.com",
+      "port": 443,
+      "uuid": "be8e3136-b874-4085-bd23-ec3699300490",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-36",
+      "type": "vmess",
+      "server": "gov.uk",
+      "port": 443,
+      "uuid": "77848824-93b7-4b89-ffd0-e91afff406ce",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-37",
+      "type": "vmess",
+      "server": "bJ1Aa2ZyJxYamYuK.v.3dns.vip",
+      "port": 443,
+      "uuid": "88888888-8888-8888-8888-888888888888",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|90分-38",
       "type": "vmess",
       "server": "rlhrwtqusd.site",
       "port": 443,
@@ -427,7 +640,7 @@
     {
       "name": "🇭🇰香港|unknown|90分-6",
       "type": "vmess",
-      "server": "syJ2gGUgMwBwQwQx.v.3dns.vip",
+      "server": "ADncdOvLHR4M1P36.v.3dns.vip",
       "port": 443,
       "uuid": "88888888-8888-8888-8888-888888888888",
       "cipher": "auto",
@@ -437,7 +650,17 @@
     {
       "name": "🇭🇰香港|unknown|90分-7",
       "type": "vmess",
-      "server": "ADncdOvLHR4M1P36.v.3dns.vip",
+      "server": "bYWXdhIRqKJj8XAZ.v.3dns.vip",
+      "port": 443,
+      "uuid": "e4cfeb24-c58f-4813-b0c8-d2b6b52cd244",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇭🇰香港|unknown|90分-8",
+      "type": "vmess",
+      "server": "syJ2gGUgMwBwQwQx.v.3dns.vip",
       "port": 443,
       "uuid": "88888888-8888-8888-8888-888888888888",
       "cipher": "auto",
@@ -465,7 +688,7 @@
       "tls": true
     },
     {
-      "name": "🇰🇵日本|unknown|90分-2",
+      "name": "🇰🇵日本|unknown|90分",
       "type": "trojan",
       "server": "45.32.52.173",
       "port": 8886,
@@ -474,16 +697,6 @@
     },
     {
       "name": "🇰🇵日本|unknown|90分-4",
-      "type": "vmess",
-      "server": "kQov7UKaDknXb8a3.v.3dns.vip",
-      "port": 443,
-      "uuid": "88888888-8888-8888-8888-888888888888",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇰🇵日本|unknown|90分-5",
       "type": "trojan",
       "server": "musical-terrier.rooster465.autos",
       "port": 443,
@@ -491,7 +704,7 @@
       "sni": "musical-terrier.rooster465.autos"
     },
     {
-      "name": "🇰🇵日本|unknown|90分-6",
+      "name": "🇰🇵日本|unknown|90分-5",
       "type": "trojan",
       "server": "optimal-penguin.rooster465.autos",
       "port": 443,
@@ -499,7 +712,31 @@
       "sni": "optimal-penguin.rooster465.autos"
     },
     {
+      "name": "🇰🇵日本|unknown|90分-6",
+      "type": "trojan",
+      "server": "winning-marten.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "winning-marten.rooster465.autos"
+    },
+    {
       "name": "🇰🇵日本|unknown|90分-7",
+      "type": "trojan",
+      "server": "amazed-mako.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "amazed-mako.rooster465.autos"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-8",
+      "type": "trojan",
+      "server": "allowed-poodle.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "allowed-poodle.rooster465.autos"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-9",
       "type": "trojan",
       "server": "normal-macaque.rooster465.autos",
       "port": 443,
@@ -507,15 +744,7 @@
       "sni": "normal-macaque.rooster465.autos"
     },
     {
-      "name": "🇰🇵日本|unknown|90分-8",
-      "type": "trojan",
-      "server": "stable-python.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "stable-python.rooster465.autos"
-    },
-    {
-      "name": "🇰🇵日本|unknown|90分-9",
+      "name": "🇰🇵日本|unknown|90分-10",
       "type": "vmess",
       "server": "Z9FfBx3zs2q5O0BG.v.3dns.vip",
       "port": 443,
@@ -525,7 +754,24 @@
       "tls": true
     },
     {
-      "name": "🇰🇵日本|unknown|90分-10",
+      "name": "🇰🇵日本|unknown|90分-11",
+      "type": "trojan",
+      "server": "equipped-stingray.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "network": "tcp",
+      "sni": "equipped-stingray.rooster465.autos"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-12",
+      "type": "trojan",
+      "server": "prime-corgi.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "prime-corgi.rooster465.autos"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-13",
       "type": "trojan",
       "server": "live-stallion.rooster465.autos",
       "port": 443,
@@ -533,38 +779,12 @@
       "sni": "live-stallion.rooster465.autos"
     },
     {
-      "name": "🇰🇵日本|unknown|90分-11",
-      "type": "trojan",
-      "server": "allowed-poodle.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "allowed-poodle.rooster465.autos"
-    },
-    {
-      "name": "🇰🇵日本|unknown|90分-12",
-      "type": "trojan",
-      "server": "jp005.421421.xyz",
-      "port": 20230,
-      "password": "0400697c-b581-4575-9d2f-0bbd4659312d",
-      "network": "ws",
-      "sni": "www.alibaba.com"
-    },
-    {
-      "name": "🇰🇵日本|unknown|90分-13",
-      "type": "trojan",
-      "server": "evident-ant.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "evident-ant.rooster465.autos"
-    },
-    {
       "name": "🇰🇵日本|unknown|90分-14",
       "type": "trojan",
-      "server": "equipped-stingray.rooster465.autos",
+      "server": "concrete-aardvark.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "network": "tcp",
-      "sni": "equipped-stingray.rooster465.autos"
+      "sni": "concrete-aardvark.rooster465.autos"
     },
     {
       "name": "🇰🇵日本|unknown|90分-15",
@@ -579,29 +799,57 @@
     {
       "name": "🇰🇵日本|unknown|90分-16",
       "type": "trojan",
-      "server": "warm-krill.rooster465.autos",
+      "server": "stable-python.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "warm-krill.rooster465.autos"
+      "sni": "stable-python.rooster465.autos"
     },
     {
       "name": "🇰🇵日本|unknown|90分-17",
       "type": "trojan",
-      "server": "amazed-mako.rooster465.autos",
+      "server": "evident-ant.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "amazed-mako.rooster465.autos"
+      "sni": "evident-ant.rooster465.autos"
     },
     {
       "name": "🇰🇵日本|unknown|90分-18",
       "type": "trojan",
-      "server": "prime-corgi.rooster465.autos",
+      "server": "warm-krill.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "prime-corgi.rooster465.autos"
+      "network": "tcp",
+      "sni": "warm-krill.rooster465.autos"
     },
     {
       "name": "🇰🇵日本|unknown|90分-19",
+      "type": "trojan",
+      "server": "obliging-louse.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "obliging-louse.rooster465.autos"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-20",
+      "type": "vmess",
+      "server": "kQov7UKaDknXb8a3.v.3dns.vip",
+      "port": 443,
+      "uuid": "88888888-8888-8888-8888-888888888888",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-21",
+      "type": "trojan",
+      "server": "jp005.421421.xyz",
+      "port": 20230,
+      "password": "0400697c-b581-4575-9d2f-0bbd4659312d",
+      "network": "ws",
+      "sni": "www.alibaba.com"
+    },
+    {
+      "name": "🇰🇵日本|unknown|90分-22",
       "type": "trojan",
       "server": "legible-ram.rooster465.autos",
       "port": 443,
@@ -609,7 +857,30 @@
       "sni": "legible-ram.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-6",
+      "name": "🇸🋀新加坡|unknown|90分-7",
+      "type": "http",
+      "server": "156.146.56.97",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-9",
+      "type": "trojan",
+      "server": "joint-ewe.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "joint-ewe.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-10",
+      "type": "trojan",
+      "server": "musical-mouse.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "musical-mouse.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-11",
       "type": "trojan",
       "server": "pet-antelope.rooster465.autos",
       "port": 443,
@@ -617,31 +888,23 @@
       "sni": "pet-antelope.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-7",
+      "name": "🇸🋀新加坡|unknown|90分-12",
       "type": "trojan",
-      "server": "inviting-ferret.rooster465.autos",
+      "server": "real-cardinal.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "inviting-ferret.rooster465.autos"
+      "sni": "real-cardinal.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-8",
+      "name": "🇸🋀新加坡|unknown|90分-13",
       "type": "trojan",
-      "server": "rested-seahorse.rooster465.autos",
+      "server": "fond-mammoth.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "rested-seahorse.rooster465.autos"
+      "sni": "fond-mammoth.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-9",
-      "type": "trojan",
-      "server": "intense-wildcat.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "intense-wildcat.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-11",
+      "name": "🇸🋀新加坡|unknown|90分-14",
       "type": "vmess",
       "server": "ASaqYIDZa9WDQ9Kq.v.3dns.vip",
       "port": 443,
@@ -651,7 +914,25 @@
       "tls": true
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-12",
+      "name": "🇸🋀新加坡|unknown|90分-15",
+      "type": "vmess",
+      "server": "K5DYRTmkNsLnAj8V.v.3dns.vip",
+      "port": 443,
+      "uuid": "b89b702b-31ef-4f6a-85df-c264795a987b",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-16",
+      "type": "trojan",
+      "server": "intense-wildcat.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "intense-wildcat.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-18",
       "type": "trojan",
       "server": "moral-basilisk.rooster465.autos",
       "port": 443,
@@ -659,55 +940,7 @@
       "sni": "moral-basilisk.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-15",
-      "type": "trojan",
-      "server": "fond-mammoth.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "fond-mammoth.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-16",
-      "type": "trojan",
-      "server": "ace-liger.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "ace-liger.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-18",
-      "type": "trojan",
-      "server": "simple-molly.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "simple-molly.rooster465.autos"
-    },
-    {
       "name": "🇸🋀新加坡|unknown|90分-19",
-      "type": "trojan",
-      "server": "joint-ewe.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "joint-ewe.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-21",
-      "type": "trojan",
-      "server": "musical-mouse.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "musical-mouse.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-22",
-      "type": "trojan",
-      "server": "holy-lamb.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "holy-lamb.rooster465.autos"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|90分-23",
       "type": "trojan",
       "server": "brave-tomcat.rooster465.autos",
       "port": 443,
@@ -715,34 +948,97 @@
       "sni": "brave-tomcat.rooster465.autos"
     },
     {
-      "name": "🇸🋀新加坡|unknown|90分-24",
+      "name": "🇸🋀新加坡|unknown|90分-23",
       "type": "trojan",
-      "server": "real-cardinal.rooster465.autos",
+      "server": "inviting-ferret.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "real-cardinal.rooster465.autos"
+      "sni": "inviting-ferret.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-24",
+      "type": "trojan",
+      "server": "rested-seahorse.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "rested-seahorse.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-25",
+      "type": "trojan",
+      "server": "inspired-hound.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "inspired-hound.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-26",
+      "type": "trojan",
+      "server": "ace-liger.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "ace-liger.rooster465.autos"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|90分-27",
+      "type": "trojan",
+      "server": "simple-molly.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "simple-molly.rooster465.autos"
     },
     {
       "name": "🇰🇷韩国|unknown|90分",
-      "type": "vmess",
-      "server": "43.108.103.167",
-      "port": 123,
-      "uuid": "35aa0fda-175a-4aec-c468-0231dee1a121",
-      "cipher": "auto",
-      "network": "http",
-      "tls": false
+      "type": "trojan",
+      "server": "central-jawfish.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "network": "tcp",
+      "sni": "central-jawfish.rooster465.autos"
     },
     {
       "name": "🇰🇷韩国|unknown|90分-2",
       "type": "trojan",
-      "server": "3.39.225.215",
+      "server": "inviting-rabbit.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "network": "tcp",
-      "sni": "kind-stork.rooster465.autos"
+      "sni": "inviting-rabbit.rooster465.autos"
     },
     {
       "name": "🇰🇷韩国|unknown|90分-3",
+      "type": "trojan",
+      "server": "working-tomcat.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "working-tomcat.rooster465.autos"
+    },
+    {
+      "name": "🇰🇷韩国|unknown|90分-4",
+      "type": "trojan",
+      "server": "pure-kodiak.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "network": "tcp",
+      "sni": "pure-kodiak.rooster465.autos"
+    },
+    {
+      "name": "🇰🇷韩国|unknown|90分-5",
+      "type": "trojan",
+      "server": "fancy-skink.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "fancy-skink.rooster465.autos"
+    },
+    {
+      "name": "🇰🇷韩国|unknown|90分-6",
+      "type": "trojan",
+      "server": "glorious-lark.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "glorious-lark.rooster465.autos"
+    },
+    {
+      "name": "🇰🇷韩国|unknown|90分-7",
       "type": "vmess",
       "server": "8nTzyR5KNivfabaT.v.3dns.vip",
       "port": 443,
@@ -752,77 +1048,12 @@
       "tls": true
     },
     {
-      "name": "🇰🇷韩国|unknown|90分-4",
-      "type": "trojan",
-      "server": "working-tomcat.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "working-tomcat.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-5",
-      "type": "trojan",
-      "server": "central-jawfish.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "central-jawfish.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-6",
-      "type": "trojan",
-      "server": "inviting-rabbit.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "inviting-rabbit.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-7",
-      "type": "trojan",
-      "server": "fancy-skink.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "fancy-skink.rooster465.autos"
-    },
-    {
       "name": "🇰🇷韩国|unknown|90分-8",
       "type": "trojan",
       "server": "cunning-grub.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
       "sni": "cunning-grub.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-9",
-      "type": "trojan",
-      "server": "delicate-buck.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "delicate-buck.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-10",
-      "type": "trojan",
-      "server": "optimum-snapper.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "optimum-snapper.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-12",
-      "type": "trojan",
-      "server": "glorious-lark.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "network": "tcp",
-      "sni": "glorious-lark.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷韩国|unknown|90分-13",
-      "type": "trojan",
-      "server": "engaging-toucan.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "engaging-toucan.rooster465.autos"
     },
     {
       "name": "🇺🇷英国|unknown|90分",
@@ -834,95 +1065,42 @@
     {
       "name": "🇺🇷英国|unknown|90分-2",
       "type": "http",
-      "server": "212.102.63.31",
-      "port": 443,
+      "server": "84.17.50.214",
+      "port": 9443,
       "tls": true
     },
     {
       "name": "🇺🇷英国|unknown|90分-3",
       "type": "http",
-      "server": "84.17.50.129",
-      "port": 9443,
+      "server": "37.120.233.18",
+      "port": 443,
       "tls": true
     },
     {
-      "name": "🇺🇷英国|unknown|90分-4",
+      "name": "🇩🇪德国|unknown|90分-2",
       "type": "http",
-      "server": "185.164.138.156",
+      "server": "149.36.50.1",
       "port": 443,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-3",
+      "type": "http",
+      "server": "149.36.50.157",
+      "port": 443,
+      "password": "None",
       "tls": true
     },
     {
       "name": "🇩🇪德国|unknown|90分-4",
-      "type": "trojan",
-      "server": "45.38.3.25",
-      "port": 443,
-      "password": "humanity"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-10",
-      "type": "trojan",
-      "server": "45.87.41.18",
-      "port": 443,
-      "password": "humanity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-12",
-      "type": "trojan",
-      "server": "193.23.202.65",
-      "port": 443,
-      "password": "humanity"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-20",
-      "type": "trojan",
-      "server": "219.76.13.177",
-      "port": 443,
-      "password": "humanity"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-21",
       "type": "trojan",
       "server": "83.217.222.170",
       "port": 443,
       "password": "humanity"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-23",
-      "type": "trojan",
-      "server": "31.57.190.34",
-      "port": 443,
-      "password": "humanity"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-24",
-      "type": "trojan",
-      "server": "185.22.172.249",
-      "port": 443,
-      "password": "humanity"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-30",
-      "type": "trojan",
-      "server": "185.255.179.166",
-      "port": 443,
-      "password": "humanity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-33",
-      "type": "trojan",
-      "server": "45.130.125.160",
-      "port": 443,
-      "password": "humanity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-38",
+      "name": "🇩🇪德国|unknown|90分-10",
       "type": "trojan",
       "server": "109.206.241.10",
       "port": 449,
@@ -930,21 +1108,38 @@
       "sni": "russiapower.accesscam.org"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-46",
+      "name": "🇩🇪德国|unknown|90分-12",
       "type": "trojan",
-      "server": "144.31.182.130",
+      "server": "185.220.100.168",
+      "port": 443,
+      "password": "humanity",
+      "network": "ws",
+      "sni": "www.calmlunch.com"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-14",
+      "type": "trojan",
+      "server": "3.253.106.233",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "loved-shark.rooster465.autos"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-16",
+      "type": "trojan",
+      "server": "219.76.13.177",
       "port": 443,
       "password": "humanity"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-50",
-      "type": "trojan",
-      "server": "46.62.204.134",
-      "port": 443,
-      "password": "humanity"
+      "name": "🇩🇪德国|unknown|90分-17",
+      "type": "http",
+      "server": "158.173.154.5",
+      "port": 9002,
+      "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|90分-52",
+      "name": "🇩🇪德国|unknown|90分-19",
       "type": "trojan",
       "server": "185.114.72.31",
       "port": 2053,
@@ -953,31 +1148,69 @@
       "sni": "www.calmlunch.com"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-53",
-      "type": "http",
-      "server": "149.36.50.1",
+      "name": "🇩🇪德国|unknown|90分-20",
+      "type": "ss",
+      "server": "43.114.183.117",
       "port": 443,
-      "password": "None",
+      "password": "d4M6fAj9Q07uK4HePntATUAs1KBceMzq8hGPy1AFxFA=",
+      "cipher": "2022-blake3-chacha20-poly1305"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-22",
+      "type": "ss",
+      "server": "185.239.141.248",
+      "port": 8388,
+      "password": "j_Z9yWqItCz_9yhD5YVY4w",
+      "cipher": "aes-256-gcm"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-25",
+      "type": "http",
+      "server": "213.177.229.161",
+      "port": 443,
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|90分-54",
+      "name": "🇩🇪德国|unknown|90分-27",
+      "type": "http",
+      "server": "149.36.50.129",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-28",
       "type": "trojan",
-      "server": "165.215.250.14",
+      "server": "185.22.172.249",
       "port": 443,
       "password": "humanity"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-55",
+      "name": "🇩🇪德国|unknown|90分-31",
       "type": "trojan",
-      "server": "144.31.205.106",
+      "server": "31.57.190.34",
+      "port": 443,
+      "password": "humanity"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-32",
+      "type": "trojan",
+      "server": "45.87.41.18",
       "port": 443,
       "password": "humanity",
       "network": "ws",
-      "sni": "www.volumeroot.com"
+      "sni": "www.calmlunch.com"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-56",
+      "name": "🇩🇪德国|unknown|90分-38",
+      "type": "trojan",
+      "server": "45.130.125.160",
+      "port": 443,
+      "password": "humanity",
+      "network": "ws",
+      "sni": "www.calmlunch.com"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-39",
       "type": "trojan",
       "server": "212.227.144.37",
       "port": 8443,
@@ -986,23 +1219,97 @@
       "sni": "www.calmlunch.com"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-62",
-      "type": "trojan",
-      "server": "loved-shark.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "loved-shark.rooster465.autos"
+      "name": "🇩🇪德国|unknown|90分-41",
+      "type": "http",
+      "server": "158.173.154.1",
+      "port": 9002,
+      "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|90分-65",
-      "type": "trojan",
-      "server": "sacred-anemone.rooster465.autos",
+      "name": "🇩🇪德国|unknown|90分-42",
+      "type": "http",
+      "server": "87.249.132.97",
       "port": 443,
-      "password": "UX82473651",
-      "sni": "sacred-anemone.rooster465.autos"
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-47",
+      "type": "http",
+      "server": "79.76.126.155",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-48",
+      "type": "trojan",
+      "server": "144.31.182.130",
+      "port": 443,
+      "password": "humanity"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-49",
+      "type": "http",
+      "server": "87.249.132.97",
+      "port": 9443,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-55",
+      "type": "trojan",
+      "server": "45.38.3.25",
+      "port": 443,
+      "password": "humanity"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-58",
+      "type": "trojan",
+      "server": "193.23.202.65",
+      "port": 443,
+      "password": "humanity"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-59",
+      "type": "trojan",
+      "server": "185.255.179.166",
+      "port": 443,
+      "password": "humanity",
+      "network": "ws",
+      "sni": "www.calmlunch.com"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-61",
+      "type": "trojan",
+      "server": "46.62.204.134",
+      "port": 443,
+      "password": "humanity"
     },
     {
       "name": "🇩🇪德国|unknown|90分-67",
+      "type": "ss",
+      "server": "feow.nomush.ir",
+      "port": 8388,
+      "password": "K63q-WhHdJoC_AIxT6E4r_IIuGIb6CuV",
+      "cipher": "chacha20-ietf-poly1305"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-70",
+      "type": "trojan",
+      "server": "cz-musicc.moritech.net",
+      "port": 443,
+      "password": "f8b-U5TxjNRYKLvU0Js_6YeMCdj_82km",
+      "network": "grpc"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-72",
+      "type": "trojan",
+      "server": "adapting-basilisk.rooster465.autos",
+      "port": 443,
+      "password": "UX82473651",
+      "sni": "adapting-basilisk.rooster465.autos"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-74",
       "type": "trojan",
       "server": "cuddly-sheepdog.rooster465.autos",
       "port": 443,
@@ -1010,7 +1317,7 @@
       "sni": "cuddly-sheepdog.rooster465.autos"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-68",
+      "name": "🇩🇪德国|unknown|90分-75",
       "type": "trojan",
       "server": "nimm.mpd.cc.cd",
       "port": 2053,
@@ -1019,7 +1326,16 @@
       "sni": "nimm.mpd.cc.cd"
     },
     {
-      "name": "🇩🇪德国|unknown|90分-69",
+      "name": "🇩🇪德国|unknown|90分-79",
+      "type": "trojan",
+      "server": "www.calmlunch.com",
+      "port": 443,
+      "password": "humanity",
+      "network": "ws",
+      "sni": "www.calmlunch.com"
+    },
+    {
+      "name": "🇩🇪德国|unknown|90分-81",
       "type": "vmess",
       "server": "hms082.gwdef.sbs",
       "port": 443,
@@ -1029,42 +1345,32 @@
       "tls": true
     },
     {
-      "name": "🇩🇪德国|unknown|90分-71",
+      "name": "🇩🇪德国|unknown|90分-82",
       "type": "trojan",
-      "server": "adapting-basilisk.rooster465.autos",
+      "server": "sacred-anemone.rooster465.autos",
       "port": 443,
       "password": "UX82473651",
-      "sni": "adapting-basilisk.rooster465.autos"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-73",
-      "type": "trojan",
-      "server": "www.calmlunch.com",
-      "port": 443,
-      "password": "humanity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
-      "name": "🇩🇪德国|unknown|90分-74",
-      "type": "trojan",
-      "server": "noted-cougar.rooster465.autos",
-      "port": 443,
-      "password": "UX82473651",
-      "sni": "noted-cougar.rooster465.autos"
+      "sni": "sacred-anemone.rooster465.autos"
     },
     {
       "name": "🇨🇦加拿大|unknown|90分",
       "type": "http",
-      "server": "206.223.183.16",
+      "server": "206.223.183.21",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇨🇦加拿大|unknown|90分-2",
+      "type": "http",
+      "server": "206.223.161.47",
       "port": 443,
       "tls": true
     },
     {
       "name": "🇳🇱荷兰|unknown|90分",
       "type": "http",
-      "server": "149.36.51.129",
-      "port": 443,
+      "server": "84.17.47.148",
+      "port": 9002,
       "password": "None",
       "tls": true
     },
@@ -1073,7 +1379,6 @@
       "type": "http",
       "server": "84.17.47.148",
       "port": 9002,
-      "password": "None",
       "tls": true
     },
     {
@@ -1086,21 +1391,23 @@
     {
       "name": "🇳🇱荷兰|unknown|90分-4",
       "type": "http",
-      "server": "84.17.47.146",
+      "server": "84.17.47.125",
       "port": 9002,
+      "password": "None",
       "tls": true
     },
     {
       "name": "🇳🇱荷兰|unknown|90分-5",
       "type": "http",
-      "server": "84.17.47.148",
-      "port": 9002,
-      "tls": true
+      "server": "185.246.153.42",
+      "port": 443,
+      "tls": true,
+      "sni": "482c8436a1f7c908b48a1757abb5dd79-3791fb4df2db250b.apache-iv.com"
     },
     {
       "name": "🇳🇱荷兰|unknown|90分-6",
       "type": "http",
-      "server": "84.17.47.125",
+      "server": "84.17.47.146",
       "port": 9002,
       "tls": true
     },
@@ -1109,18 +1416,55 @@
       "type": "http",
       "server": "84.17.47.125",
       "port": 9002,
-      "password": "None",
       "tls": true
     },
     {
       "name": "🇳🇱荷兰|unknown|90分-8",
       "type": "http",
-      "server": "149.36.51.157",
-      "port": 9443,
+      "server": "161.129.60.66",
+      "port": 443,
       "tls": true
     },
     {
+      "name": "🇳🇱荷兰|unknown|90分-9",
+      "type": "http",
+      "server": "84.17.47.123",
+      "port": 9002,
+      "tls": true
+    },
+    {
+      "name": "🇳🇱荷兰|unknown|90分-10",
+      "type": "http",
+      "server": "185.246.153.28",
+      "port": 443,
+      "tls": true,
+      "sni": "4a8c2906c96058315dffbc2b0e7ff19b-0c66a58858a795df.apache-iv.com"
+    },
+    {
+      "name": "🇳🇱荷兰|unknown|90分-11",
+      "type": "ss",
+      "server": "ruot.ayucloudservices.nl",
+      "port": 35016,
+      "password": "9c51ca33-a332-4de5-8677-5624e940097c",
+      "cipher": "aes-128-gcm"
+    },
+    {
       "name": "🇫🇷法国|unknown|90分",
+      "type": "http",
+      "server": "149.102.245.65",
+      "port": 443,
+      "password": "None",
+      "tls": true
+    },
+    {
+      "name": "🇫🇷法国|unknown|90分-2",
+      "type": "http",
+      "server": "82.65.162.76",
+      "port": 443,
+      "tls": true
+    },
+    {
+      "name": "🇫🇷法国|unknown|90分-3",
       "type": "http",
       "server": "138.199.47.247",
       "port": 9443,
@@ -1137,36 +1481,22 @@
     },
     {
       "name": "🇺🇸美国|unknown|85分",
-      "type": "vmess",
-      "server": "162.159.130.208",
-      "port": 8080,
-      "uuid": "55021a7c-bd6c-418e-be95-ceac8ba27b45",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
+      "type": "ss",
+      "server": "185.103.110.66",
+      "port": 18280,
+      "password": "f9300a9bf39ae0347c3a3bfbc4dd7754",
+      "cipher": "aes-128-gcm"
     },
     {
       "name": "🇺🇸美国|unknown|85分-2",
-      "type": "vmess",
-      "server": "162.159.137.249",
-      "port": 8080,
-      "uuid": "028c8131-9e3e-4836-94ac-ea7f24d4d05a",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
+      "type": "ss",
+      "server": "205.209.126.205",
+      "port": 19049,
+      "password": "e72a793d634d99748cf908d21fd935c3",
+      "cipher": "aes-128-gcm"
     },
     {
       "name": "🇺🇸美国|unknown|85分-3",
-      "type": "vmess",
-      "server": "162.159.5.6",
-      "port": 8080,
-      "uuid": "d9c5ec6a-a8d8-4732-8447-56fbd2f93e96",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-4",
       "type": "vmess",
       "server": "209.126.84.189",
       "port": 443,
@@ -1175,25 +1505,7 @@
       "network": "ws"
     },
     {
-      "name": "🇺🇸美国|unknown|85分-5",
-      "type": "vmess",
-      "server": "162.159.134.23",
-      "port": 8080,
-      "uuid": "9b196b50-37f2-4f4b-b175-06273adc6207",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-6",
-      "type": "ss",
-      "server": "185.103.110.68",
-      "port": 18283,
-      "password": "f9300a9bf39ae0347c3a3bfbc4dd7754",
-      "cipher": "aes-128-gcm"
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-7",
+      "name": "🇺🇸美国|unknown|85分-4",
       "type": "vmess",
       "server": "162.159.1.33",
       "port": 8080,
@@ -1203,33 +1515,47 @@
       "tls": false
     },
     {
+      "name": "🇺🇸美国|unknown|85分-5",
+      "type": "vmess",
+      "server": "162.159.137.249",
+      "port": 8080,
+      "uuid": "028c8131-9e3e-4836-94ac-ea7f24d4d05a",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-6",
+      "type": "vmess",
+      "server": "162.159.134.23",
+      "port": 8080,
+      "uuid": "9b196b50-37f2-4f4b-b175-06273adc6207",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-7",
+      "type": "vmess",
+      "server": "162.159.5.6",
+      "port": 8080,
+      "uuid": "d9c5ec6a-a8d8-4732-8447-56fbd2f93e96",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
       "name": "🇺🇸美国|unknown|85分-8",
-      "type": "ss",
-      "server": "205.209.126.205",
-      "port": 19049,
-      "password": "e72a793d634d99748cf908d21fd935c3",
-      "cipher": "aes-128-gcm"
+      "type": "vmess",
+      "server": "162.159.130.208",
+      "port": 8080,
+      "uuid": "55021a7c-bd6c-418e-be95-ceac8ba27b45",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
     },
     {
       "name": "🇺🇸美国|unknown|85分-9",
-      "type": "vmess",
-      "server": "support.zoom.us",
-      "port": 8080,
-      "uuid": "44e57485-eccc-46ef-808f-cd17ac810018",
-      "cipher": "auto",
-      "network": "ws"
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-10",
-      "type": "vmess",
-      "server": "3h-kazakhstan1.09vpn.com",
-      "port": 80,
-      "uuid": "567f4be5-12ab-42e1-b8d9-db6fd1fdd31c",
-      "cipher": "auto",
-      "network": "ws"
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-11",
       "type": "vmess",
       "server": "118ejob.ir",
       "port": 80,
@@ -1238,24 +1564,25 @@
       "network": "ws"
     },
     {
-      "name": "🇺🇸美国|unknown|85分-12",
+      "name": "🇺🇸美国|unknown|85分-10",
       "type": "vmess",
-      "server": "speed.cloudflare.com",
-      "port": 2095,
-      "uuid": "f4f01d19-1782-4b85-9317-0d3cee0f91e2",
+      "server": "support.zoom.us",
+      "port": 8080,
+      "uuid": "44e57485-eccc-46ef-808f-cd17ac810018",
       "cipher": "auto",
       "network": "ws"
     },
     {
-      "name": "🇺🇸美国|unknown|85分-13",
-      "type": "ss",
-      "server": "feow.nomush.ir",
-      "port": 8388,
-      "password": "K63q-WhHdJoC_AIxT6E4r_IIuGIb6CuV",
-      "cipher": "chacha20-ietf-poly1305"
+      "name": "🇺🇸美国|unknown|85分-11",
+      "type": "vmess",
+      "server": "speed.cloudflare.com",
+      "port": 80,
+      "uuid": "7f52b81e-bc96-4772-8359-b7dacb216ca3",
+      "cipher": "auto",
+      "network": "ws"
     },
     {
-      "name": "🇺🇸美国|unknown|85分-14",
+      "name": "🇺🇸美国|unknown|85分-12",
       "type": "vmess",
       "server": "russia.com",
       "port": 8880,
@@ -1265,17 +1592,58 @@
       "tls": false
     },
     {
-      "name": "🇺🇸美国|unknown|85分-15",
+      "name": "🇺🇸美国|unknown|85分-13",
       "type": "vmess",
-      "server": "russia.com",
-      "port": 2095,
-      "uuid": "6658a3a6-225a-4d33-a5d2-82cfde565b4e",
+      "server": "3h-kazakhstan1.09vpn.com",
+      "port": 80,
+      "uuid": "567f4be5-12ab-42e1-b8d9-db6fd1fdd31c",
       "cipher": "auto",
-      "network": "ws",
-      "tls": false
+      "network": "ws"
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-14",
+      "type": "vmess",
+      "server": "speed.cloudflare.com",
+      "port": 2095,
+      "uuid": "f4f01d19-1782-4b85-9317-0d3cee0f91e2",
+      "cipher": "auto",
+      "network": "ws"
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-15",
+      "type": "ss",
+      "server": "ss.043.node-for-bigairport.win",
+      "port": 20006,
+      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
+      "cipher": "chacha20-ietf-poly1305"
     },
     {
       "name": "🇺🇸美国|unknown|85分-16",
+      "type": "vmess",
+      "server": "skk.moe",
+      "port": 8080,
+      "uuid": "54d4d640-731c-4572-d0d4-e8a617816470",
+      "cipher": "auto",
+      "network": "ws"
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-17",
+      "type": "ss",
+      "server": "ruot.ayucloudservices.nl",
+      "port": 40022,
+      "password": "49b07b98-6b76-4c70-b046-39be88e75abf",
+      "cipher": "aes-128-gcm"
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-18",
+      "type": "ss",
+      "server": "ss.042.node-for-bigairport.win",
+      "port": 20006,
+      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
+      "cipher": "chacha20-ietf-poly1305"
+    },
+    {
+      "name": "🇺🇸美国|unknown|85分-19",
       "type": "vmess",
       "server": "fbi.gov",
       "port": 8080,
@@ -1285,29 +1653,14 @@
       "tls": false
     },
     {
-      "name": "🇺🇸美国|unknown|85分-17",
-      "type": "ss",
-      "server": "ss.042.node-for-bigairport.win",
-      "port": 20006,
-      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
-      "cipher": "chacha20-ietf-poly1305"
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-18",
-      "type": "ss",
-      "server": "ss.043.node-for-bigairport.win",
-      "port": 20006,
-      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
-      "cipher": "chacha20-ietf-poly1305"
-    },
-    {
-      "name": "🇺🇸美国|unknown|85分-19",
+      "name": "🇺🇸美国|unknown|85分-20",
       "type": "vmess",
-      "server": "speed.cloudflare.com",
-      "port": 80,
-      "uuid": "7f52b81e-bc96-4772-8359-b7dacb216ca3",
+      "server": "russia.com",
+      "port": 2095,
+      "uuid": "6658a3a6-225a-4d33-a5d2-82cfde565b4e",
       "cipher": "auto",
-      "network": "ws"
+      "network": "ws",
+      "tls": false
     },
     {
       "name": "🇰🇵日本|unknown|85分",
@@ -1337,13 +1690,21 @@
     {
       "name": "🇸🋀新加坡|unknown|85分",
       "type": "ss",
-      "server": "45.128.12.20",
-      "port": 14249,
-      "password": "9epp3o9ng8ej59uv",
-      "cipher": "chacha20-ietf-poly1305"
+      "server": "149.102.132.184",
+      "port": 80,
+      "password": "g5h5jleTRSyO3Rk4",
+      "cipher": "aes-256-gcm"
     },
     {
       "name": "🇸🋀新加坡|unknown|85分-2",
+      "type": "ss",
+      "server": "94.156.250.148",
+      "port": 7001,
+      "password": "RexnBgU7EV5ADxG",
+      "cipher": "aes-256-gcm"
+    },
+    {
+      "name": "🇸🋀新加坡|unknown|85分-3",
       "type": "ss",
       "server": "158.173.24.73",
       "port": 443,
@@ -1351,20 +1712,12 @@
       "cipher": "aes-128-gcm"
     },
     {
-      "name": "🇸🋀新加坡|unknown|85分-3",
-      "type": "ss",
-      "server": "149.102.132.184",
-      "port": 80,
-      "password": "g5h5jleTRSyO3Rk4",
-      "cipher": "aes-256-gcm"
-    },
-    {
       "name": "🇸🋀新加坡|unknown|85分-4",
       "type": "ss",
-      "server": "94.156.250.148",
-      "port": 7001,
-      "password": "RexnBgU7EV5ADxG",
-      "cipher": "aes-256-gcm"
+      "server": "45.128.12.20",
+      "port": 14249,
+      "password": "9epp3o9ng8ej59uv",
+      "cipher": "chacha20-ietf-poly1305"
     },
     {
       "name": "🇺🇷英国|unknown|85分",
@@ -1378,69 +1731,29 @@
     {
       "name": "🇩🇪德国|unknown|85分",
       "type": "ss",
-      "server": "102.133.165.160",
-      "port": 16233,
-      "password": "Xsy8Ox4yOV3xLlpxtjzs3X",
-      "cipher": "chacha20-ietf-poly1305"
-    },
-    {
-      "name": "🇩🇪德国|unknown|85分-2",
-      "type": "ss",
-      "server": "194.68.44.42",
-      "port": 64546,
-      "password": "U83u9OGpvSatIUW7LsWffr",
-      "cipher": "chacha20-ietf-poly1305"
-    },
-    {
-      "name": "🇩🇪德国|unknown|85分-3",
-      "type": "ss",
-      "server": "82.110.60.9",
-      "port": 19999,
-      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=",
-      "cipher": "aes-256-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|85分-4",
-      "type": "ss",
       "server": "132.243.175.144",
       "port": 8388,
       "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3",
       "cipher": "chacha20-ietf-poly1305"
     },
     {
-      "name": "🇩🇪德国|unknown|85分-5",
+      "name": "🇩🇪德国|unknown|85分-2",
       "type": "ss",
-      "server": "57.129.113.16",
-      "port": 8388,
-      "password": "NcAXc0UZI6yQJE1p8QmOv8",
+      "server": "102.133.165.160",
+      "port": 16233,
+      "password": "Xsy8Ox4yOV3xLlpxtjzs3X",
       "cipher": "chacha20-ietf-poly1305"
     },
     {
-      "name": "🇩🇪德国|unknown|85分-6",
+      "name": "🇩🇪德国|unknown|85分-3",
       "type": "ss",
-      "server": "216.128.168.190",
-      "port": 8388,
-      "password": "owVdNnQcdPgthSyX",
-      "cipher": "aes-256-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|85分-7",
-      "type": "ss",
-      "server": "57.131.48.45",
-      "port": 8388,
-      "password": "itzvpn@321",
-      "cipher": "aes-256-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|85分-8",
-      "type": "ss",
-      "server": "102.37.156.224",
+      "server": "154.46.31.106",
       "port": 443,
-      "password": "aduB9HGxQHjA2SBMRjkHX6",
+      "password": "QFWzCw2uX9B9i6qAYeFBIE",
       "cipher": "chacha20-ietf-poly1305"
     },
     {
-      "name": "🇩🇪德国|unknown|85分-9",
+      "name": "🇩🇪德国|unknown|85分-4",
       "type": "ss",
       "server": "70.34.212.124",
       "port": 8388,
@@ -1448,9 +1761,49 @@
       "cipher": "aes-256-gcm"
     },
     {
+      "name": "🇩🇪德国|unknown|85分-5",
+      "type": "ss",
+      "server": "102.37.156.224",
+      "port": 443,
+      "password": "aduB9HGxQHjA2SBMRjkHX6",
+      "cipher": "chacha20-ietf-poly1305"
+    },
+    {
+      "name": "🇩🇪德国|unknown|85分-6",
+      "type": "ss",
+      "server": "194.68.44.42",
+      "port": 64546,
+      "password": "U83u9OGpvSatIUW7LsWffr",
+      "cipher": "chacha20-ietf-poly1305"
+    },
+    {
+      "name": "🇩🇪德国|unknown|85分-7",
+      "type": "ss",
+      "server": "82.110.60.9",
+      "port": 19999,
+      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=",
+      "cipher": "aes-256-gcm"
+    },
+    {
+      "name": "🇩🇪德国|unknown|85分-8",
+      "type": "ss",
+      "server": "185.213.23.63",
+      "port": 990,
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "cipher": "chacha20-ietf-poly1305"
+    },
+    {
+      "name": "🇩🇪德国|unknown|85分-9",
+      "type": "ss",
+      "server": "57.131.48.45",
+      "port": 8388,
+      "password": "itzvpn@321",
+      "cipher": "aes-256-gcm"
+    },
+    {
       "name": "🇩🇪德国|unknown|85分-10",
       "type": "ss",
-      "server": "pphfree2.mvpnpvpn.de5.net",
+      "server": "103.107.52.106",
       "port": 52351,
       "password": "sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c=",
       "cipher": "aes-256-gcm"
@@ -1458,13 +1811,21 @@
     {
       "name": "🇩🇪德国|unknown|85分-11",
       "type": "ss",
-      "server": "bogging-eyeteeth-fly.freesocks.work",
+      "server": "c3.nastuh.link",
       "port": 443,
-      "password": "QFWzCw2uX9B9i6qAYeFBIE",
+      "password": "y7KeRTzmH0vXT2kp",
       "cipher": "chacha20-ietf-poly1305"
     },
     {
       "name": "🇩🇪德国|unknown|85分-12",
+      "type": "ss",
+      "server": "ruot.ayucloudservices.nl",
+      "port": 35031,
+      "password": "85590bd2-807b-49b9-af20-1101c18b9eda",
+      "cipher": "aes-128-gcm"
+    },
+    {
+      "name": "🇩🇪德国|unknown|85分-13",
       "type": "ss",
       "server": "ruot.ayucloudservices.nl",
       "port": 22037,
@@ -1472,12 +1833,12 @@
       "cipher": "aes-256-gcm"
     },
     {
-      "name": "🇩🇪德国|unknown|85分-13",
+      "name": "🇩🇪德国|unknown|85分-14",
       "type": "ss",
-      "server": "c3.nastuh.link",
-      "port": 443,
-      "password": "y7KeRTzmH0vXT2kp",
-      "cipher": "chacha20-ietf-poly1305"
+      "server": "ruot.ayucloudservices.nl",
+      "port": 35016,
+      "password": "9c51ca33-a332-4de5-8677-5624e940097c",
+      "cipher": "aes-128-gcm"
     },
     {
       "name": "🇫🇷法国|unknown|85分",
@@ -1500,11 +1861,11 @@
       "tls": false
     },
     {
-      "name": "🇺🇸美国|unknown|75分-7",
+      "name": "🇺🇸美国|unknown|75分-5",
       "type": "vmess",
-      "server": "172.67.197.71",
+      "server": "172.66.203.67",
       "port": 443,
-      "uuid": "31c3e8e7-f600-436a-87d4-9716143b0b0c",
+      "uuid": "0cf6d970-3f1d-4aae-a989-92a8f76ae3db",
       "cipher": "auto",
       "network": "ws",
       "tls": true
@@ -1522,22 +1883,12 @@
     {
       "name": "🇭🇰香港|unknown|75分",
       "type": "vmess",
-      "server": "47.243.194.125",
+      "server": "47.243.153.153",
       "port": 443,
       "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
       "cipher": "auto",
       "network": "ws",
       "tls": true
-    },
-    {
-      "name": "🇹🇼 台湾 www.v2s.com",
-      "type": "trojan",
-      "server": "209.248.32.116",
-      "port": 28101,
-      "latency": 0,
-      "password": "ef",
-      "network": "",
-      "sni": ""
     },
     {
       "name": "🇯🇵 日本 www.v2s.com] ... 11",
@@ -1560,6 +1911,46 @@
       "sni": ""
     },
     {
+      "name": "🇯🇵 日本 www.v2s.com] ... 3",
+      "type": "trojan",
+      "server": "legible-ram.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "legible-ram.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 2",
+      "type": "trojan",
+      "server": "allowed-poodle.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "allowed-poodle.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com",
+      "type": "trojan",
+      "server": "jp005.421421.xyz",
+      "port": 20230,
+      "latency": 0,
+      "password": "697c-b581-4575-9d2f-0bbd4659312d",
+      "network": "ws",
+      "sni": "www.alibaba.com"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 15",
+      "type": "trojan",
+      "server": "obliging-louse.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "obliging-louse.rooster465.autos"
+    },
+    {
       "name": "🇯🇵 日本 www.v2s.com] ... 8",
       "type": "trojan",
       "server": "optimal-penguin.rooster465.autos",
@@ -1570,64 +1961,14 @@
       "sni": "optimal-penguin.rooster465.autos"
     },
     {
-      "name": "🇯🇵 日本 www.v2s.com] ... 9",
+      "name": "🇯🇵 日本 www.v2s.com] ... 17",
       "type": "trojan",
-      "server": "amazed-mako.rooster465.autos",
+      "server": "concrete-aardvark.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "amazed-mako.rooster465.autos"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com] ... 12",
-      "type": "trojan",
-      "server": "prime-corgi.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "prime-corgi.rooster465.autos"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com-2",
-      "type": "trojan",
-      "server": "jp005.421421.xyz",
-      "port": 20230,
-      "latency": 0,
-      "password": "697c-b581-4575-9d2f-0bbd4659312d",
-      "network": "ws",
-      "sni": "www.alibaba.com"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com] ... 10",
-      "type": "trojan",
-      "server": "equipped-stingray.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "equipped-stingray.rooster465.autos"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com] ... 14",
-      "type": "trojan",
-      "server": "musical-terrier.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "musical-terrier.rooster465.autos"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com] ... 1",
-      "type": "trojan",
-      "server": "evident-ant.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "evident-ant.rooster465.autos"
+      "sni": "concrete-aardvark.rooster465.autos"
     },
     {
       "name": "🇯🇵 日本 www.v2s.com] ... 7",
@@ -1640,26 +1981,6 @@
       "sni": "normal-macaque.rooster465.autos"
     },
     {
-      "name": "🇯🇵 日本 www.v2s.com] MX",
-      "type": "trojan",
-      "server": "jp3.998998.best",
-      "port": 443,
-      "latency": 0,
-      "password": "1933-b22a-484b-ac8a-63e24f5fba75",
-      "network": "",
-      "sni": "nat11.outsidemyheart.space"
-    },
-    {
-      "name": "🇯🇵 日本 www.v2s.com] ... 4",
-      "type": "trojan",
-      "server": "live-stallion.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "live-stallion.rooster465.autos"
-    },
-    {
       "name": "🇯🇵 日本 www.v2s.com] ... 5",
       "type": "trojan",
       "server": "stable-python.rooster465.autos",
@@ -1668,6 +1989,36 @@
       "password": "473651",
       "network": "",
       "sni": "stable-python.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 12",
+      "type": "trojan",
+      "server": "prime-corgi.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "prime-corgi.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 14",
+      "type": "trojan",
+      "server": "musical-terrier.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "musical-terrier.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 9",
+      "type": "trojan",
+      "server": "amazed-mako.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "amazed-mako.rooster465.autos"
     },
     {
       "name": "🇯🇵 日本 www.v2s.com] ... 6",
@@ -1680,14 +2031,44 @@
       "sni": "warm-krill.rooster465.autos"
     },
     {
-      "name": "🇯🇵 日本 www.v2s.com] ... 3",
+      "name": "🇯🇵 日本 www.v2s.com] ... 4",
       "type": "trojan",
-      "server": "legible-ram.rooster465.autos",
+      "server": "live-stallion.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "legible-ram.rooster465.autos"
+      "sni": "live-stallion.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 10",
+      "type": "trojan",
+      "server": "equipped-stingray.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "equipped-stingray.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 1",
+      "type": "trojan",
+      "server": "evident-ant.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "evident-ant.rooster465.autos"
+    },
+    {
+      "name": "🇯🇵 日本 www.v2s.com] ... 16",
+      "type": "trojan",
+      "server": "winning-marten.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "winning-marten.rooster465.autos"
     },
     {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 10",
@@ -1700,24 +2081,24 @@
       "sni": "139.180.146.200"
     },
     {
-      "name": "🇸🇬 新加坡 www.v2s.com-2",
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 3",
       "type": "trojan",
-      "server": "104.18.153.182",
-      "port": 443,
-      "latency": 0,
-      "password": "7587-ed94-4033-88cd-4ac50a5e8718",
-      "network": "ws",
-      "sni": "dimskiee.biz.id"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 8",
-      "type": "trojan",
-      "server": "ace-liger.rooster465.autos",
+      "server": "joint-ewe.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "ace-liger.rooster465.autos"
+      "sni": "joint-ewe.rooster465.autos"
+    },
+    {
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 12",
+      "type": "trojan",
+      "server": "pet-antelope.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "pet-antelope.rooster465.autos"
     },
     {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 11",
@@ -1730,16 +2111,6 @@
       "sni": "inviting-ferret.rooster465.autos"
     },
     {
-      "name": "🇸🇬 新加坡 www.v2s.com-3",
-      "type": "trojan",
-      "server": "simple-molly.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "simple-molly.rooster465.autos"
-    },
-    {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 2",
       "type": "trojan",
       "server": "intense-wildcat.rooster465.autos",
@@ -1748,16 +2119,6 @@
       "password": "473651",
       "network": "",
       "sni": "intense-wildcat.rooster465.autos"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 5",
-      "type": "trojan",
-      "server": "brave-tomcat.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "brave-tomcat.rooster465.autos"
     },
     {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 7",
@@ -1770,56 +2131,6 @@
       "sni": "rested-seahorse.rooster465.autos"
     },
     {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 6",
-      "type": "trojan",
-      "server": "fond-mammoth.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "fond-mammoth.rooster465.autos"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 1",
-      "type": "trojan",
-      "server": "inspired-hound.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "inspired-hound.rooster465.autos"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 13",
-      "type": "trojan",
-      "server": "pet-antelope.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "pet-antelope.rooster465.autos"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 12",
-      "type": "trojan",
-      "server": "holy-lamb.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "holy-lamb.rooster465.autos"
-    },
-    {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 3",
-      "type": "trojan",
-      "server": "joint-ewe.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "joint-ewe.rooster465.autos"
-    },
-    {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 9",
       "type": "trojan",
       "server": "musical-mouse.rooster465.autos",
@@ -1830,7 +2141,7 @@
       "sni": "musical-mouse.rooster465.autos"
     },
     {
-      "name": "🇸🇬 新加坡 www.v2s.com] ... 14",
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 13",
       "type": "trojan",
       "server": "real-cardinal.rooster465.autos",
       "port": 443,
@@ -1838,6 +2149,26 @@
       "password": "473651",
       "network": "",
       "sni": "real-cardinal.rooster465.autos"
+    },
+    {
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 5",
+      "type": "trojan",
+      "server": "brave-tomcat.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "brave-tomcat.rooster465.autos"
+    },
+    {
+      "name": "🇸🇬 新加坡 www.v2s.com-2",
+      "type": "trojan",
+      "server": "simple-molly.rooster465.autos",
+      "port": 443,
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "simple-molly.rooster465.autos"
     },
     {
       "name": "🇸🇬 新加坡 www.v2s.com] ... 4",
@@ -1850,44 +2181,34 @@
       "sni": "moral-basilisk.rooster465.autos"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 8",
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 8",
       "type": "trojan",
-      "server": "3.39.225.215",
+      "server": "ace-liger.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "kind-stork.rooster465.autos"
+      "sni": "ace-liger.rooster465.autos"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 3",
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 1",
       "type": "trojan",
-      "server": "inviting-rabbit.rooster465.autos",
+      "server": "inspired-hound.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "inviting-rabbit.rooster465.autos"
+      "sni": "inspired-hound.rooster465.autos"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 4",
+      "name": "🇸🇬 新加坡 www.v2s.com] ... 6",
       "type": "trojan",
-      "server": "pure-kodiak.rooster465.autos",
+      "server": "fond-mammoth.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "pure-kodiak.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 10",
-      "type": "trojan",
-      "server": "engaging-toucan.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "engaging-toucan.rooster465.autos"
+      "sni": "fond-mammoth.rooster465.autos"
     },
     {
       "name": "🇰🇷 韩国 www.v2s.com] ... 1",
@@ -1910,34 +2231,14 @@
       "sni": "cunning-grub.rooster465.autos"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 5",
+      "name": "🇰🇷 韩国 www.v2s.com] ... 6",
       "type": "trojan",
-      "server": "central-jawfish.rooster465.autos",
+      "server": "working-tomcat.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "central-jawfish.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 9",
-      "type": "trojan",
-      "server": "optimum-snapper.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "optimum-snapper.rooster465.autos"
-    },
-    {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 7",
-      "type": "trojan",
-      "server": "delicate-buck.rooster465.autos",
-      "port": 443,
-      "latency": 0,
-      "password": "473651",
-      "network": "",
-      "sni": "delicate-buck.rooster465.autos"
+      "sni": "working-tomcat.rooster465.autos"
     },
     {
       "name": "🇰🇷 韩国 www.v2s.com] ... 2",
@@ -1950,44 +2251,44 @@
       "sni": "glorious-lark.rooster465.autos"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] ... 6",
+      "name": "🇰🇷 韩国 www.v2s.com] ... 4",
       "type": "trojan",
-      "server": "working-tomcat.rooster465.autos",
+      "server": "pure-kodiak.rooster465.autos",
       "port": 443,
       "latency": 0,
       "password": "473651",
       "network": "",
-      "sni": "working-tomcat.rooster465.autos"
+      "sni": "pure-kodiak.rooster465.autos"
     },
     {
-      "name": "🇺🇷英国|unknown|75分",
-      "type": "vmess",
-      "server": "172.67.137.209",
+      "name": "🇰🇷 韩国 www.v2s.com] ... 5",
+      "type": "trojan",
+      "server": "central-jawfish.rooster465.autos",
       "port": 443,
-      "uuid": "31c3e8e7-f600-436a-87d4-9716143b0b0c",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "central-jawfish.rooster465.autos"
     },
     {
-      "name": "🇺🇷英国|unknown|75分-2",
-      "type": "vmess",
-      "server": "172.67.137.209",
+      "name": "🇰🇷 韩国 11.6MB/s",
+      "type": "trojan",
+      "server": "kr.tronsg.com",
       "port": 443,
-      "uuid": "1c3fb1c0-1204-49db-b842-f72d50f014c1",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
+      "latency": 0,
+      "password": "an%4082164024",
+      "network": "",
+      "sni": "kr.tronsg.com"
     },
     {
-      "name": "🇺🇷英国|unknown|75分-3",
-      "type": "vmess",
-      "server": "172.67.142.142",
+      "name": "🇰🇷 韩国 www.v2s.com] ... 3",
+      "type": "trojan",
+      "server": "inviting-rabbit.rooster465.autos",
       "port": 443,
-      "uuid": "31c3e8e7-f600-436a-87d4-9716143b0b0c",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
+      "latency": 0,
+      "password": "473651",
+      "network": "",
+      "sni": "inviting-rabbit.rooster465.autos"
     },
     {
       "name": "🇩🇪 德国 www.v2s.com",
@@ -2000,16 +2301,6 @@
       "sni": "cuddly-sheepdog.rooster465.autos"
     },
     {
-      "name": "🇩🇪 德国 www.v2s.com] AM",
-      "type": "trojan",
-      "server": "de2.x8lab.org",
-      "port": 9433,
-      "latency": 0,
-      "password": "E0BC0_S1JDm9EmQxyLS64uC8ekbr",
-      "network": "ws",
-      "sni": "de2.x8lab.org"
-    },
-    {
       "name": "加拿大 02",
       "type": "trojan",
       "server": "ca.tronsg.com",
@@ -2018,6 +2309,16 @@
       "password": "an@82164024",
       "network": "tcp",
       "sni": "ca.tronsg.com"
+    },
+    {
+      "name": "🇳🇱 荷兰 www.v2s.com] ... 12",
+      "type": "trojan",
+      "server": "193.23.202.65",
+      "port": 443,
+      "latency": 0,
+      "password": "nity",
+      "network": "",
+      "sni": ""
     },
     {
       "name": "🇳🇱 荷兰 www.v2s.com] ... 15",
@@ -2030,29 +2331,39 @@
       "sni": ""
     },
     {
-      "name": "🇳🇱 荷兰 www.v2s.com] ... 1",
-      "type": "trojan",
-      "server": "219.76.13.177",
-      "port": 443,
-      "latency": 0,
-      "password": "nity",
-      "network": "",
-      "sni": ""
-    },
-    {
-      "name": "🇳🇱 荷兰 www.v2s.com] ... 6",
-      "type": "trojan",
-      "server": "193.23.202.65",
-      "port": 443,
-      "latency": 0,
-      "password": "nity",
-      "network": "",
-      "sni": ""
-    },
-    {
       "name": "🇳🇱 荷兰 www.v2s.com] ... 11",
       "type": "trojan",
       "server": "45.38.3.25",
+      "port": 443,
+      "latency": 0,
+      "password": "nity",
+      "network": "",
+      "sni": ""
+    },
+    {
+      "name": "🇳🇱 荷兰 www.v2s.com] ... 13",
+      "type": "trojan",
+      "server": "46.62.204.134",
+      "port": 443,
+      "latency": 0,
+      "password": "nity",
+      "network": "",
+      "sni": ""
+    },
+    {
+      "name": "🇳🇱 荷兰 www.v2s.com] ... 10",
+      "type": "trojan",
+      "server": "31.57.190.34",
+      "port": 443,
+      "latency": 0,
+      "password": "nity",
+      "network": "",
+      "sni": ""
+    },
+    {
+      "name": "🇳🇱 荷兰 www.v2s.com] ... 1",
+      "type": "trojan",
+      "server": "219.76.13.177",
       "port": 443,
       "latency": 0,
       "password": "nity",
@@ -2080,36 +2391,6 @@
       "sni": ""
     },
     {
-      "name": "🇳🇱 荷兰 www.v2s.com] ... 14",
-      "type": "trojan",
-      "server": "144.31.205.106",
-      "port": 443,
-      "latency": 0,
-      "password": "nity",
-      "network": "ws",
-      "sni": "www.volumeroot.com"
-    },
-    {
-      "name": "🇳🇱 荷兰 www.v2s.com] ... 13",
-      "type": "trojan",
-      "server": "46.62.204.134",
-      "port": 443,
-      "latency": 0,
-      "password": "nity",
-      "network": "",
-      "sni": ""
-    },
-    {
-      "name": "🇳🇱 荷兰 www.v2s.com] ... 10",
-      "type": "trojan",
-      "server": "31.57.190.34",
-      "port": 443,
-      "latency": 0,
-      "password": "nity",
-      "network": "",
-      "sni": ""
-    },
-    {
       "name": "🇫🇷 法国 www.v2s.com",
       "type": "trojan",
       "server": "185.255.179.166",
@@ -2122,12 +2403,12 @@
     {
       "name": "🇫🇷 法国 www.v2s.com] ... 6",
       "type": "trojan",
-      "server": "165.215.250.14",
+      "server": "185.220.100.168",
       "port": 443,
       "latency": 0,
       "password": "nity",
-      "network": "",
-      "sni": ""
+      "network": "ws",
+      "sni": "www.calmlunch.com"
     },
     {
       "name": "🇫🇷 法国 www.v2s.com] ... 5",
@@ -2140,7 +2421,7 @@
       "sni": "www.calmlunch.com"
     },
     {
-      "name": "🇫🇷 法国 www.v2s.com] ... 2",
+      "name": "🇫🇷 法国 www.v2s.com] ... 3",
       "type": "trojan",
       "server": "45.87.41.18",
       "port": 443,
@@ -2150,27 +2431,7 @@
       "sni": "www.calmlunch.com"
     },
     {
-      "name": "🇫🇷 法国 www.v2s.com] ... 1",
-      "type": "trojan",
-      "server": "212.227.144.37",
-      "port": 8443,
-      "latency": 0,
-      "password": "nity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
       "name": "🇫🇷 法国 www.v2s.com] ... 4",
-      "type": "trojan",
-      "server": "185.114.72.31",
-      "port": 2053,
-      "latency": 0,
-      "password": "nity",
-      "network": "ws",
-      "sni": "www.calmlunch.com"
-    },
-    {
-      "name": "🇫🇷 法国 www.v2s.com] ... 3",
       "type": "trojan",
       "server": "www.calmlunch.com",
       "port": 443,
@@ -2181,26 +2442,13 @@
     },
     {
       "name": "🇺🇸美国|unknown|70分",
-      "type": "vmess",
-      "server": "104.21.50.177",
+      "type": "http",
+      "server": "44.239.226.15",
       "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
       "tls": true
     },
     {
       "name": "🇺🇸美国|unknown|70分-2",
-      "type": "vmess",
-      "server": "104.21.4.29",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-3",
       "type": "vmess",
       "server": "104.21.91.254",
       "port": 443,
@@ -2210,77 +2458,7 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|70分-4",
-      "type": "vmess",
-      "server": "104.21.53.12",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-5",
-      "type": "vmess",
-      "server": "172.67.131.150",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-6",
-      "type": "vmess",
-      "server": "172.67.206.124",
-      "port": 443,
-      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-7",
-      "type": "vmess",
-      "server": "104.21.75.246",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-9",
-      "type": "vmess",
-      "server": "172.67.194.2",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-10",
-      "type": "vmess",
-      "server": "104.21.31.183",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-12",
-      "type": "vmess",
-      "server": "172.67.179.37",
-      "port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": true
-    },
-    {
-      "name": "🇺🇸美国|unknown|70分-13",
+      "name": "🇺🇸美国|unknown|70分-3",
       "type": "vmess",
       "server": "104.21.21.88",
       "port": 443,
@@ -2290,7 +2468,27 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|70分-14",
+      "name": "🇺🇸美国|unknown|70分-4",
+      "type": "vmess",
+      "server": "172.67.206.124",
+      "port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-5",
+      "type": "vmess",
+      "server": "104.21.53.12",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-6",
       "type": "vmess",
       "server": "172.67.142.191",
       "port": 443,
@@ -2300,9 +2498,9 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|70分-15",
+      "name": "🇺🇸美国|unknown|70分-7",
       "type": "vmess",
-      "server": "172.67.197.82",
+      "server": "104.21.27.139",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2310,7 +2508,7 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|70分-16",
+      "name": "🇺🇸美国|unknown|70分-9",
       "type": "vmess",
       "server": "198.2.204.51",
       "port": 443,
@@ -2320,11 +2518,51 @@
       "tls": true
     },
     {
+      "name": "🇺🇸美国|unknown|70分-11",
+      "type": "vmess",
+      "server": "104.21.50.177",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-13",
+      "type": "vmess",
+      "server": "172.67.215.202",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-15",
+      "type": "vmess",
+      "server": "172.67.164.184",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-16",
+      "type": "vmess",
+      "server": "172.67.194.2",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
       "name": "🇺🇸美国|unknown|70分-17",
       "type": "vmess",
-      "server": "104.21.91.73",
+      "server": "172.67.183.110",
       "port": 443,
-      "uuid": "45f63e92-f782-4cac-84b8-e61cb5a5bfd0",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
       "network": "ws",
       "tls": true
@@ -2332,7 +2570,7 @@
     {
       "name": "🇺🇸美国|unknown|70分-18",
       "type": "vmess",
-      "server": "172.67.164.184",
+      "server": "172.67.131.150",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2350,9 +2588,28 @@
       "tls": true
     },
     {
+      "name": "🇺🇸美国|unknown|70分-20",
+      "type": "trojan",
+      "server": "23.227.38.11",
+      "port": 443,
+      "password": "b17fa17d-13a0-4e8a-a398-8e549ea8b208",
+      "network": "ws",
+      "sni": "syndication-statutes-wanted-logo.trycloudflare.com"
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-21",
+      "type": "vmess",
+      "server": "172.67.197.82",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
       "name": "🇺🇸美国|unknown|70分-22",
       "type": "vmess",
-      "server": "172.67.207.114",
+      "server": "104.21.75.246",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2362,7 +2619,17 @@
     {
       "name": "🇺🇸美国|unknown|70分-23",
       "type": "vmess",
-      "server": "172.67.215.202",
+      "server": "104.21.91.73",
+      "port": 443,
+      "uuid": "45f63e92-f782-4cac-84b8-e61cb5a5bfd0",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-24",
+      "type": "vmess",
+      "server": "172.67.179.37",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2370,18 +2637,9 @@
       "tls": true
     },
     {
-      "name": "🇺🇸美国|unknown|70分-24",
-      "type": "trojan",
-      "server": "23.227.38.11",
-      "port": 443,
-      "password": "b17fa17d-13a0-4e8a-a398-8e549ea8b208",
-      "network": "ws",
-      "sni": "syndication-statutes-wanted-logo.trycloudflare.com"
-    },
-    {
       "name": "🇺🇸美国|unknown|70分-25",
       "type": "vmess",
-      "server": "104.21.27.139",
+      "server": "172.67.207.114",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2391,7 +2649,17 @@
     {
       "name": "🇺🇸美国|unknown|70分-26",
       "type": "vmess",
-      "server": "172.67.183.110",
+      "server": "104.21.31.183",
+      "port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": true
+    },
+    {
+      "name": "🇺🇸美国|unknown|70分-27",
+      "type": "vmess",
+      "server": "104.21.4.29",
       "port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "cipher": "auto",
@@ -2401,11 +2669,31 @@
     {
       "name": "🇭🇰香港|unknown|70分",
       "type": "vmess",
+      "server": "47.244.120.197",
+      "port": 44867,
+      "uuid": "845e6b08-2919-4290-ade0-5dc7dcea59ca",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇭🇰香港|unknown|70分-2",
+      "type": "vmess",
       "server": "47.86.167.194",
       "port": 800,
       "uuid": "f2c67cae-c09d-4739-947d-f5302d87a3c0",
       "cipher": "auto",
       "network": "http",
+      "tls": false
+    },
+    {
+      "name": "🇭🇰香港|unknown|70分-3",
+      "type": "vmess",
+      "server": "47.244.120.197",
+      "port": 23026,
+      "uuid": "b9de1bc9-baa7-41ac-86f7-ccd59695cb21",
+      "cipher": "auto",
+      "network": "ws",
       "tls": false
     },
     {
@@ -2426,7 +2714,7 @@
       "password": "UX82473651"
     },
     {
-      "name": "🇸🋀新加坡|unknown|70分-4",
+      "name": "🇸🋀新加坡|unknown|70分-3",
       "type": "trojan",
       "server": "139.180.146.200",
       "port": 8886,
@@ -2434,7 +2722,22 @@
       "sni": "139.180.146.200"
     },
     {
-      "name": "🇩🇪德国|unknown|70分-13",
+      "name": "🇺🇷英国|unknown|70分",
+      "type": "ss",
+      "server": "13.135.199.253",
+      "port": 443,
+      "password": "amazonskr05",
+      "cipher": "aes-256-cfb"
+    },
+    {
+      "name": "🇩🇪德国|unknown|70分-7",
+      "type": "http",
+      "server": "188.120.225.125",
+      "port": 8443,
+      "tls": true
+    },
+    {
+      "name": "🇩🇪德国|unknown|70分-10",
       "type": "trojan",
       "server": "104.18.32.87",
       "port": 443,
@@ -2443,7 +2746,7 @@
       "sni": "id1.nathaya.web.id"
     },
     {
-      "name": "🇩🇪德国|unknown|70分-15",
+      "name": "🇩🇪德国|unknown|70分-17",
       "type": "trojan",
       "server": "47.250.84.25",
       "port": 443,
@@ -2451,9 +2754,25 @@
     },
     {
       "name": "🇨🇦加拿大|unknown|70分",
-      "type": "http",
-      "server": "35.183.131.26",
+      "type": "ss",
+      "server": "15.175.220.220",
       "port": 443,
+      "password": "amazonskr05",
+      "cipher": "aes-256-cfb"
+    },
+    {
+      "name": "🇳🇱荷兰|unknown|70分",
+      "type": "http",
+      "server": "51.159.225.197",
+      "port": 19362,
+      "tls": true
+    },
+    {
+      "name": "🇳🇱荷兰|unknown|70分-2",
+      "type": "http",
+      "server": "51.158.243.91",
+      "port": 443,
+      "password": "null",
       "tls": true
     },
     {
@@ -2467,75 +2786,7 @@
       "tls": true
     },
     {
-      "name": "🇨🇳中国|unknown|70分",
-      "type": "vmess",
-      "server": "120.48.133.162",
-      "port": 10086,
-      "uuid": "fde10e39-48bb-4dcf-b3ba-71d711323a54",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
       "name": "🇺🇸美国|unknown|65分",
-      "type": "vmess",
-      "server": "172.67.116.48",
-      "port": 80,
-      "uuid": "22a13aa2-4854-44cb-e090-ec71ab84b1ff",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-2",
-      "type": "vmess",
-      "server": "23.227.39.24",
-      "port": 8080,
-      "uuid": "9258153a-dc97-4e39-9037-009abfc4fed0",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-3",
-      "type": "vmess",
-      "server": "104.17.171.34",
-      "port": 80,
-      "uuid": "60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce",
-      "cipher": "auto",
-      "network": "ws"
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-4",
-      "type": "vmess",
-      "server": "104.21.8.157",
-      "port": 2082,
-      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-5",
-      "type": "vmess",
-      "server": "104.21.234.52",
-      "port": 80,
-      "uuid": "7022982f-da4c-48c9-c660-b2315abdcf7e",
-      "cipher": "auto",
-      "network": "ws",
-      "tls": false
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-6",
-      "type": "vmess",
-      "server": "104.21.82.183",
-      "port": 8880,
-      "uuid": "5a7021e0-26b4-45d6-b175-fe551601ca97",
-      "cipher": "auto",
-      "network": "ws"
-    },
-    {
-      "name": "🇺🇸美国|unknown|65分-7",
       "type": "vmess",
       "server": "23.227.38.23",
       "port": 8080,
@@ -2545,14 +2796,72 @@
       "tls": false
     },
     {
-      "name": "🇺🇸美国|unknown|65分-8",
+      "name": "🇺🇸美国|unknown|65分-2",
       "type": "vmess",
-      "server": "104.21.82.39",
+      "server": "172.67.152.170",
       "port": 2052,
       "uuid": "7a737f41-b792-4260-94ff-3d864da67b80",
       "cipher": "auto",
       "network": "ws",
       "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-3",
+      "type": "vmess",
+      "server": "104.21.82.183",
+      "port": 8880,
+      "uuid": "5a7021e0-26b4-45d6-b175-fe551601ca97",
+      "cipher": "auto",
+      "network": "ws"
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-4",
+      "type": "vmess",
+      "server": "23.227.38.22",
+      "port": 8080,
+      "uuid": "9258153a-dc97-4e39-9037-009abfc4fed0",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-5",
+      "type": "vmess",
+      "server": "172.67.130.140",
+      "port": 2082,
+      "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-6",
+      "type": "vmess",
+      "server": "23.227.39.24",
+      "port": 8080,
+      "uuid": "9258153a-dc97-4e39-9037-009abfc4fed0",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-7",
+      "type": "vmess",
+      "server": "172.67.116.48",
+      "port": 80,
+      "uuid": "22a13aa2-4854-44cb-e090-ec71ab84b1ff",
+      "cipher": "auto",
+      "network": "ws",
+      "tls": false
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-8",
+      "type": "vmess",
+      "server": "104.17.171.34",
+      "port": 80,
+      "uuid": "60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce",
+      "cipher": "auto",
+      "network": "ws"
     },
     {
       "name": "🇺🇸美国|unknown|65分-9",
@@ -2567,9 +2876,9 @@
     {
       "name": "🇺🇸美国|unknown|65分-10",
       "type": "vmess",
-      "server": "23.227.38.22",
-      "port": 8080,
-      "uuid": "9258153a-dc97-4e39-9037-009abfc4fed0",
+      "server": "104.21.234.52",
+      "port": 80,
+      "uuid": "7022982f-da4c-48c9-c660-b2315abdcf7e",
       "cipher": "auto",
       "network": "ws",
       "tls": false
@@ -2592,8 +2901,15 @@
     },
     {
       "name": "🇺🇸美国|unknown|65分-13",
+      "type": "socks",
+      "server": "104.168.249.36",
+      "port": 1080,
+      "password": "test123"
+    },
+    {
+      "name": "🇺🇸美国|unknown|65分-14",
       "type": "vmess",
-      "server": "172.67.152.170",
+      "server": "104.21.82.39",
       "port": 2052,
       "uuid": "7a737f41-b792-4260-94ff-3d864da67b80",
       "cipher": "auto",
@@ -2601,9 +2917,9 @@
       "tls": false
     },
     {
-      "name": "🇺🇸美国|unknown|65分-14",
+      "name": "🇺🇸美国|unknown|65分-15",
       "type": "vmess",
-      "server": "172.67.130.140",
+      "server": "104.21.8.157",
       "port": 2082,
       "uuid": "112ac36f-3f53-4e26-8371-d25c028e1b9a",
       "cipher": "auto",
@@ -2611,37 +2927,15 @@
       "tls": false
     },
     {
-      "name": "🇭🇰香港|unknown|65分",
-      "type": "socks",
-      "server": "47.242.19.215",
-      "port": 8899,
-      "password": "admin"
-    },
-    {
-      "name": "🇸🋀新加坡|unknown|65分",
-      "type": "http",
-      "server": "54.169.228.182",
-      "port": 2080,
-      "password": "1234"
-    },
-    {
       "name": "🇩🇪德国|unknown|65分",
       "type": "ss",
-      "server": "51.222.155.32",
-      "port": 5003,
-      "password": "g5MeD6Ft3CWlJId",
-      "cipher": "aes-256-gcm"
+      "server": "64.74.163.69",
+      "port": 18766,
+      "password": "4efe1af272e7292139b889f6a63ee071",
+      "cipher": "aes-128-gcm"
     },
     {
       "name": "🇩🇪德国|unknown|65分-2",
-      "type": "ss",
-      "server": "51.79.64.198",
-      "port": 8119,
-      "password": "cdBIDV42DCwnfIN",
-      "cipher": "aes-256-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|65分-3",
       "type": "ss",
       "server": "51.79.85.185",
       "port": 8118,
@@ -2649,15 +2943,15 @@
       "cipher": "aes-256-gcm"
     },
     {
-      "name": "🇩🇪德国|unknown|65分-4",
+      "name": "🇩🇪德国|unknown|65分-3",
       "type": "ss",
-      "server": "51.79.49.116",
-      "port": 8882,
-      "password": "kDWvXYZoTBcGkC4",
+      "server": "51.79.64.198",
+      "port": 8119,
+      "password": "cdBIDV42DCwnfIN",
       "cipher": "aes-256-gcm"
     },
     {
-      "name": "🇩🇪德国|unknown|65分-5",
+      "name": "🇩🇪德国|unknown|65分-4",
       "type": "ss",
       "server": "51.222.141.125",
       "port": 445,
@@ -2665,19 +2959,27 @@
       "cipher": "aes-256-gcm"
     },
     {
+      "name": "🇩🇪德国|unknown|65分-5",
+      "type": "ss",
+      "server": "51.222.136.236",
+      "port": 8882,
+      "password": "kDWvXYZoTBcGkC4",
+      "cipher": "aes-256-gcm"
+    },
+    {
       "name": "🇩🇪德国|unknown|65分-6",
       "type": "ss",
-      "server": "64.176.2.21",
-      "port": 8388,
-      "password": "xBStBEVqvGwHPocc",
+      "server": "51.222.155.113",
+      "port": 5601,
+      "password": "Y6R9pAtvxxzmGC",
       "cipher": "aes-256-gcm"
     },
     {
       "name": "🇩🇪德国|unknown|65分-7",
       "type": "ss",
-      "server": "51.222.136.236",
-      "port": 8882,
-      "password": "kDWvXYZoTBcGkC4",
+      "server": "64.176.2.21",
+      "port": 8388,
+      "password": "xBStBEVqvGwHPocc",
       "cipher": "aes-256-gcm"
     },
     {
@@ -2691,35 +2993,26 @@
     {
       "name": "🇩🇪德国|unknown|65分-9",
       "type": "ss",
-      "server": "64.74.163.69",
-      "port": 18766,
-      "password": "4efe1af272e7292139b889f6a63ee071",
-      "cipher": "aes-128-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|65分-10",
-      "type": "ss",
-      "server": "51.222.155.113",
-      "port": 5601,
-      "password": "Y6R9pAtvxxzmGC",
-      "cipher": "aes-256-gcm"
-    },
-    {
-      "name": "🇩🇪德国|unknown|65分-11",
-      "type": "ss",
       "server": "51.222.12.127",
       "port": 445,
       "password": "zDNVedRFPQexG9v",
       "cipher": "aes-256-gcm"
     },
     {
-      "name": "🇺🇸 美国 www.v2s.com] 1594",
+      "name": "🇩🇪德国|unknown|65分-10",
       "type": "ss",
-      "server": "66.23.206.124",
-      "port": 16619,
-      "latency": 0,
-      "password": "2607008ac896b3443be9419d73d544d9",
-      "cipher": "-128-gcm"
+      "server": "51.79.49.116",
+      "port": 8882,
+      "password": "kDWvXYZoTBcGkC4",
+      "cipher": "aes-256-gcm"
+    },
+    {
+      "name": "🇩🇪德国|unknown|65分-11",
+      "type": "ss",
+      "server": "51.222.155.32",
+      "port": 5003,
+      "password": "g5MeD6Ft3CWlJId",
+      "cipher": "aes-256-gcm"
     },
     {
       "name": "🇺🇸 美国 NewYork PAC",
@@ -2731,6 +3024,15 @@
       "cipher": "-256-gcm"
     },
     {
+      "name": "🇺🇸 美国 www.v2s.com] 1594",
+      "type": "ss",
+      "server": "66.23.206.124",
+      "port": 16619,
+      "latency": 0,
+      "password": "2607008ac896b3443be9419d73d544d9",
+      "cipher": "-128-gcm"
+    },
+    {
       "name": "🇺🇸 美国 www.v2s.com] 1594... 1",
       "type": "ss",
       "server": "205.209.126.205",
@@ -2738,15 +3040,6 @@
       "latency": 0,
       "password": "e72a793d634d99748cf908d21fd935c3",
       "cipher": "-128-gcm"
-    },
-    {
-      "name": "🇺🇸 美国 www.v2s.com] 1596",
-      "type": "ss",
-      "server": "ss.043.node-for-bigairport.win",
-      "port": 20006,
-      "latency": 0,
-      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
-      "cipher": "cha20-ietf-poly1305"
     },
     {
       "name": "🇺🇸 美国 6",
@@ -2767,6 +3060,15 @@
       "cipher": "cha20-ietf-poly1305"
     },
     {
+      "name": "🇺🇸 美国 www.v2s.com] 1596",
+      "type": "ss",
+      "server": "ss.043.node-for-bigairport.win",
+      "port": 20006,
+      "latency": 0,
+      "password": "792e0bdb-01db-450c-94c4-925151eb396e",
+      "cipher": "cha20-ietf-poly1305"
+    },
+    {
       "name": "🇭🇰 香港 04",
       "type": "ss",
       "server": "103.136.150.185",
@@ -2774,15 +3076,6 @@
       "latency": 0,
       "password": "gRhHs2gFCj5Pl7JC",
       "cipher": "-256-gcm"
-    },
-    {
-      "name": "🇭🇰 香港 www.v2s.com] 1576",
-      "type": "ss",
-      "server": "telegramx.khp25.com",
-      "port": 1080,
-      "latency": 0,
-      "password": "m5nsedvdczx6x06e",
-      "cipher": "cha20-ietf-poly1305"
     },
     {
       "name": "🇯🇵 日本 03",
@@ -2812,15 +3105,6 @@
       "cipher": "-256-gcm"
     },
     {
-      "name": "🇸🇬 新加坡 www.v2s.com] 1581",
-      "type": "ss",
-      "server": "45.128.12.20",
-      "port": 14249,
-      "latency": 0,
-      "password": "9epp3o9ng8ej59uv",
-      "cipher": "cha20-ietf-poly1305"
-    },
-    {
       "name": "🇸🇬 新加坡 02",
       "type": "ss",
       "server": "194.87.10.216",
@@ -2830,12 +3114,21 @@
       "cipher": "-256-gcm"
     },
     {
-      "name": "🇰🇷 韩国 www.v2s.com] 1580",
+      "name": "🇸🇬 新加坡 www.v2s.com] 1581",
       "type": "ss",
-      "server": "211.174.113.172",
-      "port": 49642,
+      "server": "45.128.12.20",
+      "port": 14249,
       "latency": 0,
-      "password": "ac9c0a7b",
+      "password": "9epp3o9ng8ej59uv",
+      "cipher": "cha20-ietf-poly1305"
+    },
+    {
+      "name": "🇬🇧 英国 www.v2s.com] 1247",
+      "type": "ss",
+      "server": "94.156.250.148",
+      "port": 7001,
+      "latency": 0,
+      "password": "RexnBgU7EV5ADxG",
       "cipher": "-256-gcm"
     },
     {
@@ -2845,15 +3138,6 @@
       "port": 19999,
       "latency": 0,
       "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=",
-      "cipher": "-256-gcm"
-    },
-    {
-      "name": "🇬🇧 英国 www.v2s.com] 1292",
-      "type": "ss",
-      "server": "149.102.132.184",
-      "port": 80,
-      "latency": 0,
-      "password": "g5h5jleTRSyO3Rk4",
       "cipher": "-256-gcm"
     },
     {
@@ -2875,13 +3159,22 @@
       "cipher": "-256-cfb"
     },
     {
-      "name": "🇬🇧 英国 www.v2s.com] 1247",
+      "name": "🇬🇧 英国 www.v2s.com] 1292",
       "type": "ss",
-      "server": "94.156.250.148",
-      "port": 7001,
+      "server": "149.102.132.184",
+      "port": 80,
       "latency": 0,
-      "password": "RexnBgU7EV5ADxG",
+      "password": "g5h5jleTRSyO3Rk4",
       "cipher": "-256-gcm"
+    },
+    {
+      "name": "🇩🇪 德国 1",
+      "type": "ss",
+      "server": "63.180.254.10",
+      "port": 443,
+      "latency": 0,
+      "password": "amazonskr05",
+      "cipher": "-256-cfb"
     },
     {
       "name": "🇩🇪 德国 8",
@@ -2902,24 +3195,6 @@
       "cipher": "2-blake3-chacha20-poly1305"
     },
     {
-      "name": "🇩🇪 德国 1",
-      "type": "ss",
-      "server": "63.180.254.10",
-      "port": 443,
-      "latency": 0,
-      "password": "amazonskr05",
-      "cipher": "-256-cfb"
-    },
-    {
-      "name": "🇩🇪 德国 www.v2s.com] 1592",
-      "type": "ss",
-      "server": "57.129.113.16",
-      "port": 8388,
-      "latency": 0,
-      "password": "NcAXc0UZI6yQJE1p8QmOv8",
-      "cipher": "cha20-ietf-poly1305"
-    },
-    {
       "name": "🇩🇪 德国 6",
       "type": "ss",
       "server": "feow.nomush.ir",
@@ -2929,6 +3204,33 @@
       "cipher": "cha20-ietf-poly1305"
     },
     {
+      "name": "加拿大 CAN 1",
+      "type": "ss",
+      "server": "15.175.220.220",
+      "port": 443,
+      "latency": 0,
+      "password": "amazonskr05",
+      "cipher": "-256-cfb"
+    },
+    {
+      "name": "www.v2s.com] CA1559",
+      "type": "ss",
+      "server": "51.222.141.125",
+      "port": 445,
+      "latency": 0,
+      "password": "zDNVedRFPQexG9v",
+      "cipher": "-256-gcm"
+    },
+    {
+      "name": "www.v2s.com] CA1538",
+      "type": "ss",
+      "server": "51.222.12.127",
+      "port": 445,
+      "latency": 0,
+      "password": "zDNVedRFPQexG9v",
+      "cipher": "-256-gcm"
+    },
+    {
       "name": "www.v2s.com] CA1558",
       "type": "ss",
       "server": "51.222.200.165",
@@ -2936,6 +3238,15 @@
       "latency": 0,
       "password": "Y6R9pAtvxxzmGC",
       "cipher": "-256-gcm"
+    },
+    {
+      "name": "www.v2s.com] CA1588",
+      "type": "ss",
+      "server": "64.74.163.69",
+      "port": 18766,
+      "latency": 0,
+      "password": "4efe1af272e7292139b889f6a63ee071",
+      "cipher": "-128-gcm"
     },
     {
       "name": "www.v2s.com] CA1557",
@@ -2956,39 +3267,12 @@
       "cipher": "-256-gcm"
     },
     {
-      "name": "www.v2s.com] CA1538",
+      "name": "www.v2s.com] CA1546",
       "type": "ss",
-      "server": "51.222.12.127",
-      "port": 445,
+      "server": "51.222.155.113",
+      "port": 5601,
       "latency": 0,
-      "password": "zDNVedRFPQexG9v",
-      "cipher": "-256-gcm"
-    },
-    {
-      "name": "www.v2s.com] CA1588",
-      "type": "ss",
-      "server": "64.74.163.69",
-      "port": 18766,
-      "latency": 0,
-      "password": "4efe1af272e7292139b889f6a63ee071",
-      "cipher": "-128-gcm"
-    },
-    {
-      "name": "加拿大 CAN 1",
-      "type": "ss",
-      "server": "15.175.220.220",
-      "port": 443,
-      "latency": 0,
-      "password": "amazonskr05",
-      "cipher": "-256-cfb"
-    },
-    {
-      "name": "www.v2s.com] CA1559... 1",
-      "type": "ss",
-      "server": "51.79.85.185",
-      "port": 8118,
-      "latency": 0,
-      "password": "cdBIDV42DCwnfIN",
+      "password": "Y6R9pAtvxxzmGC",
       "cipher": "-256-gcm"
     },
     {
@@ -3001,30 +3285,12 @@
       "cipher": "-256-gcm"
     },
     {
-      "name": "www.v2s.com] CA1559",
+      "name": "www.v2s.com] CA1559... 1",
       "type": "ss",
-      "server": "51.222.141.125",
-      "port": 445,
+      "server": "51.79.85.185",
+      "port": 8118,
       "latency": 0,
-      "password": "zDNVedRFPQexG9v",
-      "cipher": "-256-gcm"
-    },
-    {
-      "name": "www.v2s.com] CA1546",
-      "type": "ss",
-      "server": "51.222.155.113",
-      "port": 5601,
-      "latency": 0,
-      "password": "Y6R9pAtvxxzmGC",
-      "cipher": "-256-gcm"
-    },
-    {
-      "name": "www.v2s.com] CA1545... 1",
-      "type": "ss",
-      "server": "51.79.49.116",
-      "port": 8882,
-      "latency": 0,
-      "password": "kDWvXYZoTBcGkC4",
+      "password": "cdBIDV42DCwnfIN",
       "cipher": "-256-gcm"
     },
     {
@@ -3037,21 +3303,21 @@
       "cipher": "-256-gcm"
     },
     {
-      "name": "🇳🇱 荷兰 KH14.0MB/s",
+      "name": "🇳🇱 荷兰 www.v2s.com] OM1596",
       "type": "ss",
       "server": "ruot.ayucloudservices.nl",
-      "port": 35019,
+      "port": 35016,
       "latency": 0,
       "password": "9c51ca33-a332-4de5-8677-5624e940097c",
       "cipher": "-128-gcm"
     },
     {
-      "name": "🇳🇱 荷兰 www.v2s.com] HR1593",
+      "name": "🇳🇱 荷兰 www.v2s.com] PL1596",
       "type": "ss",
       "server": "ruot.ayucloudservices.nl",
-      "port": 35193,
+      "port": 35031,
       "latency": 0,
-      "password": "2581cebb-e452-4ee3-8849-3cd358bf9394",
+      "password": "85590bd2-807b-49b9-af20-1101c18b9eda",
       "cipher": "-128-gcm"
     },
     {
