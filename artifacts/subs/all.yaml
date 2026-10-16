@@ -1,5 +1,17 @@
 proxies:
-  - name: 🇺🇸美国|unknown|95分-2
+  - name: 🇺🇸美国|unknown|95分-3
+    type: http
+    server: 138.199.35.211
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|95分-15
     type: http
     server: 138.199.35.216
     port: 9002
@@ -12,19 +24,7 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分-3
-    type: http
-    server: 138.199.35.198
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分-10
+  - name: 🇺🇸美国|unknown|95分-16
     type: http
     server: 38.28.193.188
     port: 443
@@ -36,10 +36,10 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分-11
+  - name: 🇺🇸美国|unknown|95分-17
     type: http
-    server: 38.95.111.226
-    port: 9443
+    server: 138.199.35.198
+    port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
@@ -48,7 +48,19 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|95分-19
+  - name: 🇺🇸美国|unknown|95分-18
+    type: http
+    server: 138.199.35.206
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|95分-20
     type: vmess
     server: guanwang.awsno.com
     port: 443
@@ -66,7 +78,29 @@ proxies:
     speed: unknown
     qualityScore: 95
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|95分-22
+  - name: 🇺🇸美国|unknown|95分-25
+    type: http
+    server: voteshirleysew.club
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|95分-34
+    type: http
+    server: fan.365747.xyz
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|95分-40
     type: http
     server: purposebydesig.club
     port: 443
@@ -78,29 +112,7 @@ proxies:
     speed: unknown
     qualityScore: 95
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|95分-26
-    type: http
-    server: voteshirleysew.club
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|95分-37
-    type: http
-    server: fan.365747.xyz
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-  - name: 🇭🇰香港|unknown|95分-2
+  - name: 🇭🇰香港|unknown|95分
     type: vmess
     server: 8.217.254.88
     port: 443
@@ -121,43 +133,6 @@ proxies:
     fraudScore: 0
   - name: 🇭🇰香港|unknown|95分-3
     type: vmess
-    server: 8.217.13.103
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: qtkdr8jxe3wefxjm.v.3dns.vip
-      path: /ws-vmess
-    _region: hk
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇭🇰香港|unknown|95分-4
-    type: vmess
-    server: qtkdr8jxe3wefxjm.v.3dns.vip
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: qTKDR8jXE3wEFxJM.v.3dns.vip
-      path: /ws-vmess
-    _region: hk
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-  - name: 🇭🇰香港|unknown|95分-5
-    type: vmess
     server: nycqg19zkwacpm1b.v.3dns.vip
     port: 443
     skip-cert-verify: true
@@ -167,14 +142,135 @@ proxies:
     network: ws
     tls: true
     ws-opts:
+      path: /ws-vmess
       headers:
         Host: NYcQg19zkwaCPM1B.v.3dns.vip
-      path: /ws-vmess
     _region: hk
     speed: unknown
     qualityScore: 95
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|95分
+  - name: 🇰🇷韩国|unknown|95分
+    type: trojan
+    server: kr.tronsg.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: Trojan@82164024
+    sni: kr.tronsg.com
+    _region: kr
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+  - name: 🇩🇪德国|unknown|95分-2
+    type: http
+    server: 193.176.84.30
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-3
+    type: http
+    server: 84.17.47.148
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-4
+    type: http
+    server: 193.176.84.35
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-6
+    type: http
+    server: 84.17.47.150
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-8
+    type: http
+    server: 84.17.47.125
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: None
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-11
+    type: http
+    server: 84.17.47.149
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-12
+    type: http
+    server: 84.17.47.125
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-13
+    type: http
+    server: 193.176.84.24
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-17
+    type: http
+    server: 193.176.84.25
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-18
     type: http
     server: 193.176.84.23
     port: 9002
@@ -187,31 +283,7 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-8
-    type: http
-    server: 193.176.84.39
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-9
-    type: http
-    server: 193.176.84.32
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-10
+  - name: 🇩🇪德国|unknown|95分-21
     type: http
     server: 84.17.47.146
     port: 9002
@@ -223,19 +295,20 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-11
+  - name: 🇩🇪德国|unknown|95分-23
     type: http
-    server: 193.176.84.25
+    server: 84.17.47.148
     port: 9002
     skip-cert-verify: true
     udp: true
+    password: None
     tls: true
     _region: de
     speed: unknown
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-12
+  - name: 🇩🇪德国|unknown|95分-24
     type: http
     server: 193.176.84.27
     port: 9002
@@ -247,7 +320,57 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-13
+  - name: 🇩🇪德国|unknown|95分-26
+    type: http
+    server: 193.176.84.20
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    sni: www.bing.com
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-27
+    type: http
+    server: 193.176.84.32
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-28
+    type: http
+    server: 193.176.84.39
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    sni: www.bing.com
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-29
+    type: http
+    server: 193.176.84.33
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 95
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|95分-30
     type: http
     server: 193.176.84.31
     port: 9002
@@ -260,147 +383,14 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-14
-    type: http
-    server: 193.176.84.35
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-15
-    type: http
-    server: 84.17.47.125
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-17
-    type: http
-    server: 84.17.47.149
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-18
-    type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-19
-    type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-20
-    type: http
-    server: 84.17.47.150
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-21
-    type: http
-    server: 84.17.47.125
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-22
-    type: http
-    server: 193.176.84.33
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-23
-    type: http
-    server: 193.176.84.24
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-24
-    type: http
-    server: 193.176.84.30
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-30
+  - name: 🇩🇪德国|unknown|95分-31
     type: http
     server: 193.176.84.17
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|95分-31
-    type: http
-    server: 193.176.84.20
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
+    sni: www.bing.com
     _region: de
     speed: unknown
     qualityScore: 95
@@ -425,113 +415,21 @@ proxies:
     qualityScore: 95
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分
+  - name: 🇺🇸美国|unknown|90分
     type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-2
-    type: http
-    server: 84.17.47.150
-    port: 9002
+    server: 129.212.181.253
+    port: 8443
     skip-cert-verify: true
     udp: true
     tls: true
-    _region: nl
+    _region: us
     speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-3
-    type: http
-    server: 84.17.47.125
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-6
-    type: trojan
-    server: 89.150.34.41
-    port: 2053
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-7
-    type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-8
-    type: http
-    server: 84.17.47.125
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    password: None
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-10
-    type: http
-    server: 84.17.47.149
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|95分-12
-    type: http
-    server: 84.17.47.146
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: nl
-    speed: unknown
-    qualityScore: 95
+    qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
   - name: 🇺🇸美国|unknown|90分-2
     type: http
-    server: 12.202.180.10
+    server: 149.22.88.65
     port: 443
     skip-cert-verify: true
     udp: true
@@ -541,10 +439,10 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-4
+  - name: 🇺🇸美国|unknown|90分-3
     type: http
-    server: 193.239.236.134
-    port: 443
+    server: 138.199.35.201
+    port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
@@ -553,44 +451,14 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-5
+  - name: 🇺🇸美国|unknown|90分-8
     type: http
-    server: 12.221.146.147
-    port: 443
+    server: 138.199.35.202
+    port: 9002
     skip-cert-verify: true
     udp: true
+    password: None
     tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-6
-    type: http
-    server: 192.227.176.234
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-7
-    type: vmess
-    server: 142.0.131.72
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: www.67271089.xyz
-      path: /path/1704188270531
     _region: us
     speed: unknown
     qualityScore: 90
@@ -598,8 +466,8 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|90分-9
     type: http
-    server: 68.235.56.59
-    port: 443
+    server: 138.199.35.199
+    port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
@@ -609,30 +477,6 @@ proxies:
     detectLevel: tcp
     fraudScore: 0
   - name: 🇺🇸美国|unknown|90分-10
-    type: http
-    server: 167.88.60.242
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-11
-    type: http
-    server: 121.127.34.82
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-13
     type: vmess
     server: 169.197.143.89
     port: 443
@@ -651,25 +495,162 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|90分-14
-    type: vmess
-    server: ophelia.mom
+  - name: 🇺🇸美国|unknown|90分-11
+    type: http
+    server: 149.88.21.129
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    password: None
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-12
+    type: http
+    server: 45.63.38.134
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 10
+  - name: 🇺🇸美国|unknown|90分-13
+    type: http
+    server: 138.199.35.214
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-14
+    type: http
+    server: 121.127.34.82
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-15
+    type: http
+    server: 209.148.53.153
+    port: 8090
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-17
+    type: http
+    server: 138.199.35.215
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-18
+    type: http
+    server: 138.199.35.213
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-19
+    type: vmess
+    server: 142.0.131.72
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: ophelia.mom
-      path: linkvws
+        Host: www.67271089.xyz
+      path: /path/1704188270531
     _region: us
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-15
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-21
+    type: http
+    server: 138.199.35.210
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-22
+    type: http
+    server: 38.247.141.135
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-23
+    type: http
+    server: 68.235.56.51
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-24
+    type: http
+    server: 138.199.35.216
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|90分-26
     type: vmess
     server: hms04.xmivideo.cfd
     port: 443
@@ -687,60 +668,7 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-16
-    type: vmess
-    server: 53vXOVarmgcreAsv.v.3dns.vip
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 88888888-8888-8888-8888-888888888888
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: 53vXOVarmgcreAsv.v.3dns.vip
-      path: /ws-vmess
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-17
-    type: vmess
-    server: t1.620720.xyz
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: t1.620720.xyz
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-19
-    type: trojan
-    server: us3-2.998998.best
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 5504eaa8-1395-402f-8e0e-75ecd762e627
-    network: ws
-    sni: nat3.xxai.dpdns.org
-    ws-opts:
-      headers:
-        Host: nat3.xxai.dpdns.org
-      path: '%2Fanyway'
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-20
+  - name: 🇺🇸美国|unknown|90分-27
     type: vmess
     server: rlhrwtqusd.site
     port: 443
@@ -758,61 +686,25 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-21
+  - name: 🇺🇸美国|unknown|90分-28
     type: vmess
-    server: cold-dawn-9246.fly.dev
+    server: 53vXOVarmgcreAsv.v.3dns.vip
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: ea4909ef-7ca6-4b46-bf2e-6c07896ef338
+    uuid: 88888888-8888-8888-8888-888888888888
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: cold-dawn-9246.fly.dev
-      path: /ea4909ef-7ca6-4b46-bf2e-6c07896ef338-vm
+        Host: 53vXOVarmgcreAsv.v.3dns.vip
+      path: /ws-vmess
     _region: us
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-22
-    type: vmess
-    server: speed.cloudflare.com
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: c313606f-98c2-4d7b-ba74-48b94f61b11d
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: uswuxian.pai50288.uk
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-23
-    type: vmess
-    server: gov.uk
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: zheshiscp.com
-      path: /77848824
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-24
+  - name: 🇺🇸美国|unknown|90分-30
     type: vmess
     server: bJ1Aa2ZyJxYamYuK.v.3dns.vip
     port: 443
@@ -830,97 +722,7 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-25
-    type: vmess
-    server: afrhms16v.bestxray.buzz
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f584de15-2034-4170-a723-f48c2bae5e0f
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: afrhms16v.bestxray.buzz
-      path: /linkws
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-26
-    type: vmess
-    server: cg1c04.waimaojd.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: be8e3136-b874-4085-bd23-ec3699300490
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: cg1c04.waimaojd.com
-      path: /api/v1/graphql
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-27
-    type: vmess
-    server: cg1c01.waimaojd.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: be8e3136-b874-4085-bd23-ec3699300490
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: cg1c01.waimaojd.com
-      path: /api/v1/graphql
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-30
-    type: vmess
-    server: hgtrojan.zabc.net
-    port: 2083
-    skip-cert-verify: true
-    udp: true
-    uuid: e6395c20-4571-4b34-d6b1-55a5d36e49ea
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: hgtrojan.zabc.net
-      path: /e6395c20
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
   - name: 🇺🇸美国|unknown|90分-31
-    type: vmess
-    server: speed.cloudflare.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ul-uae2.09vpn.com
-      path: /vmess/
-    _region: us
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|90分-32
     type: vmess
     server: sy4.620720.xyz
     port: 443
@@ -938,7 +740,43 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-32
+    type: vmess
+    server: speed.cloudflare.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ul-uae2.09vpn.com
+      path: /vmess/
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
   - name: 🇺🇸美国|unknown|90分-33
+    type: vmess
+    server: afrhms16v.bestxray.buzz
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f584de15-2034-4170-a723-f48c2bae5e0f
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: afrhms16v.bestxray.buzz
+      path: /linkws
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-34
     type: vmess
     server: speed.cloudflare.com
     port: 2087
@@ -952,43 +790,163 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇭🇰香港|unknown|90分-3
+  - name: 🇺🇸美国|unknown|90分-36
     type: vmess
-    server: kBONDXW9liFCi4h4.v.3dns.vip
-    port: 443
+    server: hgtrojan.zabc.net
+    port: 2083
     skip-cert-verify: true
     udp: true
-    uuid: 88888888-8888-8888-8888-888888888888
+    uuid: e6395c20-4571-4b34-d6b1-55a5d36e49ea
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: kBONDXW9liFCi4h4.v.3dns.vip
-      path: /ws-vmess
+        Host: hgtrojan.zabc.net
+      path: /e6395c20
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-37
+    type: vmess
+    server: gov.uk
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: zheshiscp.com
+      path: /77848824
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-38
+    type: vmess
+    server: cg1c04.waimaojd.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: be8e3136-b874-4085-bd23-ec3699300490
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: cg1c04.waimaojd.com
+      path: /api/v1/graphql
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-39
+    type: vmess
+    server: cg1c01.waimaojd.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: be8e3136-b874-4085-bd23-ec3699300490
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: cg1c01.waimaojd.com
+      path: /api/v1/graphql
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-40
+    type: vmess
+    server: ophelia.mom
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ophelia.mom
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-41
+    type: vmess
+    server: t1.620720.xyz
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: t1.620720.xyz
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-42
+    type: vmess
+    server: cold-dawn-9246.fly.dev
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: ea4909ef-7ca6-4b46-bf2e-6c07896ef338
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: cold-dawn-9246.fly.dev
+      path: /ea4909ef-7ca6-4b46-bf2e-6c07896ef338-vm
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|90分-44
+    type: vmess
+    server: speed.cloudflare.com
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: c313606f-98c2-4d7b-ba74-48b94f61b11d
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: uswuxian.pai50288.uk
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇭🇰香港|unknown|90分-2
+    type: trojan
+    server: 2.27.109.179
+    port: 45464
+    skip-cert-verify: true
+    udp: true
+    password: XuMweB2PWs
     _region: hk
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
+    fraudScore: 0
   - name: 🇭🇰香港|unknown|90分-4
-    type: vmess
-    server: aZW0eunYVdvRe73k.v.3dns.vip
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 88888888-8888-8888-8888-888888888888
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: aZW0eunYVdvRe73k.v.3dns.vip
-      path: /ws-vmess
-    _region: hk
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇭🇰香港|unknown|90分-6
     type: vmess
     server: syJ2gGUgMwBwQwQx.v.3dns.vip
     port: 443
@@ -1001,6 +959,24 @@ proxies:
     ws-opts:
       headers:
         Host: syJ2gGUgMwBwQwQx.v.3dns.vip
+      path: /ws-vmess
+    _region: hk
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇭🇰香港|unknown|90分-5
+    type: vmess
+    server: kBONDXW9liFCi4h4.v.3dns.vip
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 88888888-8888-8888-8888-888888888888
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: kBONDXW9liFCi4h4.v.3dns.vip
       path: /ws-vmess
     _region: hk
     speed: unknown
@@ -1024,7 +1000,25 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-2
+  - name: 🇭🇰香港|unknown|90分-8
+    type: vmess
+    server: aZW0eunYVdvRe73k.v.3dns.vip
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 88888888-8888-8888-8888-888888888888
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: aZW0eunYVdvRe73k.v.3dns.vip
+      path: /ws-vmess
+    _region: hk
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇰🇵日本|unknown|90分
     type: trojan
     server: 45.32.52.173
     port: 8886
@@ -1037,7 +1031,19 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 10
-  - name: 🇰🇵日本|unknown|90分-3
+  - name: 🇰🇵日本|unknown|90分-5
+    type: trojan
+    server: warm-krill.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: warm-krill.rooster465.autos
+    _region: jp
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇰🇵日本|unknown|90分-6
     type: trojan
     server: prime-corgi.rooster465.autos
     port: 443
@@ -1049,62 +1055,14 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-4
-    type: trojan
-    server: winning-marten.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: winning-marten.rooster465.autos
-    _region: jp
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-5
-    type: vmess
-    server: kneNaKHeSXnZH259.v.3dns.vip
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 88888888-8888-8888-8888-888888888888
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: kneNaKHeSXnZH259.v.3dns.vip
-      path: /ws-vmess
-    _region: jp
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-6
-    type: trojan
-    server: allowed-poodle.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: allowed-poodle.rooster465.autos
-    _region: jp
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-7
-    type: vmess
-    server: kQov7UKaDknXb8a3.v.3dns.vip
+    type: trojan
+    server: evident-ant.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 88888888-8888-8888-8888-888888888888
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: kQov7UKaDknXb8a3.v.3dns.vip
-      path: /ws-vmess
+    password: UX82473651
+    sni: evident-ant.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
@@ -1123,42 +1081,72 @@ proxies:
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-9
     type: trojan
-    server: concrete-aardvark.rooster465.autos
+    server: obliging-louse.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: concrete-aardvark.rooster465.autos
+    sni: obliging-louse.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-10
     type: trojan
-    server: equipped-stingray.rooster465.autos
+    server: allowed-poodle.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    network: tcp
-    sni: equipped-stingray.rooster465.autos
+    sni: allowed-poodle.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-11
     type: trojan
-    server: musical-terrier.rooster465.autos
+    server: stable-python.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: musical-terrier.rooster465.autos
+    sni: stable-python.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-12
+    type: vmess
+    server: kQov7UKaDknXb8a3.v.3dns.vip
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 88888888-8888-8888-8888-888888888888
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: kQov7UKaDknXb8a3.v.3dns.vip
+      path: /ws-vmess
+    _region: jp
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇰🇵日本|unknown|90分-13
+    type: trojan
+    server: normal-macaque.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    network: tcp
+    sni: normal-macaque.rooster465.autos
+    _region: jp
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇰🇵日本|unknown|90分-14
     type: vmess
     server: Z9FfBx3zs2q5O0BG.v.3dns.vip
     port: 443
@@ -1176,38 +1164,15 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-13
-    type: trojan
-    server: stable-python.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: stable-python.rooster465.autos
-    _region: jp
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇰🇵日本|unknown|90分-14
-    type: trojan
-    server: warm-krill.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: warm-krill.rooster465.autos
-    _region: jp
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-15
     type: trojan
-    server: legible-ram.rooster465.autos
+    server: equipped-stingray.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: legible-ram.rooster465.autos
+    network: tcp
+    sni: equipped-stingray.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
@@ -1226,37 +1191,43 @@ proxies:
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-17
     type: trojan
-    server: obliging-louse.rooster465.autos
+    server: winning-marten.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: obliging-louse.rooster465.autos
+    sni: winning-marten.rooster465.autos
     _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-18
-    type: trojan
-    server: normal-macaque.rooster465.autos
-    port: 443
+    type: vmess
+    server: oc.imfun.fun
+    port: 18112
     skip-cert-verify: true
     udp: true
-    password: UX82473651
-    network: tcp
-    sni: normal-macaque.rooster465.autos
+    uuid: ad45f8f6-0f0a-4cc4-b907-c4582407dc94
+    cipher: auto
+    tls: false
     _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇰🇵日本|unknown|90分-19
-    type: trojan
-    server: evident-ant.rooster465.autos
+    type: vmess
+    server: kneNaKHeSXnZH259.v.3dns.vip
     port: 443
     skip-cert-verify: true
     udp: true
-    password: UX82473651
-    sni: evident-ant.rooster465.autos
+    uuid: 88888888-8888-8888-8888-888888888888
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: kneNaKHeSXnZH259.v.3dns.vip
+      path: /ws-vmess
     _region: jp
     speed: unknown
     qualityScore: 90
@@ -1273,57 +1244,31 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-6
+  - name: 🇰🇵日本|unknown|90分-21
     type: trojan
-    server: 3.1.252.137
+    server: musical-terrier.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    network: tcp
-    sni: brave-tomcat.rooster465.autos
-    _region: sg
+    sni: musical-terrier.rooster465.autos
+    _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-    fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|90分-8
+  - name: 🇰🇵日本|unknown|90分-22
     type: trojan
-    server: inviting-ferret.rooster465.autos
+    server: legible-ram.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: inviting-ferret.rooster465.autos
-    _region: sg
+    sni: legible-ram.rooster465.autos
+    _region: jp
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-9
-    type: trojan
-    server: ace-liger.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: ace-liger.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-10
-    type: trojan
-    server: real-cardinal.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: real-cardinal.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-11
+  - name: 🇸🋀新加坡|unknown|90分-7
     type: trojan
     server: musical-mouse.rooster465.autos
     port: 443
@@ -1335,7 +1280,19 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-12
+  - name: 🇸🋀新加坡|unknown|90分-8
+    type: trojan
+    server: real-cardinal.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: real-cardinal.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-9
     type: trojan
     server: pet-antelope.rooster465.autos
     port: 443
@@ -1347,7 +1304,31 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-13
+  - name: 🇸🋀新加坡|unknown|90分-10
+    type: trojan
+    server: fond-mammoth.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: fond-mammoth.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-11
+    type: trojan
+    server: brave-tomcat.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: brave-tomcat.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-12
     type: vmess
     server: ASaqYIDZa9WDQ9Kq.v.3dns.vip
     port: 443
@@ -1365,7 +1346,7 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-14
+  - name: 🇸🋀新加坡|unknown|90分-13
     type: trojan
     server: rested-seahorse.rooster465.autos
     port: 443
@@ -1377,55 +1358,7 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-16
-    type: trojan
-    server: simple-molly.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: simple-molly.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-17
-    type: trojan
-    server: inspired-hound.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: inspired-hound.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-18
-    type: trojan
-    server: moral-basilisk.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: moral-basilisk.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-19
-    type: trojan
-    server: fond-mammoth.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: fond-mammoth.rooster465.autos
-    _region: sg
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-20
+  - name: 🇸🋀新加坡|unknown|90分-14
     type: trojan
     server: joint-ewe.rooster465.autos
     port: 443
@@ -1437,7 +1370,7 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇸🋀新加坡|unknown|90分-21
+  - name: 🇸🋀新加坡|unknown|90分-15
     type: trojan
     server: intense-wildcat.rooster465.autos
     port: 443
@@ -1449,7 +1382,67 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇰🇷韩国|unknown|90分-2
+  - name: 🇸🋀新加坡|unknown|90分-16
+    type: trojan
+    server: inspired-hound.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: inspired-hound.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-17
+    type: trojan
+    server: inviting-ferret.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: inviting-ferret.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-19
+    type: trojan
+    server: ace-liger.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: ace-liger.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-20
+    type: trojan
+    server: simple-molly.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: simple-molly.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇸🋀新加坡|unknown|90分-21
+    type: trojan
+    server: moral-basilisk.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: moral-basilisk.rooster465.autos
+    _region: sg
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇰🇷韩国|unknown|90分
     type: vmess
     server: 8nTzyR5KNivfabaT.v.3dns.vip
     port: 443
@@ -1467,121 +1460,57 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇰🇷韩国|unknown|90分-3
-    type: trojan
-    server: cunning-grub.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: cunning-grub.rooster465.autos
-    _region: kr
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇺🇷英国|unknown|90分
-    type: http
-    server: 37.120.233.34
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇷英国|unknown|90分-2
-    type: http
-    server: 84.17.50.214
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇷英国|unknown|90分-3
-    type: http
-    server: 84.17.50.129
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇷英国|unknown|90分-4
-    type: http
-    server: 185.164.138.156
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: uk
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
   - name: 🇩🇪德国|unknown|90分
     type: http
-    server: 149.36.50.129
+    server: 79.127.156.177
     port: 443
     skip-cert-verify: true
     udp: true
-    password: None
     tls: true
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-2
-    type: http
-    server: 149.36.50.157
+  - name: 🇩🇪德国|unknown|90分-6
+    type: trojan
+    server: 31.57.190.34
     port: 443
     skip-cert-verify: true
     udp: true
-    password: None
-    tls: true
+    password: humanity
+    network: ws
+    sni: www.pleadcourt.org
+    alpn:
+      - http/1.1
+    ws-opts:
+      headers:
+        Host: www.pleadcourt.org
+      path: /assignment
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-5
+  - name: 🇩🇪德国|unknown|90分-8
     type: trojan
-    server: 165.215.250.14
-    port: 443
+    server: 185.114.72.31
+    port: 2053
     skip-cert-verify: true
     udp: true
     password: humanity
+    network: ws
+    sni: www.calmlunch.com
     ws-opts:
-      path: '%2Fassignment'
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-7
-    type: trojan
-    server: 46.62.204.134
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    ws-opts:
-      path: '%2Fassignment'
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 10
-  - name: 🇩🇪德国|unknown|90分-11
+  - name: 🇩🇪德国|unknown|90分-9
     type: trojan
     server: 45.130.125.160
     port: 443
@@ -1600,121 +1529,19 @@ proxies:
     detectLevel: tcp
     fraudScore: 10
   - name: 🇩🇪德国|unknown|90分-12
-    type: trojan
-    server: 185.114.72.31
-    port: 2053
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-19
     type: http
-    server: 158.173.154.2
-    port: 9002
+    server: 149.36.50.1
+    port: 443
     skip-cert-verify: true
     udp: true
+    password: None
     tls: true
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-29
-    type: trojan
-    server: 45.87.41.18
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 10
-  - name: 🇩🇪德国|unknown|90分-31
-    type: trojan
-    server: 219.76.13.177
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    ws-opts:
-      path: '%2Fassignment'
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-34
-    type: trojan
-    server: 92.42.99.143
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    ws-opts:
-      path: '%2Fassignment'
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-40
-    type: trojan
-    server: 109.206.241.10
-    port: 449
-    skip-cert-verify: true
-    udp: true
-    password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-    sni: russiapower.accesscam.org
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-41
-    type: trojan
-    server: 31.57.190.34
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    ws-opts:
-      path: '%2Fassignment'
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-42
-    type: http
-    server: 213.177.229.161
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-46
+  - name: 🇩🇪德国|unknown|90分-13
     type: trojan
     server: 212.227.144.37
     port: 8443
@@ -1734,39 +1561,7 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-47
-    type: trojan
-    server: 185.22.172.249
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    ws-opts:
-      path: '%2Fassignment'
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-53
-    type: trojan
-    server: 185.220.100.168
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-55
+  - name: 🇩🇪德国|unknown|90分-14
     type: trojan
     server: 212.183.88.136
     port: 443
@@ -1784,7 +1579,158 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-56
+  - name: 🇩🇪德国|unknown|90分-17
+    type: trojan
+    server: 185.220.100.168
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-19
+    type: trojan
+    server: 109.206.241.10
+    port: 449
+    skip-cert-verify: true
+    udp: true
+    password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+    sni: russiapower.accesscam.org
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-25
+    type: http
+    server: 213.177.229.161
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-27
+    type: http
+    server: 158.173.154.2
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-28
+    type: trojan
+    server: 219.76.13.177
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    ws-opts:
+      path: '%2Fassignment'
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-31
+    type: http
+    server: 193.233.75.115
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-33
+    type: trojan
+    server: 46.62.204.134
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    ws-opts:
+      path: '%2Fassignment'
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 10
+  - name: 🇩🇪德国|unknown|90分-34
+    type: http
+    server: 87.249.132.97
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-39
+    type: trojan
+    server: 31.57.190.34
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.volumeroot.com
+    ws-opts:
+      headers:
+        Host: www.volumeroot.com
+      path: /assignment
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-40
+    type: trojan
+    server: 165.215.250.14
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    ws-opts:
+      path: '%2Fassignment'
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-45
+    type: http
+    server: 185.232.70.11
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-47
     type: trojan
     server: 185.255.179.166
     port: 443
@@ -1802,7 +1748,21 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-57
+  - name: 🇩🇪德国|unknown|90分-52
+    type: trojan
+    server: 92.42.99.143
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    ws-opts:
+      path: '%2Fassignment'
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-55
     type: trojan
     server: 46.8.228.165
     port: 443
@@ -1816,7 +1776,39 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 10
-  - name: 🇩🇪德国|unknown|90分-58
+  - name: 🇩🇪德国|unknown|90分-56
+    type: trojan
+    server: 45.87.41.18
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 10
+  - name: 🇩🇪德国|unknown|90分-57
+    type: trojan
+    server: 185.22.172.249
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    ws-opts:
+      path: '%2Fassignment'
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|90分-59
     type: trojan
     server: 165.215.250.14
     port: 443
@@ -1834,19 +1826,63 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|90分-64
+  - name: 🇩🇪德国|unknown|90分-66
     type: trojan
-    server: sacred-anemone.rooster465.autos
-    port: 443
+    server: nimm.mpd.cc.cd
+    port: 2053
     skip-cert-verify: true
     udp: true
-    password: UX82473651
-    sni: sacred-anemone.rooster465.autos
+    password: e309e031-991e-4656-9934-44d10deb8fd8
+    network: ws
+    sni: nimm.mpd.cc.cd
+    ws-opts:
+      path: /0962
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-65
+  - name: 🇩🇪德国|unknown|90分-67
+    type: trojan
+    server: adapting-basilisk.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: adapting-basilisk.rooster465.autos
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇩🇪德国|unknown|90分-68
+    type: trojan
+    server: www.calmlunch.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇩🇪德国|unknown|90分-72
+    type: trojan
+    server: loved-shark.rooster465.autos
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: UX82473651
+    sni: loved-shark.rooster465.autos
+    _region: de
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+  - name: 🇩🇪德国|unknown|90分-76
     type: vmess
     server: hms082.gwdef.sbs
     port: 443
@@ -1864,91 +1900,21 @@ proxies:
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-67
+  - name: 🇩🇪德国|unknown|90分-84
     type: trojan
-    server: www.calmlunch.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-68
-    type: trojan
-    server: nimm.mpd.cc.cd
-    port: 2053
-    skip-cert-verify: true
-    udp: true
-    password: e309e031-991e-4656-9934-44d10deb8fd8
-    network: ws
-    sni: nimm.mpd.cc.cd
-    ws-opts:
-      path: /0962
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-70
-    type: trojan
-    server: loved-shark.rooster465.autos
+    server: sacred-anemone.rooster465.autos
     port: 443
     skip-cert-verify: true
     udp: true
     password: UX82473651
-    sni: loved-shark.rooster465.autos
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-74
-    type: trojan
-    server: cuddly-sheepdog.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: cuddly-sheepdog.rooster465.autos
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-77
-    type: trojan
-    server: adapting-basilisk.rooster465.autos
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: UX82473651
-    sni: adapting-basilisk.rooster465.autos
-    _region: de
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-  - name: 🇩🇪德国|unknown|90分-83
-    type: trojan
-    server: cz-musicc.moritech.net
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: f8b-U5TxjNRYKLvU0Js_6YeMCdj_82km
-    network: grpc
-    alpn:
-      - h2
+    sni: sacred-anemone.rooster465.autos
     _region: de
     speed: unknown
     qualityScore: 90
     detectLevel: tcp
   - name: 🇨🇦加拿大|unknown|90分
     type: http
-    server: 206.223.183.13
+    server: 206.223.161.47
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1958,14 +1924,101 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇳🇱荷兰|unknown|90分
-    type: trojan
-    server: 89.150.34.41
-    port: 2053
+  - name: 🅦🇺澳大利亚|unknown|90分
+    type: http
+    server: 159.13.44.228
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: humanity
-    sni: www.calmlunch.com
+    tls: true
+    _region: au
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分
+    type: http
+    server: 84.17.47.147
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-2
+    type: http
+    server: 157.22.183.72
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-3
+    type: http
+    server: 161.129.60.66
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-4
+    type: http
+    server: 84.17.47.149
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    password: 'null'
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-5
+    type: ss
+    server: 178.83.185.156
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    password: oZIoA69Q8yhcQV8ka3Pa3A
+    cipher: chacha20-ietf-poly1305
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-6
+    type: http
+    server: 84.17.47.147
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: nl
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇳🇱荷兰|unknown|90分-7
+    type: http
+    server: 84.17.47.126
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
     _region: nl
     speed: unknown
     qualityScore: 90
@@ -1973,11 +2026,59 @@ proxies:
     fraudScore: 0
   - name: 🇫🇷法国|unknown|90分
     type: http
-    server: 149.102.245.65
+    server: 87.98.174.157
+    port: 6103
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: fr
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|90分-2
+    type: http
+    server: 213.139.9.142
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: fr
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|90分-3
+    type: http
+    server: 82.65.162.76
     port: 443
     skip-cert-verify: true
     udp: true
-    password: None
+    tls: true
+    _region: fr
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|90分-4
+    type: http
+    server: 103.82.101.44
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    sni: f3a61d8406d537345747f99f8a281007-3f754ed5da1bba09.apache-iv.com
+    _region: fr
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇫🇷法国|unknown|90分-5
+    type: http
+    server: 31.32.19.111
+    port: 8081
+    skip-cert-verify: true
+    udp: true
     tls: true
     _region: fr
     speed: unknown
@@ -1985,6 +2086,20 @@ proxies:
     detectLevel: tcp
     fraudScore: 0
   - name: 🇨🇳中国|unknown|90分
+    type: vmess
+    server: 112.132.215.108
+    port: 50002
+    skip-cert-verify: true
+    udp: true
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    cipher: auto
+    tls: false
+    _region: cn
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇨🇳中国|unknown|90分-2
     type: vmess
     server: 39.108.113.127
     port: 10086
@@ -1999,40 +2114,20 @@ proxies:
     qualityScore: 90
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇨🇳中国|unknown|90分-2
-    type: vmess
-    server: 112.132.215.108
-    port: 50002
+  - name: 🇺🇸美国|unknown|85分-2
+    type: ss
+    server: 185.103.110.66
+    port: 18280
     skip-cert-verify: true
     udp: true
-    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-    cipher: auto
-    tls: false
-    _region: cn
-    speed: unknown
-    qualityScore: 90
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分
-    type: vmess
-    server: 162.159.1.33
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: pcs-referenced-camera-concerns.trycloudflare.com
-      path: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96-vm
+    password: f9300a9bf39ae0347c3a3bfbc4dd7754
+    cipher: aes-128-gcm
     _region: us
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-2
+  - name: 🇺🇸美国|unknown|85分-3
     type: vmess
     server: 162.159.137.249
     port: 8080
@@ -2051,45 +2146,7 @@ proxies:
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-3
-    type: vmess
-    server: 162.159.5.6
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: pcs-referenced-camera-concerns.trycloudflare.com
-      path: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96-vm
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
   - name: 🇺🇸美国|unknown|85分-4
-    type: vmess
-    server: 162.159.130.208
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 55021a7c-bd6c-418e-be95-ceac8ba27b45
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: widescreen-instruction-breakdown-postage.trycloudflare.com
-      path: 55021a7c-bd6c-418e-be95-ceac8ba27b45-vm
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-5
     type: vmess
     server: 162.159.134.23
     port: 8080
@@ -2108,33 +2165,26 @@ proxies:
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分-5
+    type: vmess
+    server: 162.159.5.6
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: pcs-referenced-camera-concerns.trycloudflare.com
+      path: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96-vm
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
   - name: 🇺🇸美国|unknown|85分-6
-    type: ss
-    server: 185.239.141.248
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: j_Z9yWqItCz_9yhD5YVY4w
-    cipher: aes-256-gcm
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-7
-    type: ss
-    server: 185.103.110.66
-    port: 18280
-    skip-cert-verify: true
-    udp: true
-    password: f9300a9bf39ae0347c3a3bfbc4dd7754
-    cipher: aes-128-gcm
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-8
     type: vmess
     server: 209.126.84.189
     port: 443
@@ -2152,59 +2202,70 @@ proxies:
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|85分-9
+  - name: 🇺🇸美国|unknown|85分-7
     type: vmess
-    server: russia.com
-    port: 8880
+    server: 162.159.130.208
+    port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    uuid: 55021a7c-bd6c-418e-be95-ceac8ba27b45
     cipher: auto
     network: ws
     tls: false
     ws-opts:
       headers:
-        Host: ssrsub.v03.ssrsub.com
-      path: /api/v3/download.getFile
+        Host: widescreen-instruction-breakdown-postage.trycloudflare.com
+      path: 55021a7c-bd6c-418e-be95-ceac8ba27b45-vm
     _region: us
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|85分-10
-    type: vmess
-    server: speed.cloudflare.com
-    port: 2095
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分-8
+    type: ss
+    server: 185.239.141.248
+    port: 8388
     skip-cert-verify: true
     udp: true
-    uuid: f4f01d19-1782-4b85-9317-0d3cee0f91e2
+    password: j_Z9yWqItCz_9yhD5YVY4w
+    cipher: aes-256-gcm
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分-9
+    type: vmess
+    server: 162.159.1.33
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96
     cipher: auto
     network: ws
+    tls: false
     ws-opts:
       headers:
-        Host: panel.seyyedmtmodidandansax.blog.
-      path: /Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt?ed=1024
+        Host: pcs-referenced-camera-concerns.trycloudflare.com
+      path: d9c5ec6a-a8d8-4732-8447-56fbd2f93e96-vm
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|85分-10
+    type: ss
+    server: feow.nomush.ir
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: K63q-WhHdJoC_AIxT6E4r_IIuGIb6CuV
+    cipher: chacha20-ietf-poly1305
     _region: us
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
   - name: 🇺🇸美国|unknown|85分-11
-    type: vmess
-    server: 118ejob.ir
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 47d0805b-6b81-49f1-9813-776032d2c076
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: at1-vmess.sshmax.xyz
-      path: /vmess
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|85分-12
     type: vmess
     server: support.zoom.us
     port: 8080
@@ -2221,18 +2282,35 @@ proxies:
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|85分-13
+  - name: 🇺🇸美国|unknown|85分-12
     type: vmess
-    server: speed.cloudflare.com
-    port: 80
+    server: skk.moe
+    port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
+    uuid: 54d4d640-731c-4572-d0d4-e8a617816470
     cipher: auto
     network: ws
     ws-opts:
       headers:
-        Host: ul-uae2.09vpn.com
+        Host: icu4.mac2win.top
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|85分-13
+    type: vmess
+    server: 3h-kazakhstan1.09vpn.com
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc
       path: /vmess/
     _region: us
     speed: unknown
@@ -2240,35 +2318,22 @@ proxies:
     detectLevel: tcp
   - name: 🇺🇸美国|unknown|85分-14
     type: vmess
-    server: russia.com
+    server: speed.cloudflare.com
     port: 2095
     skip-cert-verify: true
     udp: true
-    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    uuid: f4f01d19-1782-4b85-9317-0d3cee0f91e2
     cipher: auto
     network: ws
-    tls: false
     ws-opts:
       headers:
-        Host: ssrsub.v03.ssrsub.com
-      path: /api/v3/download.getFile
+        Host: panel.seyyedmtmodidandansax.blog.
+      path: /Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt-Seyyedmt?ed=1024
     _region: us
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
   - name: 🇺🇸美国|unknown|85分-15
-    type: ss
-    server: feow.nomush.ir
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: K63q-WhHdJoC_AIxT6E4r_IIuGIb6CuV
-    cipher: chacha20-ietf-poly1305
-    _region: us
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-  - name: 🇺🇸美国|unknown|85分-16
     type: vmess
     server: fbi.gov
     port: 8080
@@ -2286,18 +2351,36 @@ proxies:
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
+  - name: 🇺🇸美国|unknown|85分-16
+    type: vmess
+    server: russia.com
+    port: 2095
+    skip-cert-verify: true
+    udp: true
+    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: ssrsub.v03.ssrsub.com
+      path: /api/v3/download.getFile
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
   - name: 🇺🇸美国|unknown|85分-17
     type: vmess
-    server: 3h-kazakhstan1.09vpn.com
+    server: speed.cloudflare.com
     port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    uuid: 7f52b81e-bc96-4772-8359-b7dacb216ca3
     cipher: auto
     network: ws
     ws-opts:
       headers:
-        Host: wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc
+        Host: ul-uae2.09vpn.com
       path: /vmess/
     _region: us
     speed: unknown
@@ -2305,17 +2388,35 @@ proxies:
     detectLevel: tcp
   - name: 🇺🇸美国|unknown|85分-18
     type: vmess
-    server: skk.moe
-    port: 8080
+    server: 118ejob.ir
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 54d4d640-731c-4572-d0d4-e8a617816470
+    uuid: 47d0805b-6b81-49f1-9813-776032d2c076
     cipher: auto
     network: ws
     ws-opts:
       headers:
-        Host: icu4.mac2win.top
-      path: /
+        Host: at1-vmess.sshmax.xyz
+      path: /vmess
+    _region: us
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+  - name: 🇺🇸美国|unknown|85分-19
+    type: vmess
+    server: russia.com
+    port: 8880
+    skip-cert-verify: true
+    udp: true
+    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: ssrsub.v03.ssrsub.com
+      path: /api/v3/download.getFile
     _region: us
     speed: unknown
     qualityScore: 85
@@ -2335,13 +2436,12 @@ proxies:
     detectLevel: tcp
     fraudScore: 0
   - name: 🇸🋀新加坡|unknown|85分
-    type: ss
-    server: 158.173.24.73
-    port: 443
+    type: http
+    server: 128.199.254.13
+    port: 9090
     skip-cert-verify: true
     udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
+    password: None
     _region: sg
     speed: unknown
     qualityScore: 85
@@ -2349,12 +2449,12 @@ proxies:
     fraudScore: 0
   - name: 🇸🋀新加坡|unknown|85分-2
     type: ss
-    server: 149.102.132.184
-    port: 80
+    server: 158.173.24.73
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: g5h5jleTRSyO3Rk4
-    cipher: aes-256-gcm
+    password: shadowsocks
+    cipher: aes-128-gcm
     _region: sg
     speed: unknown
     qualityScore: 85
@@ -2374,6 +2474,19 @@ proxies:
     detectLevel: tcp
     fraudScore: 0
   - name: 🇸🋀新加坡|unknown|85分-4
+    type: ss
+    server: 149.102.132.184
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    password: g5h5jleTRSyO3Rk4
+    cipher: aes-256-gcm
+    _region: sg
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇸🋀新加坡|unknown|85分-5
     type: ss
     server: ruot.ayucloudservices.nl
     port: 40022
@@ -2404,32 +2517,6 @@ proxies:
     detectLevel: tcp
   - name: 🇩🇪德国|unknown|85分
     type: ss
-    server: 185.213.23.63
-    port: 990
-    skip-cert-verify: true
-    udp: true
-    password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-    cipher: chacha20-ietf-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-2
-    type: ss
-    server: 82.110.60.9
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-3
-    type: ss
     server: 102.133.165.160
     port: 16233
     skip-cert-verify: true
@@ -2441,46 +2528,7 @@ proxies:
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-4
-    type: ss
-    server: 102.37.156.224
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: aduB9HGxQHjA2SBMRjkHX6
-    cipher: chacha20-ietf-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-5
-    type: ss
-    server: 132.243.175.144
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
-    cipher: chacha20-ietf-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-6
-    type: ss
-    server: 194.68.44.42
-    port: 64546
-    skip-cert-verify: true
-    udp: true
-    password: U83u9OGpvSatIUW7LsWffr
-    cipher: chacha20-ietf-poly1305
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|85分-7
+  - name: 🇩🇪德国|unknown|85分-2
     type: ss
     server: 185.164.175.81
     port: 19999
@@ -2493,7 +2541,96 @@ proxies:
     qualityScore: 85
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-3
+    type: http
+    server: 57.131.128.2
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-4
+    type: ss
+    server: 194.68.44.42
+    port: 64546
+    skip-cert-verify: true
+    udp: true
+    password: U83u9OGpvSatIUW7LsWffr
+    cipher: chacha20-ietf-poly1305
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-5
+    type: ss
+    server: 57.131.48.45
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: itzvpn@321
+    cipher: aes-256-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-6
+    type: ss
+    server: 102.37.156.224
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: aduB9HGxQHjA2SBMRjkHX6
+    cipher: chacha20-ietf-poly1305
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-7
+    type: ss
+    server: 185.213.23.63
+    port: 990
+    skip-cert-verify: true
+    udp: true
+    password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+    cipher: chacha20-ietf-poly1305
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
   - name: 🇩🇪德国|unknown|85分-8
+    type: ss
+    server: 82.110.60.9
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-9
+    type: ss
+    server: 132.243.175.144
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
+    cipher: chacha20-ietf-poly1305
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|85分-10
     type: ss
     server: c3.nastuh.link
     port: 443
@@ -2505,7 +2642,19 @@ proxies:
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|85分-9
+  - name: 🇩🇪德国|unknown|85分-11
+    type: ss
+    server: bogging-eyeteeth-fly.freesocks.work
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: QFWzCw2uX9B9i6qAYeFBIE
+    cipher: chacha20-ietf-poly1305
+    _region: de
+    speed: unknown
+    qualityScore: 85
+    detectLevel: tcp
+  - name: 🇩🇪德国|unknown|85分-12
     type: ss
     server: ruot.ayucloudservices.nl
     port: 35031
@@ -2517,7 +2666,7 @@ proxies:
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|85分-10
+  - name: 🇩🇪德国|unknown|85分-13
     type: ss
     server: pphfree2.mvpnpvpn.de5.net
     port: 52351
@@ -2529,30 +2678,19 @@ proxies:
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|85分-11
+  - name: 🇳🇱荷兰|unknown|85分
     type: ss
-    server: ruot.ayucloudservices.nl
-    port: 22037
+    server: 178.83.185.156
+    port: 8080
     skip-cert-verify: true
     udp: true
-    password: c2fe9024-d253-401a-b868-97421f6eb9e0
-    cipher: aes-256-gcm
-    _region: de
+    password: oZIoA69Q8yhcQV8ka3Pa3A
+    cipher: chacha20-ietf-poly1305
+    _region: nl
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇩🇪德国|unknown|85分-12
-    type: ss
-    server: ruot.ayucloudservices.nl
-    port: 35016
-    skip-cert-verify: true
-    udp: true
-    password: 9c51ca33-a332-4de5-8677-5624e940097c
-    cipher: aes-128-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 85
-    detectLevel: tcp
+    fraudScore: 0
   - name: 🇫🇷法国|unknown|85分
     type: vmess
     server: 94.140.0.110
@@ -2574,48 +2712,30 @@ proxies:
     fraudScore: 0
   - name: 🇨🇳中国|unknown|85分
     type: vmess
-    server: yh2.dtku41.xyz
+    server: yh1.dtku41.xyz
     port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
     cipher: auto
     network: ws
     tls: false
     ws-opts:
       headers:
-        Host: per-essex-patterns-bowling.trycloudflare.com
-      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+        Host: uh-lawyers-instruments-kernel.trycloudflare.com
+      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
     _region: cn
     speed: unknown
     qualityScore: 85
     detectLevel: tcp
-  - name: 🇺🇸美国|unknown|75分-7
+  - name: 🇺🇸美国|unknown|75分-5
     type: trojan
-    server: 66.23.203.21
-    port: 59689
-    skip-cert-verify: true
-    udp: true
-    password: ae7eb4dwyaz25pxwgq59
-    _region: us
-    speed: unknown
-    qualityScore: 75
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|75分-13
-    type: vmess
-    server: 172.66.203.67
+    server: 23.106.44.14
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 0cf6d970-3f1d-4aae-a989-92a8f76ae3db
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vmess.lbw666.dpdns.org
-      path: /ws
+    password: 600421cf-11d7-429f-a65b-c30397f1bc03
+    sni: sj6.freeguard.org
     _region: us
     speed: unknown
     qualityScore: 75
@@ -2634,14 +2754,45 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇭🇰 香港 www.v2s.com] 3
+  - name: 🇺🇸美国|unknown|75分-6
+    type: vmess
+    server: 172.67.197.71
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 1c22bf94-702b-49ac-8f5e-24259beed2d8
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      path: /Sydney3
+      headers:
+        Host: aus.lovehk.xyz
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|75分-13
     type: trojan
-    server: 219.76.13.177
+    server: 66.23.203.21
+    port: 59689
+    skip-cert-verify: true
+    udp: true
+    password: ae7eb4dwyaz25pxwgq59
+    _region: us
+    speed: unknown
+    qualityScore: 75
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸 美国 CloudFlare节点-3
+    type: trojan
+    server: 108.162.194.134
     port: 443
     password: nity
-    sni: ''
-    network: ''
-    _region: hk
+    sni: www.pleadcourt.org
+    network: ws
+    _region: us
     speed: unknown
     latency: 0
     qualityScore: 75
@@ -2660,19 +2811,25 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 10
-    type: trojan
-    server: 45.32.52.173
-    port: 8886
-    password: 229d-e8f2-4ff9-8c7d-58a9d83ee437
-    sni: 45.32.52.173
-    network: ''
-    _region: jp
+  - name: 🇭🇰香港|unknown|75分
+    type: vmess
+    server: 47.243.194.125
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: nycqg19zkwacpm1b.v.3dns.vip
+      path: /ws-vmess
+    _region: hk
     speed: unknown
-    latency: 0
     qualityScore: 75
-    fraudScore: 10
     detectLevel: tcp
+    fraudScore: 0
   - name: 🇯🇵 日本 www.v2s.com] ... 12
     type: trojan
     server: 54.250.237.143
@@ -2686,142 +2843,25 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 9
+  - name: 🇯🇵 日本 www.v2s.com] ... 10
     type: trojan
-    server: equipped-stingray.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: equipped-stingray.rooster465.autos
+    server: 45.32.52.173
+    port: 8886
+    password: 229d-e8f2-4ff9-8c7d-58a9d83ee437
+    sni: 45.32.52.173
     network: ''
     _region: jp
     speed: unknown
     latency: 0
     qualityScore: 75
-    fraudScore: 0
+    fraudScore: 10
     detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 7
+  - name: 🇯🇵 日本 www.v2s.com] ... 8
     type: trojan
-    server: optimal-penguin.rooster465.autos
+    server: amazed-mako.rooster465.autos
     port: 443
     password: '473651'
-    sni: optimal-penguin.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 2
-    type: trojan
-    server: legible-ram.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: legible-ram.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 4
-    type: trojan
-    server: stable-python.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: stable-python.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 11
-    type: trojan
-    server: prime-corgi.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: prime-corgi.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 1
-    type: trojan
-    server: allowed-poodle.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: allowed-poodle.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 5
-    type: trojan
-    server: warm-krill.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: warm-krill.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com
-    type: trojan
-    server: evident-ant.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: evident-ant.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 6
-    type: trojan
-    server: normal-macaque.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: normal-macaque.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 13
-    type: trojan
-    server: musical-terrier.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: musical-terrier.rooster465.autos
-    network: ''
-    _region: jp
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 3
-    type: trojan
-    server: live-stallion.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: live-stallion.rooster465.autos
+    sni: amazed-mako.rooster465.autos
     network: ''
     _region: jp
     speed: unknown
@@ -2842,12 +2882,12 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇯🇵 日本 www.v2s.com] ... 8
+  - name: 🇯🇵 日本 www.v2s.com] ... 3
     type: trojan
-    server: amazed-mako.rooster465.autos
+    server: live-stallion.rooster465.autos
     port: 443
     password: '473651'
-    sni: amazed-mako.rooster465.autos
+    sni: live-stallion.rooster465.autos
     network: ''
     _region: jp
     speed: unknown
@@ -2855,7 +2895,150 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] 6
+  - name: 🇯🇵 日本 www.v2s.com] ... 7
+    type: trojan
+    server: optimal-penguin.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: optimal-penguin.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 5
+    type: trojan
+    server: warm-krill.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: warm-krill.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 6
+    type: trojan
+    server: normal-macaque.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: normal-macaque.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 1
+    type: trojan
+    server: allowed-poodle.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: allowed-poodle.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 13
+    type: trojan
+    server: musical-terrier.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: musical-terrier.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com
+    type: trojan
+    server: evident-ant.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: evident-ant.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 15
+    type: trojan
+    server: winning-marten.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: winning-marten.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 4
+    type: trojan
+    server: stable-python.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: stable-python.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 9
+    type: trojan
+    server: equipped-stingray.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: equipped-stingray.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 2
+    type: trojan
+    server: legible-ram.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: legible-ram.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 www.v2s.com] ... 11
+    type: trojan
+    server: prime-corgi.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: prime-corgi.rooster465.autos
+    network: ''
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 8
     type: trojan
     server: 139.180.146.200
     port: 8886
@@ -2868,38 +3051,12 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com
-    type: trojan
-    server: 47.131.250.125
-    port: 443
-    password: '473651'
-    sni: ''
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 5
-    type: trojan
-    server: brave-tomcat.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: brave-tomcat.rooster465.autos
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
   - name: 🇸🇬 新加坡 www.v2s.com] ... 7
     type: trojan
-    server: rested-seahorse.rooster465.autos
+    server: musical-mouse.rooster465.autos
     port: 443
     password: '473651'
-    sni: rested-seahorse.rooster465.autos
+    sni: musical-mouse.rooster465.autos
     network: ''
     _region: sg
     speed: unknown
@@ -2908,32 +3065,6 @@ proxies:
     fraudScore: 0
     detectLevel: tcp
   - name: 🇸🇬 新加坡 www.v2s.com] ... 4
-    type: trojan
-    server: moral-basilisk.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: moral-basilisk.rooster465.autos
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 8
-    type: trojan
-    server: ace-liger.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: ace-liger.rooster465.autos
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 6
     type: trojan
     server: fond-mammoth.rooster465.autos
     port: 443
@@ -2946,33 +3077,7 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 9
-    type: trojan
-    server: pet-antelope.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: pet-antelope.rooster465.autos
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
   - name: 🇸🇬 新加坡 www.v2s.com] ... 1
-    type: trojan
-    server: inspired-hound.rooster465.autos
-    port: 443
-    password: '473651'
-    sni: inspired-hound.rooster465.autos
-    network: ''
-    _region: sg
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 2
     type: trojan
     server: intense-wildcat.rooster465.autos
     port: 443
@@ -2985,7 +3090,33 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 10
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 3
+    type: trojan
+    server: brave-tomcat.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: brave-tomcat.rooster465.autos
+    network: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com-2
+    type: trojan
+    server: inspired-hound.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: inspired-hound.rooster465.autos
+    network: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 11
     type: trojan
     server: real-cardinal.rooster465.autos
     port: 443
@@ -2998,7 +3129,20 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇸🇬 新加坡 www.v2s.com] ... 3
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 9
+    type: trojan
+    server: inviting-ferret.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: inviting-ferret.rooster465.autos
+    network: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 2
     type: trojan
     server: joint-ewe.rooster465.autos
     port: 443
@@ -3011,14 +3155,40 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇰🇷 韩国 www.v2s.com] ... 1
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 10
     type: trojan
-    server: fancy-skink.rooster465.autos
+    server: pet-antelope.rooster465.autos
     port: 443
     password: '473651'
-    sni: fancy-skink.rooster465.autos
+    sni: pet-antelope.rooster465.autos
     network: ''
-    _region: kr
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 5
+    type: trojan
+    server: rested-seahorse.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: rested-seahorse.rooster465.autos
+    network: ''
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 6
+    type: trojan
+    server: ace-liger.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: ace-liger.rooster465.autos
+    network: ''
+    _region: sg
     speed: unknown
     latency: 0
     qualityScore: 75
@@ -3037,6 +3207,32 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
+  - name: 🇰🇷 韩国 www.v2s.com] ... 1
+    type: trojan
+    server: fancy-skink.rooster465.autos
+    port: 443
+    password: '473651'
+    sni: fancy-skink.rooster465.autos
+    network: ''
+    _region: kr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇩🇪 德国 乌克兰
+    type: trojan
+    server: 82.117.245.125
+    port: 2053
+    password: nity
+    sni: www.calmlunch.com
+    network: ws
+    _region: de
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
   - name: 🇩🇪 德国 www.v2s.com
     type: trojan
     server: 185.255.179.166
@@ -3050,7 +3246,20 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇳🇱 荷兰 www.v2s.com] ... 7
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 10
+    type: trojan
+    server: 46.62.204.134
+    port: 443
+    password: nity
+    sni: ''
+    network: ''
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 10
+    detectLevel: tcp
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 9
     type: trojan
     server: 46.8.228.165
     port: 443
@@ -3062,6 +3271,19 @@ proxies:
     latency: 0
     qualityScore: 75
     fraudScore: 10
+    detectLevel: tcp
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 5
+    type: trojan
+    server: 92.42.99.143
+    port: 443
+    password: nity
+    sni: ''
+    network: ''
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
     detectLevel: tcp
   - name: 🇳🇱 荷兰 www.v2s.com] ... 6
     type: trojan
@@ -3076,22 +3298,9 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇳🇱 荷兰 www.v2s.com] 1
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 7
     type: trojan
-    server: 45.87.41.18
-    port: 443
-    password: nity
-    sni: www.calmlunch.com
-    network: ws
-    _region: nl
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 10
-    detectLevel: tcp
-  - name: 🇳🇱 荷兰 www.v2s.com] ... 8
-    type: trojan
-    server: 92.42.99.143
+    server: 185.22.172.249
     port: 443
     password: nity
     sni: ''
@@ -3102,9 +3311,9 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇳🇱 荷兰 www.v2s.com] ... 9
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 1
     type: trojan
-    server: 46.62.204.134
+    server: 219.76.13.177
     port: 443
     password: nity
     sni: ''
@@ -3113,12 +3322,71 @@ proxies:
     speed: unknown
     latency: 0
     qualityScore: 75
-    fraudScore: 10
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇳🇱荷兰|unknown|75分
+    type: trojan
+    server: 104.18.35.86
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.volumerOot.coM.
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: /assignment
+      headers:
+        Host: www.volumerOot.coM.
+    _region: nl
+    speed: unknown
+    qualityScore: 75
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇫🇷 法国 www.v2s.com] ... 7
+    type: trojan
+    server: 165.215.250.14
+    port: 443
+    password: nity
+    sni: ''
+    network: ''
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
     detectLevel: tcp
   - name: 🇫🇷 法国 www.v2s.com] ... 6
     type: trojan
-    server: 104.19.229.21
+    server: 185.220.100.168
     port: 443
+    password: nity
+    sni: www.calmlunch.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇫🇷 法国 www.v2s.com] ... 2
+    type: trojan
+    server: 45.87.41.18
+    port: 443
+    password: nity
+    sni: www.calmlunch.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 10
+    detectLevel: tcp
+  - name: 🇫🇷 法国 www.v2s.com] ... 4
+    type: trojan
+    server: 185.114.72.31
+    port: 2053
     password: nity
     sni: www.calmlunch.com
     network: ws
@@ -3141,22 +3409,9 @@ proxies:
     qualityScore: 75
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇫🇷 法国 www.v2s.com] ... 4
-    type: trojan
-    server: 185.220.100.168
-    port: 443
-    password: nity
-    sni: www.calmlunch.com
-    network: ws
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
   - name: 🇫🇷 法国 www.v2s.com] ... 8
     type: trojan
-    server: 212.183.88.136
+    server: 104.19.229.21
     port: 443
     password: nity
     sni: www.calmlunch.com
@@ -3169,19 +3424,6 @@ proxies:
     detectLevel: tcp
   - name: 🇫🇷 法国 www.v2s.com] ... 5
     type: trojan
-    server: 165.215.250.14
-    port: 443
-    password: nity
-    sni: ''
-    network: ''
-    _region: fr
-    speed: unknown
-    latency: 0
-    qualityScore: 75
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇫🇷 法国 www.v2s.com] ... 3
-    type: trojan
     server: 45.130.125.160
     port: 443
     password: nity
@@ -3193,7 +3435,20 @@ proxies:
     qualityScore: 75
     fraudScore: 10
     detectLevel: tcp
-  - name: 🇫🇷 法国 www.v2s.com] ... 2
+  - name: 🇫🇷 法国 www.v2s.com] ... 10
+    type: trojan
+    server: 212.183.88.136
+    port: 443
+    password: nity
+    sni: www.calmlunch.com
+    network: ws
+    _region: fr
+    speed: unknown
+    latency: 0
+    qualityScore: 75
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇫🇷 法国 www.v2s.com] ... 3
     type: trojan
     server: www.calmlunch.com
     port: 443
@@ -3207,43 +3462,6 @@ proxies:
     fraudScore: 0
     detectLevel: tcp
   - name: 🇺🇸美国|unknown|70分
-    type: vmess
-    server: 172.67.215.202
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: octavi.cfd
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-2
-    type: trojan
-    server: 23.227.38.11
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: b17fa17d-13a0-4e8a-a398-8e549ea8b208
-    network: ws
-    sni: syndication-statutes-wanted-logo.trycloudflare.com
-    ws-opts:
-      headers:
-        Host: syndication-statutes-wanted-logo.trycloudflare.com
-      path: /argox-tr
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-3
     type: vmess
     server: 104.21.91.254
     port: 443
@@ -3262,45 +3480,26 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-4
+  - name: 🇺🇸美国|unknown|70分-2
     type: vmess
-    server: 104.21.91.73
+    server: 104.21.53.12
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 45f63e92-f782-4cac-84b8-e61cb5a5bfd0
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: adenc35.fixedlfoat.top
-      path: /linkws
+        Host: ophelia.mom
+      path: linkvws
     _region: us
     speed: unknown
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-5
-    type: vmess
-    server: 172.67.206.124
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4fa35ea4-668e-4d7b-9bbc-b83681060617
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: rlhrwtqusd.site
-      path: /kwhmvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-6
+  - name: 🇺🇸美国|unknown|70分-3
     type: vmess
     server: 198.2.204.51
     port: 443
@@ -3319,9 +3518,9 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-7
+  - name: 🇺🇸美国|unknown|70分-4
     type: vmess
-    server: 172.67.194.2
+    server: 172.67.142.191
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3331,16 +3530,16 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: alvvin.click
+        Host: edeen.makeup
       path: linkvws
     _region: us
     speed: unknown
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-8
+  - name: 🇺🇸美国|unknown|70分-5
     type: vmess
-    server: 172.67.131.150
+    server: 172.67.215.202
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3350,7 +3549,64 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: oliv.beauty
+        Host: octavi.cfd
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-6
+    type: vmess
+    server: 172.67.183.110
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: waynn.makeup
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-7
+    type: vmess
+    server: 104.21.27.139
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: edeen.makeup
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-9
+    type: vmess
+    server: 172.67.207.114
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ophelia.mom
       path: linkvws
     _region: us
     speed: unknown
@@ -3378,18 +3634,18 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分-11
     type: vmess
-    server: 137.175.32.91
+    server: 172.67.206.124
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    uuid: 4fa35ea4-668e-4d7b-9bbc-b83681060617
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: www.94152251.xyz
-      path: /path/1704363182493
+        Host: rlhrwtqusd.site
+      path: /kwhmvws
     _region: us
     speed: unknown
     qualityScore: 70
@@ -3397,45 +3653,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分-12
     type: vmess
-    server: 172.67.183.110
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: waynn.makeup
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-14
-    type: vmess
-    server: 104.21.53.12
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-15
-    type: vmess
-    server: 104.21.21.88
+    server: 172.67.197.82
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3452,9 +3670,9 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-16
+  - name: 🇺🇸美国|unknown|70分-13
     type: vmess
-    server: 104.21.4.29
+    server: 172.67.194.2
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3464,16 +3682,40 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: oliv.beauty
+        Host: alvvin.click
       path: linkvws
     _region: us
     speed: unknown
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-17
+  - name: 🇺🇸美国|unknown|70分-14
+    type: http
+    server: 172.64.68.89
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-15
+    type: http
+    server: 64.98.50.100
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-16
     type: vmess
-    server: 104.21.27.139
+    server: 104.21.31.183
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3483,7 +3725,7 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: edeen.makeup
+        Host: octavi.cfd
       path: linkvws
     _region: us
     speed: unknown
@@ -3511,6 +3753,25 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分-19
     type: vmess
+    server: 104.21.91.73
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 45f63e92-f782-4cac-84b8-e61cb5a5bfd0
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: adenc35.fixedlfoat.top
+      path: /linkws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-20
+    type: vmess
     server: 172.67.179.37
     port: 443
     skip-cert-verify: true
@@ -3528,32 +3789,20 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-20
-    type: http
-    server: 198.44.135.19
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
   - name: 🇺🇸美国|unknown|70分-21
     type: vmess
-    server: 104.21.31.183
+    server: 137.175.32.91
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
     cipher: auto
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: octavi.cfd
-      path: linkvws
+        Host: www.94152251.xyz
+      path: /path/1704363182493
     _region: us
     speed: unknown
     qualityScore: 70
@@ -3561,45 +3810,7 @@ proxies:
     fraudScore: 0
   - name: 🇺🇸美国|unknown|70分-22
     type: vmess
-    server: 172.67.207.114
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ophelia.mom
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-23
-    type: vmess
-    server: 172.67.142.191
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    cipher: auto
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: edeen.makeup
-      path: linkvws
-    _region: us
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|70分-24
-    type: vmess
-    server: 172.67.197.82
+    server: 104.21.21.88
     port: 443
     skip-cert-verify: true
     udp: true
@@ -3610,6 +3821,44 @@ proxies:
     ws-opts:
       headers:
         Host: odelia.autos
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-23
+    type: vmess
+    server: 172.67.131.150
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: oliv.beauty
+      path: linkvws
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-24
+    type: vmess
+    server: 104.21.4.29
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    cipher: auto
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: oliv.beauty
       path: linkvws
     _region: us
     speed: unknown
@@ -3635,6 +3884,24 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇺🇸美国|unknown|70分-26
+    type: trojan
+    server: 23.227.38.11
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: b17fa17d-13a0-4e8a-a398-8e549ea8b208
+    network: ws
+    sni: syndication-statutes-wanted-logo.trycloudflare.com
+    ws-opts:
+      headers:
+        Host: syndication-statutes-wanted-logo.trycloudflare.com
+      path: /argox-tr
+    _region: us
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
   - name: 🇭🇰香港|unknown|70分
     type: vmess
     server: 47.244.120.197
@@ -3646,8 +3913,27 @@ proxies:
     network: ws
     tls: false
     ws-opts:
+      path: /arki
       headers:
         Host: 47.244.120.197
+    _region: hk
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇭🇰香港|unknown|70分-2
+    type: vmess
+    server: 47.244.120.197
+    port: 44867
+    skip-cert-verify: true
+    udp: true
+    uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+    cipher: auto
+    network: ws
+    tls: false
+    alpn:
+      - ''
+    ws-opts:
       path: /arki
     _region: hk
     speed: unknown
@@ -3666,7 +3952,7 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|70分-3
+  - name: 🇸🋀新加坡|unknown|70分
     type: trojan
     server: 139.180.146.200
     port: 8886
@@ -3674,24 +3960,6 @@ proxies:
     udp: true
     password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
     sni: 139.180.146.200
-    _region: sg
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|70分-6
-    type: trojan
-    server: 104.18.153.182
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 19877587-ed94-4033-88cd-4ac50a5e8718
-    network: ws
-    sni: dimskiee.biz.id
-    ws-opts:
-      headers:
-        Host: dimskiee.biz.id
-      path: /WangCai-8
     _region: sg
     speed: unknown
     qualityScore: 70
@@ -3710,25 +3978,19 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分-6
-    type: trojan
-    server: 104.18.32.87
+  - name: 🇩🇪德国|unknown|70分-7
+    type: http
+    server: 172.64.68.89
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
-    network: ws
-    sni: id1.nathaya.web.id
-    ws-opts:
-      headers:
-        Host: id1.nathaya.web.id
-      path: /trojan
+    tls: true
     _region: de
     speed: unknown
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分-16
+  - name: 🇩🇪德国|unknown|70分-8
     type: trojan
     server: 104.19.229.21
     port: 443
@@ -3746,38 +4008,33 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|70分-19
+  - name: 🇩🇪德国|unknown|70分-12
+    type: trojan
+    server: 104.18.32.87
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+    network: ws
+    sni: id1.nathaya.web.id
+    ws-opts:
+      headers:
+        Host: id1.nathaya.web.id
+      path: /trojan
+    _region: de
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|70分-15
     type: trojan
     server: 47.250.84.25
     port: 443
     skip-cert-verify: true
     udp: true
     password: 5931134d1cde66bf83a54acdfebe7ab2
+    sni: moltbot.doctoroyy.net
     _region: de
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇨🇦加拿大|unknown|70分
-    type: http
-    server: 198.44.157.19
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: ca
-    speed: unknown
-    qualityScore: 70
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇨🇦加拿大|unknown|70分-2
-    type: http
-    server: 35.183.131.26
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    _region: ca
     speed: unknown
     qualityScore: 70
     detectLevel: tcp
@@ -3801,102 +4058,34 @@ proxies:
     qualityScore: 70
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇫🇷法国|unknown|70分-2
+    type: http
+    server: 51.210.167.149
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    _region: fr
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇨🇳中国|unknown|70分
+    type: vmess
+    server: 120.48.133.162
+    port: 10086
+    skip-cert-verify: true
+    udp: true
+    uuid: 2b910c43-51e3-4b15-9be8-b658106ba35e
+    cipher: auto
+    network: ws
+    tls: false
+    _region: cn
+    speed: unknown
+    qualityScore: 70
+    detectLevel: tcp
+    fraudScore: 0
   - name: 🇺🇸美国|unknown|65分
-    type: vmess
-    server: 172.67.116.48
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 22a13aa2-4854-44cb-e090-ec71ab84b1ff
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: wap.hostmjj.com
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-2
-    type: vmess
-    server: 104.21.82.39
-    port: 2052
-    skip-cert-verify: true
-    udp: true
-    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: mahilu.site
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-3
-    type: vmess
-    server: 23.227.39.24
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: per-essex-patterns-bowling.trycloudflare.com
-      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-4
-    type: vmess
-    server: 104.26.4.57
-    port: 2095
-    skip-cert-verify: true
-    udp: true
-    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: ssrsub.v03.ssrsub.com
-      path: /api/v3/download.getFile
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-5
-    type: vmess
-    server: 23.227.38.23
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: uh-lawyers-instruments-kernel.trycloudflare.com
-      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-6
     type: vmess
     server: 104.21.8.157
     port: 2082
@@ -3915,100 +4104,7 @@ proxies:
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-7
-    type: vmess
-    server: 104.17.171.34
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: ccs.hostmjj.com
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-8
-    type: vmess
-    server: 172.67.152.170
-    port: 2052
-    skip-cert-verify: true
-    udp: true
-    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: mahilu.site
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-9
-    type: vmess
-    server: 104.21.234.52
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: a.prapt1.ir
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-10
-    type: vmess
-    server: 23.227.38.22
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
-    cipher: auto
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: per-essex-patterns-bowling.trycloudflare.com
-      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-11
-    type: vmess
-    server: 104.21.82.183
-    port: 8880
-    skip-cert-verify: true
-    udp: true
-    uuid: 5a7021e0-26b4-45d6-b175-fe551601ca97
-    cipher: auto
-    network: ws
-    ws-opts:
-      headers:
-        Host: server26.beheshtbaneh.com
-      path: /
-    _region: us
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-12
+  - name: 🇺🇸美国|unknown|65分-2
     type: vmess
     server: 172.67.130.140
     port: 2082
@@ -4027,64 +4123,214 @@ proxies:
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇺🇸美国|unknown|65分-13
-    type: ss
-    server: 66.23.206.124
-    port: 16619
+  - name: 🇺🇸美国|unknown|65分-3
+    type: vmess
+    server: 104.21.234.52
+    port: 80
     skip-cert-verify: true
     udp: true
-    password: 2607008ac896b3443be9419d73d544d9
-    cipher: aes-128-gcm
+    uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: a.prapt1.ir
+      path: /
     _region: us
     speed: unknown
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|65分
-    type: ss
-    server: 139.84.166.47
-    port: 8388
+  - name: 🇺🇸美国|unknown|65分-4
+    type: vmess
+    server: 23.227.38.23
+    port: 8080
     skip-cert-verify: true
     udp: true
-    password: GEdoeeqLZtkJRgSa
-    cipher: aes-256-gcm
-    _region: sg
+    uuid: 34c0bb5e-c120-432d-9c58-bd7d82c7397b
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: uh-lawyers-instruments-kernel.trycloudflare.com
+      path: 34c0bb5e-c120-432d-9c58-bd7d82c7397b-vm
+    _region: us
     speed: unknown
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|65分-2
-    type: http
-    server: 18.143.176.211
-    port: 2080
+  - name: 🇺🇸美国|unknown|65分-5
+    type: vmess
+    server: 104.21.82.183
+    port: 8880
     skip-cert-verify: true
     udp: true
-    password: '1234'
-    _region: sg
+    uuid: 5a7021e0-26b4-45d6-b175-fe551601ca97
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: server26.beheshtbaneh.com
+      path: /
+    _region: us
     speed: unknown
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇸🋀新加坡|unknown|65分-3
-    type: http
-    server: 13.212.55.110
-    port: 2080
+  - name: 🇺🇸美国|unknown|65分-6
+    type: vmess
+    server: 23.227.39.24
+    port: 8080
     skip-cert-verify: true
     udp: true
-    password: '1234'
-    _region: sg
+    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: per-essex-patterns-bowling.trycloudflare.com
+      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-7
+    type: vmess
+    server: 104.21.82.39
+    port: 2052
+    skip-cert-verify: true
+    udp: true
+    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: mahilu.site
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-8
+    type: vmess
+    server: 104.26.4.57
+    port: 2095
+    skip-cert-verify: true
+    udp: true
+    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: ssrsub.v03.ssrsub.com
+      path: /api/v3/download.getFile
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-9
+    type: vmess
+    server: 104.17.171.34
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ccs.hostmjj.com
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-10
+    type: vmess
+    server: 172.67.152.170
+    port: 2052
+    skip-cert-verify: true
+    udp: true
+    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: mahilu.site
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-11
+    type: vmess
+    server: 23.227.38.22
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: per-essex-patterns-bowling.trycloudflare.com
+      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-12
+    type: vmess
+    server: 172.67.116.48
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 22a13aa2-4854-44cb-e090-ec71ab84b1ff
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: wap.hostmjj.com
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇭🇰香港|unknown|65分
+    type: socks
+    server: 47.243.173.50
+    port: 11211
+    skip-cert-verify: true
+    udp: true
+    password: '111'
+    _region: hk
     speed: unknown
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
   - name: 🇩🇪德国|unknown|65分
     type: ss
-    server: 64.74.163.69
-    port: 18766
+    server: 51.222.136.236
+    port: 8882
     skip-cert-verify: true
     udp: true
-    password: 4efe1af272e7292139b889f6a63ee071
-    cipher: aes-128-gcm
+    password: kDWvXYZoTBcGkC4
+    cipher: aes-256-gcm
     _region: de
     speed: unknown
     qualityScore: 65
@@ -4092,11 +4338,11 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|65分-2
     type: ss
-    server: 51.222.136.236
-    port: 8882
+    server: 51.222.12.127
+    port: 445
     skip-cert-verify: true
     udp: true
-    password: kDWvXYZoTBcGkC4
+    password: zDNVedRFPQexG9v
     cipher: aes-256-gcm
     _region: de
     speed: unknown
@@ -4118,11 +4364,11 @@ proxies:
     fraudScore: 0
   - name: 🇩🇪德国|unknown|65分-4
     type: ss
-    server: 51.79.64.198
-    port: 8119
+    server: 51.222.200.165
+    port: 5000
     skip-cert-verify: true
     udp: true
-    password: cdBIDV42DCwnfIN
+    password: Y6R9pAtvxxzmGC
     cipher: aes-256-gcm
     _region: de
     speed: unknown
@@ -4130,32 +4376,6 @@ proxies:
     detectLevel: tcp
     fraudScore: 0
   - name: 🇩🇪德国|unknown|65分-5
-    type: ss
-    server: 51.222.155.32
-    port: 5003
-    skip-cert-verify: true
-    udp: true
-    password: g5MeD6Ft3CWlJId
-    cipher: aes-256-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分-6
-    type: ss
-    server: 51.222.12.127
-    port: 445
-    skip-cert-verify: true
-    udp: true
-    password: zDNVedRFPQexG9v
-    cipher: aes-256-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分-7
     type: ss
     server: 51.79.85.185
     port: 8118
@@ -4168,33 +4388,7 @@ proxies:
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分-8
-    type: ss
-    server: 51.222.200.165
-    port: 5000
-    skip-cert-verify: true
-    udp: true
-    password: Y6R9pAtvxxzmGC
-    cipher: aes-256-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分-9
-    type: ss
-    server: 51.222.141.125
-    port: 445
-    skip-cert-verify: true
-    udp: true
-    password: zDNVedRFPQexG9v
-    cipher: aes-256-gcm
-    _region: de
-    speed: unknown
-    qualityScore: 65
-    detectLevel: tcp
-    fraudScore: 0
-  - name: 🇩🇪德国|unknown|65分-10
+  - name: 🇩🇪德国|unknown|65分-6
     type: ss
     server: 51.79.49.116
     port: 8882
@@ -4207,7 +4401,72 @@ proxies:
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇩🇪德国|unknown|65分-7
+    type: ss
+    server: 51.79.64.198
+    port: 8119
+    skip-cert-verify: true
+    udp: true
+    password: cdBIDV42DCwnfIN
+    cipher: aes-256-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|65分-8
+    type: ss
+    server: 51.222.141.125
+    port: 445
+    skip-cert-verify: true
+    udp: true
+    password: zDNVedRFPQexG9v
+    cipher: aes-256-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|65分-9
+    type: ss
+    server: 64.74.163.69
+    port: 18766
+    skip-cert-verify: true
+    udp: true
+    password: 4efe1af272e7292139b889f6a63ee071
+    cipher: aes-128-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇩🇪德国|unknown|65分-10
+    type: ss
+    server: 51.222.155.32
+    port: 5003
+    skip-cert-verify: true
+    udp: true
+    password: g5MeD6Ft3CWlJId
+    cipher: aes-256-gcm
+    _region: de
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
   - name: 🇨🇦加拿大|unknown|65分
+    type: ss
+    server: 15.223.182.197
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: amazonskr05
+    cipher: aes-256-cfb
+    _region: ca
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇨🇦加拿大|unknown|65分-2
     type: ss
     server: 15.175.213.130
     port: 443
@@ -4220,6 +4479,66 @@ proxies:
     qualityScore: 65
     detectLevel: tcp
     fraudScore: 0
+  - name: 🇺🇸 美国 NewYork PAC
+    type: ss
+    server: 46.17.43.40
+    port: 18443
+    cipher: '-256-gcm'
+    password: uOgFZWB
+    _region: us
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 10
+    detectLevel: tcp
+  - name: 🇭🇰 香港 11
+    type: ss
+    server: 212.192.12.135
+    port: 18443
+    cipher: '-256-gcm'
+    password: IiMpcTnv3eXVF6uHSHLuv7xNfE
+    _region: hk
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇭🇰 香港 04
+    type: ss
+    server: 212.192.15.215
+    port: 8388
+    cipher: '-256-gcm'
+    password: 08aOjhE9OsAeYV5b
+    _region: hk
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇯🇵 日本 03
+    type: ss
+    server: 103.115.18.181
+    port: 8388
+    cipher: '-256-gcm'
+    password: 6EgiUzxx9ReXjuAh
+    _region: jp
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇸🇬 新加坡 02
+    type: ss
+    server: 132.243.238.21
+    port: 8388
+    cipher: '-256-gcm'
+    password: y2demTOKv5GdWcxB
+    _region: sg
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
   - name: 🇸🇬 新加坡 www.v2s.com] 1596
     type: ss
     server: ruot.ayucloudservices.nl
@@ -4232,31 +4551,19 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇬🇧 英国 www.v2s.com] AT1595
+  - name: 🇬🇧 英国 British
     type: ss
-    server: 82.110.60.9
-    port: 19999
+    server: 46.17.41.166
+    port: 18443
     cipher: '-256-gcm'
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    password: BCUpLQqELzCOcX9GnNXn8k0
     _region: uk
     speed: unknown
     latency: 0
     qualityScore: 60
-    fraudScore: 0
+    fraudScore: 10
     detectLevel: tcp
-  - name: 🇬🇧 英国 www.v2s.com] 1247
-    type: ss
-    server: 94.156.250.148
-    port: 7001
-    cipher: '-256-gcm'
-    password: RexnBgU7EV5ADxG
-    _region: uk
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 🇬🇧 英国 www.v2s.com] 1-2
+  - name: 🇬🇧 英国 www.v2s.com] 1292
     type: ss
     server: 149.102.132.184
     port: 80
@@ -4280,6 +4587,30 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
+  - name: 🇬🇧 英国 www.v2s.com] 1247
+    type: ss
+    server: 94.156.250.148
+    port: 7001
+    cipher: '-256-gcm'
+    password: RexnBgU7EV5ADxG
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇬🇧 英国 www.v2s.com] AT1595
+    type: ss
+    server: 82.110.60.9
+    port: 19999
+    cipher: '-256-gcm'
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    _region: uk
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
   - name: 🇩🇪 德国 1-2
     type: ss
     server: 63.180.254.10
@@ -4292,36 +4623,24 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: www.v2s.com] CA1558
+  - name: www.v2s.com] CA1545... 1
     type: ss
-    server: 51.222.200.165
-    port: 5000
+    server: 51.79.49.116
+    port: 8882
     cipher: '-256-gcm'
-    password: Y6R9pAtvxxzmGC
+    password: kDWvXYZoTBcGkC4
     _region: ca
     speed: unknown
     latency: 0
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: www.v2s.com] CA1546... 1
+  - name: 🇷🇺 俄罗斯 加拿大 Montreal
     type: ss
-    server: 51.222.155.32
-    port: 5003
+    server: 176.32.32.108
+    port: 18443
     cipher: '-256-gcm'
-    password: g5MeD6Ft3CWlJId
-    _region: ca
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-    detectLevel: tcp
-  - name: www.v2s.com] CA1559
-    type: ss
-    server: 51.79.85.185
-    port: 8118
-    cipher: '-256-gcm'
-    password: cdBIDV42DCwnfIN
+    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
     _region: ca
     speed: unknown
     latency: 0
@@ -4330,8 +4649,8 @@ proxies:
     detectLevel: tcp
   - name: www.v2s.com] CA1588
     type: ss
-    server: 64.74.163.69
-    port: 18766
+    server: 64.74.163.67
+    port: 18764
     cipher: '-128-gcm'
     password: 4efe1af272e7292139b889f6a63ee071
     _region: ca
@@ -4352,22 +4671,10 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: www.v2s.com] CA1545... 1
+  - name: www.v2s.com] CA1559... 1
     type: ss
-    server: 51.79.49.116
-    port: 8882
-    cipher: '-256-gcm'
-    password: kDWvXYZoTBcGkC4
-    _region: ca
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-    detectLevel: tcp
-  - name: www.v2s.com] CA1545
-    type: ss
-    server: 51.79.64.198
-    port: 8119
+    server: 51.79.85.185
+    port: 8118
     cipher: '-256-gcm'
     password: cdBIDV42DCwnfIN
     _region: ca
@@ -4376,34 +4683,10 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: 加拿大 CAN 2
+  - name: www.v2s.com] CA1558
     type: ss
-    server: 15.223.182.197
-    port: 443
-    cipher: '-256-cfb'
-    password: amazonskr05
-    _region: ca
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-    detectLevel: tcp
-  - name: 加拿大 CAN 1
-    type: ss
-    server: 15.175.213.130
-    port: 443
-    cipher: '-256-cfb'
-    password: amazonskr05
-    _region: ca
-    speed: unknown
-    latency: 0
-    qualityScore: 60
-    fraudScore: 0
-    detectLevel: tcp
-  - name: www.v2s.com] CA1546
-    type: ss
-    server: 51.222.155.113
-    port: 5601
+    server: 51.222.200.165
+    port: 5000
     cipher: '-256-gcm'
     password: Y6R9pAtvxxzmGC
     _region: ca
@@ -4424,13 +4707,85 @@ proxies:
     qualityScore: 60
     fraudScore: 0
     detectLevel: tcp
-  - name: 🇳🇱 荷兰 www.v2s.com] 1596
+  - name: www.v2s.com] CA1546
     type: ss
-    server: c3.nastuh.link
+    server: 51.222.155.113
+    port: 5601
+    cipher: '-256-gcm'
+    password: Y6R9pAtvxxzmGC
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 加拿大 CAN 2
+    type: ss
+    server: 15.223.182.197
     port: 443
-    cipher: cha20-ietf-poly1305
-    password: y7KeRTzmH0vXT2kp
-    _region: nl
+    cipher: '-256-cfb'
+    password: amazonskr05
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: www.v2s.com] CA1546... 1
+    type: ss
+    server: 51.222.155.32
+    port: 5003
+    cipher: '-256-gcm'
+    password: g5MeD6Ft3CWlJId
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 加拿大 CAN 1
+    type: ss
+    server: 15.175.213.130
+    port: 443
+    cipher: '-256-cfb'
+    password: amazonskr05
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: www.v2s.com] CA1559
+    type: ss
+    server: 51.222.141.125
+    port: 445
+    cipher: '-256-gcm'
+    password: zDNVedRFPQexG9v
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: www.v2s.com] CA1545
+    type: ss
+    server: 51.79.64.198
+    port: 8119
+    cipher: '-256-gcm'
+    password: cdBIDV42DCwnfIN
+    _region: ca
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇦🇺 澳洲 07
+    type: ss
+    server: 194.87.196.107
+    port: 18443
+    cipher: '-256-gcm'
+    password: Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE
+    _region: au
     speed: unknown
     latency: 0
     qualityScore: 60
@@ -4442,6 +4797,18 @@ proxies:
     port: 35016
     cipher: '-128-gcm'
     password: 9c51ca33-a332-4de5-8677-5624e940097c
+    _region: nl
+    speed: unknown
+    latency: 0
+    qualityScore: 60
+    fraudScore: 0
+    detectLevel: tcp
+  - name: 🇳🇱 荷兰 www.v2s.com] 1596
+    type: ss
+    server: c3.nastuh.link
+    port: 443
+    cipher: cha20-ietf-poly1305
+    password: y7KeRTzmH0vXT2kp
     _region: nl
     speed: unknown
     latency: 0
@@ -4465,7 +4832,7 @@ proxies:
     server: 89.125.244.67
     port: 18443
     cipher: '-256-gcm'
-    password: hRVjEDVDFglm
+    password: e6Jr1K0G
     _region: fr
     speed: unknown
     latency: 0
