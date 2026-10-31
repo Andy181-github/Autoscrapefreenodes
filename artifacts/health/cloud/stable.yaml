@@ -1,34 +1,20 @@
 proxies:
-  - name: 🇺🇸美国|unknown-6
-    type: trojan
-    server: 88.218.92.205
-    port: 443
+  - name: 🇺🇸美国|unknown
+    type: vmess
+    server: 162.19.204.71
+    port: 1234
     skip-cert-verify: true
     udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
+    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    cipher: auto
+    alterId: 0
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
   - name: 🇺🇸美国|unknown-22
     type: trojan
-    server: 3.112.41.210
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-24
-    type: trojan
-    server: 162.159.128.253
-    port: 443
+    server: 38.180.225.247
+    port: 2053
     skip-cert-verify: true
     udp: true
     password: humanity
@@ -51,9 +37,9 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-77
+  - name: 🇺🇸美国|unknown-39
     type: trojan
-    server: 162.159.58.65
+    server: 3.112.41.210
     port: 443
     skip-cert-verify: true
     udp: true
@@ -64,16 +50,9 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-87
-    type: http
-    server: 38.247.141.135
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-90
+  - name: 🇺🇸美国|unknown-45
     type: trojan
-    server: 103.219.195.65
+    server: 162.159.128.253
     port: 443
     skip-cert-verify: true
     udp: true
@@ -84,32 +63,7 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-99
-    type: vmess
-    server: 162.19.204.71
-    port: 1234
-    skip-cert-verify: true
-    udp: true
-    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    cipher: auto
-    alterId: 0
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-107
-    type: trojan
-    server: 143.198.106.68
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-109
+  - name: 🇺🇸美国|unknown-54
     type: vless
     server: 155.212.240.10
     port: 443
@@ -123,10 +77,17 @@ proxies:
         Host: n.bitpulse.me
       path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-111
+  - name: 🇺🇸美国|unknown-68
+    type: http
+    server: 38.247.141.135
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-74
     type: trojan
-    server: 38.180.225.247
-    port: 2053
+    server: 103.219.195.65
+    port: 443
     skip-cert-verify: true
     udp: true
     password: humanity
@@ -136,7 +97,46 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-159
+  - name: 🇺🇸美国|unknown-87
+    type: trojan
+    server: 162.159.58.65
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-89
+    type: trojan
+    server: 143.198.106.68
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-105
+    type: trojan
+    server: 38.180.100.80
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-141
     type: vmess
     server: guanwang.awsno.com
     port: 443
@@ -164,21 +164,15 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇭🇰香港|unknown-2
-    type: vmess
-    server: euu1yalfmcqvljex.v.3dns.vip
+  - name: 🇸🋀新加坡|unknown
+    type: vless
+    server: 45.77.40.28
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: d237ab38-1974-4b36-94a3-0665ce8587b9
-    cipher: auto
-    alterId: 0
-    network: ws
+    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    network: tcp
     tls: true
-    ws-opts:
-      headers:
-        Host: euu1yalfmcqvljex.v.3dns.vip
-      path: /ws-vmess
   - name: 🇩🇪德国|unknown-2
     type: vless
     server: 199.232.239.239
@@ -195,21 +189,7 @@ proxies:
         Host: mpkoe7ypcibr80p102020123.global.ssl.fastly.net
       path: /@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel/@CloudVPNchannel?ed=2056
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-3
-    type: http
-    server: 84.17.47.149
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
   - name: 🇩🇪德国|unknown-4
-    type: http
-    server: 213.109.163.119
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-5
     type: vmess
     server: 141.95.65.9
     port: 1234
@@ -221,6 +201,13 @@ proxies:
     network: tcp
     tls: true
     client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-5
+    type: http
+    server: 84.17.47.148
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
   - name: 🇩🇪德国|unknown-6
     type: http
     server: 82.65.162.76
@@ -228,72 +215,138 @@ proxies:
     skip-cert-verify: true
     udp: true
     tls: true
+  - name: 🇩🇪德国|unknown-7
+    type: http
+    server: 84.17.47.149
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
   - name: 🇩🇪德国|unknown-9
     type: http
-    server: 84.17.47.125
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-14
-    type: http
-    server: 185.219.159.15
+    server: 31.186.220.204
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-15
-    type: http
-    server: 84.17.47.123
-    port: 9002
+  - name: 🇩🇪德国|unknown-10
+    type: vless
+    server: 91.107.180.176
+    port: 465
     skip-cert-verify: true
     udp: true
+    uuid: d0d3d49c-56e8-40e1-9e83-793d03f83d93
+    network: ws
     tls: true
-  - name: 🇩🇪德国|unknown-17
-    type: http
-    server: 84.17.47.148
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-19
-    type: http
-    server: 185.219.159.16
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-20
-    type: http
-    server: 158.173.154.5
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-22
-    type: http
-    server: 83.206.1.225
-    port: 8090
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-24
-    type: http
-    server: 84.17.47.124
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-25
+    ws-opts:
+      headers:
+        Host: hw7.divarkhaghazi.com.
+      path: /
+  - name: 🇩🇪德国|unknown-13
     type: http
     server: 158.173.154.1
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🅦🇺澳大利亚|unknown-9
+  - name: 🇩🇪德国|unknown-14
+    type: http
+    server: 83.206.1.225
+    port: 8090
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-17
+    type: http
+    server: 158.173.154.5
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-19
+    type: http
+    server: 213.109.163.119
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-20
+    type: http
+    server: 84.17.47.125
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-24
+    type: http
+    server: 84.17.47.123
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-25
+    type: http
+    server: 185.219.159.15
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-26
+    type: http
+    server: 185.219.159.16
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-27
+    type: http
+    server: 84.17.47.124
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🅦🇺澳大利亚|unknown-3
     type: trojan
     server: 202.61.198.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown
+    type: trojan
+    server: 93.85.236.9
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-2
+    type: trojan
+    server: 109.248.170.245
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-3
+    type: trojan
+    server: 77.221.139.114
     port: 443
     skip-cert-verify: true
     udp: true
@@ -319,8 +372,8 @@ proxies:
       path: /assignment
   - name: 🇳🇱荷兰|unknown-6
     type: trojan
-    server: 199.119.137.32
-    port: 8443
+    server: 83.228.199.3
+    port: 443
     skip-cert-verify: true
     udp: true
     password: humanity
@@ -331,147 +384,6 @@ proxies:
         Host: www.cordweave.com
       path: /assignment
   - name: 🇳🇱荷兰|unknown-7
-    type: trojan
-    server: 185.146.234.242
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-9
-    type: trojan
-    server: 38.180.100.80
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-10
-    type: trojan
-    server: 202.61.198.53
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-11
-    type: vmess
-    server: 45.90.106.24
-    port: 1234
-    skip-cert-verify: true
-    udp: true
-    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    cipher: aes-128-gcm
-    alterId: 0
-    network: tcp
-    tls: true
-  - name: 🇳🇱荷兰|unknown-13
-    type: trojan
-    server: 109.248.170.245
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-15
-    type: trojan
-    server: 143.198.106.68
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-16
-    type: trojan
-    server: 213.238.182.13
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-17
-    type: trojan
-    server: 3.112.41.210
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-18
-    type: trojan
-    server: 77.221.139.114
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-19
-    type: trojan
-    server: 185.234.114.165
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-20
-    type: trojan
-    server: 162.159.58.65
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-22
     type: trojan
     server: 91.250.248.151
     port: 443
@@ -484,9 +396,9 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-23
+  - name: 🇳🇱荷兰|unknown-8
     type: trojan
-    server: 103.219.195.65
+    server: 143.198.106.68
     port: 443
     skip-cert-verify: true
     udp: true
@@ -497,9 +409,9 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-25
+  - name: 🇳🇱荷兰|unknown-9
     type: trojan
-    server: 83.228.199.3
+    server: 3.112.41.210
     port: 443
     skip-cert-verify: true
     udp: true
@@ -510,19 +422,20 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-27
+  - name: 🇳🇱荷兰|unknown-10
     type: trojan
-    server: 162.159.61.183
+    server: 213.238.182.13
     port: 443
     skip-cert-verify: true
     udp: true
     password: humanity
     network: ws
-    tls: true
     sni: www.cordweave.com
     ws-opts:
+      headers:
+        Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-28
+  - name: 🇳🇱荷兰|unknown-11
     type: trojan
     server: 38.180.225.247
     port: 2053
@@ -535,7 +448,18 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-32
+  - name: 🇳🇱荷兰|unknown-12
+    type: vmess
+    server: 45.90.106.24
+    port: 1234
+    skip-cert-verify: true
+    udp: true
+    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    cipher: aes-128-gcm
+    alterId: 0
+    network: tcp
+    tls: true
+  - name: 🇳🇱荷兰|unknown-15
     type: trojan
     server: 88.218.92.205
     port: 443
@@ -548,10 +472,10 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇨🇳中国|unknown-6
+  - name: 🇳🇱荷兰|unknown-16
     type: trojan
-    server: 199.119.137.32
-    port: 8443
+    server: 38.180.100.80
+    port: 443
     skip-cert-verify: true
     udp: true
     password: humanity
@@ -561,22 +485,97 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇨🇳中国|unknown-8
-    type: vmess
-    server: euu1yalfmcqvljex.v.3dns.vip
+  - name: 🇳🇱荷兰|unknown-18
+    type: trojan
+    server: 185.146.234.242
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: d237ab38-1974-4b36-94a3-0665ce8587b9
-    cipher: auto
-    alterId: 0
+    password: humanity
     network: ws
-    tls: true
+    sni: www.cordweave.com
     ws-opts:
       headers:
-        Host: euu1yalfmcqvljex.v.3dns.vip
-      path: /ws-vmess
-  - name: 🇺🇸美国|unknown-172
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-20
+    type: trojan
+    server: 162.159.61.183
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    tls: true
+    sni: www.cordweave.com
+    ws-opts:
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-21
+    type: trojan
+    server: 202.61.198.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-22
+    type: trojan
+    server: 162.159.58.65
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-25
+    type: trojan
+    server: 103.219.195.65
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-31
+    type: trojan
+    server: 185.234.114.165
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-166
+    type: vless
+    server: 45.144.234.157
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 45.144.234.157
+      path: /vless
+  - name: 🇺🇸美国|unknown-170
     type: vless
     server: 146.75.59.186
     port: 443
@@ -590,20 +589,7 @@ proxies:
         Host: copy_az_channel_NUFiLTER_6i.global.ssl.fastly.net.
       path: /
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-174
-    type: vless
-    server: 45.144.234.157
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 45.144.234.157
-      path: /vless
-  - name: 🇺🇸美国|unknown-175
+  - name: 🇺🇸美国|unknown-172
     type: trojan
     server: 162.159.253.41
     port: 443
@@ -616,19 +602,7 @@ proxies:
       headers:
         Host: www.calmlunch.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-196
-    type: vless
-    server: 138.124.70.41
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
-    network: ws
-    tls: false
-    encryption: none
-    ws-opts:
-      path: /vless
-  - name: 🇺🇸美国|unknown-199
+  - name: 🇺🇸美国|unknown-175
     type: vless
     server: 170.114.45.6
     port: 8080
@@ -641,17 +615,87 @@ proxies:
       headers:
         Host: free.nadun.store
       path: /
-  - name: 🇺🇸美国|unknown-214
+  - name: 🇺🇸美国|unknown-187
+    type: trojan
+    server: 216.152.155.176
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: blog.nextjobopportunityandclaimyouridealrole.com
+  - name: 🇺🇸美国|unknown-190
+    type: trojan
+    server: 162.159.91.211
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-194
     type: vmess
-    server: 67.220.85.46
+    server: 134.195.196.211
     port: 18000
     skip-cert-verify: true
     udp: true
     uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: aes-128-gcm
+    cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇺🇸美国|unknown-220
+  - name: 🇺🇸美国|unknown-197
+    type: vmess
+    server: 38.110.1.246
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+  - name: 🇺🇸美国|unknown-198
+    type: vmess
+    server: 84.17.41.2
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+  - name: 🇺🇸美国|unknown-207
+    type: vless
+    server: 138.124.70.41
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      path: /vless
+  - name: 🇺🇸美国|unknown-212
+    type: trojan
+    server: 169.197.140.214
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇺🇸美国|unknown-217
+    type: vless
+    server: 152.69.195.67
+    port: 47878
+    skip-cert-verify: true
+    udp: true
+    uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
+    network: tcp
+    tls: false
+    encryption: none
+  - name: 🇺🇸美国|unknown-218
     type: vless
     server: 38.76.180.144
     port: 1443
@@ -665,86 +709,14 @@ proxies:
         Host: 38.76.180.144
       path: /vless-ws
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-225
-    type: vmess
-    server: 84.17.41.2
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-  - name: 🇺🇸美国|unknown-240
+  - name: 🇺🇸美国|unknown-227
     type: trojan
     server: 169.197.140.169
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-241
-    type: trojan
-    server: 162.159.91.211
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-244
-    type: trojan
-    server: 169.197.140.214
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-292
-    type: trojan
-    server: www.calmlunch.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-305
-    type: vless
-    server: support.zoom.us
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
-    network: ws
-    tls: false
-    encryption: none
-    ws-opts:
-      headers:
-        Host: Free.nadun.store
-      path: /
-  - name: 🇺🇸美国|unknown-311
-    type: vmess
-    server: guanwang.awsno.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: guanwang.awsno.com
-      path: /hls/cctv5phd.m3u8
-  - name: 🇺🇸美国|unknown-329
+  - name: 🇺🇸美国|unknown-270
     type: vless
     server: fast.145779.xyz
     port: 2053
@@ -759,7 +731,16 @@ proxies:
         Host: fast.145779.xyz
       path: /ws-tesla
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-349
+  - name: 🇺🇸美国|unknown-292
+    type: vless
+    server: us007.zestapp778.com
+    port: 18580
+    skip-cert-verify: true
+    udp: true
+    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    tls: true
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-298
     type: vmess
     server: www.shopify.com
     port: 443
@@ -774,7 +755,20 @@ proxies:
       headers:
         Host: guanwang.awsno.com
       path: /hls/cctv5phd.m3u8
-  - name: 🇺🇸美国|unknown-361
+  - name: 🇺🇸美国|unknown-307
+    type: trojan
+    server: www.calmlunch.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-318
     type: vless
     server: fast.145779.xyz
     port: 2053
@@ -788,6 +782,59 @@ proxies:
       headers:
         Host: fast.145779.xyz
       path: /ws-tesla
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-326
+    type: vless
+    server: support.zoom.us
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: Free.nadun.store
+      path: /
+  - name: 🇺🇸美国|unknown-331
+    type: vmess
+    server: guanwang.awsno.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: guanwang.awsno.com
+      path: /hls/cctv5phd.m3u8
+  - name: 🇺🇸美国|unknown-351
+    type: vless
+    server: w.geogame.ir
+    port: 2053
+    skip-cert-verify: true
+    udp: true
+    uuid: fbda2834-b1e7-4148-afb9-deda31036a30
+    tls: true
+    alpn:
+      - h2
+      - http/1.1
+    client-fingerprint: chrome
+  - name: 🇭🇰香港|unknown-4
+    type: vless
+    server: 195.58.144.56
+    port: 11907
+    skip-cert-verify: true
+    udp: true
+    uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
+    tls: true
+    alpn:
+      - h2
+      - http/1.1
     client-fingerprint: chrome
   - name: 🇭🇰香港|unknown-5
     type: vless
@@ -803,18 +850,6 @@ proxies:
         Host: 38.76.180.144
       path: /vless-ws
     client-fingerprint: chrome
-  - name: 🇭🇰香港|unknown-6
-    type: vless
-    server: 195.58.144.56
-    port: 11907
-    skip-cert-verify: true
-    udp: true
-    uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
-    tls: true
-    alpn:
-      - h2
-      - http/1.1
-    client-fingerprint: chrome
   - name: 🇹🇼台湾|unknown
     type: vless
     server: 60.248.219.53
@@ -829,7 +864,7 @@ proxies:
         Host: ty986gfazs.cainiaohub.xyz
       path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     client-fingerprint: chrome
-  - name: 🇹🇼台湾|unknown-3
+  - name: 🇹🇼台湾|unknown-2
     type: vless
     server: milo.networkforexir.site
     port: 8080
@@ -846,7 +881,7 @@ proxies:
     udp: true
     password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
     sni: 45.32.52.173
-  - name: 🇰🇵日本|unknown-12
+  - name: 🇰🇵日本|unknown-8
     type: vmess
     server: 146.56.112.110
     port: 8888
@@ -856,15 +891,30 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇰🇵日本|unknown-14
-    type: ss
-    server: 154.36.158.197
-    port: 8388
+  - name: 🇰🇵日本|unknown-15
+    type: vless
+    server: 152.69.195.67
+    port: 47878
     skip-cert-verify: true
     udp: true
-    password: BeaUf9c0AEWH40Pu
-    cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-11
+    uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
+    network: tcp
+    tls: false
+    encryption: none
+  - name: 🇸🋀新加坡|unknown-12
+    type: vless
+    server: node-uk.connectsuite.org
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
+    network: tcp
+    tls: true
+    alpn:
+      - h2
+      - http/1.1
+    client-fingerprint: chrome
+  - name: 🇸🋀新加坡|unknown-13
     type: vless
     server: sg1.zestapp778.com
     port: 56984
@@ -873,27 +923,7 @@ proxies:
     uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     tls: true
     client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-13
-    type: vless
-    server: sg003.zestapp778.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-14
-    type: vless
-    server: sg003.zestapp778.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇰🇷韩国|unknown-2
+  - name: 🇰🇷韩国|unknown-5
     type: vless
     server: 152.69.226.63
     port: 25555
@@ -904,45 +934,28 @@ proxies:
     tls: false
     ws-opts:
       path: /
-  - name: 🇺🇷英国|unknown-11
-    type: vless
-    server: 2.26.6.1
-    port: 2087
+  - name: 🇺🇷英国|unknown-15
+    type: trojan
+    server: en001.zestapp778.com
+    port: 29813
     skip-cert-verify: true
     udp: true
-    uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇺🇷英国|unknown-12
-    type: vless
-    server: 5.178.109.174
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 5.178.109.174
-      path: /vless
+    password: 5t6i121em5lkmsmk
+    sni: en001.zestapp778.com
   - name: 🇩🇪德国|unknown-36
     type: trojan
-    server: 219.76.13.177
-    port: 443
+    server: 185.114.72.31
+    port: 2053
     skip-cert-verify: true
     udp: true
     password: humanity
     network: ws
-    sni: www.pleadcourt.org
-    alpn:
-      - http/1.1
+    sni: www.calmlunch.com
     ws-opts:
       headers:
-        Host: www.pleadcourt.org
-      path: '%2Fassignment'
-  - name: 🇩🇪德国|unknown-41
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇩🇪德国|unknown-39
     type: vless
     server: 178.172.227.228
     port: 14430
@@ -955,74 +968,38 @@ proxies:
       headers:
         Host: 178.172.227.228
       path: /vless
-  - name: 🇩🇪德国|unknown-44
-    type: trojan
-    server: 45.130.125.160
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: '%2Fassignment'
-  - name: 🇩🇪德国|unknown-53
-    type: trojan
-    server: 185.220.100.168
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇩🇪德国|unknown-54
+  - name: 🇩🇪德国|unknown-42
     type: vless
-    server: 178.83.45.226
-    port: 10002
+    server: 87.242.119.253
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: c6362720-0931-4b91-b187-d8ecf3149734
+    uuid: aba9cdd4-026c-0001-87a9-9b3e5f24dd82
     network: tcp
-    tls: false
-  - name: 🇩🇪德国|unknown-58
-    type: vless
-    server: 177.3.208.65
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
-    network: ws
     tls: true
+    alpn:
+      - http/1.1
+      - h2
     ws-opts:
-      path: /vless-tr
-    client-fingerprint: firefox
-  - name: 🇩🇪德国|unknown-59
+      path: /
+    client-fingerprint: qq
+  - name: 🇩🇪德国|unknown-43
     type: trojan
-    server: 216.238.104.154
+    server: 45.63.30.142
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-64
+    sni: connectwithemployerstohireyouridealteam.com
+  - name: 🇩🇪德国|unknown-49
     type: trojan
-    server: 45.87.41.18
+    server: 193.108.119.15
     port: 443
     skip-cert-verify: true
     udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇩🇪德国|unknown-68
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: courses.iloverussia2026.com
+  - name: 🇩🇪德国|unknown-57
     type: vless
     server: 103.148.73.173
     port: 8443
@@ -1036,15 +1013,7 @@ proxies:
         Host: ty986gfazs.cainiaohub.xyz
       path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-70
-    type: trojan
-    server: 45.63.30.142
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: connectwithemployerstohireyouridealteam.com
-  - name: 🇩🇪德国|unknown-75
+  - name: 🇩🇪德国|unknown-60
     type: trojan
     server: 185.220.100.168
     port: 443
@@ -1057,46 +1026,7 @@ proxies:
       headers:
         Host: www.calmlunch.com
       path: '%2Fassignment'
-  - name: 🇩🇪德国|unknown-76
-    type: vless
-    server: 170.114.45.6
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: free.nadun.store
-      path: /
-  - name: 🇩🇪德国|unknown-82
-    type: vless
-    server: 5.178.109.174
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 5.178.109.174
-      path: /vless
-  - name: 🇩🇪德国|unknown-84
-    type: vless
-    server: 178.172.227.124
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 178.172.227.124
-      path: /vless
-  - name: 🇩🇪德国|unknown-88
+  - name: 🇩🇪德国|unknown-61
     type: vless
     server: 95.174.68.188
     port: 14430
@@ -1109,17 +1039,149 @@ proxies:
       headers:
         Host: 95.174.68.188
       path: /vless
-  - name: 🇩🇪德国|unknown-90
-    type: vless
-    server: 2.26.6.1
-    port: 2087
+  - name: 🇩🇪德国|unknown-62
+    type: trojan
+    server: 45.130.125.160
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: '%2Fassignment'
+  - name: 🇩🇪德国|unknown-64
+    type: vless
+    server: 170.114.45.6
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: free.nadun.store
+      path: /
+  - name: 🇩🇪德国|unknown-65
+    type: vless
+    server: 95.128.71.79
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: 95.128.71.79
+      path: /vless
+  - name: 🇩🇪德国|unknown-67
+    type: trojan
+    server: 216.238.104.154
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-68
+    type: trojan
+    server: 185.220.100.168
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇩🇪德国|unknown-71
+    type: trojan
+    server: 185.255.179.166
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇩🇪德国|unknown-73
+    type: trojan
+    server: 45.87.41.18
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇩🇪德国|unknown-82
+    type: vless
+    server: 84.235.244.108
+    port: 22573
+    skip-cert-verify: true
+    udp: true
+    uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: uae.unixzone.us
+      path: /
+  - name: 🇩🇪德国|unknown-85
+    type: vless
+    server: 178.172.227.124
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 178.172.227.124
+      path: /vless
+  - name: 🇩🇪德国|unknown-93
+    type: trojan
+    server: www.calmlunch.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇩🇪德国|unknown-97
+    type: trojan
+    server: in002.zestapp778.com
+    port: 42733
+    skip-cert-verify: true
+    udp: true
+    password: 5t6i121em5lkmsmk
+    sni: in002.zestapp778.com
+  - name: 🇩🇪德国|unknown-99
+    type: vless
+    server: milo.networkforexir.site
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
     network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-94
+    tls: false
+  - name: 🇩🇪德国|unknown-100
     type: vless
     server: support.zoom.us
     port: 8080
@@ -1133,16 +1195,7 @@ proxies:
       headers:
         Host: Free.nadun.store
       path: /
-  - name: 🇩🇪德国|unknown-95
-    type: vless
-    server: milo.networkforexir.site
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
-    network: tcp
-    tls: false
-  - name: 🇩🇪德国|unknown-99
+  - name: 🇩🇪德国|unknown-108
     type: vless
     server: edge10.cyrionflare.com
     port: 2052
@@ -1152,46 +1205,7 @@ proxies:
     network: tcp
     tls: false
     encryption: none
-  - name: 🇩🇪德国|unknown-102
-    type: trojan
-    server: www.calmlunch.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-34
-    type: vless
-    server: 45.144.234.157
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 45.144.234.157
-      path: /vless
-  - name: 🇳🇱荷兰|unknown-47
-    type: trojan
-    server: 45.87.41.18
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-56
+  - name: 🇳🇱荷兰|unknown-40
     type: vless
     server: 95.174.68.188
     port: 14430
@@ -1204,9 +1218,9 @@ proxies:
       headers:
         Host: 95.174.68.188
       path: /vless
-  - name: 🇳🇱荷兰|unknown-58
+  - name: 🇳🇱荷兰|unknown-48
     type: trojan
-    server: 45.130.125.160
+    server: 45.87.41.18
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1217,7 +1231,7 @@ proxies:
       headers:
         Host: www.calmlunch.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-59
+  - name: 🇳🇱荷兰|unknown-58
     type: trojan
     server: 45.130.125.75
     port: 443
@@ -1230,6 +1244,33 @@ proxies:
       headers:
         Host: www.calmlunch.com
       path: /assignment
+  - name: 🇳🇱荷兰|unknown-59
+    type: trojan
+    server: 45.130.125.160
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇨🇳中国|unknown-14
+    type: vless
+    server: 60.248.219.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ty986gfazs.cainiaohub.xyz
+      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    client-fingerprint: chrome
   - name: 🇨🇳中国|unknown-18
     type: vless
     server: 103.148.73.173
@@ -1244,61 +1285,25 @@ proxies:
         Host: ty986gfazs.cainiaohub.xyz
       path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     client-fingerprint: chrome
-  - name: 🇨🇳中国|unknown-19
-    type: vless
-    server: 60.248.219.53
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: ty986gfazs.cainiaohub.xyz
-      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
-    client-fingerprint: chrome
-  - name: 🇨🇳中国|unknown-20
+  - name: 🇺🇸美国|unknown-365
     type: vmess
-    server: 8.218.195.61
-    port: 443
+    server: 38.91.107.49
+    port: 18000
     skip-cert-verify: true
     udp: true
-    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: EX1oGt73NzPQKAc2.v.3dns.vip
-      path: /ws-vmess
-  - name: 🇨🇳中国|unknown-23
-    type: vmess
-    server: rhhierkwrf6fhs2h.v.3dns.vip
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 78b3f149-f037-465d-b2fb-11adb6f73ff8
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: rhhierkwrf6fhs2h.v.3dns.vip
-      path: /ws-vmess
-  - name: 🇺🇸美国|unknown-379
-    type: vmess
-    server: 129.146.143.80
-    port: 48111
-    skip-cert-verify: true
-    udp: true
-    uuid: d4603cc2-e0ee-4651-83f5-1db5b7168177
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
     cipher: auto
     alterId: 0
     network: tcp
     tls: false
+  - name: 🇰🇵日本|unknown-24
+    type: ss
+    server: 84.247.155.196
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 3eOFeNssde7PYYMv
+    cipher: aes-256-gcm
   - name: 🇰🇵日本|unknown-25
     type: ss
     server: 149.22.87.204
@@ -1307,13 +1312,13 @@ proxies:
     udp: true
     password: shadowsocks
     cipher: aes-128-gcm
-  - name: 🇰🇵日本|unknown-26
+  - name: 🇸🋀新加坡|unknown-16
     type: ss
-    server: 84.247.155.196
-    port: 443
+    server: 185.176.206.9
+    port: 19999
     skip-cert-verify: true
     udp: true
-    password: 3eOFeNssde7PYYMv
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
   - name: 🇸🋀新加坡|unknown-17
     type: ss
@@ -1323,95 +1328,15 @@ proxies:
     udp: true
     password: RexnBgU7EV5ADxG
     cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-18
+  - name: 🇩🇪德国|unknown-111
     type: ss
-    server: 185.176.206.9
+    server: 202.50.253.63
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-114
-    type: ss
-    server: 185.213.23.63
-    port: 990
-    skip-cert-verify: true
-    udp: true
-    password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-115
-    type: ss
-    server: 202.50.253.54
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-116
-    type: ss
-    server: 102.37.156.224
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: aduB9HGxQHjA2SBMRjkHX6
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-117
-    type: ss
-    server: 202.50.253.81
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-118
-    type: ss
-    server: 185.164.175.81
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-119
-    type: ss
-    server: 102.133.165.160
-    port: 16233
-    skip-cert-verify: true
-    udp: true
-    password: Xsy8Ox4yOV3xLlpxtjzs3X
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-120
-    type: ss
-    server: 202.50.253.72
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-122
-    type: ss
-    server: 185.22.155.121
-    port: 18443
-    skip-cert-verify: true
-    udp: true
-    password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-123
-    type: ss
-    server: 202.50.253.36
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-124
-    type: ss
-    server: 202.50.253.27
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-126
+  - name: 🇩🇪德国|unknown-112
     type: ss
     server: 82.110.60.9
     port: 19999
@@ -1419,15 +1344,15 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-129
+  - name: 🇩🇪德国|unknown-114
     type: ss
-    server: 202.50.253.45
-    port: 19999
+    server: 102.37.156.224
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-132
+    password: aduB9HGxQHjA2SBMRjkHX6
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-118
     type: ss
     server: 202.50.253.18
     port: 19999
@@ -1435,7 +1360,79 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-138
+  - name: 🇩🇪德国|unknown-122
+    type: ss
+    server: 102.133.165.160
+    port: 16233
+    skip-cert-verify: true
+    udp: true
+    password: Xsy8Ox4yOV3xLlpxtjzs3X
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-123
+    type: ss
+    server: 185.164.175.81
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-124
+    type: ss
+    server: 202.50.253.81
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-126
+    type: ss
+    server: 202.50.253.27
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-127
+    type: ss
+    server: 202.50.253.54
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-128
+    type: ss
+    server: 185.22.155.121
+    port: 18443
+    skip-cert-verify: true
+    udp: true
+    password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-129
+    type: ss
+    server: 202.50.253.36
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-130
+    type: ss
+    server: 202.50.253.72
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-133
+    type: ss
+    server: 202.50.253.45
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-135
     type: ss
     server: sql.popmintxo.cc
     port: 43385
@@ -1453,14 +1450,6 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇯🇵 日本 www.v2s.com] 7
-    type: vless
-    server: 137.220.221.179
-    port: 443
-    uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
-    security: ''
-    sni: ''
-    flow: ''
   - name: 🇯🇵 日本 www.v2s.com] 1... 5
     type: vless
     server: 152.69.195.67
@@ -1469,420 +1458,17 @@ proxies:
     security: ''
     sni: 152.69.195.67
     flow: ''
-  - name: www.v2s.com] CA1... 4
+  - name: 🇩🇪 德国 www.v2s.com] 5
     type: vless
-    server: milo.networkforexir.site
-    port: 8080
-    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+    server: 178.83.45.226
+    port: 10002
+    uuid: c6362720-0931-4b91-b187-d8ecf3149734
     security: ''
-    sni: milo.networkforexir.site
+    sni: ''
     flow: ''
-  - name: 🇺🇸美国|unknown-438
-    type: trojan
-    server: 104.18.46.59
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-441
-    type: trojan
-    server: 104.17.159.71
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-445
-    type: vless
-    server: 104.21.91.49
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vpn.cintaku.qzz.io
-      path: /vlessws
-  - name: 🇺🇸美国|unknown-450
-    type: trojan
-    server: 104.17.28.254
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-452
-    type: trojan
-    server: 104.16.251.219
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-453
-    type: vless
-    server: 104.16.111.202
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-454
-    type: vless
-    server: 104.16.188.34
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: n.bitpulse.me
-      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed=2560
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-456
-    type: trojan
-    server: 168.143.108.38
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-458
-    type: trojan
-    server: 104.17.28.254
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-460
-    type: trojan
-    server: 104.16.144.215
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-465
-    type: vless
-    server: 104.18.39.123
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 0ad8f7d9-85a2-45f3-9948-27903a20ec29
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: us7.mcdonaldshamburgergoodgoodgood.xyz
-      path: /
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-467
-    type: trojan
-    server: 104.18.39.55
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-476
+  - name: 🇺🇸美国|unknown-418
     type: trojan
     server: 104.17.17.238
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-478
-    type: trojan
-    server: 104.17.145.43
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-485
-    type: vless
-    server: 104.18.37.127
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-487
-    type: vless
-    server: 172.66.128.146
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: n.bitpulse.me
-      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-491
-    type: trojan
-    server: 104.19.229.21
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-492
-    type: vless
-    server: 104.19.235.15
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: n.bitpulse.me
-      path: /019bcbad-3813-7cce-8786-3ac0e418f128
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-506
-    type: vless
-    server: 104.21.29.192
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: n.bitpulse.me
-      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-518
-    type: vless
-    server: 104.17.108.213
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: n.bitpulse.me
-      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed=2560
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-525
-    type: trojan
-    server: 104.16.65.1
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-526
-    type: trojan
-    server: 104.19.229.21
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-529
-    type: trojan
-    server: 172.64.151.20
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-563
-    type: vless
-    server: 104.21.34.106
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-573
-    type: trojan
-    server: 104.17.159.71
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-577
-    type: trojan
-    server: 104.26.3.162
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-603
-    type: trojan
-    server: 104.17.145.43
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-620
-    type: trojan
-    server: 104.17.17.238
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-622
-    type: trojan
-    server: 172.237.0.160
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-632
-    type: trojan
-    server: 104.16.144.215
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-635
-    type: http
-    server: 44.248.167.117
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-646
-    type: trojan
-    server: 104.26.3.162
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1900,9 +1486,9 @@ proxies:
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: blog.unlockyourfuturefindyourperfectcareer.com
     network: ''
-  - name: 🇺🇸美国|unknown-669
+  - name: 🇺🇸美国|unknown-420
     type: trojan
-    server: 172.67.89.103
+    server: 104.18.46.59
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1913,7 +1499,211 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-673
+  - name: 🇺🇸美国|unknown-424
+    type: trojan
+    server: 104.26.3.162
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-426
+    type: trojan
+    server: 104.17.28.254
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-428
+    type: trojan
+    server: 104.17.145.43
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-442
+    type: trojan
+    server: 104.17.159.71
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-453
+    type: vless
+    server: 172.66.128.146
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: n.bitpulse.me
+      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed
+    client-fingerprint: unsafe
+  - name: 🇺🇸美国|unknown-454
+    type: trojan
+    server: 172.237.0.160
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-470
+    type: trojan
+    server: 104.16.251.219
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-471
+    type: trojan
+    server: 104.16.144.215
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-475
+    type: trojan
+    server: 104.16.65.1
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-484
+    type: trojan
+    server: 207.57.123.112
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-495
+    type: vless
+    server: 104.21.91.49
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: vpn.cintaku.qzz.io
+      path: /vlessws
+  - name: 🇺🇸美国|unknown-502
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-504
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-505
+    type: vless
+    server: 104.19.235.15
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: n.bitpulse.me
+      path: /019bcbad-3813-7cce-8786-3ac0e418f128
+    client-fingerprint: unsafe
+  - name: 🇺🇸美国|unknown-509
+    type: trojan
+    server: 104.16.144.215
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸 美国 www.v2s.com] ... 10
+    type: trojan
+    server: 216.152.155.176
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: blog.nextjobopportunityandclaimyouridealrole.com
+    network: ''
+  - name: 🇺🇸美国|unknown-563
     type: vless
     server: 104.18.51.110
     port: 443
@@ -1927,9 +1717,23 @@ proxies:
         Host: n.bitpulse.me
       path: /019bcbad-3813-7cce-8786-3ac0e418f128
     client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-674
+  - name: 🇺🇸美国|unknown-593
+    type: vless
+    server: 104.16.188.34
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: n.bitpulse.me
+      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed=2560
+    client-fingerprint: unsafe
+  - name: 🇺🇸美国|unknown-607
     type: trojan
-    server: 104.16.251.219
+    server: 172.67.89.103
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1940,48 +1744,20 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-680
-    type: vless
-    server: 104.16.111.102
+  - name: 🇺🇸美国|unknown-608
+    type: trojan
+    server: 104.17.159.71
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    password: humanity
     network: ws
-    tls: true
+    sni: www.cordweave.com
     ws-opts:
       headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-693
-    type: vless
-    server: 104.16.10.84
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-    client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-694
-    type: vless
-    server: 104.16.10.56
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-709
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-609
     type: trojan
     server: 104.16.65.1
     port: 443
@@ -1994,7 +1770,160 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇸🋀新加坡|unknown-20
+  - name: 🇺🇸美国|unknown-618
+    type: trojan
+    server: 104.16.251.219
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-628
+    type: trojan
+    server: 104.17.145.43
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-645
+    type: trojan
+    server: 104.18.39.55
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-646
+    type: trojan
+    server: 168.143.108.38
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-648
+    type: vless
+    server: 104.17.108.213
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: n.bitpulse.me
+      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed=2560
+    client-fingerprint: unsafe
+  - name: 🇺🇸美国|unknown-655
+    type: trojan
+    server: 104.17.17.238
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-657
+    type: http
+    server: 44.248.167.117
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-661
+    type: trojan
+    server: 172.64.151.20
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-663
+    type: trojan
+    server: 104.26.3.162
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-668
+    type: trojan
+    server: 104.17.28.254
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-677
+    type: vless
+    server: 104.21.29.192
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: n.bitpulse.me
+      path: /019bcbad-3813-7cce-8786-3ac0e418f128?ed
+    client-fingerprint: unsafe
+  - name: 🇺🇸美国|unknown-704
+    type: vless
+    server: 104.18.39.123
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 0ad8f7d9-85a2-45f3-9948-27903a20ec29
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: us7.mcdonaldshamburgergoodgoodgood.xyz
+      path: /
+    client-fingerprint: chrome
+  - name: 🇸🋀新加坡|unknown-18
     type: trojan
     server: 172.104.185.40
     port: 443
@@ -2014,10 +1943,17 @@ proxies:
     password: 5t6i121em5lkmsmk
     sni: en001.zestapp778.com
     network: ''
+  - name: 🇩🇪德国|unknown-138
+    type: http
+    server: 51.159.225.196
+    port: 23856
+    skip-cert-verify: true
+    udp: true
+    tls: true
   - name: 🇩🇪德国|unknown-139
     type: http
-    server: 51.159.225.197
-    port: 19362
+    server: 51.159.225.196
+    port: 23856
     skip-cert-verify: true
     udp: true
     tls: true
@@ -2028,17 +1964,17 @@ proxies:
     skip-cert-verify: true
     udp: true
     tls: true
+  - name: 🇩🇪 德国 www.v2s.com
+    type: trojan
+    server: 193.108.119.15
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: courses.iloverussia2026.com
+    network: ''
   - name: 🇩🇪德国|unknown-141
     type: http
-    server: 51.159.225.196
-    port: 23856
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-142
-    type: http
-    server: 51.159.225.196
-    port: 23856
+    server: 51.159.225.197
+    port: 19362
     skip-cert-verify: true
     udp: true
     tls: true
@@ -2051,7 +1987,7 @@ proxies:
     network: ''
   - name: 🇳🇱荷兰|unknown-60
     type: trojan
-    server: 172.104.185.40
+    server: 172.237.0.160
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2064,7 +2000,7 @@ proxies:
       path: /assignment
   - name: 🇳🇱荷兰|unknown-61
     type: trojan
-    server: 172.237.0.160
+    server: 172.67.89.103
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2074,46 +2010,8 @@ proxies:
     ws-opts:
       headers:
         Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-62
-    type: trojan
-    server: 172.64.149.78
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    tls: true
-    sni: www.cordweave.com
-    ws-opts:
       path: /assignment
   - name: 🇳🇱荷兰|unknown-63
-    type: trojan
-    server: 207.57.123.112
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-64
-    type: trojan
-    server: 130.78.185.4
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.cordweave.com
-    ws-opts:
-      headers:
-        Host: www.cordweave.com
-      path: /assignment
-  - name: 🇳🇱荷兰|unknown-65
     type: trojan
     server: 104.18.39.55
     port: 443
@@ -2126,9 +2024,34 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
+  - name: 🇳🇱荷兰|unknown-64
+    type: trojan
+    server: 172.64.149.78
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    tls: true
+    sni: www.cordweave.com
+    ws-opts:
+      path: /assignment
+  - name: 🇳🇱荷兰|unknown-65
+    type: trojan
+    server: 104.18.46.59
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.cordweave.com
+    ws-opts:
+      headers:
+        Host: www.cordweave.com
+      path: /assignment
   - name: 🇳🇱荷兰|unknown-66
     type: trojan
-    server: 172.67.89.103
+    server: 172.64.151.20
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2154,7 +2077,7 @@ proxies:
       path: /assignment
   - name: 🇳🇱荷兰|unknown-68
     type: trojan
-    server: 172.64.151.20
+    server: 130.78.185.4
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2165,9 +2088,9 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇳🇱荷兰|unknown-70
+  - name: 🇳🇱荷兰|unknown-69
     type: trojan
-    server: 104.18.46.59
+    server: 172.104.185.40
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2178,116 +2101,20 @@ proxies:
       headers:
         Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-723
+  - name: 🇳🇱荷兰|unknown-71
     type: trojan
-    server: 104.17.121.43
+    server: 130.78.185.4
     port: 443
     skip-cert-verify: true
     udp: true
     password: humanity
     network: ws
-    sni: www.calmlunch.com
+    sni: www.cordweave.com
     ws-opts:
       headers:
-        Host: www.calmlunch.com
+        Host: www.cordweave.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-727
-    type: trojan
-    server: 104.18.9.83
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-746
-    type: vmess
-    server: 47.88.79.34
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 9b31490d-190e-4ef1-af0a-7ccab3e7c3b5
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: rib9jxayoqjgn2kw.v.3dns.vip
-      path: /ws-vmess
-  - name: 🇺🇸美国|unknown-801
-    type: vless
-    server: 13.140.56.100
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 13.140.56.100
-      path: /vless
-  - name: 🇺🇸美国|unknown-821
-    type: trojan
-    server: 104.18.8.83
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-824
-    type: trojan
-    server: 104.17.121.71
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-842
-    type: vmess
-    server: 172.67.167.78
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: v2ray1.dozapp.xyz
-      path: /lMnsZUN4/
-  - name: 🇺🇸美国|unknown-846
-    type: trojan
-    server: 104.16.71.213
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.calmlunch.com
-    ws-opts:
-      headers:
-        Host: www.calmlunch.com
-      path: /assignment
-  - name: 🇺🇸美国|unknown-864
+  - name: 🇺🇸美国|unknown-726
     type: trojan
     server: 104.19.64.105
     port: 443
@@ -2300,7 +2127,48 @@ proxies:
       headers:
         Host: www.calmlunch.com
       path: /assignment
-  - name: 🇺🇸美国|unknown-890
+  - name: 🇺🇸美国|unknown-745
+    type: trojan
+    server: 66.163.112.13
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇺🇸美国|unknown-760
+    type: trojan
+    server: 66.163.112.13
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: blog.unlockyourfuturefindyourperfectcareer.com
+  - name: 🇺🇸美国|unknown-766
+    type: trojan
+    server: 104.18.9.83
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-772
+    type: vless
+    server: 13.140.56.100
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 13.140.56.100
+      path: /vless
+  - name: 🇺🇸美国|unknown-812
     type: vmess
     server: 104.27.0.1
     port: 443
@@ -2315,39 +2183,88 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws
-  - name: 🇺🇸美国|unknown-904
+  - name: 🇺🇸美国|unknown-823
     type: trojan
-    server: 66.163.112.13
+    server: 104.17.121.71
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-908
-    type: trojan
-    server: 66.163.112.13
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.unlockyourfuturefindyourperfectcareer.com
-  - name: 🇰🇵日本|unknown-33
-    type: vless
-    server: 188.114.98.0
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    password: humanity
     network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    encryption: none
+    sni: www.calmlunch.com
     ws-opts:
       headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-    client-fingerprint: unsafe
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-856
+    type: trojan
+    server: 104.18.8.83
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-875
+    type: trojan
+    server: 104.16.71.213
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
+  - name: 🇺🇸美国|unknown-883
+    type: vmess
+    server: 47.88.79.34
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 9b31490d-190e-4ef1-af0a-7ccab3e7c3b5
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: rib9jxayoqjgn2kw.v.3dns.vip
+      path: /ws-vmess
+  - name: 🇺🇸美国|unknown-887
+    type: trojan
+    server: 104.17.121.43
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: humanity
+    network: ws
+    sni: www.calmlunch.com
+    ws-opts:
+      headers:
+        Host: www.calmlunch.com
+      path: /assignment
   - name: 🇸🋀新加坡|unknown-21
+    type: vless
+    server: 13.140.56.100
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 13.140.56.100
+      path: /vless
+  - name: 🇸🋀新加坡|unknown-22
     type: vless
     server: 139.162.27.96
     port: 2096
@@ -2361,28 +2278,83 @@ proxies:
       headers:
         Host: free-server.techsonic.dev
       path: /free-server.techsonic.dev
-  - name: 🇸🋀新加坡|unknown-27
-    type: vless
-    server: 13.140.56.100
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 13.140.56.100
-      path: /vless
-  - name: 🇩🇪德国|unknown-147
-    type: vless
-    server: 137.220.221.179
+  - name: 🇩🇪德国|unknown-145
+    type: trojan
+    server: 172.66.40.99
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+    password: humanity
+    network: ws
+    sni: www.trusteeforward.com
+    alpn:
+      - http/1.1
+    ws-opts:
+      headers:
+        Host: www.trusteeforward.com
+      path: '%2Fassignment'
+  - name: 🇩🇪德国|unknown-146
+    type: vless
+    server: 139.162.27.96
+    port: 2096
+    skip-cert-verify: true
+    udp: true
+    uuid: 6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: free-server.techsonic.dev
+      path: /free-server.techsonic.dev
+  - name: 🇩🇪德国|unknown-147
+    type: trojan
+    server: 66.163.118.62
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-149
+    type: trojan
+    server: 66.163.118.166
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: learn.discovergreatjobsandadvanceyourcareer.com
+  - name: 🇩🇪德国|unknown-152
+    type: trojan
+    server: 139.180.146.200
+    port: 8886
+    skip-cert-verify: true
+    udp: true
+    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
+    sni: 139.180.146.200
+  - name: 🇩🇪德国|unknown-155
+    type: vless
+    server: 150.95.109.109
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+    network: tcp
     tls: false
-  - name: 🇩🇪德国|unknown-150
+  - name: 🇩🇪德国|unknown-158
+    type: trojan
+    server: 64.176.7.205
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-161
+    type: trojan
+    server: 64.176.163.182
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: exploreeducationsectoropportunitiestodayandadvancecareers.com
+  - name: 🇩🇪德国|unknown-163
     type: vless
     server: 188.114.98.0
     port: 443
@@ -2399,59 +2371,7 @@ proxies:
         Host: vpn.cintaku.qzz.io
       path: /vlessws
     client-fingerprint: unsafe
-  - name: 🇩🇪德国|unknown-151
-    type: vless
-    server: 139.162.27.96
-    port: 2096
-    skip-cert-verify: true
-    udp: true
-    uuid: 6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2
-    network: ws
-    tls: true
-    encryption: none
-    ws-opts:
-      headers:
-        Host: free-server.techsonic.dev
-      path: /free-server.techsonic.dev
-  - name: 🇩🇪德国|unknown-157
-    type: trojan
-    server: 64.176.163.182
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: exploreeducationsectoropportunitiestodayandadvancecareers.com
-  - name: 🇩🇪德国|unknown-161
-    type: trojan
-    server: 64.176.7.205
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-163
-    type: trojan
-    server: 172.66.40.99
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: humanity
-    network: ws
-    sni: www.trusteeforward.com
-    alpn:
-      - http/1.1
-    ws-opts:
-      headers:
-        Host: www.trusteeforward.com
-      path: '%2Fassignment'
-  - name: 🇩🇪德国|unknown-166
-    type: trojan
-    server: 139.180.146.200
-    port: 8886
-    skip-cert-verify: true
-    udp: true
-    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
-    sni: 139.180.146.200
-  - name: 🇺🇸美国|unknown-917
+  - name: 🇺🇸美国|unknown-911
     type: vmess
     server: 172.67.187.145
     port: 80
@@ -2465,7 +2385,7 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws
-  - name: 🇺🇸美国|unknown-925
+  - name: 🇺🇸美国|unknown-912
     type: vmess
     server: 23.162.200.198
     port: 18000
@@ -2476,7 +2396,7 @@ proxies:
     alterId: 0
     network: tcp
     tls: false
-  - name: 🇺🇸美国|unknown-943
+  - name: 🇺🇸美国|unknown-935
     type: vmess
     server: 104.17.147.222
     port: 80
@@ -2490,7 +2410,7 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws?ed=2048
-  - name: 🇺🇸美国|unknown-968
+  - name: 🇺🇸美国|unknown-936
     type: vmess
     server: 104.21.7.133
     port: 80
@@ -2504,23 +2424,23 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws
-  - name: 🇩🇪德国|unknown-171
+  - name: 🇸🋀新加坡|unknown-27
+    type: http
+    server: 47.129.174.248
+    port: 2080
+    skip-cert-verify: true
+    udp: true
+    password: '1234'
+    username: '1234'
+  - name: 🇸🋀新加坡|unknown-29
     type: ss
-    server: 51.83.192.80
+    server: 139.84.166.47
     port: 8388
     skip-cert-verify: true
     udp: true
-    password: itzvpn@321
+    password: GEdoeeqLZtkJRgSa
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-174
-    type: ss
-    server: 54.36.174.134
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 6heexyz
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-175
+  - name: 🇩🇪德国|unknown-169
     type: ss
     server: 54.36.174.140
     port: 443
@@ -2528,7 +2448,23 @@ proxies:
     udp: true
     password: 6heexyz
     cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-179
+  - name: 🇩🇪德国|unknown-170
+    type: ss
+    server: 51.83.192.80
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: itzvpn@321
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-172
+    type: ss
+    server: 51.222.200.165
+    port: 5000
+    skip-cert-verify: true
+    udp: true
+    password: Y6R9pAtvxxzmGC
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-173
     type: ss
     server: 51.222.136.236
     port: 8882
@@ -2536,15 +2472,35 @@ proxies:
     udp: true
     password: kDWvXYZoTBcGkC4
     cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-177
+    type: ss
+    server: 54.36.174.134
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 6heexyz
+    cipher: chacha20-ietf-poly1305
   - name: 🇯🇵 日本 www.v2s.com] 5141
     type: ss
     server: 149.22.87.204
     port: 443
     cipher: aes-128-gcm
     password: shadowsocks
-  - name: 🇬🇧 英国 www.v2s.com] AT1595
+  - name: 🇯🇵 日本 www.v2s.com] 1544
     type: ss
-    server: 82.110.60.9
+    server: 84.247.155.196
+    port: 443
+    cipher: aes-256-gcm
+    password: 3eOFeNssde7PYYMv
+  - name: 🇬🇧 英国 www.v2s.com] 1247
+    type: ss
+    server: 94.156.250.148
+    port: 7001
+    cipher: aes-256-gcm
+    password: RexnBgU7EV5ADxG
+  - name: 🇬🇧 英国 www.v2s.com] 1602
+    type: ss
+    server: 185.176.206.9
     port: 19999
     cipher: aes-256-gcm
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -2554,12 +2510,18 @@ proxies:
     port: 443
     cipher: aes-128-gcm
     password: shadowsocks
-  - name: 🇬🇧 英国 www.v2s.com] 1602
+  - name: 🇬🇧 英国 www.v2s.com] AT1595
     type: ss
-    server: 185.176.206.9
+    server: 82.110.60.9
     port: 19999
     cipher: aes-256-gcm
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇷🇺 俄罗斯 加拿大 Montreal
+    type: ss
+    server: 46.17.46.27
+    port: 18443
+    cipher: aes-256-gcm
+    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
   - name: 🇳🇱 荷兰 www.v2s.com] 1604
     type: ss
     server: sql.popmintxo.cc
