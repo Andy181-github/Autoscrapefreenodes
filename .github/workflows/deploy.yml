@@ -103,6 +103,15 @@ jobs:
         run: |
           node scripts/probe-nodes.js --mode cloud --input artifacts/subs/mihomo.yaml --output-dir artifacts/health/cloud --mihomo-bin /tmp/mihomo --timeout 5000 --rounds 4 --concurrency 40
 
+      # 保留最近 14 天逐次探测报告，供跨时间窗口校准质量评分；不把历史快照扩张进 Git 提交历史。
+      - name: 归档质量评分校准快照
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-calibration-${{ github.run_id }}
+          path: artifacts/health/cloud/report.json
+          if-no-files-found: error
+          retention-days: 14
+
       # 生成 README 徽章 (仅 3 个节点数量徽章, 正文由 scraper.js 维护)
       - name: 生成 README
         run: node generate-readme.js
