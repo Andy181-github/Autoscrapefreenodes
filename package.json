@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node scraper.js",
     "build": "node generate-readme.js",
-    "test": "node test.js && node test-regression.js && node test-clash-compat.js",
+    "test": "node test.js && node test-regression.js && node test-clash-compat.js && node test-probe.js",
     "agents": "node run-agents.js"
   },
   "keywords": [

@@ -26,6 +26,8 @@ on:
       - 'test-regression.js'
       - 'generate-readme.js'
       - 'lib/**'
+      - 'scripts/**'
+      - 'test-probe.js'
       - 'config.json'
       - 'package.json'
       - 'package-lock.json'
@@ -96,6 +98,11 @@ jobs:
           NODE
           /tmp/mihomo -t -f /tmp/mihomo-validation.yaml
 
+      # 云端真实出站探测: 独立输出健康报告，不过滤或覆盖 mihomo.yaml
+      - name: 云端 Mihomo 真实节点检测
+        run: |
+          node scripts/probe-nodes.js --mode cloud --input artifacts/subs/mihomo.yaml --output-dir artifacts/health/cloud --mihomo-bin /tmp/mihomo --timeout 5000 --rounds 4 --concurrency 40
+
       # 生成 README 徽章 (仅 3 个节点数量徽章, 正文由 scraper.js 维护)
       - name: 生成 README
         run: node generate-readme.js
@@ -123,6 +130,7 @@ jobs:
           git config --local user.name "GitHub Action"
           # 订阅产物位于 artifacts/subs/ 且被 .gitignore, 需 -f 强制暂存
           git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
+          git add -f artifacts/health/cloud/report.json artifacts/health/cloud/working.yaml artifacts/health/cloud/stable.yaml
           git add README.md config.json data/historical.json
           # 仅在暂存区有变更时提交并推送 (产物类提交已被 push.paths 过滤, 不会再次触发本 workflow)
           if ! git diff --cached --quiet; then
