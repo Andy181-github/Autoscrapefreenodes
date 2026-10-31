@@ -230,7 +230,7 @@ async function httpGet(url, retries = 2, timeout = 15000) {
 
 // Pre-compiled regex for performance
 const URL_REGEX = /https?:\/\/[^\s<>"']+(?:\.yaml|\.yml|\.txt|\.json)[^\s<>"']*/g;
-const PROXY_LINE_REGEX = /^(vmess|trojan|ss|ssr|http|socks|tuic|hysteria|wireguard):\/\//i;
+const PROXY_LINE_REGEX = /^(vmess|vless|trojan|ss|ssr|https?|socks5|socks|tuic|hysteria2?|wireguard):\/\//i;
 
 function extractUrls(text) {
   const matches = text.match(URL_REGEX) || [];
@@ -633,11 +633,37 @@ function validateSubFiles(tmpDir) {
         if (!doc || !Array.isArray(doc.proxies)) errors.push(`${f}: missing proxies list`);
         // all.yaml 走标准 Clash 能力集; 出现 vless/hysteria2/anytls 等 → 校验失败,
         // 阻止发布 (P1-1 原子替换: 校验失败时正式文件保持上版)
-        if (f === 'all.yaml' && Array.isArray(doc.proxies)) {
-          const badTypes = doc.proxies.filter(p => !CLASH_STD_TYPES.has(p.type));
-          if (badTypes.length > 0) {
-            errors.push(`${f}: ${badTypes.length} proxies with type outside standard Clash set (found: ${[...new Set(badTypes.map(p => p.type))].join('/')})`);
-          }
+        if (Array.isArray(doc && doc.proxies)) {
+          const allowedTypes = f === 'all.yaml' ? CLASH_STD_TYPES : MIHOMO_TYPES;
+          const seenNames = new Set();
+          doc.proxies.forEach((proxy, index) => {
+            const label = `${f}: proxy[${index}] (${proxy && proxy.name || 'unnamed'})`;
+            if (!proxy || typeof proxy !== 'object' || Array.isArray(proxy)) {
+              errors.push(`${label}: entry must be an object`);
+              return;
+            }
+            if (!allowedTypes.has(proxy.type)) errors.push(`${label}: unsupported type '${proxy.type}'`);
+            if (typeof proxy.name !== 'string' || !proxy.name.trim()) errors.push(`${label}: missing name`);
+            else if (seenNames.has(proxy.name)) errors.push(`${label}: duplicate name`);
+            else seenNames.add(proxy.name);
+            if (typeof proxy.server !== 'string' || !proxy.server.trim()) errors.push(`${label}: missing server`);
+            if (!Number.isInteger(proxy.port) || proxy.port < 1 || proxy.port > 65535) errors.push(`${label}: invalid port`);
+            for (const field of ['_region', 'speed', 'latency', 'qualityScore', 'fraudScore', 'detectLevel', '_orig']) {
+              if (proxy[field] !== undefined) errors.push(`${label}: internal metadata '${field}' leaked`);
+            }
+            for (const field of ['username', 'password']) {
+              if (proxy[field] !== undefined && isInvalidAuth(proxy[field])) errors.push(`${label}: invalid ${field}`);
+            }
+            if ((proxy.type === 'http' || proxy.type === 'socks5') && ((proxy.username === undefined) !== (proxy.password === undefined))) errors.push(`${label}: username/password must be supplied together`);
+            if (proxy.type === 'vmess') {
+              if (typeof proxy.uuid !== 'string' || !proxy.uuid.trim()) errors.push(`${label}: missing uuid`);
+              if (!Number.isInteger(proxy.alterId) || proxy.alterId < 0) errors.push(`${label}: invalid or missing alterId`);
+              if (typeof proxy.cipher !== 'string' || !proxy.cipher.trim()) errors.push(`${label}: missing cipher`);
+            }
+            if (proxy.type === 'ss' && (!proxy.password || !proxy.cipher)) errors.push(`${label}: SS requires cipher and password`);
+            if (proxy.type === 'trojan' && !proxy.password) errors.push(`${label}: Trojan requires password`);
+            if (proxy.type === 'vless' && (!proxy.uuid || !proxy.uuid.trim())) errors.push(`${label}: VLESS requires uuid`);
+          });
         }
       } catch (e) { errors.push(`${f}: invalid YAML (${e.message})`); }
     } else {
@@ -996,13 +1022,15 @@ async function scrapeAllSites() {
     console.log("  [Normalize] Renamed " + renamedCount + " duplicated proxy names");
 
     // === 临时目录 + 校验 + 原子替换 (P1-1) ===
-    // 协议兼容性过滤 (2026-10): anytls 等无内核支持的类型剔除, socks5 归一化,
+    // 协议兼容性过滤: 未支持协议剔除; socks 归一为 socks5; https 归一为 http+tls;
     // vless 非标准 encryption 值删除, 标准 Clash 能力集单独生成 all.yaml
     allProxies = allProxies
       .map(normalizeProxyType)
       .filter(p => MIHOMO_TYPES.has(p.type))
       .map(sanitizeVlessEncryption);
-    const clashStdProxies = allProxies.filter(p => CLASH_STD_TYPES.has(p.type));
+    const clashStdProxies = allProxies
+      .filter(p => CLASH_STD_TYPES.has(p.type))
+      .map(stripClashStdMetadata);
     console.log("  [ProtocolFilter] mihomo.yaml: " + allProxies.length + " | all.yaml (标准Clash): " + clashStdProxies.length);
 
     const tmpDir = SUBS_DIR + ".tmp." + process.pid;
@@ -1011,14 +1039,18 @@ async function scrapeAllSites() {
     let outputErrors = [];
     try {
       // 1. mihomo.yaml (Clash Meta 全量: 含 vless/hysteria2/tuic)
-      const mihomoConfig = buildMihomoConfig(allProxies);
+      const mihomoProxies = allProxies.map(stripMihomoMetadata);
+      const mihomoConfig = buildMihomoConfig(mihomoProxies);
       fs.writeFileSync(path.join(tmpDir, "mihomo.yaml"), yaml.dump(mihomoConfig, { lineWidth: -1, noRefs: true }), "utf8");
       console.log("  OK mihomo.yaml (" + allProxies.length + " proxies, tmp)");
 
-      // 2. all.yaml (标准 Clash: 仅 ss/vmess/trojan/http/https/socks, 767 个
-      //    vless/hysteria2/anytls 节点被标准内核拒载, 必须按能力集过滤)
-      fs.writeFileSync(path.join(tmpDir, "all.yaml"), yaml.dump({ proxies: clashStdProxies }, { lineWidth: -1, noRefs: true }), "utf8");
-      console.log("  OK all.yaml (" + clashStdProxies.length + " proxies, tmp)");
+      // 2. all.yaml (兼容标准 Clash 的子集: ss/vmess/trojan/http/socks5;
+      //    vless/hysteria2/tuic 等不纳入此订阅, 避免旧内核拒载)
+      const validClashStdProxies = clashStdProxies.filter(Boolean);
+      const rejectedCount = clashStdProxies.length - validClashStdProxies.length;
+      if (rejectedCount > 0) console.log("  [AllYaml] Rejected " + rejectedCount + " invalid nodes (missing uuid/server/password)");
+      fs.writeFileSync(path.join(tmpDir, "all.yaml"), yaml.dump({ proxies: validClashStdProxies }, { lineWidth: -1, noRefs: true }), "utf8");
+      console.log("  OK all.yaml (" + validClashStdProxies.length + " proxies, tmp)");
 
       // 3. base64.txt (通用 link: 与 mihomo.yaml 同源, 含全量协议)
       const base64Lines = [];
@@ -1194,7 +1226,7 @@ function buildUri(p, customName) {
   const t = p.type;
   if (t === "vmess") {
     try {
-      const obj = { v: "2", ps: name, add: p.server, port: p.port, id: p.password || p.uuid || "uuid", aid: 0, net: p.network || "tcp", type: "none", host: "", path: "", tls: p.tls ? "tls" : "", sni: p.sni || "" };
+      const obj = { v: "2", ps: name, add: p.server, port: p.port, id: p.password || p.uuid || "uuid", aid: p.alterId || 0, net: p.network || "tcp", type: "none", host: "", path: "", tls: p.tls ? "tls" : "", sni: p.sni || "" };
       uri = "vmess://" + Buffer.from(JSON.stringify(obj)).toString("base64");
     } catch (e) {}
   } else if (t === "trojan") {
@@ -1256,13 +1288,9 @@ function buildUri(p, customName) {
     // 空用户名 (上游 "http://:@host") 在严格解析器下报错 → 仅当 user/pass 至少一个非空时输出凭据段
     const authSeg = (p.username || p.password) ? (p.username || "") + ":" + (p.password || "") + "@" : "";
     uri = t + "://" + authSeg + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
-  } else if (t === "socks") {
-    const qp = new URLSearchParams();
-    if (p.username || p.password) qp.set("auth", "user:" + (p.username || "") + " pass:" + (p.password || ""));
-    const qs = qp.toString();
-    // 协议头输出 socks:// (Xray 标准写法), Clash Meta 接受 socks 与 socks5 两种协议头
-    const authSeg = (p.username || p.password) ? (p.username || "") + ":" + (p.password || "") + "@" : "";
-    uri = "socks://" + authSeg + p.server + ":" + p.port + (qs ? "?" + qs : "") + "#" + name;
+  } else if (t === "socks" || t === "socks5") {
+    const authSeg = (p.username || p.password) ? encodeURIComponent(p.username || "") + ":" + encodeURIComponent(p.password || "") + "@" : "";
+    uri = "socks5://" + authSeg + p.server + ":" + p.port + "#" + name;
   }
   return uri;
 }
@@ -1278,6 +1306,71 @@ function buildUri(p, customName) {
 // 导致 "proxy X is not found" 类解析错误。现统一为 ASCII 安全的
 // "auto-select"/"failover" 组名, 并让引用与定义使用同一 JS 常量。
 // 客户端 (mihomo/FlClash/Clash Verge) 均支持纯 ASCII group 名。
+// Mihomo/Clash Meta: 剥离内部元数据 (Mihomo 同样不接受 _region/speed/qualityScore 等字段)
+function stripMihomoMetadata(p) {
+  if (!p) return null;
+  const out = { ...p };
+  for (const f of ['_region','speed','latency','qualityScore','fraudScore','detectLevel','_orig']) {
+    delete out[f];
+  }
+  // VMess: normalize mandatory fields for current Mihomo schema.
+  if (out.type === 'vmess') {
+    const aid = out.alterId === undefined || out.alterId === null || out.alterId === '' ? 0 : Number(out.alterId);
+    if (!Number.isInteger(aid) || aid < 0 || !out.uuid || !out.server) return null;
+    out.alterId = aid;
+    const supportedCiphers = new Set(['auto', 'none', 'zero', 'aes-128-gcm', 'chacha20-poly1305']);
+    if (!supportedCiphers.has(String(out.cipher || 'auto'))) out.cipher = 'auto';
+    else if (out.cipher === undefined) out.cipher = 'auto';
+  }
+  // 无效认证值清理
+  for (const f of ['password','username']) {
+    if (out[f] !== undefined && isInvalidAuth(out[f])) delete out[f];
+  }
+  return out;
+}
+
+// 标准 Clash (非 Meta) 不接受非协议字段; 剥离内部元数据 + VMess 字段校验
+// 返回 null 表示该节点非法, 应被过滤掉
+function stripClashStdMetadata(p) {
+  if (!p) return null;
+  const out = { ...p };
+  // 剥离内部元数据字段 (标准 Clash 不认识这些字段, 会拒载)
+  for (const f of ['_region','speed','latency','qualityScore','fraudScore','detectLevel','_orig']) {
+    delete out[f];
+  }
+  // VMess 专项校验
+  if (out.type === 'vmess') {
+    // alterId: 标准 Clash 必填, 缺失时默认 0
+    const aid = out.alterId === undefined || out.alterId === null || out.alterId === '' ? 0 : Number(out.alterId);
+    if (!Number.isInteger(aid) || aid < 0) return null;
+    out.alterId = aid;
+    // uuid / server 必须有效
+    if (!out.uuid || !out.server) return null;
+    // port 必须是有效整数
+    if (!Number.isInteger(out.port) || out.port < 1 || out.port > 65535) {
+      const portNum = Number(out.port);
+      if (Number.isNaN(portNum) || portNum < 1 || portNum > 65535) return null;
+      out.port = portNum;
+    }
+    // cipher: 标准 Clash 只接受 auto/aes-128-gcm/chacha20-poly1305/none, 其余删除
+    if (out.cipher) {
+      const validCiphers = new Set(['auto','aes-128-gcm','chacha20-poly1305','none']);
+      if (!validCiphers.has(String(out.cipher))) out.cipher = 'auto';
+    } else {
+      out.cipher = 'auto';
+    }
+  }
+  // 所有协议: 无效 username/password 清理 (字符串 "null"/"None"/空)
+  for (const f of ['password','username']) {
+    if (out[f] !== undefined && isInvalidAuth(out[f])) delete out[f];
+  }
+  // SS: password 缺失时不能伪造
+  if (out.type === 'ss' && !out.password) return null;
+  // Trojan: password 缺失时不能伪造
+  if (out.type === 'trojan' && !out.password) return null;
+  return out;
+}
+
 function buildMihomoConfig(proxies) {
   // group 名必须 ASCII 安全: 此前模板在源码里用 "🚀 节点选择" / "♻️ 自动选择" /
   // "🔱 故障转移" 等 emoji 名, 但生成 YAML 后 emoji 代理对 (surrogate pair) 在不同
@@ -1327,19 +1420,25 @@ function buildMihomoConfig(proxies) {
 // ====== 2026-10 解析兼容性修复 (Clash 无法解析订阅) ======
 // 1) anytls: 任何主流内核 (mihomo / 标准 clash / clash.meta) 都不支持该协议,
 //    出现在 proxies 中会触发严格校验的客户端拒载整个配置 → 从源头过滤。
-// 2) socks5 → socks: 标准字段名为 "socks", 上游偶发 "socks5" 变体归一化。
+// 2) socks: Clash/Mihomo 出站字段必须为 "socks5"; 历史 socks 变体归一化为 socks5。
 // 3) vless encryption: 仅 "none" 是各内核通用值, mlkem 等实验值会破坏解析 → 删除该字段。
-// 4) http/https 空用户名: "http://:@host" 在严格解析器下报错 → 省略凭据段。
-// 5) all.yaml 分发目标为"标准 Clash", 其内核只认识 ss/vmess/trojan/http/https/socks,
-//    vless/hysteria2/tuic 等节点会被拒载 → all.yaml 单独按标准能力集过滤,
+// 4) https 上游统一输出为 type=http + tls=true; 空用户名不输出凭据段。
+// 5) all.yaml 分发目标为标准 Clash 兼容子集: ss/vmess/trojan/http/socks5,
+//    vless/hysteria2/tuic 等节点不纳入 → all.yaml 单独按兼容能力集过滤,
 //    mihomo.yaml (Clash Meta 全量) 保留全部受支持协议。
 // 6) http/https/socks 协议头: 输出层补全 (输入侧缺失时按端口 80/443/1080 推断)。
-const CLASH_STD_TYPES = new Set(["ss", "vmess", "trojan", "http", "https", "socks"]);
-const MIHOMO_TYPES = new Set(["ss", "vmess", "trojan", "vless", "http", "https", "socks", "hysteria", "hysteria2", "tuic", "wireguard"]);
+const CLASH_STD_TYPES = new Set(["ss", "vmess", "trojan", "http", "socks5"]);
+const MIHOMO_TYPES = new Set(["ss", "vmess", "trojan", "vless", "http", "socks5", "hysteria", "hysteria2", "tuic", "wireguard"]);
 
 function normalizeProxyType(p) {
   if (!p || !p.type) return p;
-  if (p.type === "socks5") p.type = "socks";
+  // Clash/Mihomo outbound schema uses socks5 (not socks).
+  if (p.type === "socks") p.type = "socks5";
+  // HTTPS upstream is an HTTP proxy with TLS enabled, not a separate type.
+  if (p.type === "https") {
+    p.type = "http";
+    p.tls = true;
+  }
   return p;
 }
 
@@ -1364,17 +1463,31 @@ function sanitizeVlessEncryption(p) {
 }
 // ====== 协议兼容性修复结束 ======
 
+// 无效认证值判断: 字符串 "null"/"None"/"undefined"/空 或 JS null/undefined 视为缺失
+function isInvalidAuth(v) {
+  if (v === undefined || v === null) return true;
+  const s = String(v).trim().toLowerCase();
+  return s === 'null' || s === 'none' || s === 'undefined' || s === '';
+}
+
 function yamlProxyToEntry(p) {
   const entry = {
     name: buildDisplayName(p), type: p.type, server: p.server, port: p.port,
     "skip-cert-verify": true, udp: true,
   };
-  const fields = ["password","uuid","cipher","network","tls","sni","alpn","flow","mode","congestion","reserved","security","type_param","spk","subType","headerType","host","path","serviceName","encryption"];
-  for (const f of fields) { if (p[f] !== undefined) entry[f] = p[f]; }
+  // 代理协议字段白名单 (含 alterId / username, 2026-10 修复)
+  const fields = ["password","uuid","cipher","alterId","username","network","tls","sni","alpn","flow","mode","congestion","reserved","security","type_param","spk","subType","headerType","host","path","serviceName","encryption"];
+  for (const f of fields) {
+    const v = p[f];
+    if (v === undefined || v === null) continue;
+    // 认证字段: 无效值 (None/null/空) 不写入
+    if ((f === "password" || f === "username") && isInvalidAuth(v)) continue;
+    entry[f] = v;
+  }
   const wsFields = ["ws-opts","client-fingerprint","obfs","obfs-password","udp_relay_mode","congestion_control","allow_insecure","pbk","sid"];
   for (const f of wsFields) {
     const key = f === "ws-opts" ? "ws-opts" : f === "udp_relay_mode" ? "udp-relay-mode" : f;
-    if (p[f] !== undefined) entry[key] = p[f];
+    if (p[f] !== undefined && p[f] !== null) entry[key] = p[f];
   }
   if (p._region) entry._region = p._region;
   if (p.speed) entry.speed = p.speed;
@@ -1410,8 +1523,8 @@ function parseV2rayLineToEntry(line) {
   try {
     const protoEnd = line.indexOf("://");
     if (protoEnd < 0) return null;
-    const proto = line.substring(0, protoEnd);
-    let rest = line.substring(protoEnd + 7);
+    let proto = line.substring(0, protoEnd);
+    let rest = line.substring(protoEnd + 3);
     let name = "";
     const hashIdx = rest.lastIndexOf("#");
     if (hashIdx >= 0) {
@@ -1419,12 +1532,18 @@ function parseV2rayLineToEntry(line) {
       rest = rest.substring(0, hashIdx);
     }
     const region = detectRegionFromName(name);
-    // socks5:// 协议头 → socks (Xray 允许两种写法, 输出层统一 socks)
-    if (proto === "socks5") proto = "socks";
+    // Legacy socks:// URI is normalized to the Clash/Mihomo outbound type socks5.
+    if (proto === "socks") proto = "socks5";
     if (proto === "vmess") {
       const decoded = Buffer.from(rest, "base64").toString("utf8");
       const obj = JSON.parse(decoded);
-      return { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port) || 443, uuid: obj.id, password: obj.id, network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65, fraudScore: 0 };
+      // alterId: 读取源 aid; 缺失时默认 0 (现代 VMess 标准值, 不覆盖有效非零值)
+      const alterId = obj.aid !== undefined ? parseInt(obj.aid, 10) : 0;
+      if (Number.isNaN(alterId) || alterId < 0) return null;
+      const entry = { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port, 10) || 443, uuid: obj.id, password: obj.id, alterId: alterId, cipher: obj.scy || "auto", network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65, fraudScore: 0 };
+      // 校验: uuid / server / port 必须有效, 否则隔离
+      if (!entry.uuid || !entry.server || entry.port < 1 || entry.port > 65535) return null;
+      return entry;
     } else if (proto === "trojan") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -1449,9 +1568,10 @@ function parseV2rayLineToEntry(line) {
       const port = parseInt(srvClean.substring(lastColon + 1)) || 8388;
       const decoded = Buffer.from(enc, "base64").toString("utf8");
       const colonIdx2 = decoded.indexOf(":");
+      if (colonIdx2 <= 0 || colonIdx2 >= decoded.length - 1 || !server || port < 1 || port > 65535) return null;
       const cipher = decoded.substring(0, colonIdx2);
       const password = decoded.substring(colonIdx2 + 1);
-      return { name: name || "ss", type: "ss", server: server || "", port: port, cipher: cipher || "aes-256-gcm", password: password || "pass", _region: region, speed: "unknown", latency: 0, qualityScore: 60, fraudScore: 0 };
+      return { name: name || "ss", type: "ss", server: server, port: port, cipher: cipher, password: password, _region: region, speed: "unknown", latency: 0, qualityScore: 60, fraudScore: 0 };
     } else if (proto === "vless") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -1475,6 +1595,21 @@ function parseV2rayLineToEntry(line) {
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
       return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70, fraudScore: 0 };
+    } else if (proto === "socks5") {
+      const atIdx = rest.lastIndexOf("@");
+      const hasCreds = atIdx >= 0;
+      const creds = hasCreds ? rest.substring(0, atIdx) : "";
+      const colonIdx = creds.indexOf(":");
+      const username = hasCreds && colonIdx >= 0 ? decodeURIComponent(creds.substring(0, colonIdx)) : "";
+      const password = hasCreds && colonIdx >= 0 ? decodeURIComponent(creds.substring(colonIdx + 1)) : "";
+      const srvPort = hasCreds ? rest.substring(atIdx + 1) : rest;
+      const qIdx = srvPort.indexOf("?");
+      const srvClean = qIdx >= 0 ? srvPort.substring(0, qIdx) : srvPort;
+      const lastColon = srvClean.lastIndexOf(":");
+      const server = srvClean.substring(0, lastColon);
+      const port = Number(srvClean.substring(lastColon + 1));
+      if (!server || !Number.isInteger(port) || port < 1 || port > 65535) return null;
+      return { name: name || "socks5", type: "socks5", server: server, port: port, username: username || undefined, password: password || undefined, _region: region, speed: "unknown", latency: 0, qualityScore: 55, fraudScore: 0 };
     } else if (proto === "http" || proto === "https") {
       const atIdx = rest.lastIndexOf("@");
       // 无凭据段: "http://host:port" 直接作为 srvPort 解析 (2026-10: 兼容上游不带 user:pass 的 http 节点)
@@ -1498,7 +1633,7 @@ function parseV2rayLineToEntry(line) {
 }
 
 function convertSingBoxToEntry(ob) {
-  const typeMap = { shadowsocks: "ss", vmess: "vmess", trojan: "trojan", vless: "vless", hysteria: "hysteria2", tuic: "tuic", http: "http", socks: "socks" };
+  const typeMap = { shadowsocks: "ss", vmess: "vmess", trojan: "trojan", vless: "vless", hysteria: "hysteria2", tuic: "tuic", http: "http", socks: "socks5" };
   const t = typeMap[ob.type] || ob.type;
   const name = ob.tag || ob.name || "proxy";
   const region = detectRegionFromName(name);
@@ -1509,7 +1644,14 @@ function convertSingBoxToEntry(ob) {
   if (region !== "unknown") score += 15;
   if (t === "vless" || t === "trojan") score += 5;
   if (ob.tls?.enabled) score += 5;
-  return { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score), fraudScore: 0 };
+  const entry = { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score), fraudScore: 0 };
+  // VMess: 读取 alterId (sing-box 字段名 "alterId" 或 "alter_id")
+  if (t === "vmess") {
+    const aid = ob.alterId !== undefined ? ob.alterId : (ob.alter_id !== undefined ? ob.alter_id : 0);
+    entry.alterId = parseInt(aid, 10);
+    if (Number.isNaN(entry.alterId) || entry.alterId < 0) entry.alterId = 0;
+  }
+  return entry;
 }
 
 
@@ -1744,6 +1886,9 @@ module.exports = {
   // 2026-10 解析兼容性修复: 导出供测试与下游复用
   filterCoreSupported, filterClashStd, sanitizeVlessEncryption,
   MIHOMO_TYPES, CLASH_STD_TYPES,
+  // 2026-10 Clash 字段完整性修复: 导出供测试
+  stripClashStdMetadata, stripMihomoMetadata, isInvalidAuth, normalizeProxyType,
+
 };
 
 if (require.main === module) {

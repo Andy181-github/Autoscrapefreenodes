@@ -144,9 +144,9 @@ const TMP_BASE = fs.mkdtempSync(path.join(os.tmpdir(), 'asfn-reg-'));
 function makeValidTmpDir() {
   const d = path.join(TMP_BASE, 'valid-' + Math.random().toString(36).slice(2));
   fs.mkdirSync(d, { recursive: true });
-  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless' }] }));
-  // all.yaml 必须全为标准 Clash 能力集 (validateSubFiles 新增断言, 2026-10)
-  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'vless', server: 's', port: 443, uuid: 'u' }] }));
+  // all.yaml 必须全为标准 Clash 能力集且字段完整
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss', server: 's', port: 8388, cipher: 'aes-256-gcm', password: 'pw' }] }));
   fs.writeFileSync(path.join(d, 'base64.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
   fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
   fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
@@ -228,17 +228,17 @@ check('run-status contract: failed status is machine-readable', () => {
 });
 
 // ---------- 7. 协议兼容性 (2026-10 修复: anytls 拒载 / 标准 Clash 能力集 / socks 归一化) ----------
-check('filterCoreSupported: anytls removed, socks5 normalized to socks', () => {
+check('filterCoreSupported: anytls removed, socks remains canonical socks5', () => {
   const input = [
     { name: 'a', type: 'anytls', server: 's', port: 1 },
     { name: 'b', type: 'socks5', server: 's', port: 2 },
     { name: 'c', type: 'vless', server: 's', port: 3, uuid: 'u' },
   ];
   const out = scraper.filterCoreSupported(input).map(p => p.type);
-  assert.deepStrictEqual(out, ['socks', 'vless']);
+  assert.deepStrictEqual(out, ['socks5', 'vless']);
 });
 
-check('filterClashStd: vless/hysteria2 excluded, ss/vmess/trojan/http/https/socks kept', () => {
+check('filterClashStd: only supported standard types kept, https normalized to http+tls', () => {
   const input = [
     { name: 'a', type: 'ss', server: 's', port: 1 },
     { name: 'b', type: 'vless', server: 's', port: 2, uuid: 'u' },
@@ -246,9 +246,13 @@ check('filterClashStd: vless/hysteria2 excluded, ss/vmess/trojan/http/https/sock
     { name: 'd', type: 'trojan', server: 's', port: 4, password: 'p' },
     { name: 'e', type: 'http', server: 's', port: 5 },
     { name: 'f', type: 'anytls', server: 's', port: 6 },
+    { name: 'g', type: 'socks5', server: 's', port: 1080 },
+    { name: 'h', type: 'https', server: 's', port: 443 },
   ];
-  const out = scraper.filterClashStd(input).map(p => p.type);
-  assert.deepStrictEqual(out, ['ss', 'trojan', 'http']);
+  const normalized = scraper.filterClashStd(input);
+  const out = normalized.map(p => p.type);
+  assert.deepStrictEqual(out, ['ss', 'trojan', 'http', 'socks5', 'http']);
+  assert.strictEqual(normalized[4].tls, true);
 });
 
 check('sanitizeVlessEncryption: non-none value removed', () => {
@@ -257,10 +261,9 @@ check('sanitizeVlessEncryption: non-none value removed', () => {
   assert.strictEqual(p.encryption, undefined);
 });
 
-check('buildUri: socks outputs socks:// with optional auth', () => {
-  const uri = scraper.buildUri({ name: 'n', type: 'socks', server: 'h', port: 1080, username: '', password: '' });
-  assert.ok(uri.startsWith('socks://'), uri);
-  assert.ok(!uri.includes('socks5://'));
+check('buildUri: SOCKS5 outputs canonical socks5:// URI', () => {
+  const uri = scraper.buildUri({ name: 'n', type: 'socks5', server: 'h', port: 1080, username: '', password: '' });
+  assert.ok(uri.startsWith('socks5://'), uri);
 });
 
 check('buildUri: http with empty creds omits user:pass@ segment', () => {
@@ -283,8 +286,10 @@ check('validateSubFiles: all.yaml containing vless is rejected', () => {
 check('validateSubFiles: all.yaml with only std types passes', () => {
   const d = path.join(TMP_BASE, 'proto-ok');
   fs.mkdirSync(d, { recursive: true });
-  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
-  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }, { name: 'y', type: 'vmess' }] }));
+  const ss = { name: 'x', type: 'ss', server: 's', port: 8388, cipher: 'aes-256-gcm', password: 'pw' };
+  const vmess = { name: 'y', type: 'vmess', server: 's', port: 443, uuid: 'u', alterId: 0, cipher: 'auto' };
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [ss] }));
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [ss, vmess] }));
   fs.writeFileSync(path.join(d, 'base64.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
   fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
   fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'ss://Y2lkZXI6cABAaDo4MDAjbik=\n');
@@ -296,8 +301,8 @@ check('validateSubFiles: hysteria2:// protocol line accepted (digit in scheme)',
   // 2026-10: 旧正则 ^[a-z]+:// 不含数字, 会把 hysteria2:// 误判 malformed
   const d = path.join(TMP_BASE, 'h2-ok');
   fs.mkdirSync(d, { recursive: true });
-  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'hysteria2' }] }));
-  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss' }] }));
+  fs.writeFileSync(path.join(d, 'mihomo.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'hysteria2', server: 'h', port: 443, password: 'pw' }] }));
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ name: 'x', type: 'ss', server: 'h', port: 8388, cipher: 'aes-256-gcm', password: 'pw' }] }));
   fs.writeFileSync(path.join(d, 'base64.txt'), 'hysteria2://pwd@h:443#n\n');
   fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'hysteria2://pwd@h:443#n\n');
   fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'hysteria2://pwd@h:443#n\n');

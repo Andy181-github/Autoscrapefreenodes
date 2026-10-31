@@ -63,13 +63,38 @@ jobs:
       - name: 安装依赖
         run: npm ci
 
-      # 执行单元测试 + 回归测试 (轻量, 发布前最小安全网)
+      # 单元、回归与 Clash/Mihomo 订阅兼容性测试
       - name: 运行测试
-        run: node test.js && node test-regression.js
+        run: npm test
 
       # 执行节点抓取 (生成 5 个订阅文件 + README + config + 运行状态)
       - name: 运行爬虫
         run: node scraper.js
+
+      # 发布前校验实际生成的订阅文件, 失败则阻止提交/推送
+      - name: 校验订阅产物
+        run: node validate-released.js
+
+      # 使用官方 Mihomo 稳定版真实解析生成的订阅; 不依赖 YAML parser 代替内核校验
+      - name: Mihomo 内核兼容性验证
+        run: |
+          MIHOMO_VERSION=v1.19.33
+          curl -fsSL "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-v1-${MIHOMO_VERSION}.gz" -o /tmp/mihomo.gz
+          gzip -dc /tmp/mihomo.gz > /tmp/mihomo
+          chmod +x /tmp/mihomo
+          /tmp/mihomo -v
+          /tmp/mihomo -t -f artifacts/subs/all.yaml
+          # mihomo.yaml 的 GeoSite/GeoIP 规则会触发外部数据库下载; 这里保留代理、组和根配置结构,
+          # 临时移除地理规则以确保 CI 验证聚焦于配置结构和节点协议字段。
+          node - <<'NODE'
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const config = yaml.load(fs.readFileSync('artifacts/subs/mihomo.yaml', 'utf8'));
+          config.rules = ['MATCH,漏网之鱼'];
+          delete config['geox-url'];
+          fs.writeFileSync('/tmp/mihomo-validation.yaml', yaml.dump(config, { lineWidth: -1, noRefs: true }));
+          NODE
+          /tmp/mihomo -t -f /tmp/mihomo-validation.yaml
 
       # 生成 README 徽章 (仅 3 个节点数量徽章, 正文由 scraper.js 维护)
       - name: 生成 README
