@@ -41,7 +41,7 @@ function medianAbsoluteDeviation(values, center = median(values)) {
   if (!values.length || center === null) return null;
   return median(values.map(value => Math.abs(value - center)));
 }
-function summarizeNode(proxy, samples) {
+function summarizeNode(proxy, samples, configuredTargetCount = 2) {
   const ok = samples.filter(x => x.ok), delays = ok.map(x => x.delayMs).filter(Number.isFinite);
   const attempts = samples.length, successes = ok.length;
   const rate = attempts ? successes / attempts : 0;
@@ -52,7 +52,7 @@ function summarizeNode(proxy, samples) {
   const jitterMs = delays.length > 1 ? medianAbsoluteDeviation(delays, latencyMs) : null;
   const targetNames = [...new Set(samples.map(x => x.target).filter(Boolean))];
   const successfulTargets = [...new Set(ok.map(x => x.target).filter(Boolean))];
-  const targetCoverage = targetNames.length ? successfulTargets.length / targetNames.length : 0;
+  const targetCoverage = configuredTargetCount > 0 ? Math.min(1, successfulTargets.length / configuredTargetCount) : 0;
   const latencyComponent = latencyMs === null ? 0 : Math.exp(-latencyMs / 5000);
   const jitterComponent = jitterMs === null ? 0 : Math.exp(-jitterMs / 3000);
   const qualityBreakdown = {
@@ -65,7 +65,7 @@ function summarizeNode(proxy, samples) {
   const enoughEvidence = attempts >= 8;
   // Do not publish a numeric quality score when the minimum evidence threshold is not met.
   const qualityScore = enoughEvidence ? Math.round(Object.values(qualityBreakdown).reduce((sum, value) => sum + value, 0)) : null;
-  const allTargetsPassed = targetNames.length >= 2 && targetCoverage === 1;
+  const allTargetsPassed = configuredTargetCount >= 2 && targetNames.length >= configuredTargetCount && successfulTargets.length >= configuredTargetCount;
   let status = 'unreliable';
   if (!enoughEvidence) status = 'insufficient_data';
   else if (confidenceLowerBound95 >= 0.65 && allTargetsPassed) status = 'stable';
@@ -138,7 +138,7 @@ async function probeOne(proxy, port, secret, opts) {
       await new Promise(r => setTimeout(r, 100));
     }
   }
-  return summarizeNode(proxy, samples);
+  return summarizeNode(proxy, samples, opts.targets.length);
 }
 async function mapLimit(items, limit, fn) {
   const out = new Array(items.length); let next = 0;
@@ -198,7 +198,7 @@ async function main() {
     for (const node of results) for (const failure of node.failures) failureCounts[failure] = (failureCounts[failure] || 0) + 1;
     const statusCounts = { stable: stable.length, working: working.length - stable.length, unreliable: unreliable.length, insufficient_data: insufficientData.length };
     const report = {
-      schemaVersion: 2, mode: a.mode || 'cloud', startedAt, completedAt: new Date().toISOString(),
+      schemaVersion: 3, mode: a.mode || 'cloud', startedAt, completedAt: new Date().toISOString(),
       mihomoVersion, source: path.basename(input),
       qualityModel: {
         name: 'asfn-health-quality-v2', range: '0-100',

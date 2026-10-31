@@ -29,6 +29,8 @@ assert.ok(perfect.qualityScore >= 75 && perfect.qualityScore <= 80);
 assert.strictEqual(perfect.qualityBreakdown.reliability, Number((70 * wilsonLowerBound(8, 8)).toFixed(2)));
 assert.strictEqual(perfect.latencyMs, 135);
 assert.strictEqual(perfect.jitterMs, 20);
+const slowerSamples = samples(8).map(x => ({ ...x, delayMs: x.ok ? x.delayMs + 5000 : null }));
+assert.ok(summarizeNode(proxy, slowerSamples).qualityScore < perfect.qualityScore, 'higher latency should reduce quality score');
 const outlierSamples = [...samples(8), { ok: true, delayMs: 10000, target: 'https://target-a.invalid', round: 5 }];
 const withOutlier = summarizeNode(proxy, outlierSamples);
 assert.ok(withOutlier.jitterMs < 100, 'MAD jitter should resist one extreme latency outlier');
@@ -47,6 +49,7 @@ assert.strictEqual(tooFew.qualityBreakdown, null, 'insufficient samples must not
 assert.ok(perfect.qualityScore > working.qualityScore);
 const singleTarget = samples(8).map(x => ({ ...x, target: 'https://only-one.invalid' }));
 assert.strictEqual(summarizeNode(proxy, singleTarget).status, 'unreliable');
+assert.strictEqual(summarizeNode(proxy, singleTarget).targetCoverage, 0.5, 'coverage must be measured against configured targets, not observed targets');
 (async () => {
   let active = 0, peak = 0;
   const values = await mapLimit([1,2,3,4,5,6], 2, async n => {

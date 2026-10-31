@@ -648,7 +648,7 @@ function validateSubFiles(tmpDir) {
             else seenNames.add(proxy.name);
             if (typeof proxy.server !== 'string' || !proxy.server.trim()) errors.push(`${label}: missing server`);
             if (!Number.isInteger(proxy.port) || proxy.port < 1 || proxy.port > 65535) errors.push(`${label}: invalid port`);
-            for (const field of ['_region', 'speed', 'latency', 'qualityScore', 'fraudScore', 'detectLevel', '_orig']) {
+            for (const field of ['_region', 'speed', 'latency', 'sourceHeuristicScore', 'fraudScore', 'detectLevel', '_orig']) {
               if (proxy[field] !== undefined) errors.push(`${label}: internal metadata '${field}' leaked`);
             }
             for (const field of ['username', 'password']) {
@@ -781,13 +781,13 @@ async function scrapeAllSites() {
   const proxySet = new Set();
   const proxyByServerPort = new Map(); // Track server:port for dedup
   
-  // Enhanced dedup: keep the proxy with HIGHEST quality score when server:port matches
+  // Duplicate preference uses a source-metadata heuristic only; it is not a measured health score.
   function addProxyDeduped(p) {
     const key = p.server + ':' + p.port;
     if (proxyByServerPort.has(key)) {
       const existing = proxyByServerPort.get(key);
-      const existingScore = existing.qualityScore || 0;
-      const newScore = p.qualityScore || 0;
+      const existingScore = existing.sourceHeuristicScore || 0;
+      const newScore = p.sourceHeuristicScore || 0;
       if (newScore > existingScore) {
         // Replace with higher-scored proxy
         proxyByServerPort.set(key, p);
@@ -982,20 +982,9 @@ async function scrapeAllSites() {
   if (allProxies.length > 0) {
     console.log("\n[Output] Writing " + allProxies.length + " proxies to " + SUBS_DIR + "...");
 
-    // Filter out unknown region, cloud IPs, and high-latency nodes
-    const MIN_QUALITY = 60;
-    const MAX_LATENCY = 5000;
+    // Eligibility is based on independent filters, never the static source heuristic score.
     const beforeFilter = allProxies.length;
-    allProxies = allProxies.filter(p => {
-      const region = (p._region || "unknown").toLowerCase();
-      const quality = p.qualityScore || 0;
-      const latency = p.latency || 0;
-      if (region === "unknown" || region === "cloud") return false;
-      if ((p.fraudScore || 0) > 30) return false; // Remove nodes with fraud score > 30%
-      if (latency > MAX_LATENCY) return false;
-      if (quality < MIN_QUALITY) return false;
-      return true;
-    });
+    allProxies = allProxies.filter(isCandidateEligible);
     console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length);
 
     if (allProxies.length === 0) {
@@ -1013,10 +1002,10 @@ async function scrapeAllSites() {
 
     const regionPriority = { us: 1, hk: 2, tw: 3, jp: 4, sg: 5, kr: 6, uk: 7, de: 8, ca: 9, au: 10, nl: 11, fr: 12 };
     allProxies.sort((a, b) => {
-      if ((b.qualityScore || 0) !== (a.qualityScore || 0)) return (b.qualityScore || 0) - (a.qualityScore || 0);
+      if ((b.sourceHeuristicScore || 0) !== (a.sourceHeuristicScore || 0)) return (b.sourceHeuristicScore || 0) - (a.sourceHeuristicScore || 0);
       return (regionPriority[a._region] || 99) - (regionPriority[b._region] || 99);
     });
-    console.log("  Sorted " + allProxies.length + " proxies by quality score and region");
+    console.log("  Sorted " + allProxies.length + " proxies by source heuristic and region");
     // 名称归一化: 清洗 C0/C1 控制字符 + 保证节点名全局唯一 (mihomo 对重名直接拒绝整个配置)
     const renamedCount = normalizeProxyNames(allProxies);
     console.log("  [Normalize] Renamed " + renamedCount + " duplicated proxy names");
@@ -1175,9 +1164,8 @@ function buildDisplayName(p) {
   const flag = getFlagEmoji(region);
   const countryName = getCountryName(region) || region;
   const speed = p.speed || "unknown";
-  const score = p.qualityScore || 0;
-  // fragment 安全化: 名称经此拼接进 vless://...#name, 空白/# 必须清洗
-  return sanitizeNameForUri(flag + countryName + "|" + speed + "|" + score + "分");
+  // 不把静态来源启发式分数写入节点名称，避免误导为实时健康/速度评分。
+  return sanitizeNameForUri(flag + countryName + "|" + speed);
 }
 
 // 从字符串中移除 YAML/go-yaml 会拒绝的 C0/C1 控制字符 (0x00-0x1F 除 \t\n\r, 0x7F, 0x80-0x9F)。
@@ -1306,11 +1294,11 @@ function buildUri(p, customName) {
 // 导致 "proxy X is not found" 类解析错误。现统一为 ASCII 安全的
 // "auto-select"/"failover" 组名, 并让引用与定义使用同一 JS 常量。
 // 客户端 (mihomo/FlClash/Clash Verge) 均支持纯 ASCII group 名。
-// Mihomo/Clash Meta: 剥离内部元数据 (Mihomo 同样不接受 _region/speed/qualityScore 等字段)
+// Mihomo/Clash Meta: 剥离内部元数据 (Mihomo 同样不接受 _region/speed/sourceHeuristicScore 等字段)
 function stripMihomoMetadata(p) {
   if (!p) return null;
   const out = { ...p };
-  for (const f of ['_region','speed','latency','qualityScore','fraudScore','detectLevel','_orig']) {
+  for (const f of ['_region','speed','latency','sourceHeuristicScore','fraudScore','detectLevel','_orig']) {
     delete out[f];
   }
   // VMess: normalize mandatory fields for current Mihomo schema.
@@ -1335,7 +1323,7 @@ function stripClashStdMetadata(p) {
   if (!p) return null;
   const out = { ...p };
   // 剥离内部元数据字段 (标准 Clash 不认识这些字段, 会拒载)
-  for (const f of ['_region','speed','latency','qualityScore','fraudScore','detectLevel','_orig']) {
+  for (const f of ['_region','speed','latency','sourceHeuristicScore','fraudScore','detectLevel','_orig']) {
     delete out[f];
   }
   // VMess 专项校验
@@ -1492,7 +1480,7 @@ function yamlProxyToEntry(p) {
   if (p._region) entry._region = p._region;
   if (p.speed) entry.speed = p.speed;
   if (p.latency) entry.latency = p.latency;
-  if (p.qualityScore !== undefined) entry.qualityScore = p.qualityScore;
+  if (p.sourceHeuristicScore !== undefined) entry.sourceHeuristicScore = p.sourceHeuristicScore;
   return entry;
 }
 
@@ -1511,7 +1499,7 @@ function convertYamlProxyToEntry(p) {
   if (region !== "unknown") score += 15;
   if (p.tls || p.type === "trojan" || p.type === "vless") score += 5;
   if (p.udp) score += 5;
-  p.qualityScore = Math.min(100, score);
+  p.sourceHeuristicScore = Math.min(100, score);
   
   p._region = region;
   p.speed = p.speed || "unknown";
@@ -1540,7 +1528,7 @@ function parseV2rayLineToEntry(line) {
       // alterId: 读取源 aid; 缺失时默认 0 (现代 VMess 标准值, 不覆盖有效非零值)
       const alterId = obj.aid !== undefined ? parseInt(obj.aid, 10) : 0;
       if (Number.isNaN(alterId) || alterId < 0) return null;
-      const entry = { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port, 10) || 443, uuid: obj.id, password: obj.id, alterId: alterId, cipher: obj.scy || "auto", network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, qualityScore: 65, fraudScore: 0 };
+      const entry = { name: name || "vmess", type: "vmess", server: obj.add, port: parseInt(obj.port, 10) || 443, uuid: obj.id, password: obj.id, alterId: alterId, cipher: obj.scy || "auto", network: obj.net || "tcp", tls: obj.tls === "tls", sni: obj.sni || "", _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 65, fraudScore: 0 };
       // 校验: uuid / server / port 必须有效, 否则隔离
       if (!entry.uuid || !entry.server || entry.port < 1 || entry.port > 65535) return null;
       return entry;
@@ -1555,7 +1543,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvPart.substring(0, lastColon);
       const port = parseInt(srvPart.substring(lastColon + 1)) || 443;
       const qp = colonIdx >= 0 ? new URLSearchParams(srvPort.substring(colonIdx + 1)) : new URLSearchParams();
-      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 75, fraudScore: 0 };
+      return { name: name || "trojan", type: "trojan", server: server || "", port: port, password: passwd, sni: qp.get("sni") || "", network: qp.get("type") || "", _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 75, fraudScore: 0 };
     } else if (proto === "ss") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -1571,7 +1559,7 @@ function parseV2rayLineToEntry(line) {
       if (colonIdx2 <= 0 || colonIdx2 >= decoded.length - 1 || !server || port < 1 || port > 65535) return null;
       const cipher = decoded.substring(0, colonIdx2);
       const password = decoded.substring(colonIdx2 + 1);
-      return { name: name || "ss", type: "ss", server: server, port: port, cipher: cipher, password: password, _region: region, speed: "unknown", latency: 0, qualityScore: 60, fraudScore: 0 };
+      return { name: name || "ss", type: "ss", server: server, port: port, cipher: cipher, password: password, _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 60, fraudScore: 0 };
     } else if (proto === "vless") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -1583,7 +1571,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
       const qp = qIdx >= 0 ? new URLSearchParams(srvPort.substring(qIdx + 1)) : new URLSearchParams();
-      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0, qualityScore: 80, fraudScore: 0 };
+      return { name: name || "vless", type: "vless", server: server || "", port: port, uuid: uuid, security: qp.get("security") || "", sni: qp.get("sni") || "", flow: qp.get("flow") || "", _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 80, fraudScore: 0 };
     } else if (proto === "hysteria2" || proto === "hysteria") {
       const atIdx = rest.lastIndexOf("@");
       if (atIdx < 0) return null;
@@ -1594,7 +1582,7 @@ function parseV2rayLineToEntry(line) {
       const lastColon = srvClean.lastIndexOf(":");
       const server = srvClean.substring(0, lastColon);
       const port = parseInt(srvClean.substring(lastColon + 1)) || 443;
-      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, qualityScore: 70, fraudScore: 0 };
+      return { name: name || "hysteria2", type: proto === "hysteria" ? "hysteria" : "hysteria2", server: server || "", port: port, password: passwd, _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 70, fraudScore: 0 };
     } else if (proto === "socks5") {
       const atIdx = rest.lastIndexOf("@");
       const hasCreds = atIdx >= 0;
@@ -1609,7 +1597,7 @@ function parseV2rayLineToEntry(line) {
       const server = srvClean.substring(0, lastColon);
       const port = Number(srvClean.substring(lastColon + 1));
       if (!server || !Number.isInteger(port) || port < 1 || port > 65535) return null;
-      return { name: name || "socks5", type: "socks5", server: server, port: port, username: username || undefined, password: password || undefined, _region: region, speed: "unknown", latency: 0, qualityScore: 55, fraudScore: 0 };
+      return { name: name || "socks5", type: "socks5", server: server, port: port, username: username || undefined, password: password || undefined, _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 55, fraudScore: 0 };
     } else if (proto === "http" || proto === "https") {
       const atIdx = rest.lastIndexOf("@");
       // 无凭据段: "http://host:port" 直接作为 srvPort 解析 (2026-10: 兼容上游不带 user:pass 的 http 节点)
@@ -1626,7 +1614,7 @@ function parseV2rayLineToEntry(line) {
       const port = parseInt(srvClean.substring(lastColon + 1)) || (proto === "https" ? 443 : 80);
       // 空用户名 ("http://:@host" 在严格解析器下报错) → 由 buildUri 按
       // username/password 是否为空决定是否输出 user:pass@ 段。
-      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, qualityScore: 55, fraudScore: 0 };
+      return { name: name || proto, type: proto, server: server || "", port: port, username: username || "", password: password || "", tls: proto === "https", _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: 55, fraudScore: 0 };
     }
   } catch (e) { return null; }
   return null;
@@ -1644,7 +1632,7 @@ function convertSingBoxToEntry(ob) {
   if (region !== "unknown") score += 15;
   if (t === "vless" || t === "trojan") score += 5;
   if (ob.tls?.enabled) score += 5;
-  const entry = { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, qualityScore: Math.min(100, score), fraudScore: 0 };
+  const entry = { name: name, type: t, server: ob.server || "", port: ob.port || 443, uuid: ob.uuid || "", password: ob.password || "", cipher: ob.cipher || "", network: ob.transport?.type || "", tls: ob.tls?.enabled || false, sni: ob.tls?.server || "", _region: region, speed: "unknown", latency: 0, sourceHeuristicScore: Math.min(100, score), fraudScore: 0 };
   // VMess: 读取 alterId (sing-box 字段名 "alterId" 或 "alter_id")
   if (t === "vmess") {
     const aid = ob.alterId !== undefined ? ob.alterId : (ob.alter_id !== undefined ? ob.alter_id : 0);
@@ -1793,6 +1781,14 @@ function getFraudScoreForProxy(proxy) {
   return calculateFraudScoreHeuristic(proxy);
 }
 
+// Candidate eligibility is deliberately independent of sourceHeuristicScore.
+function isCandidateEligible(proxy, maxLatency = 5000) {
+  const region = (proxy && proxy._region || "unknown").toLowerCase();
+  const fraudScore = Number(proxy && proxy.fraudScore || 0);
+  const latency = Number(proxy && proxy.latency || 0);
+  return region !== "unknown" && region !== "cloud" && fraudScore <= 30 && latency <= maxLatency;
+}
+
 // ========== README UPDATE ==========
 function updateREADME(validProxies, output) {
   const readmePath = path.join(__dirname, "README.md");
@@ -1803,8 +1799,7 @@ function updateREADME(validProxies, output) {
   const cnTime = now.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
   const isoTime = now.toISOString();
   const validCount = validProxies.length;
-  const avgScore = validCount > 0 ? Math.round(validProxies.reduce((s, p) => s + (p.qualityScore || 0), 0) / validCount) : 0;
-  const totalScore = validCount * avgScore;
+  const avgFeatureScore = validCount > 0 ? Math.round(validProxies.reduce((s, p) => s + (p.sourceHeuristicScore || 0), 0) / validCount) : 0;
   const byRegion = {};
   for (const p of validProxies) {
     const r = (p._region || "unknown").toLowerCase();
@@ -1847,8 +1842,7 @@ function updateREADME(validProxies, output) {
   const statsRegex = new RegExp("### [\\u{1F4CA}\\s]*节点统计[^]*?(?=\\r?\\n---\\s*\\r?\\n\\s*##)", "su");
   const newStats = ["### 节点统计",
     `- **有效节点数**: ${validCount}`,
-    `- **平均质量分**: ${avgScore}/100`,
-    `- **总质量分**: ${totalScore}`,
+    `- **平均静态特征分（非健康评分）**: ${avgFeatureScore}/100`,
     "",
     "### 🌍 地区分布",
     regionStats.trimEnd(),
@@ -1870,7 +1864,7 @@ function updateREADME(validProxies, output) {
   }
 
   fs.writeFileSync(readmePath, readme, "utf8");
-  console.log(`  [README] Updated with ${validCount} valid nodes, avg score ${avgScore}`);
+  console.log(`  [README] Updated with ${validCount} valid nodes, average static feature score ${avgFeatureScore}`);
 }
 module.exports = {
   scrapeAllSites, scrapeGithubPagesSite, scrapeAirportNode,
@@ -1886,6 +1880,7 @@ module.exports = {
   // 2026-10 解析兼容性修复: 导出供测试与下游复用
   filterCoreSupported, filterClashStd, sanitizeVlessEncryption,
   MIHOMO_TYPES, CLASH_STD_TYPES,
+  isCandidateEligible,
   // 2026-10 Clash 字段完整性修复: 导出供测试
   stripClashStdMetadata, stripMihomoMetadata, isInvalidAuth, normalizeProxyType,
 

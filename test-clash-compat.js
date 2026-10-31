@@ -132,12 +132,12 @@ console.log('\n[3] stripClashStdMetadata — all.yaml field hygiene');
 
 // 3.1 VMess with alterId → kept
 check('stripClashStdMetadata: VMess with alterId=0 passes', () => {
-  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', alterId: 0, _region: 'us', qualityScore: 95, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 };
+  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', alterId: 0, _region: 'us', sourceHeuristicScore: 95, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 };
   const out = scraper.stripClashStdMetadata(p);
   assert.ok(out, 'should not be null');
   assert.strictEqual(out.alterId, 0);
   assert.strictEqual(out._region, undefined, '_region should be stripped');
-  assert.strictEqual(out.qualityScore, undefined, 'qualityScore should be stripped');
+  assert.strictEqual(out.sourceHeuristicScore, undefined, 'sourceHeuristicScore should be stripped');
 });
 
 // 3.2 VMess without alterId → filled with 0
@@ -213,11 +213,11 @@ check('stripClashStdMetadata: VMess cipher="auto" → kept', () => {
 console.log('\n[4] stripMihomoMetadata — mihomo.yaml field hygiene');
 
 check('stripMihomoMetadata: metadata stripped, alterId filled', () => {
-  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', _region: 'us', qualityScore: 90, speed: 'fast', fraudScore: 5, detectLevel: 'tcp', latency: 0 };
+  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 5, detectLevel: 'tcp', latency: 0 };
   const out = scraper.stripMihomoMetadata(p);
   assert.ok(out);
   assert.strictEqual(out._region, undefined);
-  assert.strictEqual(out.qualityScore, undefined);
+  assert.strictEqual(out.sourceHeuristicScore, undefined);
   assert.strictEqual(out.alterId, 0, 'mihomo VMess should also have alterId');
 });
 
@@ -251,21 +251,21 @@ console.log('\n[6] End-to-end: all.yaml / mihomo.yaml YAML validity');
 function makeAllYamlTest() {
   const proxies = [
     // Valid VMess with alterId
-    { name: '🇺🇸 us-vmess', type: 'vmess', server: '1.1.1.1', port: 443, uuid: 'aaaa', alterId: 0, network: 'tcp', cipher: 'auto', _region: 'us', qualityScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇺🇸 us-vmess', type: 'vmess', server: '1.1.1.1', port: 443, uuid: 'aaaa', alterId: 0, network: 'tcp', cipher: 'auto', _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid VMess with alterId=1
-    { name: '🇭🇰 hk-vmess', type: 'vmess', server: '2.2.2.2', port: 443, uuid: 'bbbb', alterId: 1, network: 'ws', tls: true, _region: 'hk', qualityScore: 85, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇭🇰 hk-vmess', type: 'vmess', server: '2.2.2.2', port: 443, uuid: 'bbbb', alterId: 1, network: 'ws', tls: true, _region: 'hk', sourceHeuristicScore: 85, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid SS
-    { name: '🇯🇵 jp-ss', type: 'ss', server: '3.3.3.3', port: 8388, cipher: 'aes-256-gcm', password: 'realpass', _region: 'jp', qualityScore: 70, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇯🇵 jp-ss', type: 'ss', server: '3.3.3.3', port: 8388, cipher: 'aes-256-gcm', password: 'realpass', _region: 'jp', sourceHeuristicScore: 70, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid Trojan
-    { name: '🇸🇬 sg-trojan', type: 'trojan', server: '4.4.4.4', port: 443, password: 'trojanpass', _region: 'sg', qualityScore: 75, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇸🇬 sg-trojan', type: 'trojan', server: '4.4.4.4', port: 443, password: 'trojanpass', _region: 'sg', sourceHeuristicScore: 75, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid HTTP with real password
-    { name: '🇺🇸 us-http', type: 'http', server: '5.5.5.5', port: 8080, username: 'user', password: 'pass', _region: 'us', qualityScore: 55, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇺🇸 us-http', type: 'http', server: '5.5.5.5', port: 8080, username: 'user', password: 'pass', _region: 'us', sourceHeuristicScore: 55, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Invalid: HTTP with password='null' → password stripped, node kept (http doesn't require auth)
-    { name: '🇺🇸 us-http-bad', type: 'http', server: '6.6.6.6', port: 8080, password: 'null', _region: 'us', qualityScore: 55, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇺🇸 us-http-bad', type: 'http', server: '6.6.6.6', port: 8080, password: 'null', _region: 'us', sourceHeuristicScore: 55, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Invalid: SS missing password → should be null (removed)
-    { name: '🇯🇵 jp-ss-nopass', type: 'ss', server: '7.7.7.7', port: 8388, cipher: 'aes-256-gcm', _region: 'jp', qualityScore: 70, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇯🇵 jp-ss-nopass', type: 'ss', server: '7.7.7.7', port: 8388, cipher: 'aes-256-gcm', _region: 'jp', sourceHeuristicScore: 70, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Invalid: VMess missing uuid → should be null (removed)
-    { name: '🇺🇸 us-vmess-nouuid', type: 'vmess', server: '8.8.8.8', port: 443, alterId: 0, _region: 'us', qualityScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇺🇸 us-vmess-nouuid', type: 'vmess', server: '8.8.8.8', port: 443, alterId: 0, _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
   ];
 
   // Apply stripClashStdMetadata (all.yaml path)
@@ -294,7 +294,7 @@ check('all.yaml: no metadata fields in output', () => {
   const { stdProxies } = makeAllYamlTest();
   for (const p of stdProxies) {
     assert.strictEqual(p._region, undefined, p.name + ': _region should be stripped');
-    assert.strictEqual(p.qualityScore, undefined, p.name + ': qualityScore should be stripped');
+    assert.strictEqual(p.sourceHeuristicScore, undefined, p.name + ': sourceHeuristicScore should be stripped');
     assert.strictEqual(p.speed, undefined, p.name + ': speed should be stripped');
     assert.strictEqual(p.fraudScore, undefined, p.name + ': fraudScore should be stripped');
     assert.strictEqual(p.detectLevel, undefined, p.name + ': detectLevel should be stripped');
@@ -340,8 +340,8 @@ console.log('\n[7] mihomo.yaml — stripMihomoMetadata');
 
 check('mihomo.yaml: all VMess have alterId after stripping', () => {
   const proxies = [
-    { name: 'a', type: 'vmess', server: 's', port: 443, uuid: 'u', _region: 'us', qualityScore: 90, speed: 'fast' },
-    { name: 'b', type: 'vmess', server: 's', port: 443, uuid: 'u2', alterId: 1, _region: 'jp', qualityScore: 80, speed: 'fast' },
+    { name: 'a', type: 'vmess', server: 's', port: 443, uuid: 'u', _region: 'us', sourceHeuristicScore: 90, speed: 'fast' },
+    { name: 'b', type: 'vmess', server: 's', port: 443, uuid: 'u2', alterId: 1, _region: 'jp', sourceHeuristicScore: 80, speed: 'fast' },
   ];
   const stripped = proxies.map(scraper.stripMihomoMetadata).filter(Boolean);
   for (const p of stripped) {
@@ -354,8 +354,8 @@ check('mihomo.yaml: all VMess have alterId after stripping', () => {
 
 check('mihomo.yaml YAML dumps and reloads cleanly', () => {
   const proxies = [
-    { name: 'a', type: 'vless', server: 's', port: 443, uuid: 'u', _region: 'us', qualityScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
-    { name: 'b', type: 'hysteria2', server: 's', port: 443, password: 'p', _region: 'jp', qualityScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'a', type: 'vless', server: 's', port: 443, uuid: 'u', _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'b', type: 'hysteria2', server: 's', port: 443, password: 'p', _region: 'jp', sourceHeuristicScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
   ];
   const stripped = proxies.map(scraper.stripMihomoMetadata).filter(Boolean);
   const mihomoCfg = scraper.buildMihomoConfig(stripped);
@@ -376,14 +376,14 @@ console.log('\n[8] Mixed protocol integration');
 
 check('filterClashStd + stripClashStdMetadata: mixed input', () => {
   const input = [
-    { name: 'vless-node', type: 'vless', server: 's', port: 443, uuid: 'u', _region: 'us', qualityScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
-    { name: 'vmess-node', type: 'vmess', server: 's', port: 443, uuid: 'u', alterId: 0, cipher: 'auto', _region: 'jp', qualityScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
-    { name: 'h2-node', type: 'hysteria2', server: 's', port: 443, password: 'p', _region: 'sg', qualityScore: 70, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
-    { name: 'ss-node', type: 'ss', server: 's', port: 8388, cipher: 'aes-256-gcm', password: 'pw', _region: 'hk', qualityScore: 60, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'vless-node', type: 'vless', server: 's', port: 443, uuid: 'u', _region: 'us', sourceHeuristicScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'vmess-node', type: 'vmess', server: 's', port: 443, uuid: 'u', alterId: 0, cipher: 'auto', _region: 'jp', sourceHeuristicScore: 80, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'h2-node', type: 'hysteria2', server: 's', port: 443, password: 'p', _region: 'sg', sourceHeuristicScore: 70, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'ss-node', type: 'ss', server: 's', port: 8388, cipher: 'aes-256-gcm', password: 'pw', _region: 'hk', sourceHeuristicScore: 60, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     { name: 'socks-node', type: 'socks', server: 's', port: 1080 },
     { name: 'socks5-node', type: 'socks5', server: 's', port: 1081 },
     { name: 'https-node', type: 'https', server: 's', port: 443 },
-    { name: 'anytls-node', type: 'anytls', server: 's', port: 443, _region: 'us', qualityScore: 50, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: 'anytls-node', type: 'anytls', server: 's', port: 443, _region: 'us', sourceHeuristicScore: 50, speed: 'unknown', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
   ];
   const std = scraper.filterClashStd(input);
   assert.deepStrictEqual(std.map(p => p.type), ['vmess', 'ss', 'socks5', 'socks5', 'http'], 'only supported standard types should survive and normalize');
@@ -392,7 +392,7 @@ check('filterClashStd + stripClashStdMetadata: mixed input', () => {
   assert.strictEqual(stripped.length, 5, 'all five valid nodes should survive stripping');
   for (const p of stripped) {
     assert.strictEqual(p._region, undefined);
-    assert.strictEqual(p.qualityScore, undefined);
+    assert.strictEqual(p.sourceHeuristicScore, undefined);
   }
 });
 

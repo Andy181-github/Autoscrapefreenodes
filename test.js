@@ -303,60 +303,34 @@ function testFraudScore() {
   return failed === 0;
 }
 
-// Test quality score calculation
+// Test the real source heuristic score separately from measured health quality.
 function testQualityScore() {
-  console.log('\n=== Testing Quality Score Calculation ===');
-
-  const testCases = [
-    {
-      proxy: { server: 'my-server.com', name: 'us-test', tls: true, udp: true },
-      expected: { min: 70, max: 80 }
-    },
-    {
-      proxy: { server: 'unknown-server', name: 'test', tls: false, udp: false },
-      expected: { min: 50, max: 60 }
-    }
+  console.log('\n=== Testing Static Source Heuristic Score (not health quality) ===');
+  const scraper = require('./scraper');
+  const cases = [
+    { proxy: { server: 'my-server.com', name: 'us-test', type: 'ss', port: 443, tls: true, udp: true }, expected: 95 },
+    { proxy: { server: 'unknown-server', name: 'test', type: 'ss', port: 443, tls: false, udp: false }, expected: 70 },
+    { proxy: { server: '104.20.1.1', name: 'unknown', type: 'ss', port: 443, tls: false, udp: false }, expected: 50 }
   ];
-
-  const IP_REGION_MAP = {
-    'hkpcc': 'hk', 'hkc': 'hk', 'hk': 'hk', 'hkt': 'hk',
-    'tw': 'tw', 'taiwan': 'tw', 'cht': 'tw', 'hinet': 'tw',
-    'jp': 'jp', 'japan': 'jp', 'tokyo': 'jp', 'osaka': 'jp',
-    'us': 'us', 'usa': 'us', 'america': 'us', 'ny': 'us', 'la': 'us', 'sf': 'us', 'dc': 'us',
-    'sg': 'sg', 'singapore': 'sg', 'sin': 'sg',
-    'kr': 'kr', 'korea': 'kr', 'seoul': 'kr',
-    'uk': 'uk', 'gb': 'uk', 'london': 'uk',
-    'de': 'de', 'germany': 'de', 'frankfurt': 'de',
-    'fr': 'fr', 'france': 'fr', 'paris': 'fr',
-    'nl': 'nl', 'netherlands': 'nl', 'ams': 'nl',
-    'ca': 'ca', 'canada': 'ca', 'toronto': 'ca',
-    'au': 'au', 'australia': 'au', 'sydney': 'au',
-    'cn': 'cn', 'china': 'cn', 'aliyun': 'cn', 'tencent': 'cn', 'baidu': 'cn'
-  };
-
-  let passed = 0;
-  let failed = 0;
-
-  for (const tc of testCases) {
+  let passed = 0, failed = 0;
+  for (const tc of cases) {
     try {
-      let score = 50;
-      const nameLower = (tc.proxy.name || "").toLowerCase().replace(/[_\-\s]/g, "");
-      let region = "unknown";
-      for (const [key, val] of Object.entries(IP_REGION_MAP)) {
-        if (nameLower.includes(key.toLowerCase())) { region = val; break; }
-      }
-      if (region !== "unknown") score += 15;
-      if (tc.proxy.tls || tc.proxy.type === "trojan" || tc.proxy.type === "vless") score += 5;
-      if (tc.proxy.udp) score += 5;
-
-      assert.ok(score >= tc.expected.min && score <= tc.expected.max, `Expected score between ${tc.expected.min} and ${tc.expected.max}, got ${score}`);
+      const entry = scraper.convertYamlProxyToEntry({ ...tc.proxy });
+      assert.strictEqual(entry.sourceHeuristicScore, tc.expected);
       passed++;
     } catch (e) {
       failed++;
       console.log(`  FAIL: ${e.message}`);
     }
   }
-
+  try {
+    assert.strictEqual(scraper.isCandidateEligible({ _region: 'us', fraudScore: 0, latency: 120, sourceHeuristicScore: 0 }), true,
+      'low static heuristic score must not reject a node that passes independent eligibility checks');
+    passed++;
+  } catch (e) {
+    failed++;
+    console.log(`  FAIL: ${e.message}`);
+  }
   console.log(`  Results: ${passed} passed, ${failed} failed`);
   return failed === 0;
 }
