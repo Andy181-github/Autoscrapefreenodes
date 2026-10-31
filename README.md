@@ -1,9 +1,9 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1498-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1491-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1491-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1119-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1119-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1119-purple)
 
 > **最后同步时间**：2026/10/31 22:03:10 (北京时间)
 > **ISO 时间**：2026-10-31T14:03:10.279Z

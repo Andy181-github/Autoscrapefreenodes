@@ -975,11 +975,11 @@ proxies:
     client-fingerprint: chrome
   - name: 🇺🇸美国|unknown|90分-22
     type: vmess
-    server: 38.63.17.164
-    port: 30000
+    server: 84.17.41.2
+    port: 18000
     skip-cert-verify: true
     udp: true
-    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
     cipher: auto
     alterId: 64
     network: ws
@@ -2117,8 +2117,8 @@ proxies:
       path: linkvws
   - name: 🇺🇸美国|unknown|90分-119
     type: trojan
-    server: 63182sh8-4d7b.aws-agent.net
-    port: 12122
+    server: blog.webex.com
+    port: 443
     skip-cert-verify: true
     udp: true
     password: AA885B42-133C-3828-FB69-E45105C06092
@@ -2750,6 +2750,38 @@ proxies:
     client-fingerprint: chrome
   - name: 🇰🇵日本|unknown|90分-20
     type: trojan
+    server: 149.28.21.106
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: eeb6823c-b926-4ea2-866a-5542edd26e59
+    network: ws
+    sni: tjsp.hhxaf.cc.cd
+    ws-opts:
+      headers:
+        Host: tjsp.hhxaf.cc.cd
+      path: /
+    client-fingerprint: chrome
+    _region: jp
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇰🇵日本|unknown|90分-2
+    type: ss
+    server: 154.36.158.197
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: BeaUf9c0AEWH40Pu
+    cipher: aes-256-gcm
+    _region: jp
+    speed: unknown
+    qualityScore: 90
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇰🇵日本|unknown|90分-4
+    type: trojan
     server: 45.32.52.173
     port: 8886
     skip-cert-verify: true
@@ -2890,7 +2922,7 @@ proxies:
     sni: m.ctrip.com
   - name: 🇸🋀新加坡|unknown|90分-12
     type: vmess
-    server: 6JiziO8PxQAXBAtZ.v.3dns.vip
+    server: kQov7UKaDknXb8a3.v.3dns.vip
     port: 443
     skip-cert-verify: true
     udp: true
@@ -2901,7 +2933,7 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: 6JiziO8PxQAXBAtZ.v.3dns.vip
+        Host: kQov7UKaDknXb8a3.v.3dns.vip
       path: /ws-vmess
   - name: 🇰🇷韩国|unknown|90分
     type: trojan
@@ -3954,7 +3986,7 @@ proxies:
     cipher: auto
     alterId: 64
     network: ws
-    tls: true
+    sni: tjsp.hhxaf.cc.cd
     ws-opts:
       headers:
         Host: www.11302851.xyz
@@ -4022,7 +4054,7 @@ proxies:
     sni: www.cordweave.com
   - name: 🇳🇱荷兰|unknown|90分-12
     type: vmess
-    server: 45.58.174.92
+    server: 119.252.190.115
     port: 443
     skip-cert-verify: true
     udp: true
@@ -4955,7 +4987,7 @@ proxies:
     port: 2095
     skip-cert-verify: true
     udp: true
-    uuid: 6658a3a6-225a-4d33-a5d2-82cfde565b4e
+    uuid: 5f3f09ad-89cb-4e94-a7ad-aa8239913555
     cipher: auto
     alterId: 0
     network: ws
@@ -5106,9 +5138,9 @@ proxies:
     password: 3eOFeNssde7PYYMv
     cipher: aes-256-gcm
   - name: 🇰🇵日本|unknown|85分-2
-    type: vmess
-    server: 103.35.188.226
-    port: 80
+    type: ss
+    server: 149.22.87.204
+    port: 443
     skip-cert-verify: true
     udp: true
     uuid: 098e7cdd-03b4-435d-8c41-ea608fa637c2
@@ -7814,7 +7846,7 @@ proxies:
     cipher: auto
     alterId: 1
     network: ws
-    tls: true
+    sni: www.ignitelimit.com
     ws-opts:
       headers:
         Host: ophelia.mom
@@ -7829,7 +7861,7 @@ proxies:
     cipher: auto
     alterId: 64
     network: ws
-    tls: true
+    sni: www.calmlunch.com
     ws-opts:
       headers:
         Host: www.71585518.xyz
@@ -8686,7 +8718,7 @@ proxies:
     cipher: auto
     alterId: 0
     network: ws
-    tls: false
+    sni: www.ignitelimit.com
     ws-opts:
       headers:
         Host: 47.244.120.197
@@ -9003,7 +9035,9 @@ proxies:
     cipher: auto
     alterId: 64
     network: ws
-    tls: true
+    sni: www.pleadcourt.org
+    alpn:
+      - http/1.1
     ws-opts:
       headers:
         Host: www.69715870.xyz
@@ -10268,11 +10302,341 @@ proxies:
     network: tcp
   - name: 🇰🇵日本|unknown|65分
     type: vmess
-    server: 139.162.125.97
-    port: 49499
+    server: 104.19.47.65
+    port: 2086
     skip-cert-verify: true
     udp: true
-    uuid: 3ce1d2e3-0e1b-4b00-921b-fcc0f8abe1f6
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip11-2.freegradely.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-33
+    type: vmess
+    server: 104.19.46.22
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip13.freegradely.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-34
+    type: vmess
+    server: 104.16.164.228
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: e6d76927-edd1-442b-92a4-fa031f522c42
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: sssub.v2.001.ssrsub.com
+      path: /api/v3/download.getFile
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-35
+    type: vmess
+    server: 104.19.47.79
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip14.freegradely.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-36
+    type: vmess
+    server: 104.19.21.230
+    port: 2095
+    skip-cert-verify: true
+    udp: true
+    uuid: 18d96190-c10f-448f-a82a-2d36df5c3cde
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: ip20.6016725.xyz
+      path: /github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-37
+    type: vmess
+    server: 104.19.32.46
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: 29eebb60-b27b-4a9d-bba5-947763d9205e
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip006.3196772.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-38
+    type: vmess
+    server: 104.19.45.35
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip13.freegradely.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-39
+    type: vmess
+    server: 172.67.152.170
+    port: 2052
+    skip-cert-verify: true
+    udp: true
+    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: mahilu.site
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-40
+    type: vmess
+    server: 104.19.47.27
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip1.1457230.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-41
+    type: vmess
+    server: 23.227.38.22
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 9258153a-dc97-4e39-9037-009abfc4fed0
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: per-essex-patterns-bowling.trycloudflare.com
+      path: 9258153a-dc97-4e39-9037-009abfc4fed0-vm
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-42
+    type: vmess
+    server: 104.19.38.62
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: 29eebb60-b27b-4a9d-bba5-947763d9205e
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip005.3196772.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-43
+    type: vmess
+    server: 23.227.38.3
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip2.1457230.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-44
+    type: vmess
+    server: 104.26.8.156
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip1.1789034.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-45
+    type: vmess
+    server: 104.17.171.34
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 60be5ddb-c9f1-48ec-b0ee-f6bd4364b3ce
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ccs.hostmjj.com
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-46
+    type: vmess
+    server: 104.19.47.80
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
+    cipher: auto
+    network: ws
+    ws-opts:
+      headers:
+        Host: ip14.freegradely.xyz
+      path: github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-47
+    type: vmess
+    server: 104.19.21.63
+    port: 2095
+    skip-cert-verify: true
+    udp: true
+    uuid: 18d96190-c10f-448f-a82a-2d36df5c3cde
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: ip21.6016725.xyz
+      path: /github.com/Alvin9999
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-48
+    type: vmess
+    server: 104.21.82.39
+    port: 2052
+    skip-cert-verify: true
+    udp: true
+    uuid: 7a737f41-b792-4260-94ff-3d864da67b80
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: mahilu.site
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-49
+    type: vmess
+    server: 172.67.130.140
+    port: 2082
+    skip-cert-verify: true
+    udp: true
+    uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
+    cipher: auto
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: s1c.v2.v001sss.xyz
+      path: /
+    _region: us
+    speed: unknown
+    qualityScore: 65
+    detectLevel: tcp
+    fraudScore: 0
+  - name: 🇺🇸美国|unknown|65分-50
+    type: vmess
+    server: 66.163.117.58
+    port: 22324
+    skip-cert-verify: true
+    udp: true
+    uuid: 04621bae-ab36-11ec-b909-0242ac120002
     cipher: auto
     alterId: 0
     network: tcp
@@ -10354,8 +10718,8 @@ proxies:
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown|65分-5
     type: ss
-    server: 51.79.49.116
-    port: 8882
+    server: 130.49.189.158
+    port: 43558
     skip-cert-verify: true
     udp: true
     password: kDWvXYZoTBcGkC4
@@ -10394,8 +10758,8 @@ proxies:
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown|65分-10
     type: ss
-    server: 51.222.155.113
-    port: 5601
+    server: 51.222.200.165
+    port: 5000
     skip-cert-verify: true
     udp: true
     password: Y6R9pAtvxxzmGC
