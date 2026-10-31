@@ -648,7 +648,7 @@ function validateSubFiles(tmpDir) {
             else seenNames.add(proxy.name);
             if (typeof proxy.server !== 'string' || !proxy.server.trim()) errors.push(`${label}: missing server`);
             if (!Number.isInteger(proxy.port) || proxy.port < 1 || proxy.port > 65535) errors.push(`${label}: invalid port`);
-            for (const field of ['_region', 'speed', 'latency', 'sourceHeuristicScore', 'fraudScore', 'detectLevel', '_orig']) {
+            for (const field of ['_region', 'speed', 'latency', 'sourceHeuristicScore', 'qualityScore', 'fraudScore', 'detectLevel', '_orig']) {
               if (proxy[field] !== undefined) errors.push(`${label}: internal metadata '${field}' leaked`);
             }
             for (const field of ['username', 'password']) {
@@ -1298,7 +1298,7 @@ function buildUri(p, customName) {
 function stripMihomoMetadata(p) {
   if (!p) return null;
   const out = { ...p };
-  for (const f of ['_region','speed','latency','sourceHeuristicScore','fraudScore','detectLevel','_orig']) {
+  for (const f of ['_region','speed','latency','sourceHeuristicScore','qualityScore','fraudScore','detectLevel','_orig']) {
     delete out[f];
   }
   // VMess: normalize mandatory fields for current Mihomo schema.
@@ -1323,7 +1323,7 @@ function stripClashStdMetadata(p) {
   if (!p) return null;
   const out = { ...p };
   // 剥离内部元数据字段 (标准 Clash 不认识这些字段, 会拒载)
-  for (const f of ['_region','speed','latency','sourceHeuristicScore','fraudScore','detectLevel','_orig']) {
+  for (const f of ['_region','speed','latency','sourceHeuristicScore','qualityScore','fraudScore','detectLevel','_orig']) {
     delete out[f];
   }
   // VMess 专项校验

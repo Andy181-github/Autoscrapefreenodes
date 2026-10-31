@@ -132,12 +132,13 @@ console.log('\n[3] stripClashStdMetadata — all.yaml field hygiene');
 
 // 3.1 VMess with alterId → kept
 check('stripClashStdMetadata: VMess with alterId=0 passes', () => {
-  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', alterId: 0, _region: 'us', sourceHeuristicScore: 95, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 };
+  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', alterId: 0, _region: 'us', sourceHeuristicScore: 95, qualityScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 };
   const out = scraper.stripClashStdMetadata(p);
   assert.ok(out, 'should not be null');
   assert.strictEqual(out.alterId, 0);
   assert.strictEqual(out._region, undefined, '_region should be stripped');
   assert.strictEqual(out.sourceHeuristicScore, undefined, 'sourceHeuristicScore should be stripped');
+  assert.strictEqual(out.qualityScore, undefined, 'legacy qualityScore should also be stripped');
 });
 
 // 3.2 VMess without alterId → filled with 0
@@ -213,11 +214,12 @@ check('stripClashStdMetadata: VMess cipher="auto" → kept', () => {
 console.log('\n[4] stripMihomoMetadata — mihomo.yaml field hygiene');
 
 check('stripMihomoMetadata: metadata stripped, alterId filled', () => {
-  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 5, detectLevel: 'tcp', latency: 0 };
+  const p = { name: 'test', type: 'vmess', server: 's.example', port: 443, uuid: 'u1', _region: 'us', sourceHeuristicScore: 90, qualityScore: 80, speed: 'fast', fraudScore: 5, detectLevel: 'tcp', latency: 0 };
   const out = scraper.stripMihomoMetadata(p);
   assert.ok(out);
   assert.strictEqual(out._region, undefined);
   assert.strictEqual(out.sourceHeuristicScore, undefined);
+  assert.strictEqual(out.qualityScore, undefined, 'legacy health-score metadata must be stripped');
   assert.strictEqual(out.alterId, 0, 'mihomo VMess should also have alterId');
 });
 
@@ -251,7 +253,7 @@ console.log('\n[6] End-to-end: all.yaml / mihomo.yaml YAML validity');
 function makeAllYamlTest() {
   const proxies = [
     // Valid VMess with alterId
-    { name: '🇺🇸 us-vmess', type: 'vmess', server: '1.1.1.1', port: 443, uuid: 'aaaa', alterId: 0, network: 'tcp', cipher: 'auto', _region: 'us', sourceHeuristicScore: 90, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
+    { name: '🇺🇸 us-vmess', type: 'vmess', server: '1.1.1.1', port: 443, uuid: 'aaaa', alterId: 0, network: 'tcp', cipher: 'auto', _region: 'us', sourceHeuristicScore: 90, qualityScore: 88, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid VMess with alterId=1
     { name: '🇭🇰 hk-vmess', type: 'vmess', server: '2.2.2.2', port: 443, uuid: 'bbbb', alterId: 1, network: 'ws', tls: true, _region: 'hk', sourceHeuristicScore: 85, speed: 'fast', fraudScore: 0, detectLevel: 'tcp', latency: 0 },
     // Valid SS
@@ -295,6 +297,7 @@ check('all.yaml: no metadata fields in output', () => {
   for (const p of stdProxies) {
     assert.strictEqual(p._region, undefined, p.name + ': _region should be stripped');
     assert.strictEqual(p.sourceHeuristicScore, undefined, p.name + ': sourceHeuristicScore should be stripped');
+    assert.strictEqual(p.qualityScore, undefined, p.name + ': legacy qualityScore should be stripped');
     assert.strictEqual(p.speed, undefined, p.name + ': speed should be stripped');
     assert.strictEqual(p.fraudScore, undefined, p.name + ': fraudScore should be stripped');
     assert.strictEqual(p.detectLevel, undefined, p.name + ': detectLevel should be stripped');
@@ -393,6 +396,7 @@ check('filterClashStd + stripClashStdMetadata: mixed input', () => {
   for (const p of stripped) {
     assert.strictEqual(p._region, undefined);
     assert.strictEqual(p.sourceHeuristicScore, undefined);
+    assert.strictEqual(p.qualityScore, undefined, 'legacy qualityScore should also be stripped');
   }
 });
 
@@ -410,6 +414,9 @@ check('validateSubFiles: rejects missing VMess alterId and unknown protocol type
   fs.writeFileSync(path.join(d, 'byxiaoxi.txt'), 'vmess://dGVzdA==\n');
   fs.writeFileSync(path.join(d, 'kooker.jp.txt'), 'vmess://dGVzdA==\n');
   assert.deepStrictEqual(scraper.validateSubFiles(d), [], 'valid fixture should pass');
+  fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ ...valid, qualityScore: 77 }] }));
+  const legacyMetadataErrors = scraper.validateSubFiles(d);
+  assert.ok(legacyMetadataErrors.some(e => e.includes('qualityScore')), 'legacy qualityScore metadata must be rejected');
   fs.writeFileSync(path.join(d, 'all.yaml'), yaml.dump({ proxies: [{ ...valid, alterId: undefined }, { name: 'bad-socks', type: 'socks', server: 's', port: 1080 }] }));
   const errs = scraper.validateSubFiles(d);
   assert.ok(errs.some(e => e.includes('alterId')), 'missing alterId must fail validation');
