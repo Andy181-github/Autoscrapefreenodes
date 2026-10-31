@@ -1,12 +1,12 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1650-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1650-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1650-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1664-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1664-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1664-purple)
 
-> **最后同步时间**：2026/11/01 00:34:20 (北京时间)
-> **ISO 时间**：2026-10-31T16:34:20.559Z
+> **最后同步时间**：2026/11/01 04:21:55 (北京时间)
+> **ISO 时间**：2026-10-31T20:21:55.381Z
 
 > ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
 > 旧的根目录 raw URL 现已 404，请按下方「订阅链接」中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
@@ -102,22 +102,22 @@ README 中的同步时间、节点统计和地区分布由 `scraper.js` 更新�
 ---
 
 ### 节点统计
-- **有效节点数**: 1650
-- **平均静态特征分（非健康评分）**: 82/100
+- **有效节点数**: 1664
+- **平均静态特征分（非健康评分）**: 81/100
 
 ### 🌍 地区分布
-- **美国**: 1015 nodes
-- **德国**: 204 nodes
-- **荷兰**: 137 nodes
-- **新加坡**: 55 nodes
-- **日本**: 47 nodes
-- **法国**: 42 nodes
+- **美国**: 1019 nodes
+- **德国**: 206 nodes
+- **荷兰**: 144 nodes
+- **新加坡**: 57 nodes
+- **日本**: 49 nodes
+- **法国**: 45 nodes
 - **中国**: 38 nodes
-- **英国**: 32 nodes
+- **英国**: 30 nodes
 - **澳大利亚**: 24 nodes
-- **香港**: 19 nodes
-- **加拿大**: 17 nodes
-- **韩国**: 15 nodes
+- **香港**: 18 nodes
+- **加拿大**: 16 nodes
+- **韩国**: 13 nodes
 - **台湾**: 5 nodes
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
@@ -125,6 +125,7 @@ README 中的同步时间、节点统计和地区分布由 `scraper.js` 更新�
 - **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
 - **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
 - **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt)
+
 ---
 
 ## ⚖️ 免责声明 (Disclaimer)
