@@ -1,72 +1,26 @@
 proxies:
-  - name: 🇺🇸美国|unknown-25
-    type: vless
-    server: 151.101.65.242
+  - name: 🇺🇸美国|unknown-21
+    type: http
+    server: 149.34.248.65
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 57a8ea50-1a8d-4e9f-b6e8-e991a9914a8a
-    network: ws
     tls: true
-    ws-opts:
-      headers:
-        Host: ghosts-spasm.quick-cdn.net
-      path: /ws
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-27
+  - name: 🇺🇸美国|unknown-36
     type: http
-    server: 138.199.35.212
+    server: 138.199.35.220
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇸美国|unknown-44
-    type: vmess
-    server: 162.19.204.71
-    port: 1234
-    skip-cert-verify: true
-    udp: true
-    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    cipher: auto
-    alterId: 0
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-58
-    type: vless
-    server: 38.107.236.166
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 48572af1-d091-457b-a86e-4a457e99927f
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: 3h-unitedstates3.09vpn.com
-      path: /vless/
-  - name: 🇺🇸美国|unknown-72
-    type: vless
-    server: 151.101.65.242
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 57a8ea50-1a8d-4e9f-b6e8-e991a9914a8a
-    network: ws
-    tls: true
-    ws-opts:
-      path: /ws
-      headers:
-        Host: ghosts-spasm.quick-cdn.net
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-109
+  - name: 🇺🇸美国|unknown-65
     type: http
     server: 38.247.141.135
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇸美国|unknown-120
+  - name: 🇺🇸美国|unknown-85
     type: vless
     server: 141.193.213.21
     port: 2083
@@ -79,53 +33,19 @@ proxies:
       headers:
         Host: site.check-looks.space
       path: /
-  - name: 🇺🇸美国|unknown-125
-    type: vless
-    server: adheres-scruple.quick-cdn.net
-    port: 443
+  - name: 🇺🇸美国|unknown-101
+    type: vmess
+    server: 162.19.204.71
+    port: 1234
     skip-cert-verify: true
     udp: true
-    uuid: 916e4382-273b-4935-b0bc-ca7cc8eabea7
-    network: ws
+    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    cipher: auto
+    alterId: 0
+    network: tcp
     tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /ws
-      headers:
-        Host: adheres-scruple.quick-cdn.net
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-126
-    type: vless
-    server: minimize-evenness.cdn-content.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: a97b4f58-0d47-416f-9ecd-dfdf20f31bf7
-    network: ws
-    tls: true
-    ws-opts:
-      path: /ws
-      headers:
-        Host: minimize-evenness.cdn-content.com
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-143
-    type: vless
-    server: minimize-evenness.cdn-content.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 5fccaf5f-6cc7-46a1-8a41-03c0a4231e6c
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /ws
-      headers:
-        Host: minimize-evenness.cdn-content.com
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-148
+  - name: 🇺🇸美国|unknown-119
     type: vmess
     server: cf.0sm.com
     port: 443
@@ -140,55 +60,7 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws
-  - name: 🇺🇸美国|unknown-154
-    type: vless
-    server: grimness-backlogs.cdn-content.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 68013563-ae18-40bc-9d6b-d9ef0fd5929a
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /ws
-      headers:
-        Host: grimness-backlogs.cdn-content.com
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-161
-    type: vless
-    server: adheres-scruple.quick-cdn.net
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: d78a47b6-dbd2-4ed1-8749-17a22dbe8c3e
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /ws
-      headers:
-        Host: adheres-scruple.quick-cdn.net
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-164
-    type: vless
-    server: piracy-android.video-streams.org
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f2a7b23e-6ec3-432b-8381-5219d80f606f
-    network: ws
-    tls: true
-    alpn:
-      - http/1.1
-    ws-opts:
-      path: /ws
-      headers:
-        Host: piracy-android.video-streams.org
-    client-fingerprint: ios
-  - name: 🇺🇸美国|unknown-166
+  - name: 🇺🇸美国|unknown-132
     type: vmess
     server: guanwang.awsno.com
     port: 443
@@ -203,21 +75,24 @@ proxies:
       path: /hls/cctv5phd.m3u8
       headers:
         Host: guanwang.awsno.com
-  - name: 🇺🇸美国|unknown-169
+  - name: 🇺🇸美国|unknown-134
     type: vless
-    server: grimness-backlogs.cdn-content.com
+    server: minimize-evenness.cdn-content.com
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 9819d5c6-bc6e-4e31-8af7-c023ecff6022
+    uuid: 4ea9c6dd-4d73-49f2-82ce-b80b1b5dd646
     network: ws
     tls: true
+    alpn:
+      - http/1.1
     ws-opts:
       headers:
-        Host: grimness-backlogs.cdn-content.com
+        Host: minimize-evenness.cdn-content.com
+        User-Agent: Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
       path: /ws
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-173
+  - name: 🇺🇸美国|unknown-159
     type: trojan
     server: ench-snet-app.w-ctrip.cn
     port: 26429
@@ -225,39 +100,50 @@ proxies:
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
-  - name: 🇺🇸美国|unknown-184
-    type: vless
-    server: minimize-evenness.cdn-content.com
+  - name: 🇺🇸美国|unknown-161
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 35929
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇺🇸美国|unknown-171
+    type: trojan
+    server: vpn.liumr.top
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: a97b4f58-0d47-416f-9ecd-dfdf20f31bf7
-    network: ws
+    password: va3E77I9fZCnCVcGKkxBCfz5
+    network: tcp
     tls: true
-    ws-opts:
-      headers:
-        Host: minimize-evenness.cdn-content.com
-      path: /ws
+    sni: vpn.liumr.top
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-189
+  - name: 🇺🇸美国|unknown-174
     type: vless
-    server: minimize-evenness.cdn-content.com
-    port: 443
+    server: OV-France1.09vpn.com
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: daed3ca3-6b04-44e3-bd55-a9995e88d70b
+    uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
     network: ws
-    tls: true
-    alpn:
-      - http/1.1
+    tls: false
+    encryption: none
     ws-opts:
-      path: /ws
       headers:
-        Host: minimize-evenness.cdn-content.com
-    client-fingerprint: chrome
+        Host: OV-France1.09vpn.com
+      path: /vless/
+  - name: 🇺🇸美国|unknown-178
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 38994
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
   - name: 🇭🇰香港|unknown
     type: vmess
-    server: 8.218.195.61
+    server: 8.217.254.88
     port: 443
     skip-cert-verify: true
     udp: true
@@ -268,17 +154,32 @@ proxies:
     tls: true
     ws-opts:
       headers:
-        Host: EX1oGt73NzPQKAc2.v.3dns.vip
+        Host: 2b9hwy8ocx7q74nm.v.3dns.vip
       path: /ws-vmess
-  - name: 🇹🇼台湾|unknown
+  - name: 🇭🇰香港|unknown-2
+    type: vmess
+    server: i2psm3knof5qjjix.v.3dns.vip
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    ws-opts:
+      path: /ws-vmess
+      headers:
+        Host: i2psm3knof5qjjix.v.3dns.vip
+  - name: 🇭🇰香港|unknown-3
     type: trojan
     server: ench-snet-app.w-ctrip.cn
-    port: 54815
+    port: 43638
     skip-cert-verify: true
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
-  - name: 🇹🇼台湾|unknown-2
+  - name: 🇹🇼台湾|unknown
     type: trojan
     server: ench-snet-app.w-ctrip.cn
     port: 22003
@@ -286,10 +187,26 @@ proxies:
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
-  - name: 🇹🇼台湾|unknown-3
+  - name: 🇹🇼台湾|unknown-2
     type: trojan
     server: ench-snet-app.w-ctrip.cn
-    port: 45502
+    port: 45503
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇹🇼台湾|unknown-4
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 54815
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇰🇵日本|unknown-6
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 24914
     skip-cert-verify: true
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
@@ -297,15 +214,15 @@ proxies:
   - name: 🇰🇵日本|unknown-7
     type: trojan
     server: ench-snet-app.w-ctrip.cn
-    port: 24133
+    port: 18295
     skip-cert-verify: true
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
-  - name: 🇸🋀新加坡|unknown
+  - name: 🇸🋀新加坡|unknown-3
     type: trojan
     server: ench-snet-app.w-ctrip.cn
-    port: 15589
+    port: 37212
     skip-cert-verify: true
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
@@ -318,75 +235,49 @@ proxies:
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
+  - name: 🇺🇷英国|unknown-6
+    type: http
+    server: 37.120.233.18
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
   - name: 🇩🇪德国|unknown
     type: http
-    server: 84.17.47.125
+    server: 84.17.47.123
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-4
+  - name: 🇩🇪德国|unknown-3
     type: http
     server: 158.173.154.5
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-8
-    type: http
-    server: 83.206.1.225
-    port: 8090
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-9
-    type: http
-    server: 82.65.162.76
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-11
-    type: http
-    server: 185.219.159.15
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-13
-    type: http
-    server: 185.219.159.16
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-15
+  - name: 🇩🇪德国|unknown-4
     type: http
     server: 84.17.47.148
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-16
+  - name: 🇩🇪德国|unknown-5
     type: http
-    server: 84.17.47.124
-    port: 9002
+    server: 213.109.163.119
+    port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-19
-    type: vless
-    server: 179.253.179.109
-    port: 63080
+  - name: 🇩🇪德国|unknown-6
+    type: http
+    server: 31.186.220.204
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: e3aa3d22-a95e-407b-aacc-d855b90a5d70
-    network: tcp
     tls: true
-    ws-opts:
-      path: /
-    client-fingerprint: firefox
-  - name: 🇩🇪德国|unknown-20
+  - name: 🇩🇪德国|unknown-12
     type: vmess
     server: 141.95.65.9
     port: 1234
@@ -398,87 +289,86 @@ proxies:
     network: tcp
     tls: true
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-24
+  - name: 🇩🇪德国|unknown-14
     type: http
-    server: 84.17.47.123
+    server: 84.17.47.125
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-26
-    type: http
-    server: 213.109.163.119
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-28
-    type: http
-    server: 158.173.154.1
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-29
-    type: http
-    server: 31.186.220.204
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-30
+  - name: 🇩🇪德国|unknown-19
     type: http
     server: 84.17.47.149
     port: 9002
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-33
-    type: trojan
-    server: de-bots4.h1cloud.net
-    port: 25267
+  - name: 🇩🇪德国|unknown-20
+    type: http
+    server: 82.65.162.76
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: happybirthdaydaniel
-    sni: t.me/fuckthewall
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-34
+    tls: true
+  - name: 🇩🇪德国|unknown-21
+    type: http
+    server: 185.219.159.16
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-23
+    type: http
+    server: 185.219.159.15
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-26
+    type: http
+    server: 158.173.154.1
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-27
+    type: http
+    server: 83.206.1.225
+    port: 8090
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-28
+    type: http
+    server: 84.17.47.124
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-29
     type: vless
-    server: OV-Germany1.09vpn.com
-    port: 80
+    server: 216.24.57.15
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 7d74eae4-8a06-4306-a923-ad686f30bf26
+    uuid: 2ee0d2aa-867e-a77e-9538-2edfc0b242aa
     network: ws
-    encryption: none
+    tls: true
     ws-opts:
       headers:
-        Host: OV-Germany1.09vpn.com
-      path: /vless/
-  - name: 🇩🇪德国|unknown-35
-    type: trojan
-    server: de-bots4.h1cloud.net
-    port: 25267
-    skip-cert-verify: true
-    udp: true
-    password: happybirthdaydaniel
-    sni: t.me/FuckTheWall
-  - name: 🅦🇺澳大利亚|unknown-7
+        Host: four04-rd37.onrender.com
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36
+      path: /ws/2ee0d2aa-867e-a77e-9538-2edfc0b242aafp=firefoxfp=chrome
+    client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-37
     type: trojan
     server: ench-snet-app.w-ctrip.cn
-    port: 38963
+    port: 41184
     skip-cert-verify: true
     udp: true
     password: b17e9b52db9623bd6c16eea3d7adb5b3
     sni: cm.g.doubleclick.net
-  - name: 🇳🇱荷兰|unknown-7
-    type: http
-    server: 149.36.51.161
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-13
+  - name: 🇳🇱荷兰|unknown-12
     type: vmess
     server: 45.90.106.24
     port: 1234
@@ -489,21 +379,14 @@ proxies:
     alterId: 0
     network: tcp
     tls: true
-  - name: 🇫🇷法国|unknown-8
-    type: vless
-    server: sc-thenetherlands1.09vpn.com
-    port: 8443
+  - name: 🇳🇱荷兰|unknown-18
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 38963
     skip-cert-verify: true
     udp: true
-    uuid: 40cc9b52-25b8-4cd5-8b45-715ae26e6baf
-    network: ws
-    tls: true
-    encryption: none
-    ws-opts:
-      headers:
-        Host: sc-thenetherlands1.09vpn.com
-      path: /vless/
-    client-fingerprint: chrome
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
   - name: 🇨🇳中国|unknown-9
     type: vmess
     server: euu1yAlfmcqvLJEx.v.3dns.vip
@@ -519,15 +402,56 @@ proxies:
       headers:
         Host: euu1yAlfmcqvLJEx.v.3dns.vip
       path: /ws-vmess
-  - name: 🇨🇳中国|unknown-10
-    type: trojan
-    server: ench-snet-app.w-ctrip.cn
-    port: 30298
+  - name: 🇺🇸美国|unknown-192
+    type: http
+    server: 121.127.34.82
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: b17e9b52db9623bd6c16eea3d7adb5b3
-    sni: cm.g.doubleclick.net
-  - name: 🇺🇸美国|unknown-195
+    tls: true
+  - name: 🇺🇸美国|unknown-193
+    type: ss
+    server: 46.17.46.27
+    port: 18443
+    skip-cert-verify: true
+    udp: true
+    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-201
+    type: vmess
+    server: 134.195.196.211
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+  - name: 🇺🇸美国|unknown-202
+    type: trojan
+    server: 170.101.101.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇺🇸美国|unknown-206
+    type: vmess
+    server: 67.220.85.46
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: aes-128-gcm
+    alterId: 0
+    network: tcp
+  - name: 🇺🇸美国|unknown-207
+    type: http
+    server: 138.199.35.212
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-208
     type: vless
     server: 170.114.45.6
     port: 8080
@@ -540,22 +464,39 @@ proxies:
       headers:
         Host: free.nadun.store
       path: /
-  - name: 🇺🇸美国|unknown-196
-    type: vless
-    server: 138.124.70.41
-    port: 14430
+  - name: 🇺🇸美国|unknown-209
+    type: http
+    server: 12.221.146.147
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 138.124.70.41
-      path: /vless
-  - name: 🇺🇸美国|unknown-206
+    tls: true
+  - name: 🇺🇸美国|unknown-215
+    type: trojan
+    server: 186.241.105.213
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: va3E77I9fZCnCVcGKkxBCfz5
+    sni: vpn.liumr.top
+  - name: 🇺🇸美国|unknown-218
+    type: trojan
+    server: 170.101.101.19
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: learn.explorecreativejobsandenhanceyourcareerportfolio.com
+  - name: 🇺🇸美国|unknown-220
+    type: http
+    server: 162.244.227.36
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-225
     type: vmess
-    server: 134.195.196.211
+    server: 38.110.1.246
     port: 18000
     skip-cert-verify: true
     udp: true
@@ -563,7 +504,14 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇺🇸美国|unknown-208
+  - name: 🇺🇸美国|unknown-228
+    type: http
+    server: 148.135.10.80
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-230
     type: vless
     server: 45.144.234.157
     port: 14430
@@ -576,102 +524,14 @@ proxies:
       headers:
         Host: 45.144.234.157
       path: /vless
-  - name: 🇺🇸美国|unknown-210
-    type: http
-    server: 68.235.56.59
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-215
+  - name: 🇺🇸美国|unknown-238
     type: trojan
-    server: 170.101.101.112
+    server: 170.101.101.67
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: resources.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-216
-    type: vmess
-    server: 84.17.41.2
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-  - name: 🇺🇸美国|unknown-221
-    type: ss
-    server: 46.17.46.27
-    port: 18443
-    skip-cert-verify: true
-    udp: true
-    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
-    cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-222
-    type: http
-    server: 121.127.34.82
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-223
-    type: vmess
-    server: 38.110.1.246
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-  - name: 🇺🇸美国|unknown-226
-    type: trojan
-    server: 167.88.61.193
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-229
-    type: http
-    server: 12.202.180.118
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-232
-    type: trojan
-    server: 170.101.101.131
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-233
-    type: hysteria2
-    server: 217.60.73.56
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 69e41e64-a832-471a-b740-94577ca85520
-    sni: forshynewh.duckdns.org
-    alpn:
-      - h3
-  - name: 🇺🇸美国|unknown-237
-    type: http
-    server: 149.88.21.129
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-240
-    type: http
-    server: 167.88.60.242
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
+    sni: courses.explorecreativejobsandenhanceyourcareerportfolio.com
   - name: 🇺🇸美国|unknown-242
     type: vless
     server: 38.76.180.144
@@ -686,41 +546,45 @@ proxies:
         Host: 38.76.180.144
       path: /vless-ws
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-243
+  - name: 🇺🇸美国|unknown-246
     type: trojan
-    server: 170.101.101.211
+    server: 167.88.61.193
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: api.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-245
-    type: trojan
-    server: 170.101.101.67
-    port: 443
+  - name: 🇺🇸美国|unknown-252
+    type: vless
+    server: 138.124.70.41
+    port: 14430
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: courses.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-251
+    uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: 138.124.70.41
+      path: /vless
+  - name: 🇺🇸美国|unknown-253
     type: vmess
-    server: 67.220.85.46
+    server: 84.17.41.2
     port: 18000
     skip-cert-verify: true
     udp: true
     uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: aes-128-gcm
+    cipher: auto
     alterId: 0
     network: tcp
   - name: 🇺🇸美国|unknown-256
-    type: trojan
-    server: 170.101.101.19
+    type: http
+    server: 149.88.21.129
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: learn.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-276
+    tls: true
+  - name: 🇺🇸美国|unknown-260
     type: trojan
     server: 170.101.101.53
     port: 443
@@ -728,7 +592,68 @@ proxies:
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: www.explorecreativejobsandenhanceyourcareerportfolio.com
-  - name: 🇺🇸美国|unknown-279
+  - name: 🇺🇸美国|unknown-269
+    type: http
+    server: 68.235.56.59
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-273
+    type: http
+    server: 216.107.139.82
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    sni: 991cc80f13caf81d3426ddebb2da7f49-92ff472ddc24e5b7.apache-iv.com
+  - name: 🇺🇸美国|unknown-278
+    type: socks5
+    server: 69.55.49.177
+    port: 38182
+    skip-cert-verify: true
+    udp: true
+  - name: 🇺🇸美国|unknown-286
+    type: trojan
+    server: us001.zestapp778.com
+    port: 57277
+    skip-cert-verify: true
+    udp: true
+    password: 5t6i121em5lkmsmk
+    sni: us001.zestapp778.com
+  - name: 🇺🇸美国|unknown-299
+    type: vless
+    server: w.geogame.ir
+    port: 2053
+    skip-cert-verify: true
+    udp: true
+    uuid: fbda2834-b1e7-4148-afb9-deda31036a30
+    tls: true
+  - name: 🇺🇸美国|unknown-306
+    type: vmess
+    server: guanwang.awsno.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: guanwang.awsno.com
+      path: /hls/cctv5phd.m3u8
+  - name: 🇺🇸美国|unknown-307
+    type: vless
+    server: us3.shtil.io
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 86a83d11-d751-4b60-aa4e-1dca5cff7028
+    tls: true
+    client-fingerprint: firefox
+  - name: 🇺🇸美国|unknown-319
     type: vless
     server: hw5.roghanmo.com
     port: 465
@@ -744,66 +669,21 @@ proxies:
         Host: hw5.roghanmo.com
       path: /
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-304
-    type: vmess
-    server: guanwang.awsno.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: guanwang.awsno.com
-      path: /hls/cctv5phd.m3u8
-  - name: 🇺🇸美国|unknown-308
+  - name: 🇺🇸美国|unknown-331
     type: vless
-    server: support.zoom.us
-    port: 8080
+    server: ov-france1.09vpn.com
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
+    uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
     network: ws
     tls: false
     encryption: none
     ws-opts:
       headers:
-        Host: Free.nadun.store
-      path: /
-  - name: 🇺🇸美国|unknown-323
-    type: vless
-    server: fast.145779.xyz
-    port: 2053
-    skip-cert-verify: true
-    udp: true
-    uuid: c83f15bf-1817-4ec8-a19f-6393d226434c
-    network: ws
-    tls: true
-    encryption: none
-    ws-opts:
-      headers:
-        Host: fast.145779.xyz
-      path: /ws-tesla
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-329
-    type: vmess
-    server: or3.sfacg.uk
-    port: 2083
-    skip-cert-verify: true
-    udp: true
-    uuid: ac251237-576f-40c8-a543-554960c958b1
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: or3.sfacg.uk
-      path: /or3
-  - name: 🇺🇸美国|unknown-336
+        Host: ov-france1.09vpn.com
+      path: /vless/
+  - name: 🇺🇸美国|unknown-351
     type: vmess
     server: www.shopify.com
     port: 443
@@ -818,65 +698,85 @@ proxies:
       headers:
         Host: guanwang.awsno.com
       path: /hls/cctv5phd.m3u8
-  - name: 🇺🇸美国|unknown-362
+  - name: 🇺🇸美国|unknown-391
     type: vless
-    server: w.geogame.ir
-    port: 2053
+    server: n04.jinggai.online
+    port: 8443
     skip-cert-verify: true
     udp: true
-    uuid: fbda2834-b1e7-4148-afb9-deda31036a30
-    tls: true
-  - name: 🇺🇸美国|unknown-367
-    type: trojan
-    server: us001.zestapp778.com
-    port: 57277
-    skip-cert-verify: true
-    udp: true
-    password: 5t6i121em5lkmsmk
-    network: tcp
-    sni: us001.zestapp778.com
-  - name: 🇭🇰香港|unknown-4
-    type: http
-    server: 119.28.24.235
-    port: 3128
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇭🇰香港|unknown-5
-    type: vless
-    server: 38.76.180.144
-    port: 1443
-    skip-cert-verify: true
-    udp: true
-    uuid: d98b67d4-024a-4bba-91e2-e6ebece6df11
+    uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
     network: ws
-    tls: false
+    tls: true
     ws-opts:
       headers:
-        Host: 38.76.180.144
-      path: /vless-ws
+        Host: n04.jinggai.online
+      path: /nvl-n04-ws/e0577fe8fd7c8823
     client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-397
+    type: vless
+    server: bounded-crammed.video-streams.org
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 8bc4baa4-76a1-42ff-be77-06d8749a467a
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: bounded-crammed.video-streams.org
+      path: /ws
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-410
+    type: vless
+    server: support.zoom.us
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: Free.nadun.store
+      path: /
   - name: 🇭🇰香港|unknown-6
     type: vless
-    server: 195.58.144.56
-    port: 11907
+    server: 152.175.6.229
+    port: 31884
     skip-cert-verify: true
     udp: true
-    uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
+    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     tls: true
-    alpn:
-      - h2
-      - http/1.1
-    client-fingerprint: chrome
-  - name: 🇰🇵日本|unknown-10
-    type: trojan
-    server: 45.32.52.173
-    port: 8886
+  - name: 🇭🇰香港|unknown-13
+    type: vless
+    server: px2.5ibtc.cn
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
-    sni: 45.32.52.173
-  - name: 🇰🇵日本|unknown-15
+    uuid: 326227e2-f2d1-4f43-8715-9da854f5f4c0
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: px2.5ibtc.cn
+      path: /326227e2-f2d1-4f43-8715-9da854f5f4c0
+    client-fingerprint: chrome
+  - name: 🇹🇼台湾|unknown-5
+    type: vless
+    server: 60.248.219.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ty986gfazs.cainiaohub.xyz
+      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    client-fingerprint: chrome
+  - name: 🇰🇵日本|unknown-12
     type: vmess
     server: 146.56.112.110
     port: 8888
@@ -886,21 +786,52 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇸🋀新加坡|unknown-2
+  - name: 🇰🇵日本|unknown-13
+    type: trojan
+    server: 45.32.52.173
+    port: 8886
+    skip-cert-verify: true
+    udp: true
+    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
+    sni: 45.32.52.173
+  - name: 🇰🇵日本|unknown-23
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 18295
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇰🇵日本|unknown-32
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 24914
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇸🋀新加坡|unknown-6
     type: vless
-    server: 122.176.216.52
+    server: 45.76.155.179
     port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 16ae3ea5-cf3e-6973-7bf3-2b4b28d0ea88
-    network: ws
+    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    network: tcp
     tls: true
     ws-opts:
-      headers:
-        Host: app-6ada5023.deploy.meerasolution.com
-      path: /ws/16ae3ea5-cf3e-6973-7bf3-2b4b28d0ea88
+      path: /
     client-fingerprint: firefox
-  - name: 🇸🋀新加坡|unknown-8
+  - name: 🇸🋀新加坡|unknown-11
+    type: vless
+    server: 178.83.45.226
+    port: 10002
+    skip-cert-verify: true
+    udp: true
+    uuid: c6362720-0931-4b91-b187-d8ecf3149734
+    network: tcp
+    tls: false
+  - name: 🇸🋀新加坡|unknown-15
     type: trojan
     server: 149.28.130.108
     port: 443
@@ -908,25 +839,7 @@ proxies:
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: searchcreativejobsandshowcaseyourartistictalents.com
-  - name: 🇸🋀新加坡|unknown-9
-    type: vless
-    server: connect.hondamotor.site
-    port: 10002
-    skip-cert-verify: true
-    udp: true
-    uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    tls: false
-  - name: 🇸🋀新加坡|unknown-11
-    type: vless
-    server: sg003.zestapp778.com
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-12
+  - name: 🇸🋀新加坡|unknown-17
     type: vless
     server: sg1.zestapp778.com
     port: 56984
@@ -935,7 +848,7 @@ proxies:
     uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     tls: true
     client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-13
+  - name: 🇸🋀新加坡|unknown-19
     type: vless
     server: node-uk.connectsuite.org
     port: 8443
@@ -948,18 +861,25 @@ proxies:
       - h2
       - http/1.1
     client-fingerprint: chrome
-  - name: 🇰🇷韩国|unknown-4
+  - name: 🇸🋀新加坡|unknown-22
     type: vless
-    server: 152.69.226.63
-    port: 25555
+    server: sg003.zestapp778.com
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 27c5483f-17f4-48ae-9a04-def53d88440d
-    network: ws
-    tls: false
-    ws-opts:
-      path: /
-  - name: 🇰🇷韩国|unknown-6
+    uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+  - name: 🇸🋀新加坡|unknown-24
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 47966
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇰🇷韩国|unknown-5
     type: vmess
     server: 132.145.80.230
     port: 80
@@ -973,34 +893,55 @@ proxies:
       headers:
         Host: kr02.a0a.xyz
       path: /cctv13.m3u8
-  - name: 🇺🇷英国|unknown-6
-    type: http
-    server: 212.102.63.61
-    port: 443
+  - name: 🇰🇷韩国|unknown-8
+    type: vless
+    server: 152.69.226.63
+    port: 25555
     skip-cert-verify: true
     udp: true
-    tls: true
+    uuid: 27c5483f-17f4-48ae-9a04-def53d88440d
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+  - name: 🇰🇷韩国|unknown-11
+    type: trojan
+    server: ench-snet-app.w-ctrip.cn
+    port: 18572
+    skip-cert-verify: true
+    udp: true
+    password: b17e9b52db9623bd6c16eea3d7adb5b3
+    sni: cm.g.doubleclick.net
+  - name: 🇺🇷英国|unknown-8
+    type: vless
+    server: 5.178.109.174
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 5.178.109.174
+      path: /vless
   - name: 🇺🇷英国|unknown-10
     type: http
-    server: 84.17.50.193
+    server: 212.102.63.61
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
   - name: 🇺🇷英国|unknown-11
-    type: http
-    server: 37.120.233.50
-    port: 443
+    type: vless
+    server: 2.26.6.1
+    port: 2087
     skip-cert-verify: true
     udp: true
+    uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
+    network: tcp
     tls: true
-  - name: 🇺🇷英国|unknown-13
-    type: http
-    server: 212.102.63.61
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
+    encryption: none
   - name: 🇺🇷英国|unknown-14
     type: http
     server: 185.164.138.156
@@ -1015,76 +956,21 @@ proxies:
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇷英国|unknown-18
-    type: vless
-    server: 5.178.109.174
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: 5.178.109.174
-      path: /vless
-  - name: 🇩🇪德国|unknown-44
-    type: vless
-    server: 179.253.179.109
-    port: 63053
-    skip-cert-verify: true
-    udp: true
-    uuid: e3aa3d22-a95e-407b-aacc-d855b90a5d70
-    network: tcp
-    tls: true
-    ws-opts:
-      path: /
-    client-fingerprint: chrome
   - name: 🇩🇪德国|unknown-45
     type: vless
-    server: 2.26.6.1
-    port: 2087
+    server: 103.148.73.173
+    port: 8443
     skip-cert-verify: true
     udp: true
-    uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
-    network: tcp
-    tls: true
-    ws-opts:
-      path: /
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-47
-    type: vless
-    server: 179.253.179.109
-    port: 57043
-    skip-cert-verify: true
-    udp: true
-    uuid: da8fab8e-4a25-4eb0-b224-88ab96c753ce
-    network: tcp
-    tls: true
-    ws-opts:
-      path: /
-    client-fingerprint: firefox
-  - name: 🇩🇪德国|unknown-53
-    type: vless
-    server: 95.174.68.188
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
     network: ws
-    tls: false
+    tls: true
     ws-opts:
       headers:
-        Host: 95.174.68.188
-      path: /vless
-  - name: 🇩🇪德国|unknown-55
-    type: http
-    server: 152.233.20.206
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-56
+        Host: ty986gfazs.cainiaohub.xyz
+      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-48
     type: vless
     server: 195.141.65.98
     port: 443
@@ -1100,28 +986,91 @@ proxies:
         Host: 148-253-210-191.sslip.io
       path: /test-ws
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-58
+  - name: 🇩🇪德国|unknown-49
     type: vless
-    server: 178.172.227.124
-    port: 14430
+    server: 170.114.46.6
+    port: 8080
     skip-cert-verify: true
     udp: true
-    uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
     network: ws
     tls: false
-    encryption: none
     ws-opts:
       headers:
-        Host: 178.172.227.124
-      path: /vless
-  - name: 🇩🇪德国|unknown-60
+        Host: free.nadun.store
+      path: /
+  - name: 🇩🇪德国|unknown-50
+    type: vless
+    server: 77.220.213.244
+    port: 8444
+    skip-cert-verify: true
+    udp: true
+    uuid: a8321cfe-39a2-48a0-a918-f01f7d9006ed
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: nl11.meshbeat.online
+      path: /api/v1/devices/d63ac7ea89/telemetry
+    client-fingerprint: firefox
+  - name: 🇩🇪德国|unknown-51
     type: http
-    server: 79.127.156.177
+    server: 213.177.229.161
     port: 9443
     skip-cert-verify: true
     udp: true
     tls: true
+  - name: 🇩🇪德国|unknown-53
+    type: vless
+    server: 8.35.211.242
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: vpn.cintaku.qzz.io
+      path: /vlessws
+    client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-54
+    type: trojan
+    server: 208.69.78.19
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-60
+    type: trojan
+    server: 193.108.119.96
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: learn.iloverussia2026.com
   - name: 🇩🇪德国|unknown-63
+    type: vless
+    server: 95.174.68.188
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 95.174.68.188
+      path: /vless
+  - name: 🇩🇪德国|unknown-64
+    type: http
+    server: 87.249.132.97
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-66
     type: vless
     server: 95.128.71.79
     port: 14430
@@ -1130,34 +1079,12 @@ proxies:
     uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
     network: ws
     tls: false
+    encryption: none
     ws-opts:
       headers:
         Host: 95.128.71.79
       path: /vless
-  - name: 🇩🇪德国|unknown-66
-    type: trojan
-    server: 45.63.30.142
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: connectwithemployerstohireyouridealteam.com
   - name: 🇩🇪德国|unknown-67
-    type: trojan
-    server: 216.152.147.48
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: courses.connectingpeoplewithgreatjobs.com
-  - name: 🇩🇪德国|unknown-71
-    type: trojan
-    server: 208.69.78.19
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-76
     type: vless
     server: 178.172.227.228
     port: 14430
@@ -1170,109 +1097,49 @@ proxies:
       headers:
         Host: 178.172.227.228
       path: /vless
-  - name: 🇩🇪德国|unknown-78
-    type: vless
-    server: 170.114.45.6
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: free.nadun.store
-      path: /
-  - name: 🇩🇪德国|unknown-79
+  - name: 🇩🇪德国|unknown-68
     type: trojan
-    server: 216.238.104.154
+    server: 216.152.147.79
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-80
+    network: tcp
+    sni: blog.connectingpeoplewithgreatjobs.com
+  - name: 🇩🇪德国|unknown-74
     type: http
-    server: 149.36.50.129
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-81
-    type: http
-    server: 87.249.132.97
+    server: 79.127.156.177
     port: 9443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-89
-    type: http
-    server: 149.36.50.157
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-91
-    type: trojan
-    server: 193.108.119.15
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: courses.iloverussia2026.com
-  - name: 🇩🇪德国|unknown-92
-    type: trojan
-    server: 216.152.147.89
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: www.connectingpeoplewithgreatjobs.com
-  - name: 🇩🇪德国|unknown-97
-    type: trojan
-    server: 216.152.147.152
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: learn.connectingpeoplewithgreatjobs.com
-  - name: 🇩🇪德国|unknown-99
-    type: trojan
-    server: 193.108.119.96
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: learn.iloverussia2026.com
-  - name: 🇩🇪德国|unknown-100
-    type: trojan
-    server: 193.108.119.29
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.iloverussia2026.com
-  - name: 🇩🇪德国|unknown-102
-    type: trojan
-    server: 193.108.119.15
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-105
+  - name: 🇩🇪德国|unknown-76
     type: vless
-    server: 103.148.73.173
-    port: 8443
+    server: 2.26.6.1
+    port: 2087
     skip-cert-verify: true
     udp: true
-    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
-    network: ws
+    uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
+    network: tcp
     tls: true
-    ws-opts:
-      headers:
-        Host: ty986gfazs.cainiaohub.xyz
-      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-107
+    encryption: none
+  - name: 🇩🇪德国|unknown-78
+    type: vless
+    server: 178.172.227.124
+    port: 10443
+    skip-cert-verify: true
+    udp: true
+    uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+    network: tcp
+    tls: false
+  - name: 🇩🇪德国|unknown-79
+    type: http
+    server: 158.173.154.2
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-82
     type: trojan
     server: 70.34.252.255
     port: 443
@@ -1280,7 +1147,51 @@ proxies:
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
-  - name: 🇩🇪德国|unknown-108
+  - name: 🇩🇪德国|unknown-83
+    type: trojan
+    server: 216.152.147.79
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-90
+    type: trojan
+    server: 216.238.104.154
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-94
+    type: trojan
+    server: 45.63.30.142
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: connectwithemployerstohireyouridealteam.com
+  - name: 🇩🇪德国|unknown-96
+    type: trojan
+    server: 216.152.147.89
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-101
+    type: trojan
+    server: 193.108.119.15
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-102
+    type: trojan
+    server: 193.108.119.15
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: courses.iloverussia2026.com
+  - name: 🇩🇪德国|unknown-104
     type: vless
     server: 5.178.109.174
     port: 14430
@@ -1293,14 +1204,37 @@ proxies:
       headers:
         Host: 5.178.109.174
       path: /vless
-  - name: 🇩🇪德国|unknown-109
-    type: trojan
-    server: 216.152.147.89
-    port: 443
+  - name: 🇩🇪德国|unknown-112
+    type: vless
+    server: edge10.cyrionflare.com
+    port: 2052
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-112
+    uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    network: tcp
+    tls: false
+  - name: 🇩🇪德国|unknown-113
+    type: vless
+    server: support.zoom.us
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: Free.nadun.store
+      path: /
+  - name: 🇩🇪德国|unknown-116
+    type: trojan
+    server: de-bots4.h1cloud.net
+    port: 25267
+    skip-cert-verify: true
+    udp: true
+    password: happybirthdaydaniel
+  - name: 🇩🇪德国|unknown-118
     type: trojan
     server: in002.zestapp778.com
     port: 42733
@@ -1308,53 +1242,7 @@ proxies:
     udp: true
     password: 5t6i121em5lkmsmk
     sni: in002.zestapp778.com
-  - name: 🇩🇪德国|unknown-113
-    type: vless
-    server: edge10.cyrionflare.com
-    port: 2052
-    skip-cert-verify: true
-    udp: true
-    uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    tls: false
-  - name: 🇩🇪德国|unknown-117
-    type: vless
-    server: milo.rubinaz.xyz
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
-    network: tcp
-    tls: false
-    encryption: none
   - name: 🇩🇪德国|unknown-122
-    type: vless
-    server: uae.unixzone.us
-    port: 22573
-    skip-cert-verify: true
-    udp: true
-    uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    network: ws
-    tls: false
-    ws-opts:
-      headers:
-        Host: uae.unixzone.us
-      path: /
-  - name: 🇩🇪德国|unknown-124
-    type: vless
-    server: vpn.cintaku.qzz.io
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
-    network: ws
-    tls: true
-    encryption: none
-    ws-opts:
-      headers:
-        Host: vpn.cintaku.qzz.io
-      path: /vlessws
-    client-fingerprint: firefox
-  - name: 🇩🇪德国|unknown-127
     type: vless
     server: hw14.roghanmo.com
     port: 465
@@ -1370,30 +1258,14 @@ proxies:
         Host: hw14.roghanmo.com
       path: /
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-129
-    type: vless
-    server: support.zoom.us
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 990bf436-f1b9-4e7f-857d-14378acc4ae5
-    network: ws
-    tls: false
-    encryption: none
-    ws-opts:
-      headers:
-        Host: Free.nadun.store
-      path: /
-  - name: 🇩🇪德国|unknown-132
-    type: trojan
-    server: ca001.zestapp778.com
-    port: 46977
-    skip-cert-verify: true
-    udp: true
-    password: 5t6i121em5lkmsmk
-    network: tcp
-    sni: ca001.zestapp778.com
   - name: 🇨🇦加拿大|unknown
+    type: http
+    server: 206.223.183.21
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇨🇦加拿大|unknown-2
     type: http
     server: 149.88.98.81
     port: 9443
@@ -1413,7 +1285,14 @@ proxies:
       headers:
         Host: 45.144.234.157
       path: /vless
-  - name: 🇳🇱荷兰|unknown-24
+  - name: 🇳🇱荷兰|unknown-22
+    type: http
+    server: 5.255.118.82
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇳🇱荷兰|unknown-23
     type: vless
     server: 95.174.68.188
     port: 14430
@@ -1426,21 +1305,87 @@ proxies:
       headers:
         Host: 95.174.68.188
       path: /vless
-  - name: 🇳🇱荷兰|unknown-25
+  - name: 🇳🇱荷兰|unknown-28
     type: http
-    server: 5.255.118.82
+    server: 103.97.88.154
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    sni: 4a8c2906c96058315dffbc2b0e7ff19b-98005bea43f9ac33.apache-iv.com
+  - name: 🇳🇱荷兰|unknown-29
+    type: http
+    server: 157.22.183.72
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇳🇱荷兰|unknown-30
+    type: http
+    server: 84.17.47.125
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷法国|unknown-7
+    type: http
+    server: 82.66.235.221
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
   - name: 🇫🇷法国|unknown-9
     type: http
+    server: 149.102.245.65
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷法国|unknown-10
+    type: http
+    server: 213.139.9.142
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷法国|unknown-11
+    type: http
     server: 138.199.47.247
     port: 9443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇨🇳中国|unknown-17
+  - name: 🇫🇷法国|unknown-12
+    type: http
+    server: 82.96.128.175
+    port: 8090
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷法国|unknown-16
+    type: http
+    server: 8a7d3033-ta1og0-ta5i1s-1j61y.fr.oshuawei.com
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: f13f964e-f06c-11ec-a858-f23c91cfbbc9
+    username: f13f964e-f06c-11ec-a858-f23c91cfbbc9
+    tls: true
+  - name: 🇨🇳中国|unknown-14
+    type: vless
+    server: 60.248.219.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ty986gfazs.cainiaohub.xyz
+      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    client-fingerprint: chrome
+  - name: 🇨🇳中国|unknown-15
     type: vless
     server: 103.148.73.173
     port: 8443
@@ -1454,29 +1399,7 @@ proxies:
         Host: ty986gfazs.cainiaohub.xyz
       path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-406
-    type: vmess
-    server: 67.220.95.3
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: aes-128-gcm
-    alterId: 0
-    network: tcp
-    tls: false
-  - name: 🇺🇸美国|unknown-408
-    type: vmess
-    server: 38.91.107.49
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-    tls: false
-  - name: 🇺🇸美国|unknown-412
+  - name: 🇺🇸美国|unknown-430
     type: vmess
     server: 129.146.143.80
     port: 48111
@@ -1487,16 +1410,38 @@ proxies:
     alterId: 0
     network: tcp
     tls: false
-  - name: 🇺🇸美国|unknown-421
+  - name: 🇺🇸美国|unknown-431
+    type: vmess
+    server: 67.220.95.3
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: aes-128-gcm
+    alterId: 0
+    network: tcp
+    tls: false
+  - name: 🇺🇸美国|unknown-432
+    type: vmess
+    server: 38.91.107.49
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+    tls: false
+  - name: 🇺🇸美国|unknown-437
     type: hysteria2
-    server: 217.60.73.56
+    server: 88.216.195.188
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 69e41e64-a832-471a-b740-94577ca85520
+    password: 63e1b9462d708b56d5d5a0267cffecdc
     tls: false
-    sni: forshynewh.duckdns.org
-  - name: 🇰🇵日本|unknown-31
+    sni: promo3.goonars.com
+  - name: 🇰🇵日本|unknown-34
     type: ss
     server: 149.22.87.204
     port: 443
@@ -1504,39 +1449,15 @@ proxies:
     udp: true
     password: shadowsocks
     cipher: aes-128-gcm
-  - name: 🇰🇵日本|unknown-32
-    type: ss
-    server: 154.36.158.197
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: BeaUf9c0AEWH40Pu
-    cipher: aes-256-gcm
-  - name: 🇰🇵日本|unknown-33
+  - name: 🇰🇵日本|unknown-35
     type: ss
     server: 84.247.155.196
-    port: 80
+    port: 443
     skip-cert-verify: true
     udp: true
     password: 3eOFeNssde7PYYMv
     cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-16
-    type: ss
-    server: 158.173.24.73
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇸🋀新加坡|unknown-17
-    type: ss
-    server: 94.156.250.148
-    port: 7001
-    skip-cert-verify: true
-    udp: true
-    password: RexnBgU7EV5ADxG
-    cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-18
+  - name: 🇸🋀新加坡|unknown-27
     type: ss
     server: 185.176.206.9
     port: 19999
@@ -1544,13 +1465,29 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇰🇷韩国|unknown-11
+  - name: 🇩🇪德国|unknown-128
     type: ss
-    server: 141.164.45.187
-    port: 7001
+    server: 102.133.165.160
+    port: 16233
     skip-cert-verify: true
     udp: true
-    password: RexnBgU7EV5ADxG
+    password: Xsy8Ox4yOV3xLlpxtjzs3X
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-131
+    type: ss
+    server: 202.50.253.36
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-132
+    type: ss
+    server: 202.50.253.99
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-133
     type: ss
@@ -1562,31 +1499,31 @@ proxies:
     cipher: chacha20-ietf-poly1305
   - name: 🇩🇪德国|unknown-134
     type: ss
-    server: 202.50.253.36
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-135
-    type: ss
     server: 202.50.253.54
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-140
+  - name: 🇩🇪德国|unknown-136
     type: ss
-    server: 202.50.253.72
+    server: 202.50.253.18
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-141
+  - name: 🇩🇪德国|unknown-137
     type: ss
-    server: 185.164.175.81
+    server: 149.104.109.252
+    port: 8882
+    skip-cert-verify: true
+    udp: true
+    password: kDWvXYZoTBcGkC4
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-142
+    type: ss
+    server: 202.50.253.27
     port: 19999
     skip-cert-verify: true
     udp: true
@@ -1594,23 +1531,23 @@ proxies:
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-143
     type: ss
-    server: 102.133.165.160
-    port: 16233
-    skip-cert-verify: true
-    udp: true
-    password: Xsy8Ox4yOV3xLlpxtjzs3X
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-145
-    type: ss
-    server: 202.50.253.81
+    server: 202.50.253.90
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-147
+  - name: 🇩🇪德国|unknown-144
     type: ss
-    server: 202.50.253.63
+    server: 185.213.23.63
+    port: 990
+    skip-cert-verify: true
+    udp: true
+    password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-145
+    type: ss
+    server: 202.50.253.72
     port: 19999
     skip-cert-verify: true
     udp: true
@@ -1618,11 +1555,11 @@ proxies:
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-148
     type: ss
-    server: 202.50.253.99
-    port: 19999
+    server: 149.104.107.41
+    port: 8090
     skip-cert-verify: true
     udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    password: PCnnH6SQSnfoS27
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-149
     type: ss
@@ -1632,7 +1569,13 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-151
+  - name: 🇩🇪德国|unknown-150
+    type: socks5
+    server: 176.124.206.150
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+  - name: 🇩🇪德国|unknown-152
     type: ss
     server: 38.54.59.102
     port: 443
@@ -1642,29 +1585,13 @@ proxies:
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-153
     type: ss
-    server: 202.50.253.18
+    server: 185.164.175.81
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-154
-    type: ss
-    server: 149.104.109.252
-    port: 8882
-    skip-cert-verify: true
-    udp: true
-    password: kDWvXYZoTBcGkC4
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-157
-    type: ss
-    server: 202.50.253.27
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-159
     type: ss
     server: sql.popmintxo.cc
     port: 43385
@@ -1672,14 +1599,16 @@ proxies:
     udp: true
     password: AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa
     cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-160
-    type: ss
-    server: pl140.vpnbook.com
-    port: 443
+  - name: 🅦🇺澳大利亚|unknown-15
+    type: vmess
+    server: 129.154.61.196
+    port: 800
     skip-cert-verify: true
     udp: true
-    password: 6heexyz
-    cipher: chacha20-ietf-poly1305
+    uuid: a915b1d6-cf28-4dc8-e4b4-e09c48c37ec0
+    cipher: auto
+    alterId: 0
+    network: tcp
   - name: 🅦🇺澳大利亚|unknown-16
     type: vmess
     server: 43.130.35.53
@@ -1690,29 +1619,11 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🅦🇺澳大利亚|unknown-17
-    type: vmess
-    server: 129.154.61.196
-    port: 800
-    skip-cert-verify: true
-    udp: true
-    uuid: a915b1d6-cf28-4dc8-e4b4-e09c48c37ec0
-    cipher: auto
-    alterId: 0
-    network: tcp
   - name: 🇬🇧 英国 www.v2s.com] 1... 4
     type: vless
-    server: connect.hondamotor.site
+    server: 178.83.45.226
     port: 10002
     uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    security: ''
-    sni: ''
-    flow: ''
-  - name: 🇩🇪 德国 www.v2s.com] RO1... 1
-    type: vless
-    server: 178.83.45.226
-    port: 2052
-    uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     security: ''
     sni: ''
     flow: ''
@@ -1722,22 +1633,9 @@ proxies:
     port: 8080
     uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
     security: ''
-    sni: ''
+    sni: 168.222.43.53
     flow: ''
-  - name: 🇺🇸美国|unknown-469
-    type: vless
-    server: 104.24.31.89
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-475
+  - name: 🇺🇸美国|unknown-505
     type: vless
     server: 104.19.12.94
     port: 443
@@ -1750,116 +1648,14 @@ proxies:
       headers:
         Host: jp3.yohototo.top
       path: /tyxyws
-  - name: 🇺🇸美国|unknown-493
-    type: vless
-    server: 104.16.111.202
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸 美国 www.v2s.com] ... 4
-    type: trojan
-    server: 170.101.101.131
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.explorecreativejobsandenhanceyourcareerportfolio.com
-    network: ''
-  - name: 🇺🇸 美国 www.v2s.com] ... 2
-    type: trojan
-    server: 170.101.101.211
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: api.explorecreativejobsandenhanceyourcareerportfolio.com
-    network: ''
-  - name: 🇺🇸 美国 www.v2s.com] ... 9
+  - name: 🇺🇸 美国 www.v2s.com] ... 13
     type: trojan
     server: 170.101.101.67
     port: 443
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: courses.explorecreativejobsandenhanceyourcareerportfolio.com
     network: ''
-  - name: 🇺🇸 美国 www.v2s.com] ... 1
-    type: trojan
-    server: 170.101.101.53
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: www.explorecreativejobsandenhanceyourcareerportfolio.com
-    network: ''
-  - name: 🇺🇸美国|unknown-538
-    type: vless
-    server: 104.17.70.206
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 5f704d93-7e7f-45b5-81f5-08db4a946220
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: free.sahanwickramasinghe.com
-      path: /
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-599
-    type: vmess
-    server: 47.76.57.83
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vah4urdzl3jdx5r2.v.3dns.vip
-      path: /ws-vmess
-  - name: 🇺🇸美国|unknown-609
-    type: vless
-    server: 104.16.10.72
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-636
-    type: vless
-    server: 104.21.91.49
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: vpn.cintaku.qzz.io
-      path: /vlessws
-  - name: 🇺🇸美国|unknown-663
-    type: vless
-    server: 172.67.156.147
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: jp3.yohototo.top
-      path: /tyxyws
-  - name: 🇺🇸美国|unknown-666
+  - name: 🇺🇸美国|unknown-558
     type: vless
     server: 65.109.211.81
     port: 465
@@ -1873,7 +1669,7 @@ proxies:
         Host: hw6.divarkhaghazi.com.
       path: /
     client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-674
+  - name: 🇺🇸美国|unknown-577
     type: vless
     server: 104.17.108.213
     port: 443
@@ -1887,7 +1683,74 @@ proxies:
         Host: vpn.cintaku.qzz.io
       path: /vlessws
     client-fingerprint: unsafe
-  - name: 🇺🇸美国|unknown-697
+  - name: 🇺🇸美国|unknown-590
+    type: http
+    server: 44.248.167.117
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-612
+    type: vless
+    server: 104.16.10.72
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: jp3.yohototo.top
+      path: /tyxyws
+  - name: 🇺🇸美国|unknown-615
+    type: vless
+    server: 104.17.70.206
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: 5f704d93-7e7f-45b5-81f5-08db4a946220
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: free.sahanwickramasinghe.com
+      path: /
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-625
+    type: vless
+    server: 104.24.31.89
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: jp3.yohototo.top
+      path: /tyxyws
+  - name: 🇺🇸美国|unknown-643
+    type: vless
+    server: 104.16.111.202
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: jp3.yohototo.top
+      path: /tyxyws
+  - name: 🇺🇸 美国 瑞典
+    type: trojan
+    server: 167.88.61.198
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: cdn.browseseniorrolesandenhanceyourcareertoday.com
+    network: ''
+  - name: 🇺🇸美国|unknown-677
     type: vless
     server: 104.16.10.56
     port: 443
@@ -1900,21 +1763,68 @@ proxies:
       headers:
         Host: jp3.yohototo.top
       path: /tyxyws
-  - name: 🇺🇸美国|unknown-702
-    type: http
-    server: 44.248.167.117
-    port: 8443
+  - name: 🇺🇸美国|unknown-678
+    type: vless
+    server: 172.67.156.147
+    port: 443
     skip-cert-verify: true
     udp: true
+    uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    network: ws
     tls: true
-  - name: 🇺🇸 美国 www.v2s.com] ... 3
+    ws-opts:
+      headers:
+        Host: jp3.yohototo.top
+      path: /tyxyws
+  - name: 🇺🇸美国|unknown-679
+    type: vless
+    server: 104.21.91.49
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: vpn.cintaku.qzz.io
+      path: /vlessws
+  - name: 🇺🇸美国|unknown-685
+    type: vless
+    server: 172.66.47.45
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: e56059f1-5a1a-4d0a-a2d0-58ecb4eb2f3f
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: ezaccess-project-f62c30.pages.dev
+      path: /eyJqdW5rIjoiZWlPODVjTnhnaSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0
+    client-fingerprint: chrome
+  - name: 🇺🇸 美国 www.v2s.com] ... 2
     type: trojan
-    server: us001.zestapp778.com
-    port: 57277
-    password: 5t6i121em5lkmsmk
-    sni: us001.zestapp778.com
+    server: 186.241.105.213
+    port: 443
+    password: va3E77I9fZCnCVcGKkxBCfz5
+    sni: vpn.liumr.top
     network: ''
-  - name: 🇭🇰香港|unknown-15
+  - name: 🇺🇸 美国 www.v2s.com] ... 5
+    type: trojan
+    server: 170.101.101.19
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: learn.explorecreativejobsandenhanceyourcareerportfolio.com
+    network: ''
+  - name: 🇺🇸 美国 www.v2s.com] ... 7
+    type: trojan
+    server: 170.101.101.53
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: www.explorecreativejobsandenhanceyourcareerportfolio.com
+    network: ''
+  - name: 🇺🇸美国|unknown-723
     type: vmess
     server: 47.76.57.83
     port: 443
@@ -1926,30 +1836,44 @@ proxies:
     network: ws
     tls: true
     ws-opts:
-      path: /ws-vmess
       headers:
         Host: vah4urdzl3jdx5r2.v.3dns.vip
-  - name: 🇭🇰 香港 7
+      path: /ws-vmess
+  - name: 🇺🇸 美国 www.v2s.com] ... 6
     type: trojan
-    server: hik160.pacemakere.com
-    port: 20014
-    password: 778f5385b4254495
-    sni: hik160.pacemakere.com
+    server: us001.zestapp778.com
+    port: 57277
+    password: 5t6i121em5lkmsmk
+    sni: us001.zestapp778.com
     network: ''
-  - name: 🇸🇬 新加坡 www.v2s.com
+  - name: 🇸🇬 新加坡 www.v2s.com] ... 1
     type: trojan
     server: 149.28.130.108
     port: 443
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: searchcreativejobsandshowcaseyourartistictalents.com
     network: ''
-  - name: 🇩🇪 德国 www.v2s.com] ... 3
-    type: trojan
-    server: 193.108.119.29
+  - name: 🇩🇪德国|unknown-160
+    type: http
+    server: 34.249.214.108
     port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.iloverussia2026.com
-    network: ''
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-161
+    type: http
+    server: 51.159.225.196
+    port: 23856
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-162
+    type: http
+    server: 51.159.225.197
+    port: 19362
+    skip-cert-verify: true
+    udp: true
+    tls: true
   - name: 🇩🇪 德国 www.v2s.com] ... 2
     type: trojan
     server: 193.108.119.96
@@ -1957,48 +1881,20 @@ proxies:
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: learn.iloverussia2026.com
     network: ''
-  - name: 🇩🇪德国|unknown-164
+  - name: 🇩🇪 德国 www.v2s.com] ... 4
+    type: trojan
+    server: 193.108.119.15
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: courses.iloverussia2026.com
+    network: ''
+  - name: 🇩🇪德国|unknown-163
     type: http
     server: 51.159.225.196
     port: 23856
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-165
-    type: http
-    server: 51.159.225.196
-    port: 23856
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-166
-    type: http
-    server: 34.249.214.108
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-167
-    type: http
-    server: 51.159.225.197
-    port: 19362
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: www.v2s.com] CA... 1
-    type: trojan
-    server: 216.152.147.152
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: learn.connectingpeoplewithgreatjobs.com
-    network: ''
-  - name: www.v2s.com] CA... 6
-    type: trojan
-    server: 216.152.147.48
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: courses.connectingpeoplewithgreatjobs.com
-    network: ''
   - name: 🇦🇺 澳洲 www.v2s.com
     type: trojan
     server: 45.63.30.142
@@ -2006,7 +1902,35 @@ proxies:
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: connectwithemployerstohireyouridealteam.com
     network: ''
-  - name: 🇺🇸美国|unknown-731
+  - name: 🇺🇸美国|unknown-750
+    type: http
+    server: 198.44.135.19
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-761
+    type: http
+    server: 198.44.138.27
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-766
+    type: http
+    server: 44.229.69.166
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-785
+    type: http
+    server: 44.217.145.28
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-793
     type: vless
     server: 13.140.56.100
     port: 14430
@@ -2019,36 +1943,7 @@ proxies:
       headers:
         Host: 13.140.56.100
       path: /vless
-  - name: 🇺🇸美国|unknown-794
-    type: http
-    server: 198.44.138.27
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-852
-    type: http
-    server: 198.44.135.19
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-879
-    type: vmess
-    server: 172.67.156.121
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: e70a5b70-f63c-4450-af8b-94990cdf80c0
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: www.gptcloudai.com
-      path: /truth
-  - name: 🇺🇸美国|unknown-901
+  - name: 🇺🇸美国|unknown-837
     type: vmess
     server: 172.64.229.21
     port: 443
@@ -2063,7 +1958,67 @@ proxies:
       headers:
         Host: vmess.lbw666.dpdns.org
       path: /ws?ed=2048
-  - name: 🇭🇰香港|unknown-18
+  - name: 🇺🇸美国|unknown-843
+    type: vmess
+    server: 172.67.156.121
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: e70a5b70-f63c-4450-af8b-94990cdf80c0
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: www.gptcloudai.com
+      path: /truth
+  - name: 🇺🇸美国|unknown-844
+    type: vless
+    server: 65.109.211.81
+    port: 465
+    skip-cert-verify: true
+    udp: true
+    uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: hw6.divarkhaghazi.com.
+      path: /
+    client-fingerprint: firefox
+  - name: 🇺🇸美国|unknown-914
+    type: vless
+    server: 104.21.70.21
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: fc60147e-76b8-4bc5-b691-90b2da79e3d2
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: nautica-cff.kloningstrife002.workers.dev
+      path: /138.2.74.219-28616
+    client-fingerprint: unsafe
+  - name: 🇭🇰香港|unknown-21
+    type: vmess
+    server: 47.244.120.197
+    port: 44867
+    skip-cert-verify: true
+    udp: true
+    uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: false
+    alpn:
+      - ''
+    ws-opts:
+      path: /arki
+  - name: 🇭🇰香港|unknown-22
     type: vmess
     server: 47.244.120.197
     port: 23026
@@ -2075,27 +2030,38 @@ proxies:
     network: ws
     tls: false
     ws-opts:
-      path: /arki
       headers:
         Host: 47.244.120.197
-  - name: 🇰🇵日本|unknown-36
+      path: /arki
+  - name: 🇰🇵日本|unknown-38
+    type: http
+    server: 120.232.204.58
+    port: 40583
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇰🇵日本|unknown-45
     type: vless
-    server: 188.114.98.0
+    server: 172.67.156.147
     port: 443
     skip-cert-verify: true
     udp: true
     uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
     network: ws
     tls: true
-    alpn:
-      - http/1.1
     encryption: none
     ws-opts:
       headers:
         Host: jp3.yohototo.top
       path: /tyxyws
-    client-fingerprint: unsafe
-  - name: 🇸🋀新加坡|unknown-26
+  - name: 🇸🋀新加坡|unknown-35
+    type: trojan
+    server: 139.180.146.200
+    port: 8886
+    skip-cert-verify: true
+    udp: true
+    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
+  - name: 🇸🋀新加坡|unknown-36
     type: vless
     server: 13.140.56.100
     port: 14430
@@ -2104,18 +2070,12 @@ proxies:
     uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     network: ws
     tls: false
+    encryption: none
     ws-opts:
       headers:
         Host: 13.140.56.100
       path: /vless
-  - name: 🇸🋀新加坡|unknown-29
-    type: trojan
-    server: 139.180.146.200
-    port: 8886
-    skip-cert-verify: true
-    udp: true
-    password: e26a229d-e8f2-4ff9-8c7d-58a9d83ee437
-  - name: 🇸🋀新加坡|unknown-30
+  - name: 🇸🋀新加坡|unknown-37
     type: vless
     server: 139.162.27.96
     port: 2096
@@ -2130,7 +2090,7 @@ proxies:
         Host: free-server.techsonic.dev
       path: /free-server.techsonic.dev
     client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-32
+  - name: 🇸🋀新加坡|unknown-42
     type: vless
     server: 139.162.27.96
     port: 2096
@@ -2145,60 +2105,7 @@ proxies:
         Host: free-server.techsonic.dev
       path: /free-server.techsonic.dev
     client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-170
-    type: trojan
-    server: 47.250.84.25
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 5931134d1cde66bf83a54acdfebe7ab2
-    sni: moltbot.doctoroyy.net
-  - name: 🇩🇪德国|unknown-172
-    type: vless
-    server: 168.222.43.53
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
-    tls: false
-  - name: 🇩🇪德国|unknown-174
-    type: vless
-    server: 150.95.109.109
-    port: 2086
-    skip-cert-verify: true
-    udp: true
-    uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
-    tls: false
-  - name: 🇩🇪德国|unknown-177
-    type: trojan
-    server: 66.163.118.62
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-180
-    type: trojan
-    server: 66.163.118.244
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: api.discovergreatjobsandadvanceyourcareer.com
-  - name: 🇩🇪德国|unknown-181
-    type: http
-    server: 188.120.225.125
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-183
-    type: trojan
-    server: 64.176.7.205
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-186
+  - name: 🇩🇪德国|unknown-164
     type: vless
     server: 130.94.95.198
     port: 57353
@@ -2207,23 +2114,70 @@ proxies:
     uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     tls: true
     client-fingerprint: firefox
-  - name: 🇩🇪德国|unknown-187
+  - name: 🇩🇪德国|unknown-166
+    type: vless
+    server: 168.222.43.53
+    port: 8080
+    skip-cert-verify: true
+    udp: true
+    uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+    network: tcp
+    tls: false
+  - name: 🇩🇪德国|unknown-169
     type: trojan
-    server: 66.163.118.166
+    server: 66.163.118.251
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: learn.discovergreatjobsandadvanceyourcareer.com
-  - name: 🇩🇪德国|unknown-188
-    type: trojan
-    server: 64.176.163.182
+    sni: resources.discovergreatjobsandadvanceyourcareer.com
+  - name: 🇩🇪德国|unknown-170
+    type: vless
+    server: 150.95.109.109
+    port: 2086
+    skip-cert-verify: true
+    udp: true
+    uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+    network: tcp
+    tls: false
+    encryption: none
+  - name: 🇩🇪德国|unknown-172
+    type: http
+    server: 188.120.225.125
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-173
+    type: vless
+    server: 104.21.70.21
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: exploreeducationsectoropportunitiestodayandadvancecareers.com
-  - name: 🇩🇪德国|unknown-190
+    uuid: fc60147e-76b8-4bc5-b691-90b2da79e3d2
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: nautica-cff.kloningstrife002.workers.dev
+      path: /138.2.74.219-28616
+    client-fingerprint: unsafe
+  - name: 🇩🇪德国|unknown-174
+    type: vless
+    server: 188.114.96.25
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: b15f187e-9b34-437c-8243-8651a8ada76c
+    network: ws
+    tls: true
+    encryption: none
+    ws-opts:
+      headers:
+        Host: tepar-k4j9.jounet.workers.dev
+      path: /stream/DEVCOP/8651a8ada76c/loc-0
+  - name: 🇩🇪德国|unknown-175
     type: trojan
     server: 66.163.118.62
     port: 443
@@ -2231,16 +2185,45 @@ proxies:
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: courses.discovergreatjobsandadvanceyourcareer.com
-  - name: 🇩🇪德国|unknown-191
+  - name: 🇩🇪德国|unknown-177
     type: trojan
-    server: 66.163.118.251
+    server: 64.176.7.205
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    network: tcp
-    sni: resources.discovergreatjobsandadvanceyourcareer.com
-  - name: 🇺🇸美国|unknown-954
+  - name: 🇩🇪德国|unknown-181
+    type: trojan
+    server: 66.163.118.244
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: api.discovergreatjobsandadvanceyourcareer.com
+  - name: 🇩🇪德国|unknown-182
+    type: trojan
+    server: 66.163.118.166
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: learn.discovergreatjobsandadvanceyourcareer.com
+  - name: 🇩🇪德国|unknown-185
+    type: trojan
+    server: 64.176.163.182
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: exploreeducationsectoropportunitiestodayandadvancecareers.com
+  - name: 🇨🇦加拿大|unknown-7
+    type: http
+    server: 198.44.157.19
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-931
     type: vmess
     server: 23.162.200.198
     port: 18000
@@ -2251,7 +2234,20 @@ proxies:
     alterId: 0
     network: tcp
     tls: false
-  - name: 🇰🇵日本|unknown-43
+  - name: 🇭🇰香港|unknown-23
+    type: vmess
+    server: 47.244.120.197
+    port: 44867
+    skip-cert-verify: true
+    udp: true
+    uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: false
+    ws-opts:
+      path: /arki
+  - name: 🇰🇵日本|unknown-46
     type: vmess
     server: 168.138.43.75
     port: 80
@@ -2265,14 +2261,46 @@ proxies:
       headers:
         Host: 168.138.43.75
       path: /cctv13.m3u8
-  - name: 🇸🋀新加坡|unknown-37
-    type: http
-    server: 52.221.234.145
-    port: 2080
+  - name: 🇩🇪德国|unknown-186
+    type: ss
+    server: 51.79.49.116
+    port: 8882
     skip-cert-verify: true
     udp: true
-    password: '1234'
-    username: '1234'
+    password: kDWvXYZoTBcGkC4
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-189
+    type: ss
+    server: 51.79.64.198
+    port: 8119
+    skip-cert-verify: true
+    udp: true
+    password: cdBIDV42DCwnfIN
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-190
+    type: ss
+    server: 51.222.136.236
+    port: 8882
+    skip-cert-verify: true
+    udp: true
+    password: kDWvXYZoTBcGkC4
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-191
+    type: ss
+    server: 51.83.192.80
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: itzvpn@321
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-192
+    type: ss
+    server: 51.222.12.127
+    port: 445
+    skip-cert-verify: true
+    udp: true
+    password: zDNVedRFPQexG9v
+    cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-193
     type: ss
     server: 51.222.141.125
@@ -2289,31 +2317,31 @@ proxies:
     udp: true
     password: Y6R9pAtvxxzmGC
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-195
+  - name: 🇩🇪德国|unknown-196
     type: ss
-    server: 51.222.136.236
-    port: 8882
+    server: 51.222.155.113
+    port: 5601
     skip-cert-verify: true
     udp: true
-    password: kDWvXYZoTBcGkC4
+    password: Y6R9pAtvxxzmGC
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-197
+    type: ss
+    server: 51.222.155.32
+    port: 5003
+    skip-cert-verify: true
+    udp: true
+    password: g5MeD6Ft3CWlJId
     cipher: aes-256-gcm
   - name: 🇩🇪德国|unknown-198
     type: ss
-    server: 51.79.64.198
-    port: 8119
+    server: 54.36.174.140
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: cdBIDV42DCwnfIN
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-200
-    type: ss
-    server: 51.222.12.127
-    port: 445
-    skip-cert-verify: true
-    udp: true
-    password: zDNVedRFPQexG9v
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-201
+    password: 6heexyz
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-199
     type: ss
     server: 54.36.174.134
     port: 443
@@ -2321,95 +2349,93 @@ proxies:
     udp: true
     password: 6heexyz
     cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-203
-    type: ss
-    server: 51.83.192.80
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: itzvpn@321
-    cipher: aes-256-gcm
-  - name: 🇯🇵 日本 www.v2s.com] 1544
-    type: ss
-    server: 84.247.155.196
-    port: 443
-    cipher: aes-256-gcm
-    password: 3eOFeNssde7PYYMv
   - name: 🇯🇵 日本 www.v2s.com] 5141
     type: ss
     server: 149.22.87.204
     port: 443
     cipher: aes-128-gcm
     password: shadowsocks
-  - name: 🇸🇬 新加坡 www.v2s.com] 1559
+  - name: 🇯🇵 日本 www.v2s.com] 1544
     type: ss
-    server: 139.180.220.175
+    server: 84.247.155.196
+    port: 443
+    cipher: aes-256-gcm
+    password: 3eOFeNssde7PYYMv
+  - name: 🇯🇵 日本 www.v2s.com] 1599
+    type: ss
+    server: 154.36.158.197
     port: 8388
     cipher: aes-256-gcm
-    password: qpSevKaUXYQKvSjp
-  - name: 🇰🇷 韩国 www.v2s.com] 1185
-    type: ss
-    server: 141.164.45.187
-    port: 5001
-    cipher: aes-256-gcm
-    password: Y6R9pAtvxxzmGC
+    password: BeaUf9c0AEWH40Pu
   - name: 🇬🇧 英国 www.v2s.com] 1247
     type: ss
     server: 94.156.250.148
     port: 7001
     cipher: aes-256-gcm
     password: RexnBgU7EV5ADxG
-  - name: 🇬🇧 英国 www.v2s.com] AT1595
-    type: ss
-    server: 82.110.60.9
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
   - name: 🇬🇧 英国 www.v2s.com] 1602
     type: ss
     server: 185.176.206.9
     port: 19999
     cipher: aes-256-gcm
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇬🇧 英国 www.v2s.com] 1451
+  - name: 🇬🇧 英国 www.v2s.com] AT1595
     type: ss
-    server: 158.173.24.73
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: www.v2s.com] CA1545
-    type: ss
-    server: 51.79.64.198
-    port: 8119
+    server: 82.110.60.9
+    port: 19999
     cipher: aes-256-gcm
-    password: cdBIDV42DCwnfIN
-  - name: www.v2s.com] CA1558
-    type: ss
-    server: 51.222.200.165
-    port: 5000
-    cipher: aes-256-gcm
-    password: Y6R9pAtvxxzmGC
-  - name: 🇷🇺 俄罗斯 加拿大 Montreal
-    type: ss
-    server: 46.17.46.27
-    port: 18443
-    cipher: aes-256-gcm
-    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
   - name: www.v2s.com] CA1557
     type: ss
     server: 51.222.136.236
     port: 8882
     cipher: aes-256-gcm
     password: kDWvXYZoTBcGkC4
-  - name: www.v2s.com] CA1538
+  - name: www.v2s.com] CA1558
     type: ss
-    server: 51.222.12.127
+    server: 51.222.200.165
+    port: 5000
+    cipher: aes-256-gcm
+    password: Y6R9pAtvxxzmGC
+  - name: www.v2s.com] CA1546
+    type: ss
+    server: 51.222.155.113
+    port: 5601
+    cipher: aes-256-gcm
+    password: Y6R9pAtvxxzmGC
+  - name: www.v2s.com] CA1546... 1
+    type: ss
+    server: 51.222.155.32
+    port: 5003
+    cipher: aes-256-gcm
+    password: g5MeD6Ft3CWlJId
+  - name: www.v2s.com] CA1559
+    type: ss
+    server: 51.222.141.125
     port: 445
     cipher: aes-256-gcm
     password: zDNVedRFPQexG9v
+  - name: www.v2s.com] CA1545
+    type: ss
+    server: 51.79.64.198
+    port: 8119
+    cipher: aes-256-gcm
+    password: cdBIDV42DCwnfIN
+  - name: www.v2s.com] CA1545... 1
+    type: ss
+    server: 51.79.49.116
+    port: 8882
+    cipher: aes-256-gcm
+    password: kDWvXYZoTBcGkC4
+  - name: 🇷🇺 俄罗斯 加拿大 Montreal
+    type: ss
+    server: 46.17.46.27
+    port: 18443
+    cipher: aes-256-gcm
+    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
   - name: 🇳🇱 荷兰 www.v2s.com] 1604
     type: ss
-    server: 104.239.12.81
+    server: sql.popmintxo.cc
     port: 43385
     cipher: chacha20-ietf-poly1305
     password: AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa
@@ -2419,7 +2445,24 @@ proxies:
     port: 18443
     cipher: aes-256-gcm
     password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
-  - name: 🇫🇷 法国 592
+  - name: 🇸🇬 新加坡 677
+    type: http
+    server: 159.223.41.216
+    port: 9090
+    tls: false
+  - name: 🇸🇬 新加坡 679
+    type: http
+    server: 146.190.80.158
+    port: 9090
+    tls: false
+  - name: 🇬🇧 英国 628
+    type: http
+    server: 3d329aa8-t9zts0-tpaqgu-1smhu.uk.oshuawei.com
+    port: 443
+    username: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
+    password: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
+    tls: true
+  - name: 🇫🇷 法国 655
     type: http
     server: 8a7d3033-ta1og0-ta5i1s-1j61y.fr.oshuawei.com
     port: 443
