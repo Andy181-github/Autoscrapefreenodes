@@ -160,11 +160,36 @@ jobs:
           git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
           git add -f artifacts/health/cloud/report.json artifacts/health/cloud/working.yaml artifacts/health/cloud/stable.yaml artifacts/health/cloud/quality.yaml
           git add README.md config.json data/historical.json
-          # 仅在暂存区有变更时提交并推送 (产物类提交已被 push.paths 过滤, 不会再次触发本 workflow)
+          # 仅在暂存区有变更时提交并发布。
+          # workflow_dispatch 若从非 main 分支启动，不允许把该分支产物写回 main。
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::warning::当前运行 ref=$GITHUB_REF，不是 refs/heads/main；跳过向 main 发布。"
+            exit 0
+          fi
+          # 排队中的 schedule/push 运行可能仍基于旧 GITHUB_SHA 检出代码；
+          # 若 main 已被先完成的运行更新，直接跳过过期产物，避免 rebase 订阅/报告时发生冲突。
           if ! git diff --cached --quiet; then
             git commit -m "自动更新: 更新节点数据与订阅 [skip ci]"
-            git pull --rebase origin main
-            git push origin main
+            git fetch origin main
+            RUN_BASE="$GITHUB_SHA"
+            REMOTE_MAIN="$(git rev-parse origin/main)"
+            if [ "$REMOTE_MAIN" != "$RUN_BASE" ]; then
+              echo "::warning::main 已从本次运行基线 $RUN_BASE 前进到 $REMOTE_MAIN；跳过过期产物发布，等待下一轮基于最新 main 重新生成。"
+              exit 0
+            fi
+
+            # 不 rebase 生成物提交。若 fetch 后又有外部提交抢先更新 main，
+            # 只在确认远端已前进时安全跳过；认证/权限等其他 push 错误仍应使 job 失败。
+            if ! git push origin HEAD:main; then
+              git fetch origin main
+              REMOTE_MAIN="$(git rev-parse origin/main)"
+              if [ "$REMOTE_MAIN" != "$RUN_BASE" ]; then
+                echo "::warning::发布期间 main 已前进到 $REMOTE_MAIN；本轮产物未发布，等待下一轮重新生成。"
+                exit 0
+              fi
+              echo "::error::推送失败，但 main 未发生前进；请检查 GitHub 写入权限或远端错误。"
+              exit 1
+            fi
           else
             echo "No changes to commit"
           fi
