@@ -107,11 +107,11 @@
 
 ## 七、Node.js 24 运行时升级
 
-本次成功运行 `41464046723` 虽然通过，但 GitHub 给出 Node.js 20 action runtime 弃用告警。已进一步把工作流升级为：
+本次成功运行 `41464046723` 虽然通过，但 GitHub 给出 Node.js 20 action runtime 弃用告警。随后将工作流升级为 Node 24：
 
 - `actions/checkout@v7`
 - `actions/setup-node@v7`
 - `actions/upload-artifact@v7`
 - 项目脚本运行时 `node-version: '24'`
 
-通过 GitHub API 读取三个 action 的 `action.yml`，确认它们均声明 `runs.using: node24`。当前这组升级已在工作流源码中修改，需由下一次 CI 运行验证项目自身脚本在 Node 24 下的兼容性。
+通过 GitHub API 读取三个 action 的 `action.yml`，确认它们均声明 `runs.using: node24`。升级后的 GitHub Actions 运行 `41465887976` 已在 Node 24 下完整成功，耗时 6 分 54 秒；npm 测试、抓取、Mihomo 校验、真实节点探测、Q 分数标记和产物发布全部通过。Node.js 20 弃用告警已消失，仅保留 `ubuntu-latest` 迁移到 Ubuntu 26 的非阻塞提示。
