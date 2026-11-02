@@ -1,12 +1,12 @@
 # 🌐 订阅自动更新
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1764-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1764-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1764-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1663-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1663-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1663-purple)
 
-> **最后同步时间**：2026/11/02 11:30:56 (北京时间)
-> **ISO 时间**：2026-11-02T03:30:56.587Z
+> **最后同步时间**：2026/11/02 22:14:27 (北京时间)
+> **ISO 时间**：2026-11-02T14:14:27.030Z
 
 > ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
 > 旧的根目录 raw URL 现已 404，请按下方「订阅链接」中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
@@ -102,25 +102,28 @@ README 中的同步时间、节点统计和地区分布由 `scraper.js` 更新�
 ---
 
 ### 节点统计
-- **有效节点数**: 1764
+- **有效节点数**: 1663
 - **平均静态特征分（非健康评分）**: 81/100
 
 ### 🌍 地区分布
-- **美国**: 1041 nodes
-- **德国**: 236 nodes
-- **荷兰**: 120 nodes
-- **新加坡**: 71 nodes
-- **日本**: 61 nodes
-- **法国**: 52 nodes
-- **中国**: 41 nodes
-- **英国**: 39 nodes
-- **香港**: 31 nodes
-- **澳大利亚**: 22 nodes
-- **加拿大**: 22 nodes
-- **韩国**: 16 nodes
-- **台湾**: 12 nodes
+- **美国**: 973 nodes
+- **德国**: 221 nodes
+- **荷兰**: 116 nodes
+- **新加坡**: 59 nodes
+- **日本**: 58 nodes
+- **法国**: 51 nodes
+- **中国**: 43 nodes
+- **英国**: 42 nodes
+- **香港**: 26 nodes
+- **澳大利亚**: 23 nodes
+- **加拿大**: 19 nodes
+- **韩国**: 17 nodes
+- **台湾**: 15 nodes
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
+- **稳定节点**: [stable.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
+- **可用节点 (working + stable)**: [working.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/working.yaml)
+- **高质量节点 (达到最低分数)**: [quality.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/quality.yaml)
 - **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
 - **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
 - **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
