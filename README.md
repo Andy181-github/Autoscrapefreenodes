@@ -1,12 +1,12 @@
 # AutoScrapeFreeNodes
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1653-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1653-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1653-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1652-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1652-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1652-purple)
 
-> **最后同步时间**：2026/11/02 23:28:15 (北京时间)
-> **ISO 时间**：2026-11-02T15:28:15.033Z
+> **最后同步时间**：2026/11/03 02:36:54 (北京时间)
+> **ISO 时间**：2026-11-02T18:36:54.347Z
 
 ## 项目简介
 
@@ -93,34 +93,32 @@ Windows 本地健康探测（可先用 `-Limit 20` 小批量试跑）：
 - [CI 实测与发布竞态修复记录](docs/ci-probe-and-publish-race-2026-11-02.md)
 
 ### 节点统计
-
-- **有效节点数**：1653
-- **平均静态特征分（非健康评分）**：81/100
+- **有效节点数**: 1652
+- **平均静态特征分（非健康评分）**: 81/100
 
 ### 🌍 地区分布
-- **美国**：973
-- **德国**：221
-- **荷兰**：114
-- **日本**：57
-- **新加坡**：57
-- **法国**：49
-- **中国**：43
-- **英国**：41
-- **香港**：25
-- **澳大利亚**：22
-- **加拿大**：19
-- **韩国**：17
-- **台湾**：15
-
+- **美国**: 972 nodes
+- **德国**: 216 nodes
+- **荷兰**: 114 nodes
+- **新加坡**: 59 nodes
+- **日本**: 57 nodes
+- **法国**: 52 nodes
+- **中国**: 42 nodes
+- **英国**: 39 nodes
+- **香港**: 27 nodes
+- **澳大利亚**: 23 nodes
+- **加拿大**: 19 nodes
+- **韩国**: 17 nodes
+- **台湾**: 15 nodes
 ### 🚀 订阅链接
-- [Mihomo / Clash Meta](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
-- [稳定节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
-- [可用节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/working.yaml)
-- [高质量节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/quality.yaml)
-- [标准 Clash](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
-- [Base64](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
-- [XiaoXi TXT](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
-- [kooker.jp TXT](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt)
+- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
+- **稳定节点**: [stable.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
+- **可用节点 (working + stable)**: [working.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/working.yaml)
+- **高质量节点 (达到最低分数)**: [quality.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/quality.yaml)
+- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
+- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
+- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
+- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt)
 
 ---
 
