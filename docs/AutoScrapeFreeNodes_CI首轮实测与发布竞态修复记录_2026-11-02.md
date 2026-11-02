@@ -80,7 +80,7 @@
 
 ## 四、工作流修复
 
-已在本地修改 `.github/workflows/deploy.yml` 的“提交更新”步骤：
+已修改并推送 `.github/workflows/deploy.yml` 的“提交更新”步骤，修复提交为 `e65616c9c2d52ba90715334b4644990a6718b9d9`：
 
 - 只允许 `refs/heads/main` 运行向 main 发布，避免从其他分支手动触发时覆盖主分支产物。
 - 生成本地提交后执行 `git fetch origin main`。
@@ -97,10 +97,21 @@
 - `git diff --check` 通过。
 - 使用临时 bare Git 仓库模拟“本次运行提交产物期间，远端 main 已被另一运行更新”的竞态；新 guard 正确识别旧基线并跳过，没有 rebase 或覆盖远端文件。
 
-本次竞态修复仅在本地工作区，尚未提交或推送；没有再次运行抓取或真实节点探测。
+竞态修复已推送。随后 GitHub Actions push 运行 `41464046723` 在完整抓取、真实探测和评分发布后成功结束（7 分 10 秒），自动产物提交为 `cd74a7e44351fa33b81a330a310f4dd02bc9bf7e`。本轮正常基线发布路径已在 GitHub 上验证；旧 SHA 跳过分支已通过临时 bare Git 仓库竞态模拟验证。
 
 ## 六、仍需处理
 
 1. `config.json` 中 `settings.proxyProbe.enabled=false` 目前没有被运行时代码或 CI 工作流读取，仅在 `scraper.js` 注释中说明它不控制 CI 云端探测。该配置属于未接线设置，后续应明确删除、改名或接入单独的 cloud health probe 开关，不能让维护者误以为它能关闭 CI 探测。
 2. 继续积累 14 天报告，按真实成功率置信下界、延迟中位数/MAD、目标覆盖率和状态变化评估评分阈值；不要根据一次样本改权重。
-3. 修复提交推送后，应确认下一次排队的 schedule/push 运行在远端已前进时显示 warning 并正常结束，而非再次 rebase 产物。
+3. 后续仍需观察真实排队并发场景，确认旧 SHA 分支在 GitHub Actions 中显示 warning 并正常结束；目前该分支已有本地 bare Git 仓库模拟证据，尚未在真实 GitHub 排队竞态中命中。
+
+## 七、Node.js 24 运行时升级
+
+本次成功运行 `41464046723` 虽然通过，但 GitHub 给出 Node.js 20 action runtime 弃用告警。已进一步把工作流升级为：
+
+- `actions/checkout@v7`
+- `actions/setup-node@v7`
+- `actions/upload-artifact@v7`
+- 项目脚本运行时 `node-version: '24'`
+
+通过 GitHub API 读取三个 action 的 `action.yml`，确认它们均声明 `runs.using: node24`。当前这组升级已在工作流源码中修改，需由下一次 CI 运行验证项目自身脚本在 Node 24 下的兼容性。

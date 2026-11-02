@@ -49,17 +49,17 @@ jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
     steps:
-      # 检出仓库代码 (v4, 保留 npm 缓存)
+      # 检出仓库代码 (Node 24 runtime)
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      # 设置Node.js环境 (v4)
+      # 设置Node.js环境 (Node 24 LTS)
       - name: 设置Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '18'
+          node-version: '24'
           cache: 'npm'
 
       # 安装依赖 (lockfile 已提交, 使用 npm ci 保证可重复构建)
@@ -124,7 +124,7 @@ jobs:
 
       # 保留最近 14 天逐次探测报告，供跨时间窗口校准质量评分；不把历史快照扩张进 Git 提交历史。
       - name: 归档质量评分校准快照
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: health-calibration-${{ github.run_id }}
           path: artifacts/health/cloud/report.json
