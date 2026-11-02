@@ -198,7 +198,7 @@ Git 提示工作区中的部分文件会在下次 Git 写入时转换 LF/CRLF；
 - 没有对真实免费节点执行本地或云端批量探测。
 - 当前本地未发现 artifacts/health/cloud/report.json，因此无法给出真实节点的 Q 分数分布、quality.yaml 节点数量或质量提升比例。
 - 没有触发 GitHub Actions，也没有推送或发布远程订阅；工作流中的云端探测和发布前校验仍需下一次 CI 运行确认。
-- settings.proxyProbe.enabled 当前为 false，但 GitHub Actions 中的云端探测步骤是独立执行的，并不受该开关控制。此开关与 CI 探测的语义仍需后续统一，避免维护者误以为关闭它就会关闭云端探测。
+- （后续维护记录：原 settings.proxyProbe 配置没有任何代码或 workflow 读取点，已在 2026-11-02 清理；云端探测由 GitHub Actions 显式调用 scripts/probe-nodes.js，与本地 TCP 检查分离。）
 - 当前质量分只代表两个指定测试目标和本次采样窗口下的表现。建议积累 14 天报告后再根据实际分布调整阈值，不要仅凭单次平均分过度调权。
 
 ## 八、修改文件

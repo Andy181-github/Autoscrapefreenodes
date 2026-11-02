@@ -101,9 +101,12 @@
 
 ## 六、仍需处理
 
-1. `config.json` 中 `settings.proxyProbe.enabled=false` 目前没有被运行时代码或 CI 工作流读取，仅在 `scraper.js` 注释中说明它不控制 CI 云端探测。该配置属于未接线设置，后续应明确删除、改名或接入单独的 cloud health probe 开关，不能让维护者误以为它能关闭 CI 探测。
-2. 继续积累 14 天报告，按真实成功率置信下界、延迟中位数/MAD、目标覆盖率和状态变化评估评分阈值；不要根据一次样本改权重。
-3. 后续仍需观察真实排队并发场景，确认旧 SHA 分支在 GitHub Actions 中显示 warning 并正常结束；目前该分支已有本地 bare Git 仓库模拟证据，尚未在真实 GitHub 排队竞态中命中。
+1. 继续积累 14 天报告，按真实成功率置信下界、延迟中位数/MAD、目标覆盖率和状态变化评估评分阈值；不要根据一次样本改权重。
+2. 后续仍需观察真实排队并发场景，确认旧 SHA 分支在 GitHub Actions 中显示 warning 并正常结束；目前该分支已有本地 bare Git 仓库模拟证据，尚未在真实 GitHub 排队竞态中命中。
+
+### 已完成：清理未接线的 proxyProbe 配置
+
+原 `config.json` 中整组 `settings.proxyProbe` 配置没有任何运行时代码或 workflow 读取点，已于 2026-11-02 删除。云端探测由 GitHub Actions 显式调用 `scripts/probe-nodes.js`，不受本地配置控制。
 
 ## 七、Node.js 24 运行时升级
 

@@ -1,5 +1,8 @@
 'use strict';
 const assert = require('assert');
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync(require.resolve('./config.json'), 'utf8'));
+assert.strictEqual(Object.prototype.hasOwnProperty.call(config.settings, 'proxyProbe'), false, 'unused proxyProbe settings must not remain exposed as if configurable');
 const { classifyFailure, median, medianAbsoluteDeviation, wilsonLowerBound, summarizeNode, mapLimit } = require('./scripts/probe-nodes');
 assert.strictEqual(classifyFailure(503, 'connection refused'), 'connect_error');
 assert.strictEqual(classifyFailure(504, 'context deadline exceeded'), 'timeout');

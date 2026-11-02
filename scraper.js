@@ -921,7 +921,7 @@ async function scrapeAllSites() {
   // P1-2: 检测等级说明 — TCP connect 只证明目标端口可达，不代表代理协议
   // 握手/认证/出网成功。每个节点新增 detectLevel 字段:
   //   "tcp"       = TCP 可达 (本阶段唯一已验证的等级)
-  //   实际协议/HTTP 出站验证由 scripts/probe-nodes.js 在 CI 独立执行；当前 settings.proxyProbe.enabled 不控制该 CI 步骤。
+  //   实际协议/HTTP 出站验证由 GitHub Actions 独立执行 scripts/probe-nodes.js；不由本地 config.json 开关控制。
   // 筛选条件中不得把 detectLevel="tcp" 当作"代理可用"。
   function checkTcpNode(p) {
     return new Promise((resolve) => {
