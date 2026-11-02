@@ -24,7 +24,7 @@ on:
       - 'scraper.js'
       - 'test.js'
       - 'test-regression.js'
-      - 'generate-readme.js'
+      - 'update-readme-badges.js'
       - 'lib/**'
       - 'scripts/**'
       - 'test-probe.js'
@@ -131,9 +131,9 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      # 生成 README 徽章 (仅 3 个节点数量徽章, 正文由 scraper.js 维护)
-      - name: 生成 README
-        run: node generate-readme.js
+      # 更新 README 顶部的 3 个订阅数量徽章；正文统计由 scraper.js 维护。
+      - name: 更新 README 徽章
+        run: node update-readme-badges.js
 
       # 更新历史数据 (lib/history.js: 将本次抓取结果写入 data/historical.json)
       - name: 更新历史数据

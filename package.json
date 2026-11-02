@@ -5,7 +5,8 @@
   "main": "scraper.js",
   "scripts": {
     "start": "node scraper.js",
-    "build": "node generate-readme.js",
+    "readme:badges": "node update-readme-badges.js",
+    "build": "npm run readme:badges",
     "test": "node test.js && node test-regression.js && node test-clash-compat.js && node test-probe.js && node test-score-labels.js",
     "agents": "node run-agents.js"
   },

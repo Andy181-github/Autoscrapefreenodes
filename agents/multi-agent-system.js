@@ -24,7 +24,7 @@ class MultiAgentSystem {
       ],
       reviewFiles: [
         'scraper.js',
-        'generate-readme.js',
+        'update-readme-badges.js',
         'test.js'
       ],
       testCommand: 'cd .. && node test.js'

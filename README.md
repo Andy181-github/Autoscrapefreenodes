@@ -1,4 +1,4 @@
-# 🌐 订阅自动更新
+# AutoScrapeFreeNodes
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
 ![SubsCheck](https://img.shields.io/badge/SubsCheck-1653-green)
@@ -8,145 +8,122 @@
 > **最后同步时间**：2026/11/02 23:28:15 (北京时间)
 > **ISO 时间**：2026-11-02T15:28:15.033Z
 
-> ⚠️ **订阅链接已迁移**：5 个订阅文件已从仓库根目录移至 `artifacts/subs/` 子目录。
-> 旧的根目录 raw URL 现已 404，请按下方「订阅链接」中的新地址（`.../main/artifacts/subs/<file>`）更新客户端订阅地址。
-> 迁移对照表与迁移步骤详见 [docs/MIGRATION.md](docs/MIGRATION.md)。
+## 项目简介
 
-## ⚙️ 更新机制（GitHub Free 计划资源预算）
+AutoScrapeFreeNodes 是一个基于 Node.js 和 GitHub Actions 的公开订阅采集、解析、检测与生成项目。它聚合配置中的公开订阅来源，整理为多种客户端可用的订阅格式，并定时更新仓库中的订阅文件。
 
-本仓库使用 GitHub **Free 计划**，Actions 分钟数有限，因此更新策略为：
+本项目不是代理服务端，不保证第三方节点持续可用。
 
-- **触发方式**：每 6 小时定时运行一次（UTC `0 */6 * * *`）为主；`push` 仅在改动涉及源码（`scraper.js`/`test*`/`lib/`/`config.json`/`package*`/`.github/workflows/`）时触发，纯订阅产物提交（`artifacts/subs/*`、`README`、`data/historical.json`）不触发——避免 CI 自我推送循环消耗 Free 额度。手动 `workflow_dispatch` 随时可触发。
-- **单一 workflow**：`.github/workflows/deploy.yml` 在一次运行中完成依赖安装 → `npm test` → 节点抓取 → 发布文件结构校验 → Mihomo v1.19.33 真实内核配置校验 → 云端出站健康探测 → README/历史数据更新 → 一次 Git 提交。
-- **发布安全**：
-  - 输出采用「临时目录 + 结构校验 + 原子替换」，任一文件失败时**正式订阅文件保持上版字节不变**。
-  - 零节点或过滤后为空时，CI 以非零退出码失败并写 `artifacts/run-status.json` 标记 `failed`；**旧订阅保留但不被冒充为新产物**。
-  - mihomo 生成配置的控制面默认绑定 `127.0.0.1:9090`、`allow-lan: false`；如需远程管理请显式修改并自行配置 `external-controller-secret` 认证。
-- **检测等级说明**：订阅生成阶段仅经过 **TCP 可达性预筛**（`detectLevel: "tcp"`），未做代理协议握手/出网验证。`sourceHeuristicScore` 是静态来源特征启发式分，仅用于重复端点择优与排序，不参与节点过滤，也**不代表实测速度或可用率**。真实健康评分以双端 Mihomo 出站检测报告为准。
+## 主要功能
 
-### 手动触发
+- **多来源采集**：从 `config.json` 中启用的公开来源读取订阅。
+- **协议解析与归一化**：处理 Clash、V2Ray、Sing-box 等输入，校验协议字段并去重。
+- **节点预筛**：执行 TCP 端口可达性检查、地区识别和来源风险启发式处理。
+- **多格式输出**：生成 Mihomo、标准 Clash、Base64 和 TXT 订阅文件。
+- **独立健康探测**：通过 Mihomo 对节点执行真实 HTTPS 出站检测，生成 working、stable、quality 分层结果和评分报告。
+- **发布校验**：使用项目测试、订阅结构校验和 Mihomo 内核校验，降低错误产物发布风险。
 
-在 [Actions 页面](https://github.com/Andy181-github/Autoscrapefreenodes/actions) 选择「自动更新免费节点订阅与数据」→ `Run workflow`。直接 push 源码改动（如 `scraper.js`）也会自动触发；纯产物提交不会触发（由 6 小时定时兜底更新）。
+静态来源特征分与真实健康评分是两种不同指标。TCP 可达也不代表代理协议可用；健康分只依据实际探测样本计算，不能视为长期可用率承诺。
 
+## 自动化流程
 
-## 项目能力与质量验证
+GitHub Actions 使用 Node.js 24，每 6 小时自动运行一次，也支持手动触发；源码、配置或工作流变更时可触发 push 流程。自动任务执行依赖安装、测试、订阅抓取、格式校验、Mihomo 解析、云端健康探测、README 与历史数据更新，最后提交生成物。
 
-本项目是 GitHub Actions 驱动的公开代理订阅采集与生成工具，不是代理服务端，也不保证任何节点持续可用。当前主要处理链路：
+- 工作流：[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+- 手动运行：[GitHub Actions](https://github.com/Andy181-github/Autoscrapefreenodes/actions)
+- 订阅文件：`artifacts/subs/`
+- 云端健康报告与分层结果：`artifacts/health/cloud/`
 
-1. 从 `config.json` 配置的公开来源采集订阅内容。
-2. 解析 Clash、V2Ray、Sing-box 等输入，归一化协议字段并去重。
-3. 执行 TCP 可达性预筛、地区识别和静态来源特征处理。
-4. 生成 Mihomo、标准 Clash、Base64 和 TXT 共 5 种订阅产物。
-5. 发布前使用 `validate-released.js` 校验产物，并使用 Mihomo 内核实际解析配置。
-6. 独立运行真实出站探测；健康报告不会反向过滤或覆盖原始订阅。
+## 项目结构
 
-### 静态特征分与真实健康评分
+```text
+AutoScrapeFreeNodes/
+├── package.json / package-lock.json # 项目命令与依赖锁定
+├── LICENSE                     # 开源许可
+├── scraper.js                  # 主流程：采集、解析、过滤、去重和订阅生成
+├── validate-released.js        # 发布前订阅文件校验
+├── update-readme-badges.js     # 更新 README 顶部的订阅数量徽章
+├── run-agents.js               # 可选的 Agent 分析流程入口
+├── agents/                     # Agent 分析模块
+├── scripts/
+│   ├── probe-nodes.js          # Mihomo 健康探测与质量评分
+│   ├── apply-health-scores.js  # 将实测分数写入节点名称
+│   └── probe-local.ps1         # Windows 本地探测入口
+├── lib/history.js              # 历史数据维护
+├── test*.js                    # 主测试、回归、协议兼容和评分测试
+├── config.json                 # 订阅来源及采集设置
+├── artifacts/
+│   ├── subs/                   # 对外发布的订阅文件
+│   └── health/cloud/           # 云端探测报告和分层订阅
+├── data/historical.json        # 节点历史数据
+├── docs/                       # 使用说明、审计记录和历史归档
+└── .github/workflows/          # 自动更新与发布工作流
+```
 
-- `sourceHeuristicScore`：根据节点来源/元数据特征计算的静态启发式分，只用于去重择优与排序，不代表实测速度或可用率。
-- `asfn-health-quality-v2`：基于 Mihomo 真实 HTTPS 出站请求计算的健康质量分。至少 8 次样本后才给出数值，公式、状态分级及统计限制见[双端健康检测说明](docs/节点真实健康检测双端使用说明.md)。
-- V2 当前是可复算的工程排序分，尚未完成长期统计校准；不要把分数解释为未来可用概率或 SLA。
-- GitHub Actions 云端探测报告会以 workflow run 为单位归档 14 天，供跨时间窗口校准。该归档配置在本地提交推送并由 GitHub Actions 实际运行后才会生效。
-
-### 本地检测与测试
+## 本地使用
 
 在项目根目录执行：
 
 ```bash
-npm install
+npm ci
 npm test
+npm start
 ```
 
-Windows 本地全量健康检测（需 PowerShell）：
+其他常用命令：
+
+```bash
+npm run readme:badges  # 仅刷新 README 数量徽章
+npm run agents         # 运行可选的 Agent 分析流程
+```
+
+Windows 本地健康探测（可先用 `-Limit 20` 小批量试跑）：
 
 ```powershell
-.\scripts\probe-local.ps1
+.\scripts\probe-local.ps1 -Limit 20
 ```
 
-先小批量试跑可使用 `-Limit 20`；默认 `-Limit 0` 检测全部节点。检测参数和报告字段详见[双端健康检测说明](docs/节点真实健康检测双端使用说明.md)。
+## 相关文档
 
-### 项目文件结构
-
-```text
-AutoScrapeFreeNodes/
-├── scraper.js                 # 抓取、解析、归一化、去重与订阅生成
-├── validate-released.js       # 发布订阅结构校验
-├── generate-readme.js         # 只更新 3 个节点数量徽章
-├── scripts/                   # Mihomo 健康探测及 Windows 本地启动脚本
-├── lib/                       # 历史数据等辅助模块
-├── test.js                    # 主测试
-├── test-regression.js         # 回归测试
-├── test-clash-compat.js       # Clash/Mihomo 协议兼容测试
-├── test-probe.js              # 健康探测评分测试
-├── config.json                # 公开订阅来源与采集配置
-├── artifacts/subs/            # 5 个公开订阅产物
-├── artifacts/health/          # 探测报告（本地报告默认忽略 Git）
-├── .github/workflows/         # 自动抓取、校验、探测和发布
-└── docs/                      # 使用说明、迁移说明与历史归档
-```
-
-### 文档索引
-
-| 文档 | 用途/状态 |
-|---|---|
-| [节点真实健康检测双端使用说明](docs/节点真实健康检测双端使用说明.md) | 当前有效：云端/本地探测、评分公式、状态分级和限制 |
-| [节点质量评分 V2 实测校验](docs/节点质量评分V2实测校验-2026-11-01.md) | 当前有效：1,072 节点全量实测与复算结果、评分校准计划 |
-| [订阅链接迁移说明](docs/MIGRATION.md) | 当前有效：订阅产物目录迁移和新 URL |
-| [Agent 系统设计归档](docs/AGENT-SYSTEM-DESIGN-ARCHIVE.md) | 历史设计稿；不代表当前仓库存在文档中描述的 Agent 源码 |
-| [v3.3 优化历史](docs/OPTIMIZATION-HISTORY-v3.3.md) | 历史指标和旧实现记录，不作为当前功能依据 |
-| [v3.3 功能报告归档](docs/RESEARCH_REPORT-v3.3-ARCHIVE.md) | 历史功能说明，部分内容已过时 |
-| [代码清理报告归档](docs/CLEANUP_REPORT-ARCHIVE.md) | 历史清理记录，需结合当前源码复核 |
-| [Docker 化方案归档](docs/DOCKERIZATION-PLAN-ARCHIVE.md) | 未实施的参考方案；当前仓库没有 Dockerfile/Compose 文件 |
-
-README 中的同步时间、节点统计和地区分布由 `scraper.js` 更新；`generate-readme.js` 只更新 SubsCheck、XiaoXi、kooker.jp 三个数量徽章。不要手工把单次健康探测结果写成订阅节点统计。
-
----
+- [双端健康检测说明](docs/health-probe-guide.md)
+- [质量评分 V2 实测校验](docs/quality-score-v2-validation-2026-11-01.md)
+- [质量评分、筛选与命名实现记录](docs/quality-scoring-and-node-labels-2026-11-01.md)
+- [订阅文件路径迁移说明](docs/subscription-path-migration.md)
+- [公开仓库安全审计](docs/public-repository-security-audit.md)
+- [CI 实测与发布竞态修复记录](docs/ci-probe-and-publish-race-2026-11-02.md)
 
 ### 节点统计
-- **有效节点数**: 1653
-- **平均静态特征分（非健康评分）**: 81/100
+
+- **有效节点数**：1653
+- **平均静态特征分（非健康评分）**：81/100
 
 ### 🌍 地区分布
-- **美国**: 973 nodes
-- **德国**: 221 nodes
-- **荷兰**: 114 nodes
-- **日本**: 57 nodes
-- **新加坡**: 57 nodes
-- **法国**: 49 nodes
-- **中国**: 43 nodes
-- **英国**: 41 nodes
-- **香港**: 25 nodes
-- **澳大利亚**: 22 nodes
-- **加拿大**: 19 nodes
-- **韩国**: 17 nodes
-- **台湾**: 15 nodes
+- **美国**：973
+- **德国**：221
+- **荷兰**：114
+- **日本**：57
+- **新加坡**：57
+- **法国**：49
+- **中国**：43
+- **英国**：41
+- **香港**：25
+- **澳大利亚**：22
+- **加拿大**：19
+- **韩国**：17
+- **台湾**：15
+
 ### 🚀 订阅链接
-- **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
-- **稳定节点**: [stable.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
-- **可用节点 (working + stable)**: [working.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/working.yaml)
-- **高质量节点 (达到最低分数)**: [quality.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/quality.yaml)
-- **Clash / Standard**: [all.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
-- **Base64 (通用)**: [base64.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
-- **通用TXT (XiaoXi)**: [byxiaoxi.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
-- **通用TXT (kooker.jp)**: [kooker.jp.txt](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt)
+- [Mihomo / Clash Meta](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
+- [稳定节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
+- [可用节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/working.yaml)
+- [高质量节点](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/quality.yaml)
+- [标准 Clash](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/all.yaml)
+- [Base64](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/base64.txt)
+- [XiaoXi TXT](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/byxiaoxi.txt)
+- [kooker.jp TXT](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt)
 
 ---
 
-## ⚖️ 免责声明 (Disclaimer)
+## ⚖️ 免责声明
 
-### 1. 权利归属及性质
-本仓库（下称"本项目"）仅为个人学习 **GitHub Actions** 自动化流程及 **YAML** 数据处理的技术演示。项目内分享的所有资源（包括但不限于订阅链接、节点数据）均搜集自互联网公开渠道，本项目不存储、不分发、不产生任何实质性的加密通信流量。
-
-### 2. 法律合规性
-* **合规义务**：用户在下载、安装或使用本项目涉及的任何资源时，必须确保其行为符合所在国家/地区的法律法规。
-* **禁止违规**：严禁将本项目提供的技术方案或资源用于任何形式的非法用途。因用户违规使用产生的任何行政或刑事责任，由用户本人独立承担，与本项目及其贡献者无关。
-
-### 3. 风险提示及担保限制
-* **无保证声明**：本项目不对资源的稳定性、有效性、安全性作任何形式的保证。节点可能随时失效、被封锁或存在安全隐患。
-* **隐私风险**：第三方节点可能存在流量审计或日志记录行为。建议用户避免通过本项目提供的节点传输任何涉及个人隐私、财务安全或敏感数据的数据。
-
-### 4. 责任免除
-本项目贡献者不对因使用本项目而导致的任何直接、间接、附带或替代性损害（包括但不限于设备损坏、数据丢失、法律纠纷）承担法律责任。
-
----
-**数据来源**: 互联网公开频道聚合
-*由 [AutoScrapeFreeNodes](https://github.com/Andy181-github/AutoScrapeFreeNodes) & GitHub Actions 提供自动引擎驱动*
+本项目仅聚合互联网公开来源并生成订阅数据，不提供代理服务，也不保证第三方节点的可用性、安全性或隐私保护。使用者应自行核实节点风险并遵守所在地法律法规；请勿通过不可信节点传输密码、财务信息或其他敏感数据。

@@ -1,4 +1,4 @@
-// generate-readme.js — 只更新 README 顶部的 3 个节点数量徽章 (SubsCheck / XiaoXi / kooker.jp)。
+// update-readme-badges.js — 只更新 README 顶部的 3 个节点数量徽章 (SubsCheck / XiaoXi / kooker.jp)。
 //
 // 注意: README 正文 (同步时间 / 节点统计 / 地区分布 / 订阅链接) 由 scraper.js 的
 // updateREADME() 统一写入。历史版本里本脚本曾整篇重写 README (表格格式的订阅链接 +

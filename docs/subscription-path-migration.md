@@ -36,7 +36,7 @@ https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifa
 https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/kooker.jp.txt
 ```
 
-> 说明：`generate-readme.js` 用大写仓库名 `AutoScrapeFreeNodes`，`scraper.js` 历史硬编码用小写 `Autoscrapefreenodes`。两者在 GitHub 上都会 301 到正确大小写，**新旧 URL 均能正常解析**，无需区分大小写。
+> 说明：`update-readme-badges.js` 用大写仓库名 `AutoScrapeFreeNodes`，`scraper.js` 历史硬编码用小写 `Autoscrapefreenodes`。两者在 GitHub 上都会 301 到正确大小写，**新旧 URL 均能正常解析**，无需区分大小写。
 
 ## 各客户端如何迁移
 
@@ -103,7 +103,7 @@ curl -I https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/mai
 如需回退到根目录方案，参考 `data/team-artifacts/20260711/refactor-plan.md` 的 Phase 2 反向步骤：
 
 1. `git mv artifacts/subs/{mihomo.yaml,all.yaml,base64.txt,byxiaoxi.txt,kooker.jp.txt}` 回根目录
-2. 还原 `scraper.js`、`generate-readme.js`、`.gitignore`、`update-subs.yml`、`deploy.yml` 中对应的路径与 `git add -f` 逻辑
+2. 还原 `scraper.js`、`update-readme-badges.js`、`.gitignore`、`update-subs.yml`、`deploy.yml` 中对应的路径与 `git add -f` 逻辑
 3. 重新生成 README 并推送
 
 > 回滚同样会影响下游（又一次链接变更），请在发布渠道先公告。
