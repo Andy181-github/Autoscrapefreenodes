@@ -921,8 +921,7 @@ async function scrapeAllSites() {
   // P1-2: 检测等级说明 — TCP connect 只证明目标端口可达，不代表代理协议
   // 握手/认证/出网成功。每个节点新增 detectLevel 字段:
   //   "tcp"       = TCP 可达 (本阶段唯一已验证的等级)
-  //   未来若加入真实协议验证 (vmess/trojan/ss 握手或 HTTP 出网测试),
-  //   将通过独立阶段与状态字段区分, 且可通过 settings.proxyProbe.enabled 关闭。
+  //   实际协议/HTTP 出站验证由 scripts/probe-nodes.js 在 CI 独立执行；当前 settings.proxyProbe.enabled 不控制该 CI 步骤。
   // 筛选条件中不得把 detectLevel="tcp" 当作"代理可用"。
   function checkTcpNode(p) {
     return new Promise((resolve) => {
@@ -975,7 +974,7 @@ async function scrapeAllSites() {
   const checkTime = ((Date.now() - checkStart) / 1000).toFixed(1);
   console.log(`  [Check] Done in ${checkTime}s. TCP reachable: ${allProxies.length} (detectLevel="tcp", 未验证协议层)`);
 
-  // HTTP latency test + IP geolocation via ipchacha.cn
+  // Local fraud-risk heuristic for both IP and domain endpoints; this stage does not measure proxy latency.
   allProxies = await batchGeoCheck(allProxies);
   // ==============================================
 
@@ -984,8 +983,17 @@ async function scrapeAllSites() {
 
     // Eligibility is based on independent filters, never the static source heuristic score.
     const beforeFilter = allProxies.length;
-    allProxies = allProxies.filter(isCandidateEligible);
-    console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length);
+    const rejectionCounts = {};
+    allProxies = allProxies.filter(p => {
+      const reason = getCandidateRejectionReason(p, {
+        maxLatency: Number(config.settings.maxLatency) || 5000,
+        maxFraudScore: Number.isFinite(Number(config.settings.maxFraudScore)) ? Number(config.settings.maxFraudScore) : 30,
+      });
+      if (!reason) return true;
+      rejectionCounts[reason] = (rejectionCounts[reason] || 0) + 1;
+      return false;
+    });
+    console.log("  [Filter] Removed " + (beforeFilter - allProxies.length) + " nodes. Remaining: " + allProxies.length + "; reasons=" + JSON.stringify(rejectionCounts));
 
     if (allProxies.length === 0) {
       // 过滤后为空: 等价于零节点, 保留上版正式文件, 标记本次运行失败
@@ -1672,7 +1680,7 @@ function detectRegionFromServer(server, name) {
   return "unknown";
 }
 
-// ========== IP GEOLOCATION + FRAUD SCORE VIA IP-API.COM ==========
+// ========== LOCAL FRAUD-RISK HEURISTICS ==========
 // Country code to region mapping
 const CC_TO_REGION = {
   'US': 'us', 'USA': 'us', 'United States': 'us',
@@ -1737,43 +1745,29 @@ function calculateFraudScoreHeuristic(proxy) {
 
 // ========== README UPDATE ==========
 async function batchGeoCheck(proxies) {
-  // Separate IP-based from domain-based
-  const ipProxies = [];
-  const domainProxies = [];
-  for (const p of proxies) {
-    if (/^[\d.]+$/.test(p.server)) { ipProxies.push(p); }
-    else { domainProxies.push(p); }
-  }
-
-  console.log("[GeoCheck] IP proxies: " + ipProxies.length + ", Domain proxies: " + domainProxies.length);
+  // Fraud heuristics are local string/IP checks, not a network GeoIP lookup.
+  // Apply them to both IP and domain endpoints; previously domain nodes skipped scoring
+  // and were accidentally treated as fraudScore=0 by the candidate filter.
+  const ipCount = proxies.filter(p => /^[\d.]+$/.test(p.server || "")).length;
+  const domainCount = proxies.length - ipCount;
+  console.log("[RiskCheck] IP proxies: " + ipCount + ", Domain proxies: " + domainCount);
 
   const BATCH = 200;
   const startTime = Date.now();
   let checked = 0;
-
-  for (let i = 0; i < ipProxies.length; i += BATCH) {
-    const batch = ipProxies.slice(i, i + BATCH);
-    const promises = batch.map(async (p) => {
-      const fraudScore = getFraudScoreForProxy(p);
-      return { proxy: p, region: p._region || "unknown", fraudScore };
-    });
-
-    const results = await Promise.all(promises);
-    for (const r of results) {
-      r.proxy.fraudScore = r.fraudScore;
-    }
+  for (let i = 0; i < proxies.length; i += BATCH) {
+    const batch = proxies.slice(i, i + BATCH);
+    for (const p of batch) p.fraudScore = getFraudScoreForProxy(p);
     checked += batch.length;
-    if (checked % 500 === 0 || checked === ipProxies.length) {
+    if (checked % 500 === 0 || checked === proxies.length) {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      console.log("  [GeoCheck] " + checked + "/" + ipProxies.length + " (" + Math.round(checked/ipProxies.length*100) + "%) in " + elapsed + "s");
+      console.log("  [RiskCheck] " + checked + "/" + proxies.length + " (" + Math.round(checked / proxies.length * 100) + "%) in " + elapsed + "s");
     }
   }
 
   const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log("  [GeoCheck] Done in " + totalTime + "s");
-
-  // 合并并返回 (保持原始顺序: IP 类 + 域名类)
-  return [...ipProxies, ...domainProxies];
+  console.log("  [RiskCheck] Fraud heuristics complete in " + totalTime + "s");
+  return proxies;
 }
 
 // Get fraud score for a single proxy (wrapper for heuristic calculation)
@@ -1781,12 +1775,29 @@ function getFraudScoreForProxy(proxy) {
   return calculateFraudScoreHeuristic(proxy);
 }
 
-// Candidate eligibility is deliberately independent of sourceHeuristicScore.
+// Candidate eligibility is independent of sourceHeuristicScore and never treats an
+// unmeasured latency placeholder (legacy latency=0) as a real zero-ms measurement.
+function getCandidateRejectionReason(proxy, options = {}) {
+  const opts = typeof options === "number" ? { maxLatency: options } : (options || {});
+  const maxLatency = Number.isFinite(opts.maxLatency) ? opts.maxLatency : 5000;
+  const maxFraudScore = Number.isFinite(opts.maxFraudScore) ? opts.maxFraudScore : 30;
+  if (!proxy || typeof proxy !== "object") return "invalid_node";
+  const region = String(proxy._region || "unknown").trim().toLowerCase();
+  if (region === "unknown" || !region) return "unknown_region";
+  if (region === "cloud") return "cloud_region";
+  if (proxy.fraudScore === undefined || proxy.fraudScore === null || proxy.fraudScore === "" || !Number.isFinite(Number(proxy.fraudScore))) return "fraud_score_unknown";
+  if (Number(proxy.fraudScore) < 0) return "fraud_score_invalid";
+  if (Number(proxy.fraudScore) > maxFraudScore) return "fraud_score_exceeded";
+  // Only explicit probe fields count as measured latency. scraper.js's legacy latency=0
+  // is a placeholder and must not masquerade as a successful 0 ms health measurement.
+  const measuredLatency = Number.isFinite(proxy.probeLatencyMs) ? proxy.probeLatencyMs :
+    (Number.isFinite(proxy.latencyMs) ? proxy.latencyMs : null);
+  if (measuredLatency !== null && (measuredLatency < 0 || measuredLatency > maxLatency)) return "latency_exceeded";
+  return null;
+}
+
 function isCandidateEligible(proxy, maxLatency = 5000) {
-  const region = (proxy && proxy._region || "unknown").toLowerCase();
-  const fraudScore = Number(proxy && proxy.fraudScore || 0);
-  const latency = Number(proxy && proxy.latency || 0);
-  return region !== "unknown" && region !== "cloud" && fraudScore <= 30 && latency <= maxLatency;
+  return getCandidateRejectionReason(proxy, { maxLatency }) === null;
 }
 
 // ========== README UPDATE ==========
@@ -1815,6 +1826,10 @@ function updateREADME(validProxies, output) {
 
   const SUBS_RAW_BASE = "https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs";
   let feedLinks = `- **Mihomo / Clash Meta**: [mihomo.yaml](${SUBS_RAW_BASE}/mihomo.yaml)\n`;
+  const HEALTH_RAW_BASE = "https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud";
+  feedLinks += `- **稳定节点**: [stable.yaml](${HEALTH_RAW_BASE}/stable.yaml)\n`;
+  feedLinks += `- **可用节点 (working + stable)**: [working.yaml](${HEALTH_RAW_BASE}/working.yaml)\n`;
+  feedLinks += `- **高质量节点 (达到最低分数)**: [quality.yaml](${HEALTH_RAW_BASE}/quality.yaml)\n`;
   feedLinks += `- **Clash / Standard**: [all.yaml](${SUBS_RAW_BASE}/all.yaml)\n`;
   feedLinks += `- **Base64 (通用)**: [base64.txt](${SUBS_RAW_BASE}/base64.txt)\n`;
   feedLinks += `- **通用TXT (XiaoXi)**: [byxiaoxi.txt](${SUBS_RAW_BASE}/byxiaoxi.txt)\n`;
@@ -1880,7 +1895,7 @@ module.exports = {
   // 2026-10 解析兼容性修复: 导出供测试与下游复用
   filterCoreSupported, filterClashStd, sanitizeVlessEncryption,
   MIHOMO_TYPES, CLASH_STD_TYPES,
-  isCandidateEligible,
+  isCandidateEligible, getCandidateRejectionReason, batchGeoCheck,
   // 2026-10 Clash 字段完整性修复: 导出供测试
   stripClashStdMetadata, stripMihomoMetadata, isInvalidAuth, normalizeProxyType,
 

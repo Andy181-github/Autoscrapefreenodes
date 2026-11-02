@@ -28,6 +28,7 @@ on:
       - 'lib/**'
       - 'scripts/**'
       - 'test-probe.js'
+      - 'test-score-labels.js'
       - 'config.json'
       - 'package.json'
       - 'package-lock.json'
@@ -98,10 +99,28 @@ jobs:
           NODE
           /tmp/mihomo -t -f /tmp/mihomo-validation.yaml
 
-      # 云端真实出站探测: 独立输出健康报告，不过滤或覆盖 mihomo.yaml
+      # 云端真实出站探测: 先独立生成健康报告与分层文件，随后单独应用分数标记。
       - name: 云端 Mihomo 真实节点检测
         run: |
           node scripts/probe-nodes.js --mode cloud --input artifacts/subs/mihomo.yaml --output-dir artifacts/health/cloud --mihomo-bin /tmp/mihomo --timeout 5000 --rounds 4 --concurrency 40
+
+      # 将真实探测分数写入节点名称；未达到最小样本量的节点标记 Q?，不伪造分数。
+      # 同步更新 Mihomo proxy-groups 引用，并再次用真实内核校验重命名后的配置。
+      - name: 标记节点实测质量分
+        run: |
+          node scripts/apply-health-scores.js --report artifacts/health/cloud/report.json
+          node validate-released.js
+          /tmp/mihomo -t -f artifacts/subs/all.yaml
+          # 与前置验证一致：临时去除 GeoSite/GeoIP 规则，避免验证时下载外部数据库。
+          node - <<'NODE'
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const config = yaml.load(fs.readFileSync('artifacts/subs/mihomo.yaml', 'utf8'));
+          config.rules = ['MATCH,漏网之鱼'];
+          delete config['geox-url'];
+          fs.writeFileSync('/tmp/mihomo-validation-scored.yaml', yaml.dump(config, { lineWidth: -1, noRefs: true }));
+          NODE
+          /tmp/mihomo -t -f /tmp/mihomo-validation-scored.yaml
 
       # 保留最近 14 天逐次探测报告，供跨时间窗口校准质量评分；不把历史快照扩张进 Git 提交历史。
       - name: 归档质量评分校准快照
@@ -139,7 +158,7 @@ jobs:
           git config --local user.name "GitHub Action"
           # 订阅产物位于 artifacts/subs/ 且被 .gitignore, 需 -f 强制暂存
           git add -f artifacts/subs/mihomo.yaml artifacts/subs/all.yaml artifacts/subs/base64.txt artifacts/subs/byxiaoxi.txt artifacts/subs/kooker.jp.txt
-          git add -f artifacts/health/cloud/report.json artifacts/health/cloud/working.yaml artifacts/health/cloud/stable.yaml
+          git add -f artifacts/health/cloud/report.json artifacts/health/cloud/working.yaml artifacts/health/cloud/stable.yaml artifacts/health/cloud/quality.yaml
           git add README.md config.json data/historical.json
           # 仅在暂存区有变更时提交并推送 (产物类提交已被 push.paths 过滤, 不会再次触发本 workflow)
           if ! git diff --cached --quiet; then

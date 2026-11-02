@@ -5,6 +5,9 @@ const http = require('http'), net = require('net'), crypto = require('crypto');
 const { spawn } = require('child_process');
 const yaml = require('js-yaml');
 const DEFAULT_TARGETS = ['https://www.gstatic.com/generate_204', 'https://cp.cloudflare.com/generate_204'];
+const PROJECT_CONFIG = (() => { try { return require('../config.json'); } catch (_) { return {}; } })();
+const DEFAULT_MIN_QUALITY_SCORE = Number(PROJECT_CONFIG.settings && PROJECT_CONFIG.settings.minQualityScore);
+
 
 function parseArgs(argv) {
   const out = {};
@@ -84,6 +87,32 @@ function summarizeNode(proxy, samples, configuredTargetCount = 2) {
     samples: samples.map(x => ({ round: x.round, target: x.target, ok: x.ok, delayMs: x.delayMs, failure: x.failure, statusCode: x.statusCode || null }))
   };
 }
+function selectQualityNodes(results, minQualityScore = 60) {
+  return results.filter(x => (x.status === 'working' || x.status === 'stable') &&
+    Number.isFinite(x.qualityScore) && x.qualityScore >= minQualityScore);
+}
+function sortByQuality(results) {
+  return [...results].sort((a, b) => {
+    const scoreA = Number.isFinite(a.qualityScore) ? a.qualityScore : -1;
+    const scoreB = Number.isFinite(b.qualityScore) ? b.qualityScore : -1;
+    if (scoreA !== scoreB) return scoreB - scoreA;
+    const latencyA = Number.isFinite(a.latencyMs) ? a.latencyMs : Number.POSITIVE_INFINITY;
+    const latencyB = Number.isFinite(b.latencyMs) ? b.latencyMs : Number.POSITIVE_INFINITY;
+    return latencyA - latencyB || String(a.name).localeCompare(String(b.name));
+  });
+}
+function selectTierProxies(proxies, selectedResults) {
+  const selectedNames = new Set(selectedResults.map(x => x.name));
+  const byName = new Map(selectedResults.map(x => [x.name, x]));
+  return proxies.filter(p => selectedNames.has(p.name)).sort((a, b) => {
+    const ra = byName.get(a.name), rb = byName.get(b.name);
+    const scoreA = Number.isFinite(ra.qualityScore) ? ra.qualityScore : -1;
+    const scoreB = Number.isFinite(rb.qualityScore) ? rb.qualityScore : -1;
+    const latencyA = Number.isFinite(ra.latencyMs) ? ra.latencyMs : Number.POSITIVE_INFINITY;
+    const latencyB = Number.isFinite(rb.latencyMs) ? rb.latencyMs : Number.POSITIVE_INFINITY;
+    return scoreB - scoreA || latencyA - latencyB;
+  });
+}
 function requestJson(port, secret, requestPath, timeoutMs) {
   return new Promise((resolve, reject) => {
     const req = http.request({ host: '127.0.0.1', port, path: requestPath, method: 'GET',
@@ -161,10 +190,14 @@ async function main() {
   const limit = Math.max(0, Number(a.limit || 0));
   const proxies = limit > 0 ? sourceProxies.slice(0, limit) : sourceProxies;
   if (!proxies.length) throw new Error('No valid proxies in input subscription');
+  const requestedMinScore = Number(a['min-quality-score']);
+  const configuredMinScore = Number.isFinite(DEFAULT_MIN_QUALITY_SCORE) ? DEFAULT_MIN_QUALITY_SCORE : 60;
+  const minQualityScore = Math.max(0, Math.min(100, Number.isFinite(requestedMinScore) ? requestedMinScore : configuredMinScore));
   const opts = {
     timeoutMs: Math.max(2000, Number(a.timeout || 8000)),
     rounds: Math.max(1, Math.min(4, Number(a.rounds || 4))),
     concurrency: Math.max(1, Math.min(50, Number(a.concurrency || 20))),
+    minQualityScore,
     targets: a.targets ? String(a.targets).split(',').filter(Boolean) : DEFAULT_TARGETS
   };
   if (opts.targets.length < 2) throw new Error('At least two independent probe targets are required');
@@ -188,8 +221,9 @@ async function main() {
       return result;
     });
     process.stdout.write('\n');
-    const working = results.filter(x => x.status === 'working' || x.status === 'stable');
-    const stable = results.filter(x => x.status === 'stable');
+    const working = sortByQuality(results.filter(x => x.status === 'working' || x.status === 'stable'));
+    const stable = sortByQuality(results.filter(x => x.status === 'stable'));
+    const quality = sortByQuality(selectQualityNodes(results, minQualityScore));
     const unreliable = results.filter(x => x.status === 'unreliable');
     const insufficientData = results.filter(x => x.status === 'insufficient_data');
     const qualityScores = results.map(x => x.qualityScore).filter(Number.isFinite);
@@ -211,10 +245,11 @@ async function main() {
       },
       probe: { targets: opts.targets, rounds: opts.rounds, attemptsPerNode: opts.targets.length * opts.rounds,
         timeoutMs: opts.timeoutMs, concurrency: opts.concurrency, minimumAttemptsForClassification: 8,
-        confidenceLevel: 0.95, stableWilsonLowerBound: 0.65, workingPosteriorSuccessRate: 0.6, workingWilsonLowerBound: 0.3 },
+        minQualityScore, confidenceLevel: 0.95, stableWilsonLowerBound: 0.65, workingPosteriorSuccessRate: 0.6, workingWilsonLowerBound: 0.3 },
       summary: {
         inputTotal: sourceProxies.length, tested: results.length, total: results.length,
-        working: working.length, stable: stable.length, unreliable: unreliable.length, insufficientData: insufficientData.length,
+        working: working.length, stable: stable.length, qualityEligible: quality.length, minQualityScore,
+        unreliable: unreliable.length, insufficientData: insufficientData.length,
         meanNodeSuccessRate: Number((results.reduce((sum, x) => sum + x.successRate, 0) / results.length).toFixed(3)),
         scoredNodes: qualityScores.length,
         meanQualityScore: qualityScores.length ? Number((qualityScores.reduce((sum, x) => sum + x, 0) / qualityScores.length).toFixed(1)) : null,
@@ -223,10 +258,11 @@ async function main() {
       nodes: results
     };
     fs.writeFileSync(path.join(outputDir, 'report.json'), JSON.stringify(report, null, 2) + '\n');
-    const workingNames = new Set(working.map(x => x.name)), stableNames = new Set(stable.map(x => x.name));
-    fs.writeFileSync(path.join(outputDir, 'working.yaml'), yaml.dump({ proxies: proxies.filter(p => workingNames.has(p.name)) }, { lineWidth: -1, noRefs: true }));
-    fs.writeFileSync(path.join(outputDir, 'stable.yaml'), yaml.dump({ proxies: proxies.filter(p => stableNames.has(p.name)) }, { lineWidth: -1, noRefs: true }));
-    console.log('[Probe] ' + report.mode + ': total=' + results.length + ', working=' + working.length + ', stable=' + stable.length);
+    const toYamlProxies = selected => selectTierProxies(proxies, selected);
+    fs.writeFileSync(path.join(outputDir, 'working.yaml'), yaml.dump({ proxies: toYamlProxies(working) }, { lineWidth: -1, noRefs: true }));
+    fs.writeFileSync(path.join(outputDir, 'stable.yaml'), yaml.dump({ proxies: toYamlProxies(stable) }, { lineWidth: -1, noRefs: true }));
+    fs.writeFileSync(path.join(outputDir, 'quality.yaml'), yaml.dump({ proxies: toYamlProxies(quality) }, { lineWidth: -1, noRefs: true }));
+    console.log('[Probe] ' + report.mode + ': total=' + results.length + ', working=' + working.length + ', stable=' + stable.length + ', quality(>=' + minQualityScore + ')=' + quality.length);
     console.log('[Probe] Results: ' + outputDir);
   } finally {
     if (child && child.exitCode === null) {
@@ -237,4 +273,4 @@ async function main() {
   }
 }
 if (require.main === module) main().catch(e => { console.error('[Probe] Failed: ' + e.message); process.exitCode = 1; });
-module.exports = { classifyFailure, median, medianAbsoluteDeviation, wilsonLowerBound, summarizeNode, mapLimit };
+module.exports = { classifyFailure, median, medianAbsoluteDeviation, wilsonLowerBound, summarizeNode, mapLimit, selectQualityNodes, sortByQuality, selectTierProxies };
