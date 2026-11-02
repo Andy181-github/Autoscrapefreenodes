@@ -114,4 +114,4 @@
 - `actions/upload-artifact@v7`
 - 项目脚本运行时 `node-version: '24'`
 
-通过 GitHub API 读取三个 action 的 `action.yml`，确认它们均声明 `runs.using: node24`。升级后的 GitHub Actions 运行 `41465887976` 已在 Node 24 下完整成功，耗时 6 分 54 秒；npm 测试、抓取、Mihomo 校验、真实节点探测、Q 分数标记和产物发布全部通过。Node.js 20 弃用告警已消失，仅保留 `ubuntu-latest` 迁移到 Ubuntu 26 的非阻塞提示。
+通过 GitHub API 读取三个 action 的 `action.yml`，确认它们均声明 `runs.using: node24`。升级后的 GitHub Actions 运行 `41465887976` 已在 Node 24 下完整成功，耗时 6 分 54 秒；npm 测试、抓取、Mihomo 校验、真实节点探测、Q 分数标记和产物发布全部通过。该轮实测 1,655 个节点，其中 stable 146、working 44、unreliable 1,465，达到 60 分门槛的 quality 节点 162 个；平均节点成功率 12.2%，平均质量分 9.2，中位质量分 0。远端 `quality.yaml` 已核实包含 162 个节点。Node.js 20 弃用告警已消失，仅保留 `ubuntu-latest` 迁移到 Ubuntu 26 的非阻塞提示。
