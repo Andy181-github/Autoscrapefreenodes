@@ -5,8 +5,8 @@
 ![XiaoXi](https://img.shields.io/badge/XiaoXi-1613-orange)
 ![kooker.jp](https://img.shields.io/badge/kooker.jp-1613-purple)
 
-> **最后同步时间**：2026/11/05 12:20:48 (北京时间)
-> **ISO 时间**：2026-11-05T04:20:48.371Z
+> **最后同步时间**：2026/11/05 21:45:36 (北京时间)
+> **ISO 时间**：2026-11-05T13:45:36.953Z
 
 ## 项目简介
 
@@ -97,19 +97,19 @@ Windows 本地健康探测（可先用 `-Limit 20` 小批量试跑）：
 - **平均静态特征分（非健康评分）**: 81/100
 
 ### 🌍 地区分布
-- **美国**: 976 nodes
-- **德国**: 197 nodes
-- **荷兰**: 90 nodes
-- **日本**: 67 nodes
-- **新加坡**: 58 nodes
-- **法国**: 50 nodes
-- **香港**: 35 nodes
-- **中国**: 31 nodes
+- **美国**: 965 nodes
+- **德国**: 208 nodes
+- **荷兰**: 98 nodes
+- **日本**: 73 nodes
+- **新加坡**: 55 nodes
+- **法国**: 53 nodes
+- **英国**: 38 nodes
 - **加拿大**: 30 nodes
-- **英国**: 29 nodes
-- **澳大利亚**: 25 nodes
-- **韩国**: 15 nodes
-- **台湾**: 10 nodes
+- **中国**: 30 nodes
+- **澳大利亚**: 24 nodes
+- **香港**: 23 nodes
+- **韩国**: 14 nodes
+- **台湾**: 2 nodes
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
 - **稳定节点**: [stable.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
