@@ -1,40 +1,22 @@
 proxies:
-  - name: 🇺🇸美国|unknown-333|Q77
+  - name: 🇺🇸美国|unknown-174|Q77
+    type: vmess
+    server: 84.17.41.2
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+  - name: 🇩🇪德国|unknown-121|Q77
     type: http
     server: 172.64.69.89
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇸美国|unknown-454|Q77
-    type: http
-    server: 23.133.176.14
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-311|Q77
-    type: http
-    server: 23.133.176.14
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-109|Q77
-    type: http
-    server: 172.64.69.89
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-250|Q77
-    type: http
-    server: 172.64.69.89
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-358|Q77
+  - name: 🇩🇪德国|unknown-114|Q77
     type: http
     server: 172.64.68.89
     port: 443
@@ -42,14 +24,32 @@ proxies:
     udp: true
     tls: true
     sni: 172.64.68.89
-  - name: 🇩🇪德国|unknown-115|Q77
+  - name: 🇩🇪德国|unknown-108|Q77
     type: http
     server: 172.64.69.89
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇸美国|unknown-477|Q77
+  - name: 🇺🇸美国|unknown-217|Q77
+    type: hysteria2
+    server: 89.117.172.45
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: HPzKAhFXV5XgEmRSTM33DRuTHeFcB5ON
+    tls: false
+    sni: eth.todsm.com
+    obfs: salamander
+    obfs-password: 0dRexOATy4t9J1ckKOLpPy9HrNoU5FmN
+  - name: 🇺🇸美国|unknown-26|Q77
+    type: http
+    server: 38.95.111.226
+    port: 9443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇺🇸美国|unknown-523|Q77
     type: vmess
     server: 23.162.200.198
     port: 18000
@@ -60,7 +60,7 @@ proxies:
     alterId: 0
     network: tcp
     tls: false
-  - name: 🇺🇸美国|unknown-117|Q77
+  - name: 🇺🇸美国|unknown-138|Q77
     type: vmess
     server: 134.195.196.211
     port: 18000
@@ -70,55 +70,7 @@ proxies:
     cipher: auto
     alterId: 0
     network: tcp
-  - name: 🇩🇪德国|unknown-110|Q77
-    type: http
-    server: 172.64.68.89
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-    sni: 172.64.68.89
-  - name: 🇺🇸美国|unknown-206|Q77
-    type: ss
-    server: 149.40.57.134
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-42|Q77
-    type: trojan
-    server: 216.152.147.79
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: blog.connectingpeoplewithgreatjobs.com
-  - name: 🇩🇪德国|unknown-62|Q77
-    type: trojan
-    server: 216.152.147.152
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-129|Q77
-    type: hysteria2
-    server: 89.117.172.45
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: HPzKAhFXV5XgEmRSTM33DRuTHeFcB5ON
-    sni: eth.todsm.com
-    obfs: salamander
-    obfs-password: 0dRexOATy4t9J1ckKOLpPy9HrNoU5FmN
-  - name: 🇩🇪德国|unknown-48|Q77
-    type: trojan
-    server: 216.152.147.74
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇺🇸美国|unknown-183|Q77
+  - name: 🇺🇸美国|unknown-223|Q77
     type: vmess
     server: 67.220.95.3
     port: 18000
@@ -129,676 +81,129 @@ proxies:
     alterId: 0
     network: tcp
     tls: false
-  - name: 🇩🇪德国|unknown-40|Q77
+  - name: 🇺🇸美国|unknown-142|Q77
+    type: vmess
+    server: 67.220.85.46
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: aes-128-gcm
+    alterId: 0
+    network: tcp
+  - name: 🇩🇪德国|unknown-54|Q77
     type: trojan
-    server: 216.152.147.93
+    server: 216.152.147.152
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: connectingpeoplewithgreatjobs.com
-  - name: 🇨🇦加拿大|unknown-2|Q77
-    type: http
-    server: 149.88.98.81
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-144|Q77
-    type: http
-    server: 152.233.50.145
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-64|Q77
+  - name: 🇺🇸美国|unknown-14|Q77
     type: http
     server: 38.247.141.135
     port: 443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇺🇸美国|unknown-82|Q77
-    type: http
-    server: 38.247.141.135
+  - name: 🇩🇪德国|unknown-41|Q77
+    type: trojan
+    server: 216.152.147.74
     port: 443
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-78|Q77
-    type: http
-    server: 149.88.21.129
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: www.v2s.com] CA... 5|Q77
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: www.v2s.com] CA... 2|Q77
     type: trojan
     server: 216.152.147.93
     port: 443
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: connectingpeoplewithgreatjobs.com
     network: ''
-  - name: 🇺🇸美国|unknown-150|Q77
-    type: ss
-    server: 161.153.38.61
-    port: 50356
+  - name: 🇩🇪德国|unknown-66|Q77
+    type: trojan
+    server: 216.152.147.79
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: EP/0kIjk18c43tfkqeJqdVQm8lGArteYkhhwgBJ3q70=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇺🇸美国|unknown-186|Q77
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: blog.connectingpeoplewithgreatjobs.com
+  - name: 🇺🇸美国|unknown-35|Q77
     type: vmess
-    server: 129.146.143.80
-    port: 48111
+    server: 192.74.236.148
+    port: 30004
     skip-cert-verify: true
     udp: true
-    uuid: d4603cc2-e0ee-4651-83f5-1db5b7168177
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
     cipher: auto
-    alterId: 0
-    network: tcp
-    tls: false
-  - name: 🇺🇸美国|unknown-133|Q77
-    type: vmess
-    server: 84.17.41.2
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-  - name: 🇩🇪德国|unknown-125|Q77
+    alterId: 64
+    network: ws
+    tls: true
+    ws-opts:
+      headers:
+        Host: www.91334565.xyz
+      path: /path/1733477783705
+  - name: 🇩🇪德国|unknown-133|Q76
     type: ss
-    server: 51.222.136.236
+    server: 51.222.200.165
+    port: 5000
+    skip-cert-verify: true
+    udp: true
+    password: Y6R9pAtvxxzmGC
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-46|Q76
+    type: trojan
+    server: 216.152.147.93
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: connectingpeoplewithgreatjobs.com
+  - name: 🇩🇪德国|unknown-136|Q76
+    type: ss
+    server: 51.79.49.116
     port: 8882
     skip-cert-verify: true
     udp: true
     password: kDWvXYZoTBcGkC4
     cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-86|Q77
-    type: http
-    server: 38.95.111.226
-    port: 9443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇺🇸 美国 523|Q77
-    type: socks5
-    server: 216.132.114.27
-    port: 62000
-    username: JzufiJ62
-    password: 75bPoRcB
-  - name: 🇭🇰 香港 540|Q76
-    type: http
-    server: 52.128.238.98
-    port: 18080
-    tls: false
-  - name: 🇺🇸 美国 522|Q76
-    type: socks5
-    server: 216.132.114.194
-    port: 62000
-    username: utdr8wvs
-    password: 7i1dheg6
-  - name: 🇺🇸美国|unknown-187|Q76
+  - name: www.v2s.com] CA1538|Q76
+    type: ss
+    server: 51.222.12.127
+    port: 445
+    cipher: aes-256-gcm
+    password: zDNVedRFPQexG9v
+  - name: 🇩🇪德国|unknown-110|Q76
     type: vmess
-    server: 38.91.107.49
-    port: 18000
+    server: 188.114.99.137
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
     cipher: auto
     alterId: 0
-    network: tcp
-    tls: false
-  - name: 🇺🇸美国|unknown-467|Q76
-    type: socks5
-    server: 66.253.2.69
-    port: 62000
-    skip-cert-verify: true
-    udp: true
-    password: l1tlrdx52v
-    username: u_rb1dba2
-  - name: 🇸🋀新加坡|unknown-21|Q76
-    type: vless
-    server: 172.64.154.113
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: 53bbdad4-2f4e-45db-8df4-fa491a6a7227
     network: ws
     tls: true
+    sni: guanwang.awsno.com
     ws-opts:
+      path: /hls/cctv5phd.m3u8
       headers:
-        Host: freeceshi6.frii.site
-      path: /proxyip=ProxyIP.JP.CMLiussss.netfp=chrome
-  - name: 🇺🇸美国|unknown-488|Q76
-    type: socks5
-    server: 66.253.2.69
-    port: 62000
-    skip-cert-verify: true
-    udp: true
-    password: l1tlrdx52v
-    username: u_rb1dba2
-  - name: 🇺🇸美国|unknown-122|Q76
-    type: vmess
-    server: 38.110.1.246
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: auto
-    alterId: 0
-    network: tcp
-  - name: 🇺🇸 美国 484|Q76
+        Host: guanwang.awsno.com
+    client-fingerprint: chrome
+  - name: 🇺🇸 美国 480|Q76
     type: socks5
     server: 66.253.2.69
     port: 62000
     username: u_rb1dba2
     password: l1tlrdx52v
-  - name: 🇩🇪德国|unknown-100|Q76
+  - name: 🇩🇪德国|unknown-130|Q76
     type: ss
-    server: 158.173.24.73
-    port: 443
+    server: 51.222.12.127
+    port: 445
     skip-cert-verify: true
     udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇬🇧 英国 www.v2s.com] 1451|Q76
-    type: ss
-    server: 158.173.24.73
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇬🇧 英国 www.v2s.com] 1616|Q76
-    type: ss
-    server: 198.244.201.129
-    port: 19999
+    password: zDNVedRFPQexG9v
     cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇬🇧 英国 www.v2s.com] 1616... 1|Q76
-    type: ss
-    server: 198.244.202.215
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇸🋀新加坡|unknown-31|Q76
-    type: ss
-    server: 198.244.201.129
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇳🇱 荷兰 www.v2s.com] 1623... 1|Q76
-    type: ss
-    server: 158.101.205.73
-    port: 45819
-    cipher: 2022-blake3-chacha20-poly1305
-    password: yoow9zuAW2IUx29EL25NzX29/xx20FpSEKOsnu/TnBE=
-  - name: 🇩🇪德国|unknown-99|Q76
-    type: ss
-    server: 158.101.205.73
-    port: 45819
-    skip-cert-verify: true
-    udp: true
-    password: yoow9zuAW2IUx29EL25NzX29/xx20FpSEKOsnu/TnBE=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇸🋀新加坡|unknown-34|Q76
-    type: ss
-    server: 198.244.202.215
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇳🇱 荷兰 www.v2s.com] 1623... 2|Q76
-    type: ss
-    server: 144.21.35.158
-    port: 45819
-    cipher: 2022-blake3-chacha20-poly1305
-    password: rx1e8SsjGM7ZKlR0tLnzSWoxhyRRJJrcTccM3uMu+Rc=
-  - name: 🇸🋀新加坡|unknown-12|Q76
-    type: ss
-    server: 185.176.206.9
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇬🇧 英国 www.v2s.com] 1602|Q76
-    type: ss
-    server: 185.176.206.9
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇩🇪德国|unknown-86|Q76
-    type: ss
-    server: 144.21.35.158
-    port: 45819
-    skip-cert-verify: true
-    udp: true
-    password: rx1e8SsjGM7ZKlR0tLnzSWoxhyRRJJrcTccM3uMu+Rc=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇸🋀新加坡|unknown-15|Q76
-    type: ss
-    server: 142.202.51.22
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇳🇱 荷兰 www.v2s.com] 1614... 1|Q76
-    type: ss
-    server: 151.241.19.29
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇩🇪德国|unknown-88|Q76
-    type: ss
-    server: 151.241.19.29
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-98|Q76
-    type: ss
-    server: 151.241.19.36
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇳🇱 荷兰 www.v2s.com] 1614|Q76
-    type: ss
-    server: 151.241.19.36
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇬🇧 英国 www.v2s.com] 1615|Q76
-    type: ss
-    server: 142.202.51.22
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇸🋀新加坡|unknown-10|Q76
-    type: ss
-    server: 38.114.120.221
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇬🇧 英国 www.v2s.com] 1615... 1|Q76
-    type: ss
-    server: 38.114.120.221
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇺🇸 美国 82|Q76
-    type: socks5
-    server: 45.61.188.134
-    port: 44499
-  - name: 🇬🇧 英国 www.v2s.com] 9184|Q76
-    type: ss
-    server: 141.98.101.181
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇩🇪德国|unknown-73|Q76
-    type: ss
-    server: 193.108.119.3
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-97|Q76
-    type: ss
-    server: 141.98.101.181
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇺🇸 美国 519|Q76
-    type: socks5
-    server: 45.61.188.134
-    port: 44499
-  - name: 🇩🇪德国|unknown-85|Q76
-    type: ss
-    server: 79.76.105.62
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: FmB4HBM/+63LZr+sjxs5zkFIvZmB//5BPqdf8W+wntg=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇬🇧 英国 www.v2s.com] 8004|Q76
-    type: ss
-    server: 141.98.101.178
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇩🇪德国|unknown-76|Q76
-    type: ss
-    server: 141.98.101.178
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇺🇷英国|unknown-5|Q76
-    type: ss
-    server: 82.38.31.180
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    password: k1dBOmOB4oqi7Ump37a1bQ
-    cipher: chacha20-ietf-poly1305
-    network: tcp
-  - name: 🇺🇷英国|unknown-4|Q76
-    type: ss
-    server: 82.38.31.212
-    port: 8080
-    skip-cert-verify: true
-    udp: true
-    password: k1dBOmOB4oqi7Ump37a1bQ
-    cipher: chacha20-ietf-poly1305
-    network: tcp
-  - name: 🇺🇸美国|unknown-487|Q76
-    type: ss
-    server: 172.99.189.142
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-134|Q76
-    type: ss
-    server: 23.157.88.43
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪 德国 www.v2s.com] 1622|Q76
-    type: ss
-    server: 47.254.143.251
-    port: 443
-    cipher: 2022-blake3-chacha20-poly1305
-    password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
-  - name: 🇩🇪德国|unknown-122|Q76
-    type: ss
-    server: 47.254.143.251
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇩🇪德国|unknown-124|Q76
-    type: ss
-    server: 23.230.52.119
-    port: 42878
-    skip-cert-verify: true
-    udp: true
-    password: ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu
-    cipher: chacha20-ietf-poly1305
-  - name: 🇫🇷 法国 www.v2s.com] 1615... 2|Q76
-    type: ss
-    server: 172.99.189.142
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇩🇪德国|unknown-87|Q76
-    type: ss
-    server: 57.129.83.85
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇺🇸 美国 www.v2s.com] 1620|Q76
-    type: ss
-    server: 23.230.52.119
-    port: 42878
-    cipher: chacha20-ietf-poly1305
-    password: ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu
-  - name: 🇩🇪德国|unknown-84|Q76
-    type: ss
-    server: 167.17.64.22
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇫🇷 法国 www.v2s.com] 1616|Q76
-    type: ss
-    server: 23.162.152.22
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇺🇸美国|unknown-207|Q76
-    type: ss
-    server: 167.17.64.27
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-512|Q76
-    type: ss
-    server: 23.162.152.22
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇫🇷 法国 www.v2s.com] 1615... 4|Q76
-    type: ss
-    server: 167.17.64.22
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇫🇷 法国 www.v2s.com] 1615... 3|Q76
-    type: ss
-    server: 167.17.64.175
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇳🇱 荷兰 www.v2s.com] 1616|Q76
-    type: ss
-    server: 77.221.132.206
-    port: 24759
-    cipher: chacha20-ietf-poly1305
-    password: hCgbUnMaoAfSgvE8IKdnGu
-  - name: 🇫🇷 法国 www.v2s.com] 1615... 1|Q76
-    type: ss
-    server: 167.17.64.27
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇫🇷 法国 www.v2s.com] 1615|Q76
-    type: ss
-    server: 38.109.228.110
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇺🇸美国|unknown-185|Q76
-    type: ss
-    server: 167.17.64.175
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-184|Q76
-    type: ss
-    server: 38.109.228.110
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪 德国 www.v2s.com] 1623... 1|Q76
-    type: ss
-    server: 79.76.105.62
-    port: 59924
-    cipher: 2022-blake3-chacha20-poly1305
-    password: FmB4HBM/+63LZr+sjxs5zkFIvZmB//5BPqdf8W+wntg=
-  - name: 🇩🇪德国|unknown-74|Q76
-    type: ss
-    server: 185.164.175.81
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇰🇵日本|unknown-20|Q76
-    type: ss
-    server: 149.22.87.204
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇩🇪德国|unknown-70|Q76
-    type: ss
-    server: 57.131.27.21
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: itzvpn@321
-    cipher: aes-256-gcm
-  - name: 🇯🇵 日本 www.v2s.com] 5141|Q76
-    type: ss
-    server: 149.22.87.204
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇯🇵 日本 www.v2s.com] 9223|Q76
-    type: ss
-    server: 149.22.87.241
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇰🇵日本|unknown-21|Q76
-    type: ss
-    server: 149.22.87.241
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇩🇪德国|unknown-89|Q76
-    type: ss
-    server: 138.199.55.243
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-91|Q76
-    type: ss
-    server: 82.110.60.9
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇰🇵日本|unknown-18|Q76
-    type: ss
-    server: 149.22.87.240
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: shadowsocks
-    cipher: aes-128-gcm
-  - name: 🇬🇧 英国 www.v2s.com] AT1595|Q76
-    type: ss
-    server: 82.110.60.9
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇯🇵 日本 www.v2s.com] 1291|Q76
-    type: ss
-    server: 149.22.87.240
-    port: 443
-    cipher: aes-128-gcm
-    password: shadowsocks
-  - name: 🇩🇪德国|unknown-83|Q76
-    type: ss
-    server: 186.190.215.251
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-71|Q76
-    type: ss
-    server: 79.127.139.242
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-132|Q76
-    type: ss
-    server: 23.166.88.127
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-121|Q76
-    type: ss
-    server: 66.163.118.103
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-52|Q76
-    type: vless
-    server: 45.86.60.174
-    port: 16443
-    skip-cert-verify: true
-    udp: true
-    uuid: 13e541f3-d09d-4633-89df-8513db0ced20
-    tls: false
-  - name: 🇩🇪德国|unknown-72|Q76
-    type: ss
-    server: 167.17.71.167
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-95|Q76
-    type: ss
-    server: 152.53.1.57
-    port: 8388
-    skip-cert-verify: true
-    udp: true
-    password: AdawffFMHymlasRb0VOP3HFf7sTG5sJx
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-96|Q76
-    type: ss
-    server: 185.213.23.63
-    port: 990
-    skip-cert-verify: true
-    udp: true
-    password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-80|Q76
-    type: ss
-    server: 79.127.184.104
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇰🇷韩国|unknown-8|Q76
+  - name: 🇰🇷韩国|unknown-7|Q76
     type: vmess
     server: 172.64.145.93
     port: 443
@@ -816,216 +221,396 @@ proxies:
         Host: guanwang.awsno.com
   - name: 🇰🇵日本|unknown-19|Q76
     type: ss
-    server: 84.247.155.196
-    port: 80
-    skip-cert-verify: true
-    udp: true
-    password: 3eOFeNssde7PYYMv
-    cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-84|Q76
-    type: vmess
-    server: 192.74.236.148
-    port: 30004
-    skip-cert-verify: true
-    udp: true
-    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-    cipher: auto
-    alterId: 64
-    network: ws
-    tls: true
-    ws-opts:
-      headers:
-        Host: www.91334565.xyz
-      path: /path/1733477783705
-  - name: 🇳🇱 荷兰 www.v2s.com] ... 2|Q76
-    type: trojan
-    server: 66.163.127.225
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: cdn.indyourperfectremotetechjobfromthecomfortofhome.com
-    network: ''
-  - name: 🇺🇸美国|unknown-33|Q76
-    type: vmess
-    server: 162.19.204.71
-    port: 1234
-    skip-cert-verify: true
-    udp: true
-    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    cipher: auto
-    alterId: 0
-    network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-103|Q76
-    type: http
-    server: 34.249.214.108
+    server: 149.22.87.204
     port: 443
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇺🇸美国|unknown-471|Q76
-    type: vmess
-    server: 104.18.42.163
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    sni: guanwang.awsno.com
-    ws-opts:
-      path: /hls/cctv5phd.m3u8
-      headers:
-        Host: guanwang.awsno.com
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-17|Q76
-    type: vmess
-    server: 141.95.65.9
-    port: 1234
-    skip-cert-verify: true
-    udp: true
-    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    password: shadowsocks
     cipher: aes-128-gcm
+  - name: 🇰🇵日本|unknown-18|Q76
+    type: ss
+    server: 149.22.87.240
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: shadowsocks
+    cipher: aes-128-gcm
+  - name: 🇯🇵 日本 www.v2s.com] 9|Q76
+    type: ss
+    server: 149.22.87.240
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇯🇵 日本 www.v2s.com] 8|Q76
+    type: ss
+    server: 149.22.87.204
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇰🇵日本|unknown-20|Q76
+    type: ss
+    server: 149.22.87.241
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: shadowsocks
+    cipher: aes-128-gcm
+  - name: 🇯🇵 日本 www.v2s.com] 9223|Q76
+    type: ss
+    server: 149.22.87.241
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇺🇸 美国 2-2|Q76
+    type: hysteria2
+    server: germanyafterpool.fun
+    port: 443
+    password: 9a9f167d-b461-466f-be50-f0ffd598a6f8
+  - name: 🇺🇸美国|unknown-200|Q76
+    type: hysteria2
+    server: germanyafterpool.fun
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 9a9f167d-b461-466f-be50-f0ffd598a6f8
+    sni: germanyafterpool.fun
+  - name: 🇩🇪德国|unknown-129|Q76
+    type: ss
+    server: 51.222.141.125
+    port: 445
+    skip-cert-verify: true
+    udp: true
+    password: zDNVedRFPQexG9v
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-131|Q76
+    type: ss
+    server: 51.222.136.236
+    port: 8882
+    skip-cert-verify: true
+    udp: true
+    password: kDWvXYZoTBcGkC4
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-137|Q76
+    type: vmess
+    server: 38.110.1.246
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
     alterId: 0
     network: tcp
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇯🇵 日本 www.v2s.com] 1544|Q76
+  - name: 🇩🇪德国|unknown-132|Q76
     type: ss
-    server: 84.247.155.196
-    port: 80
+    server: 51.79.85.185
+    port: 8118
+    skip-cert-verify: true
+    udp: true
+    password: cdBIDV42DCwnfIN
     cipher: aes-256-gcm
-    password: 3eOFeNssde7PYYMv
-  - name: 🇩🇪德国|unknown-118|Q76
-    type: trojan
-    server: 66.163.118.203
+  - name: 🇸🋀新加坡|unknown-31|Q76
+    type: ss
+    server: 198.244.202.215
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇬🇧 英国 www.v2s.com] 1616... 1|Q76
+    type: ss
+    server: 198.244.202.215
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-88|Q76
+    type: ss
+    server: 151.241.19.29
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇸🋀新加坡|unknown-30|Q76
+    type: ss
+    server: 198.244.201.129
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-73|Q76
+    type: ss
+    server: 158.101.205.73
+    port: 45819
+    skip-cert-verify: true
+    udp: true
+    password: yoow9zuAW2IUx29EL25NzX29/xx20FpSEKOsnu/TnBE=
+    cipher: 2022-blake3-chacha20-poly1305
+  - name: 🇬🇧 英国 www.v2s.com] 1616|Q76
+    type: ss
+    server: 198.244.201.129
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇬🇧 英国 www.v2s.com] 1451|Q76
+    type: ss
+    server: 158.173.24.73
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇸🋀新加坡|unknown-16|Q76
+    type: ss
+    server: 158.173.24.73
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-111|Q76
-    type: trojan
-    server: 66.163.118.244
+    password: shadowsocks
+    cipher: aes-128-gcm
+  - name: 🇳🇱 荷兰 www.v2s.com] 1614... 1|Q76
+    type: ss
+    server: 151.241.19.29
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇳🇱 荷兰 www.v2s.com] 1623... 1|Q76
+    type: ss
+    server: 158.101.205.73
+    port: 45819
+    cipher: 2022-blake3-chacha20-poly1305
+    password: yoow9zuAW2IUx29EL25NzX29/xx20FpSEKOsnu/TnBE=
+  - name: 🇳🇱 荷兰 www.v2s.com] 1614|Q76
+    type: ss
+    server: 151.241.19.36
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-76|Q76
+    type: ss
+    server: 144.21.35.158
+    port: 45819
+    skip-cert-verify: true
+    udp: true
+    password: rx1e8SsjGM7ZKlR0tLnzSWoxhyRRJJrcTccM3uMu+Rc=
+    cipher: 2022-blake3-chacha20-poly1305
+  - name: 🇸🋀新加坡|unknown-12|Q76
+    type: ss
+    server: 185.176.206.9
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-85|Q76
+    type: ss
+    server: 151.241.19.36
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇸🋀新加坡|unknown-10|Q76
+    type: ss
+    server: 141.98.101.181
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇳🇱荷兰|unknown-26|Q76
-    type: http
-    server: 51.159.225.196
-    port: 23856
+    password: shadowsocks
+    cipher: aes-128-gcm
+  - name: 🇳🇱 荷兰 www.v2s.com] 1623... 2|Q76
+    type: ss
+    server: 144.21.35.158
+    port: 45819
+    cipher: 2022-blake3-chacha20-poly1305
+    password: rx1e8SsjGM7ZKlR0tLnzSWoxhyRRJJrcTccM3uMu+Rc=
+  - name: 🇬🇧 英国 www.v2s.com] 9184|Q76
+    type: ss
+    server: 141.98.101.181
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇬🇧 英国 www.v2s.com] 8004|Q76
+    type: ss
+    server: 141.98.101.178
+    port: 443
+    cipher: aes-128-gcm
+    password: shadowsocks
+  - name: 🇸🋀新加坡|unknown-14|Q76
+    type: ss
+    server: 141.98.101.178
+    port: 443
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-107|Q76
-    type: http
-    server: 51.159.225.196
-    port: 23856
+    password: shadowsocks
+    cipher: aes-128-gcm
+  - name: 🇩🇪德国|unknown-95|Q76
+    type: ss
+    server: 79.76.105.62
+    port: 59924
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-102|Q76
-    type: http
-    server: 51.159.225.196
-    port: 23856
+    password: FmB4HBM/+63LZr+sjxs5zkFIvZmB//5BPqdf8W+wntg=
+    cipher: 2022-blake3-chacha20-poly1305
+  - name: 🇬🇧 英国 www.v2s.com] 5|Q76
+    type: ss
+    server: 185.176.206.9
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇸🋀新加坡|unknown-11|Q76
+    type: ss
+    server: 142.202.51.22
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇫🇷法国|unknown-5|Q76
-    type: http
-    server: 138.199.47.247
-    port: 9443
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇸🋀新加坡|unknown-15|Q76
+    type: ss
+    server: 38.114.120.221
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-105|Q76
-    type: http
-    server: 51.159.225.197
-    port: 19362
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-215|Q76
+    type: ss
+    server: 167.17.64.22
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇫🇷法国|unknown-3|Q76
-    type: http
-    server: 138.199.47.247
-    port: 9443
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇫🇷 法国 www.v2s.com] 1615... 4|Q76
+    type: ss
+    server: 167.17.64.22
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇬🇧 英国 www.v2s.com] 1615|Q76
+    type: ss
+    server: 142.202.51.22
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪 德国 www.v2s.com] 1623|Q76
+    type: ss
+    server: 79.76.105.62
+    port: 59924
+    cipher: 2022-blake3-chacha20-poly1305
+    password: FmB4HBM/+63LZr+sjxs5zkFIvZmB//5BPqdf8W+wntg=
+  - name: 🇺🇸美国|unknown-227|Q76
+    type: ss
+    server: 167.17.64.27
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-25|Q76
-    type: http
-    server: 84.17.47.123
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-229|Q76
+    type: ss
+    server: 38.109.228.110
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown|Q76
-    type: http
-    server: 84.17.47.124
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-232|Q76
+    type: ss
+    server: 167.17.64.175
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-23|Q76
-    type: http
-    server: 84.17.47.125
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-526|Q76
+    type: ss
+    server: 172.99.189.142
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-31|Q76
-    type: http
-    server: 84.17.47.149
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇷英国|unknown-4|Q76
+    type: ss
+    server: 82.38.31.180
+    port: 8080
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-4|Q76
-    type: http
-    server: 84.17.47.146
-    port: 9002
+    password: k1dBOmOB4oqi7Ump37a1bQ
+    cipher: chacha20-ietf-poly1305
+    network: tcp
+  - name: 🇺🇸美国|unknown-538|Q76
+    type: ss
+    server: 23.162.152.22
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-21|Q76
-    type: http
-    server: 84.17.47.126
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇫🇷 法国 www.v2s.com] 1616|Q76
+    type: ss
+    server: 23.162.152.22
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇺🇷英国|unknown-5|Q76
+    type: ss
+    server: 82.38.31.212
+    port: 8080
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-21|Q76
-    type: http
-    server: 84.17.47.148
-    port: 9002
+    password: k1dBOmOB4oqi7Ump37a1bQ
+    cipher: chacha20-ietf-poly1305
+    network: tcp
+  - name: 🇫🇷 法国 www.v2s.com] 1615... 2|Q76
+    type: ss
+    server: 172.99.189.142
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇫🇷 法国 www.v2s.com] 1615... 3|Q76
+    type: ss
+    server: 167.17.64.175
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇫🇷 法国 www.v2s.com] 1615|Q76
+    type: ss
+    server: 38.109.228.110
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇫🇷 法国 www.v2s.com] 1615... 1|Q76
+    type: ss
+    server: 167.17.64.27
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-97|Q76
+    type: ss
+    server: 185.164.175.81
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-7|Q76
-    type: http
-    server: 84.17.47.125
-    port: 9002
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸美国|unknown-496|Q76
+    type: ss
+    server: 23.230.52.119
+    port: 42878
     skip-cert-verify: true
     udp: true
-    tls: true
-    sni: 84.17.47.125
-  - name: 🇳🇱荷兰|unknown-13|Q76
-    type: http
-    server: 84.17.47.148
-    port: 9002
+    password: ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu
+    cipher: chacha20-ietf-poly1305
+  - name: 🇸🋀新加坡|unknown-28|Q76
+    type: ss
+    server: 15.235.164.133
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-8|Q76
-    type: http
-    server: 84.17.47.124
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇸🋀新加坡|unknown-33|Q76
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇸🋀新加坡|unknown-29|Q76
     type: ss
     server: 51.79.228.131
     port: 19999
@@ -1045,14 +630,33 @@ proxies:
     port: 19999
     cipher: aes-256-gcm
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇳🇱荷兰|unknown-9|Q76
-    type: http
-    server: 84.17.47.149
-    port: 9002
+  - name: 🇸🇬 新加坡 www.v2s.com] 1616... 1|Q76
+    type: ss
+    server: 15.235.182.183
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-122|Q76
+    type: ss
+    server: 15.235.182.183
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-78|Q76
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇺🇸 美国 www.v2s.com] 1620|Q76
+    type: ss
+    server: 23.230.52.119
+    port: 42878
+    cipher: chacha20-ietf-poly1305
+    password: ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu
+  - name: 🇸🇬 新加坡 www.v2s.com] 1615... 1|Q76
+    type: ss
+    server: 149.88.106.74
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-79|Q76
     type: ss
     server: 149.88.107.74
     port: 19999
@@ -1060,13 +664,15 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇸🇬 新加坡 www.v2s.com] 11|Q76
+  - name: 🇩🇪德国|unknown-86|Q76
     type: ss
-    server: 149.88.107.74
+    server: 186.190.215.251
     port: 19999
-    cipher: aes-256-gcm
+    skip-cert-verify: true
+    udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇸🋀新加坡|unknown-14|Q76
+    cipher: aes-256-gcm
+  - name: 🇸🋀新加坡|unknown-9|Q76
     type: ss
     server: 149.88.107.47
     port: 19999
@@ -1074,7 +680,7 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-16|Q76
+  - name: 🇩🇪德国|unknown-72|Q76
     type: ss
     server: 149.88.106.74
     port: 19999
@@ -1082,21 +688,23 @@ proxies:
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-35|Q76
+  - name: 🇸🋀新加坡|unknown-27|Q76
     type: ss
-    server: 15.235.164.133
+    server: 168.138.177.98
+    port: 56927
+    skip-cert-verify: true
+    udp: true
+    password: c11JMfCMQ3Y4aGlhMX5LrMpM13uvw+UVbjGfHP+eKkY=
+    cipher: 2022-blake3-chacha20-poly1305
+  - name: 🇩🇪德国|unknown-134|Q76
+    type: ss
+    server: 23.166.88.127
     port: 19999
     skip-cert-verify: true
     udp: true
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇸🇬 新加坡 www.v2s.com] 10|Q76
-    type: ss
-    server: 149.88.106.74
-    port: 19999
-    cipher: aes-256-gcm
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-  - name: 🇸🇬 新加坡 www.v2s.com] 1615... 1|Q76
+  - name: 🇸🇬 新加坡 www.v2s.com] 1615... 3|Q76
     type: ss
     server: 149.88.107.47
     port: 19999
@@ -1104,201 +712,107 @@ proxies:
     password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
   - name: 🇸🇬 新加坡 www.v2s.com] 1623|Q76
     type: ss
-    server: 158.178.230.120
+    server: 168.138.177.98
     port: 56927
     cipher: 2022-blake3-chacha20-poly1305
-    password: GMhXRpy/pfPMVrZeCAxOxI5MpuH3llOtZKoeNLUT0n8=
-  - name: 🇸🋀新加坡|unknown-13|Q76
+    password: c11JMfCMQ3Y4aGlhMX5LrMpM13uvw+UVbjGfHP+eKkY=
+  - name: 🇩🇪德国|unknown-87|Q76
     type: ss
-    server: 158.178.230.120
-    port: 56927
+    server: 202.50.253.45
+    port: 19999
     skip-cert-verify: true
     udp: true
-    password: GMhXRpy/pfPMVrZeCAxOxI5MpuH3llOtZKoeNLUT0n8=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇫🇷法国|unknown-8|Q76
-    type: http
-    server: 149.102.245.65
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇫🇷法国|unknown-7|Q76
-    type: http
-    server: 149.102.245.65
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-27|Q76
-    type: http
-    server: 149.36.50.1
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-130|Q75
-    type: ss
-    server: 130.49.189.158
-    port: 43558
-    skip-cert-verify: true
-    udp: true
-    password: LNc9h/4NA9Q6ZHNeYHoT5X/fR9aoE9KQR1SWhVDHBog=
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-92|Q75
-    type: ss
-    server: 135.220.178.46
-    port: 46303
-    skip-cert-verify: true
-    udp: true
-    password: zZMNTGpPl38ASlbI1EKOBJ
-    cipher: chacha20-ietf-poly1305
-  - name: 🇦🇺 澳洲 07|Q75
-    type: ss
-    server: 48.103.218.77
-    port: 18443
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-    password: 5mKjXAGrliIAlYwWDeFzkCEMIgQdFQLe
-  - name: 🇩🇪德国|unknown-120|Q75
-    type: vmess
-    server: 188.114.99.137
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    sni: guanwang.awsno.com
-    ws-opts:
-      path: /hls/cctv5phd.m3u8
-      headers:
-        Host: guanwang.awsno.com
-    client-fingerprint: chrome
-  - name: 🇺🇸美国|unknown-192|Q75
+  - name: 🇩🇪德国|unknown-77|Q76
     type: ss
-    server: 213.176.92.148
-    port: 40647
+    server: 138.199.55.243
+    port: 19999
     skip-cert-verify: true
     udp: true
-    password: DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY=
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-108|Q75
-    type: vmess
-    server: 172.67.190.164
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
-    cipher: auto
-    alterId: 0
-    network: ws
-    tls: true
-    sni: guanwang.awsno.com
-    ws-opts:
-      path: /hls/cctv5phd.m3u8
-      headers:
-        Host: guanwang.awsno.com
-    client-fingerprint: chrome
-  - name: 🇩🇪德国|unknown-116|Q75
-    type: trojan
-    server: 66.163.127.215
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-26|Q75
-    type: http
-    server: 158.173.154.3
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-4|Q75
-    type: http
-    server: 158.173.154.5
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-3|Q75
-    type: http
-    server: 158.173.154.1
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-6|Q75
-    type: http
-    server: 149.36.51.129
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇳🇱荷兰|unknown-12|Q75
-    type: http
-    server: 149.36.51.129
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-6|Q75
-    type: http
-    server: 158.173.154.3
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-47|Q75
-    type: http
-    server: 158.173.154.4
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-19|Q75
-    type: http
-    server: 158.173.154.5
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-10|Q75
-    type: http
-    server: 158.173.154.4
-    port: 9002
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-16|Q75
-    type: http
-    server: 213.109.163.119
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇳🇱 荷兰 www.v2s.com] 6|Q75
+  - name: 🇩🇪德国|unknown-83|Q76
     type: ss
-    server: 156.67.120.205
-    port: 51628
+    server: 202.50.253.81
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-82|Q76
+    type: ss
+    server: 82.110.60.9
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇬🇧 英国 www.v2s.com] AT1595|Q76
+    type: ss
+    server: 82.110.60.9
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇺🇸 美国 82|Q76
+    type: socks5
+    server: 45.61.188.134
+    port: 44499
+  - name: 🇩🇪德国|unknown-81|Q76
+    type: ss
+    server: 79.127.139.242
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-98|Q76
+    type: ss
+    server: 57.131.27.21
+    port: 8388
+    skip-cert-verify: true
+    udp: true
+    password: itzvpn@321
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-71|Q76
+    type: ss
+    server: static.28.210.29.2.clients.your-server.de
+    port: 25565
+    skip-cert-verify: true
+    udp: true
+    password: C8ZJ7R4p_HHJ32cst7ilT-0Zi2F22hAc
     cipher: chacha20-ietf-poly1305
-    password: 29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF
-  - name: 🇩🇪德国|unknown-7|Q75
-    type: http
-    server: 213.109.163.119
-    port: 443
+  - name: 🇩🇪德国|unknown-99|Q76
+    type: ss
+    server: 152.53.1.57
+    port: 8388
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-24|Q75
-    type: http
-    server: 159.69.94.125
-    port: 443
+    password: AdawffFMHymlasRb0VOP3HFf7sTG5sJx
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-135|Q76
+    type: ss
+    server: 66.163.118.103
+    port: 19999
     skip-cert-verify: true
     udp: true
-    tls: true
-  - name: 🇰🇷韩国|unknown-3|Q75
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇩🇪 德国 www.v2s.com] FI1623|Q76
+    type: ss
+    server: static.28.210.29.2.clients.your-server.de
+    port: 25565
+    cipher: chacha20-ietf-poly1305
+    password: C8ZJ7R4p_HHJ32cst7ilT-0Zi2F22hAc
+  - name: 🇩🇪德国|unknown-92|Q76
+    type: ss
+    server: 167.17.71.167
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇰🇷韩国|unknown-4|Q76
     type: vmess
     server: 132.145.80.230
     port: 80
@@ -1312,14 +826,49 @@ proxies:
       headers:
         Host: kr02.a0a.xyz
       path: /cctv13.m3u8
-  - name: 🇩🇪德国|unknown-66|Q75
+  - name: 🇰🇷韩国|unknown-3|Q76
     type: trojan
-    server: 216.238.104.154
+    server: 158.247.253.243
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-49|Q75
+    sni: connectgraduateswithjobopeningsandgrowprofessionally.com
+  - name: 🇰🇷 韩国 www.v2s.com|Q76
+    type: trojan
+    server: 158.247.253.243
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: connectgraduateswithjobopeningsandgrowprofessionally.com
+    network: ''
+  - name: 🇺🇸 美国 64|Q76
+    type: socks5
+    server: 69.55.49.177
+    port: 38182
+  - name: 🇸🋀新加坡|unknown-3|Q76
+    type: vless
+    server: node-uk.connectsuite.org
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
+    tls: true
+  - name: 🇩🇪德国|unknown-111|Q76
+    type: trojan
+    server: 66.163.127.215
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-119|Q76
+    type: trojan
+    server: 66.163.127.225
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: cdn.indyourperfectremotetechjobfromthecomfortofhome.com
+  - name: 🇩🇪德国|unknown-65|Q76
     type: vless
     server: 178.172.227.124
     port: 10443
@@ -1327,58 +876,131 @@ proxies:
     udp: true
     uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
     tls: false
-  - name: 🇩🇪德国|unknown-13|Q75
-    type: vless
-    server: 144.31.215.233
-    port: 2096
+  - name: 🇳🇱 荷兰 www.v2s.com] ... 2|Q76
+    type: trojan
+    server: 66.163.127.225
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: cdn.indyourperfectremotetechjobfromthecomfortofhome.com
+    network: ''
+  - name: 🇺🇸美国|unknown-117|Q76
+    type: vmess
+    server: 162.19.204.71
+    port: 1234
     skip-cert-verify: true
     udp: true
-    uuid: fbe22815-0718-4eae-816f-e91c67d15b54
+    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    cipher: auto
+    alterId: 0
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-36|Q76
+    type: vmess
+    server: 141.95.65.9
+    port: 1234
+    skip-cert-verify: true
+    udp: true
+    uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    cipher: aes-128-gcm
+    alterId: 0
+    network: tcp
+    tls: true
+    client-fingerprint: chrome
+  - name: 🇺🇸 美国 491|Q75
+    type: socks5
+    server: 104.168.249.36
+    port: 1080
+    username: test123
+    password: test123
+  - name: 🇺🇸美国|unknown-403|Q75
+    type: vmess
+    server: 104.18.42.163
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+    cipher: auto
+    alterId: 0
     network: ws
     tls: true
+    sni: guanwang.awsno.com
     ws-opts:
+      path: /hls/cctv5phd.m3u8
       headers:
-        Host: st46d76.rumedia-cdn.com
-      path: /cdn/v3/live
-    client-fingerprint: edge
-  - name: 🇩🇪德国|unknown-77|Q75
+        Host: guanwang.awsno.com
+    client-fingerprint: chrome
+  - name: www.v2s.com] CA1559... 1|Q75
     type: ss
-    server: 156.67.120.205
-    port: 51628
+    server: 51.79.85.185
+    port: 8118
+    cipher: aes-256-gcm
+    password: cdBIDV42DCwnfIN
+  - name: 🇰🇵日本|unknown-17|Q75
+    type: ss
+    server: 84.247.155.196
+    port: 80
     skip-cert-verify: true
     udp: true
-    password: 29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF
-    cipher: chacha20-ietf-poly1305
-  - name: 🇰🇷韩国|unknown-5|Q75
-    type: trojan
-    server: 158.247.253.243
+    password: 3eOFeNssde7PYYMv
+    cipher: aes-256-gcm
+  - name: 🇩🇪德国|unknown-43|Q75
+    type: vmess
+    server: www.shopify.com
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: connectgraduateswithjobopeningsandgrowprofessionally.com
-  - name: 🇰🇷 韩国 www.v2s.com|Q75
-    type: trojan
-    server: 158.247.253.243
-    port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: connectgraduateswithjobopeningsandgrowprofessionally.com
-    network: ''
-  - name: 🇷🇺 俄罗斯 加拿大 Montreal|Q75
+    uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+    cipher: auto
+    alterId: 0
+    network: ws
+    tls: true
+    sni: guanwang.awsno.com
+    ws-opts:
+      path: /hls/cctv5phd.m3u8
+      headers:
+        Host: guanwang.awsno.com
+  - name: 🇩🇪德国|unknown-80|Q75
     type: ss
-    server: 91.206.92.202
+    server: 79.127.184.104
+    port: 19999
+    skip-cert-verify: true
+    udp: true
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+    cipher: aes-256-gcm
+  - name: 🇦🇺 澳洲 07|Q75
+    type: ss
+    server: 48.103.218.77
     port: 18443
     cipher: aes-256-gcm
-    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
-  - name: 🇩🇪德国|unknown-94|Q75
+    password: 5mKjXAGrliIAlYwWDeFzkCEMIgQdFQLe
+  - name: 🇳🇱 荷兰 www.v2s.com] 1616|Q75
     type: ss
-    server: 194.87.233.93
-    port: 46190
+    server: 77.221.132.206
+    port: 24759
+    cipher: chacha20-ietf-poly1305
+    password: hCgbUnMaoAfSgvE8IKdnGu
+  - name: 🇩🇪德国|unknown-113|Q75
+    type: trojan
+    server: 66.163.118.244
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: 2Ef8X21WALqK7H6N8A78j5WYtzZ999PP8rF8DaLsb5LLyDLQpf5dGVAjdA3mj1wudigKXTt5heYU9jmaBbfxXBJJAqhPHkxe
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-41|Q75
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-63|Q75
+    type: vless
+    server: 5.178.109.174
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+    network: ws
+    tls: false
+    ws-opts:
+      headers:
+        Host: 5.178.109.174
+      path: /vless
+  - name: 🇩🇪德国|unknown-42|Q75
     type: trojan
     server: 208.69.78.33
     port: 443
@@ -1386,64 +1008,41 @@ proxies:
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: courses.yourultimateprofessionalcareerhub.com
-  - name: 🇩🇪德国|unknown-38|Q75
-    type: http
-    server: 185.219.159.16
+  - name: 🇩🇪德国|unknown-112|Q75
+    type: trojan
+    server: 66.163.118.203
     port: 443
     skip-cert-verify: true
     udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇸🋀新加坡|unknown-24|Q75
+    type: vless
+    server: 207.148.124.12
+    port: 8443
+    skip-cert-verify: true
+    udp: true
+    uuid: bcdb425f-80bc-4ec8-92a5-8edf53639c01
     tls: true
-  - name: 🇩🇪德国|unknown-51|Q75
+    client-fingerprint: chrome
+  - name: 🇩🇪德国|unknown-47|Q75
     type: trojan
     server: 208.69.78.158
     port: 443
     skip-cert-verify: true
     udp: true
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  - name: 🇩🇪德国|unknown-34|Q75
-    type: http
-    server: 185.219.159.15
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    tls: true
-  - name: 🇩🇪德国|unknown-60|Q75
+  - name: 🇩🇪德国|unknown-31|Q75
     type: vless
-    server: 136.148.83.69
-    port: 443
+    server: 185.125.50.21
+    port: 2053
     skip-cert-verify: true
     udp: true
-    uuid: 666821a2-5c3d-0001-a56f-5a3a562d7324
+    uuid: fbe22815-0718-4eae-816f-e91c67d15b54
     network: tcp
     tls: true
-    ws-opts:
-      path: /
-    client-fingerprint: qq
-  - name: 🇩🇪德国|unknown-93|Q75
-    type: ss
-    server: 77.221.132.206
-    port: 24759
-    skip-cert-verify: true
-    udp: true
-    password: hCgbUnMaoAfSgvE8IKdnGu
-    cipher: chacha20-ietf-poly1305
-  - name: 🇭🇰香港|unknown-6|Q75
-    type: trojan
-    server: 47.242.93.89
-    port: 12012
-    skip-cert-verify: true
-    udp: true
-    password: 12012
-    sni: ali-hk.b-gfw.cfd
-  - name: 🇭🇰香港|unknown-7|Q75
-    type: trojan
-    server: 47.242.93.89
-    port: 12012
-    skip-cert-verify: true
-    udp: true
-    password: '12012'
-    sni: ali-hk.b-gfw.cfd
-  - name: 🇩🇪德国|unknown-59|Q75
+    flow: xtls-rprx-vision
+    client-fingerprint: firefox
+  - name: 🇩🇪德国|unknown-58|Q75
     type: trojan
     server: 45.63.30.142
     port: 443
@@ -1458,88 +1057,135 @@ proxies:
     password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
     sni: connectwithemployerstohireyouridealteam.com
     network: ''
-  - name: 🇫🇷 法国 05|Q75
-    type: ss
-    server: 195.133.5.196
-    port: 18443
-    cipher: aes-256-gcm
-    password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
-  - name: 🇸🇬 新加坡 532|Q75
-    type: http
-    server: 159.223.41.216
-    port: 9090
-    tls: false
-  - name: 🇸🋀新加坡|unknown-29|Q75
-    type: vless
-    server: 207.148.124.12
-    port: 8443
-    skip-cert-verify: true
-    udp: true
-    uuid: bcdb425f-80bc-4ec8-92a5-8edf53639c01
-    tls: true
-    client-fingerprint: chrome
-  - name: 🇸🇬 新加坡 539|Q75
-    type: http
-    server: 146.190.80.158
-    port: 9090
-    tls: false
-  - name: 🇸🇬 新加坡 538|Q75
-    type: http
-    server: 167.99.74.174
-    port: 9090
-    tls: false
-  - name: 🇩🇪德国|unknown-82|Q75
-    type: ss
-    server: 102.133.165.160
-    port: 16233
-    skip-cert-verify: true
-    udp: true
-    password: Xsy8Ox4yOV3xLlpxtjzs3X
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-90|Q75
-    type: ss
-    server: 102.37.156.224
-    port: 443
-    skip-cert-verify: true
-    udp: true
-    password: aduB9HGxQHjA2SBMRjkHX6
-    cipher: chacha20-ietf-poly1305
-  - name: 🇩🇪德国|unknown-117|Q75
+  - name: 🇩🇪德国|unknown-116|Q75
     type: trojan
     server: 47.250.84.25
     port: 443
     skip-cert-verify: true
     udp: true
     password: 5931134d1cde66bf83a54acdfebe7ab2
-  - name: 🇩🇪德国|unknown-46|Q75
+  - name: 🇩🇪德国|unknown-101|Q75
+    type: http
+    server: 51.159.225.196
+    port: 23856
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-105|Q75
+    type: http
+    server: 51.159.225.197
+    port: 19362
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-103|Q75
+    type: http
+    server: 51.159.225.196
+    port: 23856
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-52|Q75
     type: vless
-    server: 95.174.68.188
+    server: 152.69.226.63
+    port: 25555
+    skip-cert-verify: true
+    udp: true
+    uuid: 27c5483f-17f4-48ae-9a04-def53d88440d
+    network: ws
+    tls: false
+    ws-opts:
+      path: /
+  - name: 🇩🇪德国|unknown-40|Q75
+    type: vless
+    server: 178.172.227.228
     port: 14430
     skip-cert-verify: true
     udp: true
-    uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+    uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
     network: ws
     tls: false
     ws-opts:
       headers:
-        Host: 95.174.68.188
+        Host: 178.172.227.228
       path: /vless
-  - name: 🇸🋀新加坡|unknown|Q75
+  - name: 🇩🇪德国|unknown-64|Q75
+    type: trojan
+    server: 216.238.104.154
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  - name: 🇩🇪德国|unknown-12|Q75
     type: http
-    server: 149.88.99.209
+    server: 84.17.47.148
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-18|Q75
+    type: http
+    server: 84.17.47.124
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-26|Q75
+    type: http
+    server: 84.17.47.125
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-16|Q75
+    type: http
+    server: 84.17.47.123
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷法国|unknown-6|Q75
+    type: http
+    server: 138.199.47.247
     port: 9443
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-119|Q75
-    type: vless
-    server: 150.95.109.109
-    port: 2086
+  - name: 🇩🇪德国|unknown-29|Q75
+    type: http
+    server: 158.173.154.5
+    port: 9002
     skip-cert-verify: true
     udp: true
-    uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
-    tls: false
-  - name: 🇸🋀新加坡|unknown-22|Q75
+    tls: true
+  - name: 🇩🇪德国|unknown-14|Q75
+    type: http
+    server: 213.109.163.119
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇩🇪德国|unknown-10|Q75
+    type: http
+    server: 84.17.47.149
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇫🇷 法国 05|Q75
+    type: ss
+    server: 195.133.5.196
+    port: 18443
+    cipher: aes-256-gcm
+    password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
+  - name: 🇩🇪德国|unknown-11|Q75
+    type: http
+    server: 158.173.154.1
+    port: 9002
+    skip-cert-verify: true
+    udp: true
+    tls: true
+  - name: 🇸🋀新加坡|unknown-21|Q75
     type: vless
     server: 139.162.27.96
     port: 2096
@@ -1553,161 +1199,275 @@ proxies:
         Host: free-server.techsonic.dev
       path: /free-server.techsonic.dev
     client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-18|Q74
+  - name: 🇩🇪德国|unknown-62|Q75
     type: vless
-    server: 172.64.154.113
-    port: 8443
+    server: 144.31.215.233
+    port: 2096
     skip-cert-verify: true
     udp: true
-    uuid: 53bbdad4-2f4e-45db-8df4-fa491a6a7227
+    uuid: fbe22815-0718-4eae-816f-e91c67d15b54
     network: ws
     tls: true
     ws-opts:
       headers:
-        Host: freeceshi6.frii.site
-      path: /proxyip=ProxyIP.JP.CMLiussss.net
-    client-fingerprint: chrome
-  - name: 🇸🋀新加坡|unknown-11|Q74
+        Host: st46d76.rumedia-cdn.com
+      path: /cdn/v3/live
+    client-fingerprint: edge
+  - name: 🇷🇺 俄罗斯 加拿大 Montreal|Q75
     type: ss
-    server: 94.156.250.148
-    port: 7001
-    skip-cert-verify: true
-    udp: true
-    password: RexnBgU7EV5ADxG
+    server: 91.206.92.202
+    port: 18443
     cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-112|Q74
-    type: trojan
-    server: 66.163.127.225
+    password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
+  - name: 🇩🇪德国|unknown-19|Q75
+    type: http
+    server: 185.219.159.16
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: cdn.indyourperfectremotetechjobfromthecomfortofhome.com
-  - name: 🇸🋀新加坡|unknown-28|Q74
-    type: trojan
-    server: 15.235.184.127
+    tls: true
+  - name: 🇩🇪德国|unknown-20|Q75
+    type: http
+    server: 185.219.159.15
     port: 443
     skip-cert-verify: true
     udp: true
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: exploredigitaljobplatformandfindonlinework.com
-  - name: 🇰🇷韩国|unknown-7|Q74
+    tls: true
+  - name: 🇩🇪德国|unknown-117|Q75
     type: vless
-    server: 152.69.226.63
-    port: 25555
+    server: 150.95.109.109
+    port: 2086
     skip-cert-verify: true
     udp: true
-    uuid: 27c5483f-17f4-48ae-9a04-def53d88440d
+    uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+    tls: false
+  - name: www.v2s.com] CA1559|Q74
+    type: ss
+    server: 51.222.141.125
+    port: 445
+    cipher: aes-256-gcm
+    password: zDNVedRFPQexG9v
+  - name: 🇺🇸美国|unknown-220|Q74
+    type: vmess
+    server: 129.146.143.80
+    port: 48111
+    skip-cert-verify: true
+    udp: true
+    uuid: d4603cc2-e0ee-4651-83f5-1db5b7168177
+    cipher: auto
+    alterId: 0
+    network: tcp
+    tls: false
+  - name: www.v2s.com] CA1545|Q74
+    type: ss
+    server: 51.79.49.116
+    port: 8882
+    cipher: aes-256-gcm
+    password: kDWvXYZoTBcGkC4
+  - name: 🇩🇪德国|unknown-75|Q74
+    type: ss
+    server: 102.133.165.160
+    port: 16233
+    skip-cert-verify: true
+    udp: true
+    password: Xsy8Ox4yOV3xLlpxtjzs3X
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-89|Q74
+    type: ss
+    server: 102.37.156.224
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    password: aduB9HGxQHjA2SBMRjkHX6
+    cipher: chacha20-ietf-poly1305
+  - name: 🇸🋀新加坡|unknown-23|Q74
+    type: vless
+    server: 13.140.56.100
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     network: ws
     tls: false
     ws-opts:
-      path: /
-  - name: 🇸🇬 新加坡 www.v2s.com|Q74
-    type: trojan
-    server: 15.235.184.127
+      headers:
+        Host: 13.140.56.100
+      path: /vless
+  - name: 🇺🇷英国|unknown-2|Q74
+    type: vless
+    server: 136.148.83.69
     port: 443
-    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-    sni: exploredigitaljobplatformandfindonlinework.com
-    network: ''
-  - name: 🇯🇵 日本 518|Q74
-    type: socks5
-    server: 103.248.150.50
-    port: 42000
-    username: paZFN3JA
-    password: EGJDy5Kg
-  - name: 🇺🇸 美国 533|Q74
-    type: http
-    server: 172.235.157.127
-    port: 3128
+    skip-cert-verify: true
+    udp: true
+    uuid: 666821a2-5c3d-0001-a56f-5a3a562d7324
+    network: tcp
+    tls: true
+    client-fingerprint: qq
+  - name: 🇩🇪德国|unknown-74|Q74
+    type: ss
+    server: 194.87.233.93
+    port: 46190
+    skip-cert-verify: true
+    udp: true
+    password: 2Ef8X21WALqK7H6N8A78j5WYtzZ999PP8rF8DaLsb5LLyDLQpf5dGVAjdA3mj1wudigKXTt5heYU9jmaBbfxXBJJAqhPHkxe
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-49|Q74
+    type: vless
+    server: 95.174.68.188
+    port: 14430
+    skip-cert-verify: true
+    udp: true
+    uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+    network: ws
     tls: false
+    ws-opts:
+      headers:
+        Host: 95.174.68.188
+      path: /vless
   - name: 🇳🇱 荷兰 www.v2s.com] 1622|Q74
     type: ss
     server: 194.87.233.93
     port: 46190
     cipher: chacha20-ietf-poly1305
     password: 2Ef8X21WALqK7H6N8A78j5WYtzZ999PP8rF8DaLsb5LLyDLQpf5dGVAjdA3mj1wudigKXTt5heYU9jmaBbfxXBJJAqhPHkxe
-  - name: 🇺🇸 美国 64|Q74
-    type: socks5
-    server: 69.55.49.177
-    port: 38182
-  - name: 🇩🇪德国|unknown-43|Q74
-    type: vless
-    server: 178.172.227.228
-    port: 14430
+  - name: 🇳🇱 荷兰 www.v2s.com] 1618|Q74
+    type: ss
+    server: 156.67.120.205
+    port: 51628
+    cipher: chacha20-ietf-poly1305
+    password: 29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF
+  - name: 🇩🇪德国|unknown-91|Q74
+    type: ss
+    server: 156.67.120.205
+    port: 51628
     skip-cert-verify: true
     udp: true
-    uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
+    password: 29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-125|Q73
+    type: ss
+    server: 130.49.189.158
+    port: 43558
+    skip-cert-verify: true
+    udp: true
+    password: LNc9h/4NA9Q6ZHNeYHoT5X/fR9aoE9KQR1SWhVDHBog=
+    cipher: chacha20-ietf-poly1305
+  - name: 🇩🇪德国|unknown-60|Q73
+    type: vless
+    server: 136.148.83.69
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 666821a2-5c3d-0001-a56f-5a3a562d7324
+    tls: true
+    client-fingerprint: qq
+  - name: 🇹🇼台湾|unknown-3|Q73
+    type: vless
+    server: 60.248.219.53
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
     network: ws
-    tls: false
+    tls: true
     ws-opts:
       headers:
-        Host: 178.172.227.228
-      path: /vless
-  - name: www.v2s.com] CA1538|Q73
+        Host: ty986gfazs.cainiaohub.xyz
+      path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-219|Q73
     type: ss
-    server: 51.222.12.127
-    port: 445
-    cipher: aes-256-gcm
-    password: zDNVedRFPQexG9v
-  - name: 🇭🇰香港|unknown-4|Q71
-    type: ss
-    server: 209.248.57.105
-    port: 8388
+    server: 213.176.92.148
+    port: 40647
     skip-cert-verify: true
     udp: true
-    password: AMok40FfaM+Ikwre16psBpVk6JHxsQZw
+    password: DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY=
     cipher: aes-256-gcm
-  - name: 🇬🇧 英国 www.v2s.com] 1247|Q71
-    type: ss
-    server: 94.156.250.148
-    port: 7001
-    cipher: aes-256-gcm
-    password: RexnBgU7EV5ADxG
-  - name: 🇩🇪德国|unknown-126|Q69
-    type: ss
-    server: 51.222.12.127
-    port: 445
+  - name: 🇩🇪德国|unknown-56|Q72
+    type: vless
+    server: 45.86.60.174
+    port: 16443
     skip-cert-verify: true
     udp: true
-    password: zDNVedRFPQexG9v
-    cipher: aes-256-gcm
-  - name: 🇩🇪德国|unknown-101|Q66
-    type: ss
-    server: 129.159.0.53
-    port: 59924
-    skip-cert-verify: true
-    udp: true
-    password: zpdYERRY+i9wkj3G766aELYAVoITvCv9kKrIGG8ykzY=
-    cipher: 2022-blake3-chacha20-poly1305
-  - name: 🇸🇬 新加坡 1|Q65
-    type: ss
-    server: 168.138.177.98
-    port: 56927
-    cipher: 2022-blake3-chacha20-poly1305
-    password: c11JMfCMQ3Y4aGlhMX5LrMpM13uvw+UVbjGfHP+eKkY=
-  - name: 🇩🇪德国|unknown-29|Q64
+    uuid: 13e541f3-d09d-4633-89df-8513db0ced20
+    tls: false
+  - name: 🇩🇪德国|unknown-23|Q72
     type: http
     server: 83.206.1.225
     port: 8090
     skip-cert-verify: true
     udp: true
     tls: true
-  - name: 🇩🇪德国|unknown-50|Q63
-    type: vless
-    server: 5.178.109.174
-    port: 14430
+  - name: 🇭🇰 香港 www.v2s.com] 1621|Q71
+    type: ss
+    server: 209.248.57.105
+    port: 8388
+    cipher: aes-256-gcm
+    password: AMok40FfaM+Ikwre16psBpVk6JHxsQZw
+  - name: 🇸🇬 新加坡 www.v2s.com-2|Q69
+    type: trojan
+    server: 15.235.184.127
+    port: 443
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: exploredigitaljobplatformandfindonlinework.com
+    network: ''
+  - name: 🇸🋀新加坡|unknown-25|Q68
+    type: trojan
+    server: 15.235.184.127
+    port: 443
     skip-cert-verify: true
     udp: true
-    uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+    password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+    sni: exploredigitaljobplatformandfindonlinework.com
+  - name: 🇺🇸美国|unknown-213|Q66
+    type: vmess
+    server: 38.91.107.49
+    port: 18000
+    skip-cert-verify: true
+    udp: true
+    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    cipher: auto
+    alterId: 0
+    network: tcp
+    tls: false
+  - name: 🇬🇧 英国 www.v2s.com] 4|Q66
+    type: ss
+    server: 38.114.120.221
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇸🇬 新加坡 www.v2s.com] 1615... 2|Q66
+    type: ss
+    server: 149.88.107.74
+    port: 19999
+    cipher: aes-256-gcm
+    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  - name: 🇩🇪德国|unknown-84|Q65
+    type: ss
+    server: 77.221.132.206
+    port: 24759
+    skip-cert-verify: true
+    udp: true
+    password: hCgbUnMaoAfSgvE8IKdnGu
+    cipher: chacha20-ietf-poly1305
+  - name: 🇭🇰香港|unknown-6|Q63
+    type: vmess
+    server: 47.244.120.197
+    port: 44867
+    skip-cert-verify: true
+    udp: true
+    uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+    cipher: auto
+    alterId: 0
     network: ws
     tls: false
+    alpn:
+      - ''
     ws-opts:
-      headers:
-        Host: 5.178.109.174
-      path: /vless
-  - name: 🇺🇸美国|unknown-102|Q62
+      path: /arki
+  - name: 🇩🇪德国|unknown-37|Q63
     type: vless
-    server: 201.51.2.188
+    server: linen.filnex.baby
     port: 443
     skip-cert-verify: true
     udp: true
@@ -1717,88 +1477,62 @@ proxies:
     alpn:
       - http/1.1
     ws-opts:
+      path: /api/de2/stream
       headers:
-        Host: vellum.merlano.monster
-      path: /api/de1/stream
-    client-fingerprint: android
-  - name: 🇺🇸美国|unknown-128|Q61
-    type: vmess
-    server: 67.220.85.46
-    port: 18000
-    skip-cert-verify: true
-    udp: true
-    uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    cipher: aes-128-gcm
-    alterId: 0
-    network: tcp
-  - name: 🇩🇪 德国 www.v2s.com] 1623|Q61
-    type: ss
-    server: 129.159.0.53
-    port: 59924
-    cipher: 2022-blake3-chacha20-poly1305
-    password: zpdYERRY+i9wkj3G766aELYAVoITvCv9kKrIGG8ykzY=
-  - name: www.v2s.com] CA1559|Q60
-    type: ss
-    server: 51.222.141.125
-    port: 445
-    cipher: aes-256-gcm
-    password: zDNVedRFPQexG9v
-  - name: 🇸🋀新加坡|unknown-9|Q59
+        Host: linen.filnex.baby
+    client-fingerprint: firefox
+  - name: 🇺🇸美国|unknown-188|Q57
     type: vless
-    server: node-uk.connectsuite.org
-    port: 8443
+    server: 152.228.162.19
+    port: 80
     skip-cert-verify: true
     udp: true
-    uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
-    tls: true
-  - name: 🇳🇱 荷兰 1|Q58
-    type: ss
-    server: 158.178.157.15
-    port: 45819
-    cipher: 2022-blake3-chacha20-poly1305
-    password: Lqb/eLDa4LnfF6j965FkZEXTWkH65B083ivjy0xFpiI=
-  - name: 🇩🇪德国|unknown-128|Q58
-    type: ss
-    server: 51.222.155.113
-    port: 5601
-    skip-cert-verify: true
-    udp: true
-    password: Y6R9pAtvxxzmGC
-    cipher: aes-256-gcm
-  - name: 🇸🋀新加坡|unknown-32|Q57
-    type: ss
-    server: 15.235.182.183
-    port: 19999
-    skip-cert-verify: true
-    udp: true
-    password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-    cipher: aes-256-gcm
-  - name: 🇺🇸美国|unknown-158|Q57
-    type: vless
-    server: 45.144.234.157
-    port: 14430
-    skip-cert-verify: true
-    udp: true
-    uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
+    uuid: 5ce84688-f535-46ad-a512-37b17becf6ea
     network: ws
     tls: false
+    encryption: none
     ws-opts:
       headers:
-        Host: 45.144.234.157
-      path: /vless
-  - name: 🇸🋀新加坡|unknown-6|Q56
+        Host: akamaized.net
+      path: /vless/
+  - name: 🇩🇪德国|unknown-102|Q57
     type: http
-    server: 167.99.74.174
-    port: 9090
+    server: 34.249.214.108
+    port: 443
     skip-cert-verify: true
     udp: true
-  - name: 🇸🋀新加坡|unknown-7|Q56
-    type: http
-    server: 167.99.74.174
-    port: 9090
+    tls: true
+  - name: 🇩🇪德国|unknown-9|Q54
+    type: vless
+    server: willow.filnex.baby
+    port: 443
     skip-cert-verify: true
     udp: true
-  - name: 🇩🇪德国|unknown-39|Q50
+    uuid: 25ac78e7-6d1d-4c9a-a450-c01a4871769f
+    network: ws
+    tls: true
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: /api/de1/stream
+      headers:
+        Host: willow.filnex.baby
+    client-fingerprint: chrome
+  - name: 🇺🇸美国|unknown-139|Q50
+    type: vless
+    server: ov-france1.09vpn.com
+    port: 80
+    skip-cert-verify: true
+    udp: true
+    uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
+    network: ws
+    tls: false
+    encryption: none
+    ws-opts:
+      headers:
+        Host: ov-france1.09vpn.com
+      path: /vless/
+  - name: 🇩🇪德国|unknown-27|Q50
     type: vless
     server: OV-Germany1.09vpn.com
     port: 80
@@ -1811,37 +1545,41 @@ proxies:
       headers:
         Host: OV-Germany1.09vpn.com
       path: /vless/
-  - name: 🇩🇪德国|unknown-67|Q47
-    type: trojan
-    server: sclass-01.catcat321.com
-    port: 20103
-    skip-cert-verify: true
-    udp: true
-    password: d7563108-615c-4338-a7bd-77f359869a4a
-    sni: hk.catxstar.com
-  - name: 🇳🇱 荷兰 3|Q45
+  - name: 🇺🇸 美国 www.v2s.com] 1623|Q50
     type: ss
-    server: 84.235.170.154
-    port: 45819
+    server: 161.153.38.61
+    port: 50356
     cipher: 2022-blake3-chacha20-poly1305
-    password: hZ3VbN592JZsuzZ9ou+pGOBFMSRGBiSVczJFghcRaEY=
-  - name: 🇩🇪德国|unknown-133|Q43
+    password: EP/0kIjk18c43tfkqeJqdVQm8lGArteYkhhwgBJ3q70=
+  - name: 🇩🇪德国|unknown-109|Q49
     type: ss
-    server: 51.222.141.125
-    port: 445
+    server: 47.254.128.109
+    port: 443
     skip-cert-verify: true
     udp: true
-    password: zDNVedRFPQexG9v
-    cipher: aes-256-gcm
-  - name: www.v2s.com] CA1546|Q43
+    password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+    cipher: 2022-blake3-chacha20-poly1305
+  - name: 🇩🇪德国|unknown-15|Q44
+    type: vless
+    server: vellum.merlano.monster
+    port: 443
+    skip-cert-verify: true
+    udp: true
+    uuid: 25ac78e7-6d1d-4c9a-a450-c01a4871769f
+    network: ws
+    tls: true
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: /api/de1/stream
+      headers:
+        Host: vellum.merlano.monster
+    client-fingerprint: android
+  - name: 🇳🇱荷兰|unknown-19|Q43
     type: ss
-    server: 51.222.155.113
-    port: 5601
-    cipher: aes-256-gcm
-    password: Y6R9pAtvxxzmGC
-  - name: 🇭🇰 香港 www.v2s.com] 1621|Q43
-    type: ss
-    server: 209.248.57.105
-    port: 8388
-    cipher: aes-256-gcm
-    password: AMok40FfaM+Ikwre16psBpVk6JHxsQZw
+    server: 158.178.157.15
+    port: 45819
+    skip-cert-verify: true
+    udp: true
+    password: Lqb/eLDa4LnfF6j965FkZEXTWkH65B083ivjy0xFpiI=
+    cipher: 2022-blake3-chacha20-poly1305
