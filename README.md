@@ -1,12 +1,12 @@
 # AutoScrapeFreeNodes
 
 ![Update](https://img.shields.io/badge/更新频率-每6小时-blue)
-![SubsCheck](https://img.shields.io/badge/SubsCheck-1033-green)
-![XiaoXi](https://img.shields.io/badge/XiaoXi-1033-orange)
-![kooker.jp](https://img.shields.io/badge/kooker.jp-1033-purple)
+![SubsCheck](https://img.shields.io/badge/SubsCheck-1091-green)
+![XiaoXi](https://img.shields.io/badge/XiaoXi-1091-orange)
+![kooker.jp](https://img.shields.io/badge/kooker.jp-1091-purple)
 
-> **最后同步时间**：2026/11/27 09:19:29 (北京时间)
-> **ISO 时间**：2026-11-27T01:19:29.720Z
+> **最后同步时间**：2026/11/27 23:52:40 (北京时间)
+> **ISO 时间**：2026-11-27T15:52:40.046Z
 
 ## 项目简介
 
@@ -93,23 +93,23 @@ Windows 本地健康探测（可先用 `-Limit 20` 小批量试跑）：
 - [CI 实测与发布竞态修复记录](docs/ci-probe-and-publish-race-2026-11-02.md)
 
 ### 节点统计
-- **有效节点数**: 1033
+- **有效节点数**: 1091
 - **平均静态特征分（非健康评分）**: 80/100
 
 ### 🌍 地区分布
-- **美国**: 615 nodes
-- **德国**: 137 nodes
-- **新加坡**: 55 nodes
-- **荷兰**: 50 nodes
-- **日本**: 39 nodes
-- **英国**: 31 nodes
-- **法国**: 29 nodes
-- **韩国**: 17 nodes
-- **加拿大**: 17 nodes
-- **香港**: 16 nodes
-- **澳大利亚**: 16 nodes
+- **美国**: 648 nodes
+- **德国**: 150 nodes
+- **荷兰**: 62 nodes
+- **新加坡**: 57 nodes
+- **日本**: 48 nodes
+- **英国**: 24 nodes
+- **法国**: 24 nodes
+- **韩国**: 21 nodes
+- **澳大利亚**: 17 nodes
+- **香港**: 15 nodes
+- **加拿大**: 12 nodes
 - **中国**: 7 nodes
-- **台湾**: 4 nodes
+- **台湾**: 6 nodes
 ### 🚀 订阅链接
 - **Mihomo / Clash Meta**: [mihomo.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/subs/mihomo.yaml)
 - **稳定节点**: [stable.yaml](https://raw.githubusercontent.com/Andy181-github/AutoScrapeFreeNodes/main/artifacts/health/cloud/stable.yaml)
